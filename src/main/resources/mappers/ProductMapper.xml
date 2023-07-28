@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="july.lease.dao.product.ProductMapper">
+
+	<insert id="save">
+        <selectKey keyProperty="productId" resultType="Long" order="BEFORE">
+            select seq_product_id.nextval
+			from dual
+        </selectKey>
+        insert into product(product_id, member_id, category_id, product_name,
+        				    product_price, product_content, location,
+        				    product_create_date, product_end_status)
+		values(#{productId}, #{memberId}, #{categoryId}, #{productName},
+			   #{productPrice}, #{productContent}, #{location}, sysdate, 'N')
+    </insert>
+    
+	<select id="findByProductId" resultType="Product">
+		select product_id, member_id, category_id, product_name,
+			   product_price, product_content, location,
+        	   product_create_date, product_end_status
+			   from product
+			   where product_id = #{productId}
+	</select>
+	
+	
+	<select id="findAllForHome" resultType="Product">
+		select product_id, product_name, product_price
+		from product
+	</select>
+	
+	
+	
+
+
+</mapper>
