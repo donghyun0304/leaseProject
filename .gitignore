@@ -25,8 +25,9 @@ settings.gradle
 !src/
 application.properties
 application-test.properties
-WEB-INF/
-!src/main/webapp/WEB-INF/views/
+WEB-INF/web.xml
+!src/main/webapp/WEB-INF/views/*.jsp
+
 
 ### IntelliJ IDEA ###
 .idea
