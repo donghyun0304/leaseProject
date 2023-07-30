@@ -35,6 +35,7 @@ settings.gradle
 application.properties
 application-test.properties
 WEB-INF/
+!src/main/webapp/WEB-INF/views/
 
 
 ### NetBeans ###
