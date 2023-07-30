@@ -26,6 +26,17 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+gradle
+build.gradle
+gradlew
+gradlew.bat
+settings.gradle
+!src/
+application.properties
+application-test.properties
+WEB-INF/
+
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
