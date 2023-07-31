@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import july.lease.dao.product.ProductDao;
 import july.lease.dao.productImage.ProductImageDao;
 import july.lease.domain.Product;
-import july.lease.service.dto.HomeResponseDto;
+import july.lease.dto.HomeResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +28,7 @@ public class ProductService {
 			return mapToHomeResponseDto(products);
 			
 		} else {
-			throw new IllegalArgumentException("상품을 찾을 수 없음");
+			throw new IllegalArgumentException("�긽�뭹�쓣 李얠쓣 �닔 �뾾�쓬");
 		}
 	}
 	

@@ -15,7 +15,7 @@ import july.lease.dao.product.ProductMapper;
 import july.lease.dao.productImage.ProductImageDao;
 import july.lease.domain.Product;
 import july.lease.domain.ProductImage;
-import july.lease.service.dto.HomeResponseDto;
+import july.lease.dto.HomeResponseDto;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
