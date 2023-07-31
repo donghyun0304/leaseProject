@@ -10,8 +10,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductController {
 	
-	@GetMapping("/")
-	public String home() {
-		return "Project_¿¹¾à";
-	}
+
 }

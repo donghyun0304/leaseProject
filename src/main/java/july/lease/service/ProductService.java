@@ -28,7 +28,7 @@ public class ProductService {
 			return mapToHomeResponseDto(products);
 			
 		} else {
-			throw new IllegalArgumentException("»óÇ°À» Ã£À» ¼ö ¾øÀ½");
+			throw new IllegalArgumentException("ìƒí’ˆì„ ì°¾ì„ ìˆ˜ ì—†ìŒ");
 		}
 	}
 	
