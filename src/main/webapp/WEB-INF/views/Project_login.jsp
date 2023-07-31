@@ -7,9 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../resources/css/Project_header.css">
-    <link rel="stylesheet" href="../../resources/css/Project_footer.css">
-    <script src="../../resources/js/calendar.js"></script>
     <link rel="stylesheet" href="../../resources/css/Project_login.css">
 </head>
 <%@include file="../includes/Project_header.jsp" %>

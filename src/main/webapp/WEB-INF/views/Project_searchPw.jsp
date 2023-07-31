@@ -6,9 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="../../resources/css/Project_header.css">
-    <link rel="stylesheet" href="../../resources/css/Project_footer.css">
-    <script src="../../resources/js/calendar.js"></script>
     <link rel="stylesheet" href="../../resources/css/Project_searchPw.css">
     <script src="../../resources/js/Project_searchPw.js"></script>
 </head>
