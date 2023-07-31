@@ -29,6 +29,7 @@ application-test.properties
 WEB-INF/web.xml
 !src/main/webapp/
 
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
