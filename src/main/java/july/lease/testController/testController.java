@@ -14,7 +14,7 @@ public class testController {
 	
 
 	
-	// 마이페이지 메인화
+	// ���������� ����ȭ
 	@GetMapping("/mypage")
 	public String myPageMain() {
 		return "Project_mypage_main";
