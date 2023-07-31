@@ -1,0 +1,490 @@
+
+/* 공통 CSS 시작 */
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-family: Pretendard;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../font/Pretendard-Medium.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pretendard_Light';
+  src: url('../font/Pretendard-Light.otf') format('truetype');
+}
+
+:root {
+  --border-radius: 0.5rem;
+  --border-color: #b0b0b0;
+  --main-color: rgb(0, 0, 0);
+  --main-color-hover: rgb(80, 80, 80);
+}
+
+ul{
+ list-style: none; 
+  color: black;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+  /* 헤더 CSS시작 */
+header{
+  width: 100%;
+  height: 6rem;
+}
+
+header .header_top{
+  width: 75rem;
+}
+
+.header_top .header_top_menu{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.header_page{
+  margin: 0 1rem;
+}
+
+.header_page a{
+  color: rgb(126, 126, 126);
+  font-size: 0.9rem;
+}
+
+
+
+header .head{
+  width: 75rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* background-color: antiquewhite; */
+}
+
+header .category{
+  width: 75rem;
+  height: 2rem
+}
+  /* 헤더 CSS시작 */
+
+
+.logo{
+  /* background-color: aqua; */
+  margin: 0;
+  width: 15rem;
+  text-align: center;
+}
+
+.menulist{
+  display: flex;
+  margin: 0;
+  justify-content: flex-end;
+}
+
+.menu{
+  margin: 0 2rem;
+}
+
+.menu a{
+  font-size: 1.1rem;
+}
+
+.category{
+  display: flex;
+}
+
+.category div{
+  margin: 0.5rem 1.3rem;
+  height: 2rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.category div a{
+  width: 100%;
+  height: 100%;
+  font-family: 'Pretendard_light';   
+}
+
+.search{
+  width: 25rem;
+  height: 2.5rem;
+  /* background-color: antiquewhite; */
+  border: 0.15rem solid var(--border-color);
+  display: flex;
+  position: relative;
+}
+
+#search{
+  border: none;
+  margin: 0;
+  width: 90%;
+  padding: 0 0.8rem;
+  font-size: 1rem;
+}
+
+#search:focus{
+  outline: none;
+}
+
+#search::-webkit-search-cancel-button{
+  display: none;
+}
+
+
+.search svg{
+  fill: var(--border-color);
+  cursor: pointer;
+}
+
+.calendar{
+  position: absolute;
+  top: 100%;
+  margin-top: 0.8rem;
+  width: 50rem;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  border: 0.2rem solid var(--border-color);
+  background-color: white;
+  z-index: 110;
+}
+
+.calendar.active{
+  display: none;
+}
+
+.cal_header h3{
+  margin: 0;
+}
+
+.cal{
+  flex: 1 0 40%;
+  margin-right: 2rem;
+}
+
+.cal_header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cal_header svg{
+  width: 1rem;
+  margin: 0;
+}
+
+.cal .calTop{
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 0.6rem;
+  font-weight: bold;
+  display: flex;
+  border: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal .calTop *{
+  margin: 0;
+}
+
+.cal ul{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 0;
+  margin: 0.7rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.cal .days{
+  margin-bottom: 20px;
+}
+
+.cal ul li{
+  width: calc(100% / 7);
+  position: relative;
+  margin: 0.4rem 0;
+}
+
+.day{
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.day:hover{
+  background-color: #b0b0b0;
+  border-radius: 1rem;
+}
+.cal div #nextBtn{
+  margin-left: 1rem;
+  line-height: 1rem;
+}
+.cal div #nextBtn svg{
+  width:0.8rem;
+  fill: black;
+  
+}
+
+.cal div #preBtn{
+  margin-right: 1rem;
+  line-height: 1rem;
+}
+.cal div #preBtn svg{
+  width:0.8rem;
+  fill: black;
+}
+
+.hidden{
+  display: none;
+}
+
+.select{
+  background-color: yellow;
+}
+
+.disabled{
+  color: #b0b0b0;
+}
+
+
+.disabled:hover{
+  background-color: white;
+}
+
+.today{
+  background-color: rgb(218, 94, 94);
+  border-radius: 1rem;
+}
+
+#searchForm{
+  width: 100%;
+  text-align: right;
+}
+
+#searchForm button{
+  width: 7rem;
+  height: 2rem;
+  border-radius: var(--border-radius);
+  outline-color: var(--border-color);
+  border-color: var(--border-color);
+  font-size: 1rem;
+}
+
+/* 공통 CSS 종료 */
+
+
+.product {
+    height: 45rem;
+    vertical-align: middle;
+    width: 75rem;
+    font-size: 1.4rem;
+    display: grid;
+	  grid-template-columns: 40rem auto;
+  }
+  
+  .product_section_one {
+    width: 40rem;
+    margin: 0px;  
+    padding: 1.5rem;
+    padding-left: 0;
+  }
+ 
+  #container {
+    width:35rem;
+    height: 35rem;
+    border:1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0rem 2rem 0rem;
+    background-size : 100% 100%;
+  }
+  
+  .arrow {
+    z-index:100;
+    font-size:2em;
+    padding:10px;
+    background:#dddddd00;
+    color:#222;
+    opacity:0.2;
+    margin: 0;
+    border: 0;
+  }
+  
+  .arrow:hover {
+    opacity:1;
+  }
+  
+  .arrow_direction:hover {
+    opacity:1;
+  }
+
+  .small_image_list {
+    display: left;
+    text-align: center;
+    width: 35rem;
+    border:1px solid #ccc;
+    margin-left: 0;
+  }
+
+  .small_image{
+    width: 3rem;
+    margin: 0.3rem;    
+  }
+
+  .product_section_two {
+    display: grid;
+    width: 35rem;
+    grid-template-rows: 20% 60% 10% 10%;
+    padding: 1.5rem;
+  }  
+
+  .product_info {
+    margin: 2rem 0rem;   
+    display: gird;
+    grid-template-columns: 50% 50%;    
+  }
+
+  .info_part {
+    display: inline-block;
+    font-size: 2rem;
+  }
+
+  .info_part > #edit_button {
+    padding: 1rem; 
+    font-size: 1rem;
+     /* visibility : hidden; */
+     padding: 1.2rem 4rem;
+     margin: 0.7rem 0.5rem;
+  }
+
+  .product_location{
+    height: 2rem;
+    width: 35rem;
+    display: grid;
+    font-size: 1rem;
+  }
+
+  .tag_list{
+    width: 35rem;
+    display: gird;
+    text-align: left;
+    line-height: 2em;
+    height: 2em;
+  }
+  .tagbox{
+    border: solid 1px #b0b0b0;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    display: inline-block;
+    position: relative;    
+  }
+
+  #product_buttons {
+    text-align: center;
+  }
+
+  .product_buttons button{
+    padding: 1.2rem 4rem;
+    margin: 0.7rem 0.5rem;
+  }
+
+  .product_detail{
+    width: 75rem;  
+  }
+
+  .detail_section {
+    padding: 0rem;   
+    display: flex;
+    flex-direction: row;
+  }
+
+  
+  .detail_section_one {
+    width: 40rem;
+    display: flex;
+    margin: 0;
+  }
+
+  #product_detail_title {
+    padding: 1rem;
+  }
+  .detail_section_one > ul {
+    padding: 0rem;
+    position: left;
+  }
+  #product_detail_content{
+    background-color: rgba(206, 200, 200, 0.432);
+    width: 40rem;
+    height: 20rem;
+    padding: 1rem;
+  }
+
+  .detail_section_two {
+    display: flex;
+    width: auto;
+  }
+  .detail_section_three {
+   width: 30rem;
+   display: flex;
+   flex-direction: column;
+   margin: 0;
+   
+  }
+  
+  #user_store {  
+    padding: 1rem;  
+    width: 100%;     
+    border-bottom: solid black;
+    display: inline-block
+  }
+
+  .user_store_info{
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .sell_product{
+    width: 100%;
+  }
+
+  table {
+    margin-top: 1rem;
+  }
+  table, tr {
+    border-top: solid grey 1px;
+    border-bottom: solid grey 1px;
+    border-collapse: collapse;
+  }
+
+  .sell_product td img {
+    width: 4rem;
+  }
+
+  .sell_item_list {
+    display: flex;
+    padding: 0;
+  }
+ .item_info {  
+  padding: 1rem;
+ }
+
+
+
+
+
+ 
+
+ 

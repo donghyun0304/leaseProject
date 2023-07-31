@@ -1,0 +1,120 @@
+.contents{
+    width: 75rem;
+    /* height: 100rem; */
+    /* background-color: antiquewhite; */
+}
+
+#searchText{
+    width: 100%; 
+    height: 40px; 
+    border-radius: 0.5rem; 
+    border: 1px solid var(--main-color);
+}
+#calendar{
+    width: 40%;
+    height: 40px; 
+    border-radius: 0.5rem;
+    display: inline-block;
+    text-align: right;
+    line-height: 40px;
+    padding-right: 0.5rem;
+    border: 1px solid var(--main-color);            
+}
+#btnSearch{
+    width: 40%;
+    height: 40px; 
+    border-radius: 0.5rem; 
+    border: 1px solid var(--main-color);
+}
+
+.latestProduct{
+    width: 100%;
+    height: 25rem;
+    text-align: center;
+    padding: 1.3rem 1.3rem;
+    /* background-color: rgb(180, 253, 196); */
+}
+.categoryProduct{
+    width: 100%;
+    height: 45rem;
+    text-align: center;
+    padding: 1.3rem 1.3rem;
+    /* background-color: skyblue; */
+}
+.product{
+    width: 17rem;
+    height: 18rem;
+    display: inline-block;
+    margin: 3px;
+    border: 1px solid lightgrey;
+    /* background-color: white;    */
+}
+#btnView{
+    width: 80px;
+    height: 40px; 
+    border-radius: 0.5rem; 
+    object-fit: cover; 
+    border: 1px solid var(--main-color);
+}
+.thumbnail{
+    width: 90%;
+    height: 70%;
+    margin-top: 0.5rem;
+    display: grid;
+    /* background-color: skyblue; */
+}
+.product_title{
+    width: 90%;
+    display: grid; 
+    height: 2rem;
+    margin-top: 0.5rem;
+    line-height: 2rem;
+    text-align: left;
+}
+.product_price{
+    width: 90%;
+    display: grid; 
+    height: 2rem;
+    line-height: 2rem;
+    text-align: right;
+}
+
+.categoryT{
+    font-size: 1.1rem; 
+    text-align: left;
+}
+
+/* 배너 */
+
+#banner{
+    /* position:relative; */
+    width: 100%;
+    height: 20rem;
+    /* border:2px solid #ccc; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 1s;
+    background-size : 100% 100%;
+}
+
+.arrow {
+    margin: 0;
+    /* z-index:100; */
+    font-size:2em;
+    padding:10px;
+    background:#dddddd00;
+    color:#222;
+    opacity:0.2;
+}
+
+.arrow:hover {
+    opacity:1;
+}
+/* 배너 */
+
+/* footer */
+footer{
+    width: 75rem;
+    height: 20rem;
+}
