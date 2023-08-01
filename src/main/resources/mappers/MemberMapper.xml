@@ -6,7 +6,8 @@
  <mapper namespace="july.lease.dao.member.MemberMapper">
 	
 	<select id="login" resultType="Member">
-		select member_email, member_password
+		select member_id, member_email, member_name, member_nickname,
+				member_phone, member_create_date, member_delete_status
 		from member 
 		where member_email=#{memberEmail} and member_password=#{memberPassword}
 	</select>
