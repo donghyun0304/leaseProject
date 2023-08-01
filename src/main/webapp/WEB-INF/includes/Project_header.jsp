@@ -7,12 +7,69 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../resources/css/Project_header.css">
 <script src="../../resources/js/calendar.js"></script>
+<script type="text/javascript">
+
+	window.addEventListener('load', function() {
+		// 카테고리 
+	
+		fetch('/category')
+		.then(response => response.json())
+		.then(function(map){
+			let list = map.list;
+			
+			// 카테고리를 대분류 중분류로 저장할 맵 
+			const categoryS = new Map();
+			
+			list.forEach(cate=>{
+				if(cate.categoryId2 === 0) {
+					// 대분류
+ 					categoryS.set(cate.categoryId, {categoryName: cate.categoryName, categoryId : cate.categoryId, subcategory : []});
+				} else {
+					// cate.categoryId가 0이 아니면 중분류를 의미
+					const cateParentId = categoryS.get(cate.categoryId2);
+					if(cateParentId != null) {
+						// 부모카테고리가 있으면 subcategory에 배열 추가
+						cateParentId.subcategory.push({categoryName: cate.categoryName, categoryId : cate.categoryId});
+					}
+				}
+			})
+			
+			let category = "<nav>"
+				 		 + "<ul class = 'categoryMenu'>";
+			
+			// 맵에서 카테고리 대분류 찍고 중분류있으면 서브메뉴 만들기
+			categoryS.forEach((pCate, categoryId)=>{
+				category += "<li><a href = '/list?category="+pCate.categoryName+"&categoryId="+pCate.categoryId+"' id = 'category-size'>"+pCate.categoryName+"</a>";
+				
+				if(pCate.subcategory) {
+					category += "<ul class = 'submenu'>";
+					pCate.subcategory.forEach(subCate => {
+						category += "<li><a href = '/list?category="+subCate.categoryName+"&categoryId="+subCate.categoryId+"' id = 'subcategory-size'>"+subCate.categoryName+"</a></li>";				
+					})
+					category +="</ul>";
+				}
+				
+				category += "</li>";
+			})
+			 
+			category += "</ul>"
+		 	 	 	 + "</nav>";
+
+			categorytop.innerHTML=category;
+			
+			message.innerText+="("+map.notReadM+")";
+
+		});	
+		
+	})
+	
+</script>
 </head>
 <body>
     <header>
         <div class='header_top'>
             <ul class='header_top_menu'>
-                <li class='header_page'><a href="http://127.0.0.1:5502/Project.html">쪽지</a></li>
+                <li class='header_page'><a href="http://127.0.0.1:5502/Project.html" id='message'>쪽지</a></li>
                 <li class='header_page'><a href="http://127.0.0.1:5502/Project.html">마이페이지</a></li>
                 <li class='header_page'><a href="http://127.0.0.1:5500/Project_login.html">로그인</a></li>
             </ul>
@@ -102,38 +159,7 @@
                 <li class='menu'><a href="http://127.0.0.1:5500/Project_등록.html">상품등록</a></li>
             </ul>
         </div>
-        <div class = "categorytop">
-            <nav>
-                <ul class = 'categoryMenu'>
-                    <li><a href = "#" id = "category-size">취침용</a>
-                        <ul class = 'submenu'>
-                            <li><a href="#" id = "subcategory-size">텐트</a></li>
-                            <li><a href="#" id = "subcategory-size">매트</a></li>
-                            <li><a href="#" id = "subcategory-size">쉘터</a></li>
-                            <li><a href="#" id = "subcategory-size">침낭</a></li>
-                        </ul>
-                    </li>
-            
-                    <li><a href = "#" id = "category-size">취사용품</a>
-                        <ul class = 'submenu'>
-                            <li><a href="#" id = "subcategory-size">그릴</a></li>
-                            <li><a href="#" id = "subcategory-size">화로</a></li>
-                            <li><a href="#" id = "subcategory-size">토치</a></li>
-                            <li><a href="#" id = "subcategory-size">코펠</a></li>
-                        </ul>
-                    </li>
-                    <li><a href = "#" id = "category-size">편의용품</a>
-                        <ul class = 'submenu'>
-                            <li><a href="#" id = "subcategory-size">테이블</a></li>
-                            <li><a href="#" id = "subcategory-size">의자</a></li>
-                            <li><a href="#" id = "subcategory-size">파워뱅크</a></li>
-                            <li><a href="#" id = "subcategory-size">행어</a></li>
-                            <li><a href="#" id = "subcategory-size">워터저그</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+        <div class = "categorytop" id='categorytop'>
+
         </div>
     </header>
-</body>
-</html>
