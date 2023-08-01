@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../resources/css/Project_mypage_orderlist.css">
+    <script src="../../resources/js/Project_chat_connect.js"></script>
 </head>
 <%@include file="../includes/Project_header.jsp" %>
 <body>
@@ -33,6 +34,7 @@
                         </div>
                         <div class = 'product-buy3'>
                             <p class = "product-fix">⭐구매확정</p>
+                            <button class="chatRoom">연락하기</button>
                         </div>
                     </ul>
                     <ul class='listMain'>
@@ -70,5 +72,6 @@
         
     </main>
 </body>
+
 <%@include file="../includes/Project_footer.jsp" %>
 </html>

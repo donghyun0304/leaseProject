@@ -28,7 +28,7 @@ public class ProductService {
 			return mapToHomeResponseDto(products);
 			
 		} else {
-			throw new IllegalArgumentException("�긽�뭹�쓣 李얠쓣 �닔 �뾾�쓬");
+			throw new IllegalArgumentException("상품을 찾을 수 없음");
 		}
 	}
 	

@@ -8,9 +8,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../resources/css/Project_login.css">
+    <script type="text/javascript">
+    	window.addEventListener('load', function(){
+    		button_login.addEventListener('click', function(e){
+    			e.preventDefault();
+    			
+    			let obj={
+    					memberEmail : document.querySelector('#userId').value,
+    					memberPassword : document.querySelector('#userPw').value	
+    			};
+    			
+    			fetchPost('/loginAction', obj, loginCheck);
+    		})
+    		
+    		function loginCheck(map){
+    			console.log(map);
+    			// 로그인 성공 -> list로 이동
+    			if(map.result == "success"){
+    				location.href= map.url;
+    			} else{
+    				// 실패 -> 메세지 출력
+    				alert("아이디와 비밀번호를 확인해주세요 ");
+    				location.href="/login";
+    			}
+    			console.log(map);
+    		}
+    	})
+    	
+    	function fetchPost(url, obj, callback){
+			try{
+				// url 요청
+				fetch(url, {method : 'post', headers : {'Content-Type' : 'application/json'}, body : JSON.stringify(obj)})
+					// 요청결과 json 문자열을 javascript 객체로 반환
+					.then(response => response.json())
+					// 콜백함수 실행
+					.then(map => callback(map));
+			} catch(e) {
+				console.log('fetchPost', e)
+			}
+		}
+    
+    	
+    </script>
 </head>
 <%@include file="../includes/Project_header.jsp" %>
 <body>
+
     <div class='login_area'>
         <div class='login_center slide-in'>
             <div class='login_logo'>
@@ -25,13 +68,13 @@
                 <input type="password" name="userPw" id="userPw" autocomplete='off'>
             </div>
             <div class='login_button'>
-                <a href="#">로그인</a>
+                <a href="#" id="button_login">로그인</a>
             </div>
             
             <div class='login_look'>
-                <div><a href="http://127.0.0.1:5502/Project_regi.html">회원가입</a></div>
-                <div><a href="#">이메일 찾기</a></div>
-                <div><a href="#">비밀번호 찾기</a></div>
+                <div><a href="/register">회원가입</a></div>
+                <div><a href="/findbyEmail">이메일 찾기</a></div>
+                <div><a href="/searchPw">비밀번호 찾기</a></div>
             </div>
             <div class='login_social_login'>
                 <button class='login_naver'>네이버로 로그인</button>
@@ -41,6 +84,7 @@
         </div>
 
     </div>
+
 </body>
 <%@include file="../includes/Project_footer.jsp" %>
 </html>

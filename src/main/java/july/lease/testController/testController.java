@@ -12,8 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 public class testController {
 	
 	
-
-	
 	// ���������� ����ȭ
 	@GetMapping("/mypage")
 	public String myPageMain() {
@@ -25,7 +23,7 @@ public class testController {
 		return "Project_mypage_selllist";
 	}
 	
-	@GetMapping("/mypage/orderlist")
+//	@GetMapping("/mypage/orderlist")
 	public String myorderlist() {
 		return "Project_mypage_orderlist";
 	}
@@ -61,6 +59,24 @@ public class testController {
 	@GetMapping("/searchPw")
 	public String searchPw() {
 		return "Project_searchPw";
+	}
+	
+	//08-01 신규추가
+	@GetMapping("/mypage/editinfo/login")
+	public String editinfologin() {
+		return "Project_mypage_editinfo_login";
+	}
+	@GetMapping("/mypage/editinfo")
+	public String editinfo() {
+		return "Project_mypage_editinfo";
+	}
+	@GetMapping("/mypage/orderlist")
+	public String myorderlist_chat_connect() { // 채팅방 연결
+		return "Project_mypage_orderlist";
+	}
+	@GetMapping("/chat")
+	public String chat() {
+		return "Project_chat";
 	}
 	
 	
