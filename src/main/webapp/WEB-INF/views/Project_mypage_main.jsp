@@ -7,20 +7,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
-    <link rel="stylesheet" href="../../resources/css/Project_header.css">
-    <link rel="stylesheet" href="../../resources/css/Project_footer.css">
-    <script src="../../resources/js/calendar.js"></script>
     <link rel="stylesheet" href="../../resources/css/Project_mypage_main.css">
 </head>
 <%@include file="../includes/Project_header.jsp" %>
 <body>
     <main>
         <div class='wrapper'>
-        <%@include file="../includes/Project_mypage_menu.jsp" %>
-        
+		<%@include file="../includes/Project_mypage_menu.jsp" %>
             <div class='myPageMain'>
+
+                <div class="totalStatus">
+                    <div class="totalBox">
+                        <a href="#">
+                            <div>
+                                <span>구매건수</span>
+                                <span>0건</span>
+                            </div>
+                            <div class="orderBox"></div>
+                        </a>
+                    </div>
+                    <div class="totalBox">
+                        <a href="#">
+                            <div>
+                                <span>판매건수</span>
+                                <span>0건</span>
+                            </div>
+                            <div class="sellBox"></div>
+                        </a>
+                    </div>
+                    <div class="totalBox">
+                        <a href="#">
+                            <div>
+                                <span>내 물건</span>
+                                <span>0건</span>
+                            </div>
+                            <div class="myitemBox"></div>
+                        </a>
+                    </div>
+                    <div class="totalBox">
+                        <a href="#">
+                            <div>
+                                <span>대여이력</span>
+                                <span>0건</span>
+                            </div>
+                            <div class="orderlistBox"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class='myPageTitle'><a href="#">현재 대여 요청 ></a></div>
                 <div class='myLeaseStatus'>
-                    <div class='myPageTitle'><a href="#">현재 대여 요청 ></a></div>
                     <ul class='leaseTitle'>
                         <li>상품번호</li>
                         <li>상품사진</li>
@@ -60,7 +95,7 @@
                 </div>
 
                 <div class='itemList'>
-                    <div class='myPageTitle'><a href="/mypage/items">내 물건 ></a></div>
+                    <div class='myPageTitle'><a href="#">내 물건 ></a></div>
                     <div class='items'>
                         <div class='item'>
                             <a href="#">
@@ -113,15 +148,8 @@
                         </div>
                     </div>
                 </div>
-
-                <div class='leaseList'>
-                    <div class='myPageTitle'><a href="#">대여 이력 ></a></div>
-                    
-
-                </div>
             </div>
         </div>
-        
     </main>
 </body>
 <%@include file="../includes/Project_footer.jsp" %>

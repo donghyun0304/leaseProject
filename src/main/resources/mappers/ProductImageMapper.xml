@@ -21,7 +21,6 @@
 		where product_id = #{productId}
 	</select>
 	
-
 	
 	
 	

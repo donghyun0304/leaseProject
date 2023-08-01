@@ -7,10 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../resources/css/Project_header.css">
-    <link rel="stylesheet" href="../../resources/css/Project_footer.css">
     <link rel="stylesheet" href="../../resources/css/Project_home.css">
-    <script src="../../resources/js/calendar.js"></script>
     <script src="../../resources/js/Project_home.js"></script>
 
 </head>

@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../resources/css/Project_header.css">
+<script src="../../resources/js/calendar.js"></script>
 </head>
 <body>
     <header>

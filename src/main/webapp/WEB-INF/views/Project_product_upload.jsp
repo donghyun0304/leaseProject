@@ -7,10 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../resources/css/Project_header.css">
-    <link rel="stylesheet" href="../../resources/css/Project_footer.css">
-    <script src="../../resources/js/calendar.js"></script>
-    <script src="../../resources/js/Project_상품등록.js"></script>
+    <script src="../../resources/js/Project_product_upload.js"></script>
     <link rel="stylesheet" href="../../resources/css/Project_product_upload.css">
     <link rel="stylesheet" href="../../resources/css/calendar_one.css">
     <script src="../../resources/js/calendar_one.js"></script>

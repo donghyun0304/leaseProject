@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import july.lease.dao.product.ProductDao;
+import july.lease.dao.product.ProductMapper;
 import july.lease.dao.productImage.ProductImageDao;
 import july.lease.domain.Product;
 import july.lease.domain.ProductImage;
