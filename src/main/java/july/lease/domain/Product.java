@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 package july.lease.domain;
 
 import java.util.List;
