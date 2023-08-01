@@ -105,23 +105,30 @@
         <div class = "categorytop">
             <nav>
                 <ul class = 'categoryMenu'>
-                    <li><a href = "#" id = "category-size">카테고리1</a>
+                    <li><a href = "#" id = "category-size">취침용</a>
                         <ul class = 'submenu'>
-                            <li><a href="#" id = "subcategory-size">카테고리1-1</a></li>
-                            <li><a href="#" id = "subcategory-size">카테고리1-2</a></li>
-                            <li><a href="#" id = "subcategory-size">카테고리1-3</a></li>
-                            <li><a href="#" id = "subcategory-size">카테고리1-4</a></li>
-                            <li><a href="#" id = "subcategory-size">카테고리1-5</a></li>
+                            <li><a href="#" id = "subcategory-size">텐트</a></li>
+                            <li><a href="#" id = "subcategory-size">매트</a></li>
+                            <li><a href="#" id = "subcategory-size">쉘터</a></li>
+                            <li><a href="#" id = "subcategory-size">침낭</a></li>
                         </ul>
                     </li>
             
-                    <li><a href = "#" id = "category-size">카테고리2</a>
+                    <li><a href = "#" id = "category-size">취사용품</a>
                         <ul class = 'submenu'>
-                            <li><a href="#" id = "subcategory-size">카테고리2-1</a></li>
-                            <li><a href="#" id = "subcategory-size">카테고리2-2</a></li>
-                            <li><a href="#" id = "subcategory-size">카테고리2-3</a></li>
-                            <li><a href="#" id = "subcategory-size">카테고리2-4</a></li>
-                            <li><a href="#" id = "subcategory-size">카테고리2-5</a></li>
+                            <li><a href="#" id = "subcategory-size">그릴</a></li>
+                            <li><a href="#" id = "subcategory-size">화로</a></li>
+                            <li><a href="#" id = "subcategory-size">토치</a></li>
+                            <li><a href="#" id = "subcategory-size">코펠</a></li>
+                        </ul>
+                    </li>
+                    <li><a href = "#" id = "category-size">편의용품</a>
+                        <ul class = 'submenu'>
+                            <li><a href="#" id = "subcategory-size">테이블</a></li>
+                            <li><a href="#" id = "subcategory-size">의자</a></li>
+                            <li><a href="#" id = "subcategory-size">파워뱅크</a></li>
+                            <li><a href="#" id = "subcategory-size">행어</a></li>
+                            <li><a href="#" id = "subcategory-size">워터저그</a></li>
                         </ul>
                     </li>
                 </ul>

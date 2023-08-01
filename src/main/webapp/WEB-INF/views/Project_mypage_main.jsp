@@ -20,7 +20,7 @@
                     <div class="totalBox">
                         <a href="#">
                             <div>
-                                <span>구매건수</span>
+                                <span>대여건수</span>
                                 <span>0건</span>
                             </div>
                             <div class="orderBox"></div>
