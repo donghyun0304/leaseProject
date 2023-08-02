@@ -19,9 +19,11 @@ import july.lease.dto.AddProductDto;
 import july.lease.service.MemberServiceImpl;
 import july.lease.service.ProductService_kdh;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class ProductController_kdh {
 	
 	private final FileStore fileStore;
@@ -30,7 +32,7 @@ public class ProductController_kdh {
 	private final MemberServiceImpl memberService;
 	
 	@GetMapping("/products/add")
-	public String addForm() {
+	public String addForm(@ModelAttribute("product") AddProductDto productDto) {
 		return "Project_product_upload";
 	}
 	
@@ -39,13 +41,8 @@ public class ProductController_kdh {
 			RedirectAttributes redirectAttributes,
 			@SessionAttribute(name = "memberId", required = false)Long memberId) throws IOException {
 		
-		Member loginMember = memberService.selectOne(memberId);
-		
-		if(loginMember == null) {
-			throw new IllegalArgumentException("로그인 회원을 찾을 수 없음");
-		}
-		
 		if(bindingResult.hasErrors()) {
+			log.info("errors={}", bindingResult);
 			return "Project_product_upload";
 		}
 		

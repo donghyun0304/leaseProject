@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,9 @@
     <script src="../../resources/js/calendar_one.js"></script>
 </head>
 <%@include file="../includes/Project_header.jsp" %>
-<body>   
+<body>
+
+<form:form modelAttribute="product" action="/products/add" method="post" enctype="multipart/form-data">
 <div class = "main">
     <h1>상품등록</h1>
     <h2>기본정보</h2>
@@ -29,7 +33,7 @@
                     <span>사진은 최대 8장까지 가능합니다.</span>
                 </div>
             </div>
-            <input type = "file" class = "real-upload" accpt="image/*" id = "fileUpload" required multiple><br>
+            <input type = "file" name="images" class = "real-upload" accept="image/*" id = "fileUpload" required multiple><br>
         </div>
     </div>
     <hr>
@@ -38,41 +42,44 @@
         <div class='content_title'>
             <h3>제목 : </h3>
             <div>
-                <input type="text" name="" id=""><br>
+                <input type="text" name="productName" id="" path="productName"><br>
             </div>
+           	<form:errors path="productName"/>
         </div>
         <div class='content_price'>
             <h3>가격 : </h3>
             <div>
-                <input type="text" name="" id=""><br>
+                <input type="text" name="productPrice" id="" path="productPrice"><br>
             </div>
+            <form:errors path="productPrice"/>
         </div>
         <div class='content_category'>
             <h3>카테고리 : </h3>
             <div>
-                <select name="category" class="category_first">
-                    <option value="option_first1">대분류1</option>    
-                    <option value="option_first1">대분류2</option>    
-                    <option value="option_first1">대분류3</option>    
+                <select name="categoryId" class="category_first">
+                    <option value="100">대분류1</option>    
+                    <option value="100">대분류2</option>    
+                    <option value="100">대분류3</option>    
                 </select>
-                <select name="category" class="category_second">
-                    <option value="option_second1">중분류1</option>    
-                    <option value="option_second1">중분류2</option>    
-                    <option value="option_second1">중분류3</option>    
+                <select name="categoryId" class="category_second">
+                    <option value="101">중분류1</option>    
+                    <option value="102">중분류2</option>    
+                    <option value="103">중분류3</option>    
                 </select>
             </div>
         </div>
         <div class='content_details'>
             <h3>제품상세 : </h3>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea name="productContent" path="productContent" id="" cols="30" rows="10"></textarea>
+            <form:errors path="productContent"/>
         </div>
         <div class='lengthCheck'>0/1000자</div>
         <div class='content_date'>
             <h3>날짜 :</h3>
             <nav class="subCal_location">
 
-                <input type="text" name="" id="subStartDate" class='hidden'>
-                <input type="text" name="" id="subEndDate" class='hidden'>
+                <input type="text" name="rentAbleStartDate" id="subStartDate" class='hidden'>
+                <input type="text" name="rentAbleEndDate" id="subEndDate" class='hidden'>
                 <div class='subCalendar'>
                     <div class='subCal_header'>
                         <h3>대여일</h3>
@@ -123,11 +130,12 @@
         </div>
         <div class = "bottom">
             <input type="reset" class = "reset" value="초기화">
-            <input type="button" class = "product_regi" value="등록하기">
+            <input type="submit" class = "product_regi" value="등록하기">
         </div>
     </div>
     
 </div>
+</form:form>
 
     <%@include file="../includes/Project_footer.jsp" %>
 </body>

@@ -23,7 +23,7 @@ public class ProductService_kdh {
 	private final ProductImageDao productImageDao;
 	private final FileStore fileStore;
 	
-	@Transactional
+//	@Transactional
 	public Long addProduct(Long memberId, AddProductDto productDto) throws IOException {
 		
 		Product product = new Product(memberId, productDto.getCategoryId(), productDto.getProductName(),
