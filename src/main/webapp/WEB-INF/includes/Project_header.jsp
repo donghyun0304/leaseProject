@@ -57,6 +57,7 @@
 
 			categorytop.innerHTML=category;
 			
+			
 			message.innerText+="("+map.notReadM+")";
 
 		});	
