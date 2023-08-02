@@ -11,6 +11,11 @@ h1{
 input{
     padding-left: 0.5rem;
     font-size: 1rem;
+    outline-color: rgb(168, 168, 168);
+}
+
+textarea{
+    outline-color: rgb(168, 168, 168);
 }
 
 #view{
@@ -139,4 +144,13 @@ select[class^=category_]{
 
 .bottom .product_regi{
     background-color: rgb(76, 195, 118);
+}
+
+.errors{
+    color: red;
+    font-size: 0.9rem;
+}
+
+.errorsborder{
+    border: 2px solid rgb(255, 114, 114);
 }

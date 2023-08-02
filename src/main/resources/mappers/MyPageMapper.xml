@@ -10,4 +10,50 @@
 		WHERE member_id = #{memberId}
 	</select>
 	
+	<select id="findByOrderCount" resultType="Integer"> <!--내가 대여한 물건이 정상적으로 반납된 건수 -->
+		SELECT COUNT(ORDER_CONFIRM_STATUS)
+		FROM ORDERS
+		WHERE MEMBER_ID = #{memberId} AND ORDER_CONFIRM_STATUS = 4 <!-- 4 : 대여가 완료된 주문건 -->
+	</select>
+	
+	<select id="findBySellCount" resultType="Integer"> <!-- 판매건수 -->
+		SELECT COUNT(*)
+		FROM ORDERS
+		WHERE ORDER_CONFIRM_STATUS = 4 AND PRODUCT_ID IN (
+									                        SELECT PRODUCT_ID
+									                        FROM PRODUCT
+									                        WHERE MEMBER_ID = #{memberId}
+									                        )
+	</select>
+	
+	<select id="findByMyitemsCount" resultType="Integer"> <!--내 물건(현재 대여가능한 물건의 개수) -->
+		SELECT COUNT(*)
+		FROM PRODUCT
+		WHERE MEMBER_ID = #{memberId} AND PRODUCT_END_STATUS = 'N'
+	</select>
+	
+	<select id="findByWaitItems" resultType="Integer"> <!-- 대여확정을 기다리는 건수 -->
+		SELECT COUNT(ORDER_CONFIRM_STATUS)
+		FROM ORDERS
+		WHERE MEMBER_ID = #{memberId} AND ORDER_CONFIRM_STATUS = 2 <!-- 2 : 대기중인 건수 -->
+	</select>
+	
+	<select id="confirmCheck" resultType="july.lease.MypageController_KSW.Dto.MyPageMainInfoDto"> <!--현재 대여요청 -->
+		SELECT ORDERS.PRODUCT_ID as productId, STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE,'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 as countDate, TO_CHAR(PRODUCT_PRICE, 'FM999,999,999') AS price
+		FROM ORDERS
+		JOIN PRODUCT ON (ORDERS.PRODUCT_ID =  PRODUCT.PRODUCT_ID)
+		left JOIN PRODUCT_IMAGE ON(PRODUCT.PRODUCT_ID = PRODUCT_IMAGE.PRODUCT_ID)
+		WHERE PRODUCT.MEMBER_ID = 1 AND ORDER_CONFIRM_STATUS = 2
+	</select>
+	
+	<select id="getMyItems" resultType="july.lease.MypageController_KSW.Dto.MyPageMainItemsDto"> <!--내 물건 -->
+		SELECT STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(PRODUCT_PRICE, 'FM999,999,999') AS productPrice
+		FROM PRODUCT
+		left JOIN PRODUCT_IMAGE ON(PRODUCT.PRODUCT_ID = PRODUCT_IMAGE.PRODUCT_ID)
+		WHERE PRODUCT.MEMBER_ID = #{memberId}
+		ORDER BY PRODUCT.PRODUCT_ID
+	</select>
+	
+	
+
 </mapper>

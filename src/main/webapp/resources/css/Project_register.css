@@ -328,9 +328,9 @@ div[class^=regi_box] input{
     margin-top: 1.5rem;
 }
 
-.regi_button a{
+.regi_button{
     width: 100%;
-    height: 100%;
+    height: 3rem;
     display: inline-block;
     display: flex;
     justify-content: center;
@@ -340,10 +340,9 @@ div[class^=regi_box] input{
     border-radius: var(--border-radius);
 }
 
-.regi_button a:hover{
+.regi_button:hover{
     background-color: var(--main-color-hover);
     color: #ebebeb;
-    
 }
 
 .regi_look{
@@ -355,7 +354,7 @@ div[class^=regi_box] input{
     color: #6b6b6b;
 }
 
-.regi_center input{
+div[class^=regi_box] input{
     width: 100%;
     height: 2rem;
     border: none;
@@ -410,6 +409,7 @@ input:focus{
     background-color: var(--main-color);
     width: 8rem;
     font-size: 0.9rem;
+    border: none;
 }
 
 .phoneCheck:hover{
@@ -421,4 +421,12 @@ input:focus{
     gap: 1rem;
 }
 
+.errors{
+    color: red;
+    font-size: 0.9rem;
+    margin-top: -1rem;
+}
+.errorsborder{
+    border: 2px solid rgb(255, 114, 114);
+}
 

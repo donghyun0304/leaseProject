@@ -108,7 +108,7 @@
                 </div>
 
                 <div class='itemList'>
-                    <div class='myPageTitle'><a href="#">판매완료 상품 ></a></div>
+                    <div class='myPageTitle'><a href="#">판매종료 상품 ></a></div>
                     <div class='items'>
                         <div class='item'>
                             <a href="#">

@@ -12,6 +12,7 @@
 </head>
 <%@include file="../includes/Project_header.jsp"%>
 <body>
+    <form action="#" method="post">
     <div class='regi_area'>
         <div class='regi_center slide-in'>
             <div class='regi_logo'>
@@ -21,14 +22,17 @@
                 <h5>이메일 주소 *</h5>
                 <input type="email" name="userId" id="userId" placeholder='예) email@naver.com' autocomplete='off'>
             </div>
+            <div class="errors">이메일 오류 메시지 출력</div>
             <div class='regi_box_pw'>
                 <h5>비밀번호 *</h5>
                 <input type="password" name="userPw" id="userPw" placeholder='대소문자, 숫자, 특수무자를 포함해서 8~15자 이상' maxlength='15' autocomplete='off'>
             </div>
-            <div class='regi_box_pw'>
+            <div class="errors">비밀번호 오류 메시지 출력</div>
+            <div class='regi_box_pw_check'>
                 <h5>비밀번호 확인 *</h5>
-                <input type="password" name="userPw" id="userPw" maxlength='15' autocomplete='off'>
+                <input type="password" name="userPwCheck" id="userPwCheck" maxlength='15' autocomplete='off'>
             </div>
+            <div class="errors">비밀번호 확인 오류 메시지 출력</div>
             <div class='regi_box_nickname'>
                 <h5>닉네임</h5>
                 <input type="text" name="userNickname" id="userNickname" autocomplete='off'>
@@ -41,20 +45,20 @@
                 <h5>휴대폰번호</h5>
                 <div>
                     <input type="tel" name="userPhone" id="userPhone" onkeypress='phoneNum()' maxlength='13' autocomplete='off'>
-                    <button class='phoneCheck' id='check'>인증번호발송</button>
+                    <button class='phoneCheck' id='check' type="button">인증번호발송</button>
                 </div>
             </div>
             <div class='regi_box_phone_check'>
                 <input type="text" name='phonCheckNum' id='phoneCheckNum' autocomplete='off'>
-                <button class='phoneCheck'>인증번호확인</button>
+                <button class='phoneCheck' type="button">인증번호확인</button>
             </div>
-            <div class='regi_button'>
-                <a href="#">가입하기</a>
-            </div>
+            <div class="errors">인증번호 오류 메시지 출력</div>
+            <input type="submit" value="회원가입" class="regi_button">
             
         </div>
 
     </div>
+    </form>
 </body>
 <%@include file="../includes/Project_footer.jsp" %>
 </html>

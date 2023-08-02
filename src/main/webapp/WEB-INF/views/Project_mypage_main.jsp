@@ -21,7 +21,7 @@
                         <a href="#">
                             <div>
                                 <span>대여건수</span>
-                                <span>0건</span>
+                                <span>${compressInfo[0]}건</span>
                             </div>
                             <div class="orderBox"></div>
                         </a>
@@ -30,7 +30,7 @@
                         <a href="#">
                             <div>
                                 <span>판매건수</span>
-                                <span>0건</span>
+                                <span>${compressInfo[1]}건</span>
                             </div>
                             <div class="sellBox"></div>
                         </a>
@@ -39,7 +39,7 @@
                         <a href="#">
                             <div>
                                 <span>내 물건</span>
-                                <span>0건</span>
+                                <span>${compressInfo[2]}건</span>
                             </div>
                             <div class="myitemBox"></div>
                         </a>
@@ -47,8 +47,8 @@
                     <div class="totalBox">
                         <a href="#">
                             <div>
-                                <span>대여이력</span>
-                                <span>0건</span>
+                                <span>대여대기</span>
+                                <span>${compressInfo[3]}건</span>
                             </div>
                             <div class="orderlistBox"></div>
                         </a>
@@ -63,89 +63,44 @@
                         <li>대여시작일</li>
                         <li>대여종료일</li>
                         <li>대여일수</li>
-                        <li>현재상태</li>
+                        <li>신청인</li>
                         <li>대여확정</li>
                     </ul>
-                    <ul class='listMain'>
-                        <li class='productIdx'><a href="#">00000</a></li>
-                        <li class='productImage'><a href="#"><img src="https://media.bunjang.co.kr/product/230824887_1_1690094217_w292.jpg" alt=""></a></li>
-                        <li class='productTitle'><a href="#">제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</a></li>
-                        <li class='productLeaseStartDate'><a href="#">0000/00/00</a></li>
-                        <li class='productLeaseEndDate'><a href="#">0000/00/00</a></li>
-                        <li class='productLeaseDay'><a href="#">3일</a></li>
-                        <li class='productLeaseStatus'><a href="#">대기중</a></li>
-                        <li class='productLeaseConfirm'>
-                            <button class='confirmBtn'>확정</button>
-                            <button class='cancelBtn'>보류</button>
-                        </li>
-                    </ul>
-                    <ul class='listMain'>
-                        <li class='productIdx'>00000</li>
-                        <li class='productImage'><img src="https://media.bunjang.co.kr/product/230380114_1_1689815453_w292.jpg" alt=""></li>
-                        <li class='productTitle'>제목제목제목제목제목</li>
-                        <li class='productLeaseStartDate'>0000/00/00</li>
-                        <li class='productLeaseEndDate'>0000/00/00</li>
-                        <li class='productLeaseDay'>3일</li>
-                        <li class='productLeaseStatus'>대기중</li>
-                        <li class='productLeaseConfirm'>
-                            <button class='confirmBtn'>확정</button>
-                            <button class='cancelBtn'>보류</button>
-                        </li>
-                    </ul>
+                    <c:forEach var="item" items="${confirmInfo}">
+                    	 <ul class='listMain'>
+	                        <li class='productIdx'><a href="#">${item.productId}</a></li>
+	                        <li class='productImage'><a href="#"><img src="../../resources/images/${item.productImage}" alt=""></a></li>
+	                        <li class='productTitle'><a href="#">${item.productName}</a></li>
+	                        <li class='productLeaseStartDate'><a href="#">${item.startDate}</a></li>
+	                        <li class='productLeaseEndDate'><a href="#">${item.endDate}</a></li>
+	                        <li class='productLeaseDay'><a href="#">${item.countDate}일</a></li>
+	                        <li class='productLeaseStatus'><a href="#">대기중</a></li>
+	                        <li class='productLeaseConfirm'>
+	                            <button class='confirmBtn'>확정</button>
+	                            <button class='cancelBtn'>보류</button>
+	                        </li>
+	                    </ul>
+                    </c:forEach>
                 </div>
 
                 <div class='itemList'>
                     <div class='myPageTitle'><a href="#">내 물건 ></a></div>
                     <div class='items'>
-                        <div class='item'>
-                            <a href="#">
-                                <div class='itemImage'>
-                                    <img src="https://media.bunjang.co.kr/product/230380114_1_1689815453_w292.jpg" alt="">
-                                </div>
-                                <div class='itemTitle'>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</div>
-                                <div class='itemPrice'>
-                                    <div class='price'>10,000원</div>
-                                    <div class='price_day'>/일</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='item'>
-                            <a href="#">
-                                <div class='itemImage'>
-                                    <img src="https://media.bunjang.co.kr/product/230265337_1_1689953550_w292.jpg" alt="">    
-                                </div>
-                                <div class='itemTitle'>제목제목제목제목제목</div>
-                                <div class='itemPrice'>
-                                    <div class='price'>10,000원</div>
-                                    <div class='price_day'>/일</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='item'>
-                            <a href="#">
-                                <div class='itemImage'>
-                                    <img src="https://media.bunjang.co.kr/product/224175633_1_1684159370_w292.jpg" alt="">    
-                                </div>
-                                <div class='itemTitle'>제목제목제목제목제목</div>
-                                <div class='itemPrice'>
-                                    <div class='price'>10,000원</div>
-                                    <div class='price_day'>/일</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='item'>
-                            <a href="#">
-                                <div class='itemImage'>
-                                    <img src="https://media.bunjang.co.kr/product/230824887_1_1690094217_w292.jpg" alt="">
-
-                                </div>
-                                <div class='itemTitle'>제목</div>
-                                <div class='itemPrice'>
-                                    <div class='price'>10,000원</div>
-                                    <div class='price_day'>/일</div>
-                                </div>
-                            </a>
-                        </div>
+                    
+                    	<c:forEach var="item" items="${getMyItems}" end="3">
+	                        <div class='item'>
+	                            <a href="#">
+	                                <div class='itemImage'>
+	                                    <img src="../../resources/images/${item.productImage }" alt="">
+	                                </div>
+	                                <div class='itemTitle'>${item.productName }</div>
+	                                <div class='itemPrice'>
+	                                    <div class='price'>${item.productPrice}원</div>
+	                                    <div class='price_day'>/일</div>
+	                                </div>
+	                            </a>
+	                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

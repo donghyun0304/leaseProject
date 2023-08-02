@@ -46,8 +46,8 @@ public class ProductServiceTest {
 	}
 	
 	private void productDaoTest() {
-		Product product1 = new Product(1L, 1L, "ÅÙÆ®1", 100000, 
-				"ÅÙÆ®1¼³¸í", "¼­¿ï");
+//		Product product1 = new Product(1L, 1L, "ï¿½ï¿½Æ®1", 100000, 
+//				"ï¿½ï¿½Æ®1ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½");
 		productDao.save(product1);
 		
 		List<ProductImage> images = new ArrayList<>();
