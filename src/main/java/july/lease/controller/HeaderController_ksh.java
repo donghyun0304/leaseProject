@@ -23,7 +23,7 @@ public class HeaderController_ksh {
 
 		log.info("category호출");
 		
-		Map<String, Object> map = new HashMap();
+		Map<String, Object> map = new HashMap<>();
 		
 		List<HeaderDto> list = headerService.getCategory();
 		

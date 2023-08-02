@@ -34,9 +34,5 @@ public class Product {
 		this.productContent = productContent;
 		this.location = location;
 	}
-	
-	
-	
-	
 
 }
