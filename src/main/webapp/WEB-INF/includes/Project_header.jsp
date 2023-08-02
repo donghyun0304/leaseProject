@@ -57,7 +57,6 @@
 
 			categorytop.innerHTML=category;
 			
-			
 			message.innerText+="("+map.notReadM+")";
 
 		});	
@@ -173,9 +172,8 @@
                 <li class='menu'><a href="http://127.0.0.1:5500/Project_등록.html">상품등록</a></li>
             </ul>
         </div>
+        
         <div class = "categorytop" id="categorytop">
 
         </div>
     </header>
-</body>
-</html>
