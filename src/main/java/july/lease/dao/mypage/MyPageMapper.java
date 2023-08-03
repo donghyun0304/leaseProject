@@ -1,11 +1,11 @@
-package july.lease.MypageController_KSW.Mapper;
+package july.lease.dao.mypage;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import july.lease.MypageController_KSW.Dto.MyPageMainInfoDto;
-import july.lease.MypageController_KSW.Dto.MyPageMainItemsDto;
+import july.lease.dto.MyPageMainInfoDto;
+import july.lease.dto.MyPageMainItemsDto;
 
 @Mapper
 public interface MyPageMapper {
