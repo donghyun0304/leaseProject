@@ -22,4 +22,28 @@ public class MemberDao {
 		
 		return memberMapper.selectOne(memberId);
 	}
+	
+	public int insert(Member member) {
+		return memberMapper.insert(member);
+	}
+	
+	public int idCheck(Member member) {
+		return memberMapper.idCheck(member);
+	}
+	
+	public int phoneCheck(Member member) {
+		return memberMapper.phoneCheck(member);
+	}
+	
+	public Member findbyEmail(Member member) {
+		return memberMapper.findbyEmail(member);
+	}
+	
+	public int searchPw(Member member) {
+		return memberMapper.searchPw(member);
+	}
+	
+	public int nickNameCheck(Member member) {
+		return memberMapper.nickNameCheck(member);
+	}
 }
