@@ -28,7 +28,7 @@ public class ProductService_kdh {
 		
 		Product product = new Product(memberId, productDto.getCategoryId(), productDto.getProductName(),
 										productDto.getProductPrice(), productDto.getProductContent()
-										, "¼­¿ï"); //¼­¿ïÀº ÀÓÀÇ·Î ¸¸µë
+										, "ì„œìš¸"); //ìš°ì„  ì„œìš¸ë¡œ ë„£ì–´ë†“ìŒ
 		Product saveProduct = productDao.save(product);
 		
 		List<ProductImage> images = fileStore.storeFiles(productDto.getImages());
@@ -38,7 +38,7 @@ public class ProductService_kdh {
 		return saveProduct.getProductId();
 	}
 	
-	// ProductImage °´Ã¼¿¡ productId¸¦ ³Ö´Â ·ÎÁ÷
+	// ProductImageì— productId ì €ì¥
 	private void setProductIdInImages(Long productId, List<ProductImage> images) {
 		images.stream()
 		.forEach(image -> {

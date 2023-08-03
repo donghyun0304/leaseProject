@@ -11,13 +11,13 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @Controller
 public class SmsController {
 	    
-	// coolSMS ±¸Çö ·ÎÁ÷ ¿¬°á  
+	// coolSMS êµ¬í˜„ ë¡œì§ ì—°ê²°  
 	@GetMapping("/check/sendSMS")
 	public @ResponseBody String sendSMS(@RequestParam(value="to") String to) throws CoolsmsException {  	
 		return SmsService.PhoneNumberCheck(to);
 	}
 	
-	// coolSMS ±¸Çö ·ÎÁ÷ ¿¬°á  
+	// coolSMS êµ¬í˜„ ë¡œì§ ì—°ê²°  
 	@GetMapping("/check/sendPassword")
 	public @ResponseBody String sendPassword(@RequestParam(value="to") String to) throws CoolsmsException {  	
 		return SmsService.TemporaryPassword(to);

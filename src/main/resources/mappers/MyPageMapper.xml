@@ -2,7 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="july.lease.MypageController_KSW.Mapper.MyPageMapper">
+<mapper namespace="july.lease.dao.mypage.MyPageMapper">
 
 	<select id="findByName" resultType="String">
 		SELECT MEMBER_NAME
@@ -38,7 +38,7 @@
 		WHERE MEMBER_ID = #{memberId} AND ORDER_CONFIRM_STATUS = 2 <!-- 2 : 대기중인 건수 -->
 	</select>
 	
-	<select id="confirmCheck" resultType="july.lease.MypageController_KSW.Dto.MyPageMainInfoDto"> <!--현재 대여요청 -->
+	<select id="confirmCheck" resultType="july.lease.dto.MyPageMainInfoDto"> <!--현재 대여요청 -->
 		SELECT ORDERS.PRODUCT_ID as productId, STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE,'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 as countDate, TO_CHAR(PRODUCT_PRICE, 'FM999,999,999') AS price
 		FROM ORDERS
 		JOIN PRODUCT ON (ORDERS.PRODUCT_ID =  PRODUCT.PRODUCT_ID)
@@ -46,7 +46,7 @@
 		WHERE PRODUCT.MEMBER_ID = 1 AND ORDER_CONFIRM_STATUS = 2
 	</select>
 	
-	<select id="getMyItems" resultType="july.lease.MypageController_KSW.Dto.MyPageMainItemsDto"> <!--내 물건 -->
+	<select id="getMyItems" resultType="july.lease.dto.MyPageMainItemsDto"> <!--내 물건 -->
 		SELECT STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(PRODUCT_PRICE, 'FM999,999,999') AS productPrice
 		FROM PRODUCT
 		left JOIN PRODUCT_IMAGE ON(PRODUCT.PRODUCT_ID = PRODUCT_IMAGE.PRODUCT_ID)

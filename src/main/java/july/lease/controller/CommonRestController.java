@@ -5,26 +5,26 @@ import java.util.Map;
 
 public class CommonRestController {
 	
-	private final String REST_WRITE= "µî·Ï";
-	private final String REST_EDIT= "¼öÁ¤";
-	private final String REST_DELETE= "»èÁ¦";
-	private final String REST_SELECT= "Á¶È¸";
+	private final String REST_WRITE= "ë“±ë¡";
+	private final String REST_EDIT= "ìˆ˜ì •";
+	private final String REST_DELETE= "ì‚­ì œ";
+	private final String REST_SELECT= "ì¡°íšŒ";
 	protected final String REST_SUCCESS = "success";
 	protected final String REST_FAIL = "fail";
 	
 	/**
-	 * ÀÔ·Â, ¼öÁ¤, »èÁ¦ÀÇ °æ¿ì int°ªÀ» ¹İÈ¯
-	 * °á°ú¸¦ ¹Ş¾Æ¼­ MapÀ» »ı¼º ÈÄ ¹İÈ¯
+	 * ì…ë ¥, ìˆ˜ì •, ì‚­ì œì˜ ê²½ìš° intê°’ì„ ë°˜í™˜
+	 * ê²°ê³¼ë¥¼ ë°›ì•„ì„œ Mapì„ ìƒì„± í›„ ë°˜í™˜
 	 */
 	public Map<String, Object> responseMap(int res, String msg){
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		if(res>0) {
 			map.put("result", REST_SUCCESS);
-			map.put("msg", msg+"µÇ¾ú½À´Ï´Ù");
+			map.put("msg", msg+"ë˜ì—ˆìŠµë‹ˆë‹¤");
 		} else {
 			map.put("result", REST_FAIL);
-			map.put("msg", msg+"Áß ¿¹¿Ü¹ß»ı");
+			map.put("msg", msg+"ì¤‘ ì˜ˆì™¸ë°œìƒ");
 		}
 		
 		return map;

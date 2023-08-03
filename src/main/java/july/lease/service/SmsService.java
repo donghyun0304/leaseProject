@@ -26,12 +26,12 @@ public class SmsService {
 	    }          
 	    to = to.replaceAll("-", "");
 	    HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("to", to);    // ¼ö½ÅÀüÈ­¹øÈ£ (ajax·Î view È­¸é¿¡¼­ ¹Ş¾Æ¿Â °ªÀ¸·Î ³Ñ±è)
-	    params.put("from", "01035674431");    // ¹ß½ÅÀüÈ­¹øÈ£. Å×½ºÆ®½Ã¿¡´Â ¹ß½Å,¼ö½Å µÑ´Ù º»ÀÎ ¹øÈ£·Î ÇÏ¸é µÊ
+	    params.put("to", to);    // ìˆ˜ì‹ ì „í™”ë²ˆí˜¸ (ajaxë¡œ viewí™”ë©´ì—ì„œ ë°›ì•„ì˜¨ ê°’ìœ¼ë¡œ ë„˜ê¹€)
+	    params.put("from", "01035674431");    // ë°œì‹  ì „í™”ë²ˆí˜¸, í…ŒìŠ¤íŠ¸ì‹œì—ëŠ” ë°œì‹ , ìˆ˜ì‹  ë‘˜ë‹¤ ë³¸ì¸ ë²ˆí˜¸ë¡œ í•˜ë©´ ë¨
 	    params.put("type", "sms"); 
-	    params.put("text", "ÀÎÁõ¹øÈ£´Â [" + numStr + "] ÀÔ´Ï´Ù.");
+	    params.put("text", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ [" + numStr + "] ï¿½Ô´Ï´ï¿½.");
 	
-	    coolsms.send(params); // ¸Ş½ÃÁö Àü¼Û
+	    coolsms.send(params); // ë©”ì‹œì§€ ì „ì†¡
 	        
 	    return numStr;
 	
@@ -63,12 +63,12 @@ public class SmsService {
 	    
 	    to = to.replaceAll("-", "");
 	    HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("to", to);    // ¼ö½ÅÀüÈ­¹øÈ£ (ajax·Î view È­¸é¿¡¼­ ¹Ş¾Æ¿Â °ªÀ¸·Î ³Ñ±è)
-	    params.put("from", "01035674431");    // ¹ß½ÅÀüÈ­¹øÈ£. Å×½ºÆ®½Ã¿¡´Â ¹ß½Å,¼ö½Å µÑ´Ù º»ÀÎ ¹øÈ£·Î ÇÏ¸é µÊ
+	    params.put("to", to);    // ìˆ˜ì‹ ì „í™”ë²ˆí˜¸ (ajaxë¡œ viewí™”ë©´ì—ì„œ ë°›ì•„ì˜¨ ê°’ìœ¼ë¡œ ë„˜ê¹€)
+	    params.put("from", "01035674431");    // ë°œì‹  ì „í™”ë²ˆí˜¸, í…ŒìŠ¤íŠ¸ì‹œì—ëŠ” ë°œì‹ , ìˆ˜ì‹  ë‘˜ë‹¤ ë³¸ì¸ ë²ˆí˜¸ë¡œ í•˜ë©´ ë¨
 	    params.put("type", "sms"); 
-	    params.put("text", "ÀÓ½Ã ºñ¹Ğ¹øÈ£´Â [" + randompassword + "] ÀÔ´Ï´Ù. ¹İµå½Ã ºñ¹Ğ¹øÈ£¸¦ º¯°æÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.");
+	    params.put("text", "ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ëŠ” [" + randompassword + "] ì…ë‹ˆë‹¤. ë°˜ë“œì‹œ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë³€ê²½í•˜ì‹œê¸° ë°”ëë‹ˆë‹¤.");
 	
-	    coolsms.send(params); // ¸Ş½ÃÁö Àü¼Û
+	    coolsms.send(params); // ë©”ì‹œì§€ ì „ì†¡
 	        
 	    return randompassword;
 
