@@ -27,17 +27,17 @@ public class AddProductDto {
 	private String productContent;
 	@NotNull
 	private Long categoryId;
-	@NotBlank
-	private String rentAbleStartDate;
-	@NotBlank
-	private String rentAbleEndDate;
+	@NotNull
+	private List<String> rentAbleStartDate;
+	@NotNull
+	private List<String> rentAbleEndDate;
 	private List<MultipartFile> images;
 	
 	public AddProductDto() {
 	}
 
 	public AddProductDto(String productName, Integer productPrice, String productContent, Long categoryId,
-			String rentAbleStartDate, String rentAbleEndDate, List<MultipartFile> images) {
+			List<String> rentAbleStartDate, List<String> rentAbleEndDate, List<MultipartFile> images) {
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productContent = productContent;

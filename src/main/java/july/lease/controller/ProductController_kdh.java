@@ -41,6 +41,7 @@ public class ProductController_kdh {
 			RedirectAttributes redirectAttributes,
 			@SessionAttribute(name = "memberId", required = false)Long memberId) throws IOException {
 		
+		log.info("check AddProductDto={}", productDto);
 		if(bindingResult.hasErrors()) {
 			log.info("errors={}", bindingResult);
 			return "Project_product_upload";
