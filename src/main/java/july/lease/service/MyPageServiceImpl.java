@@ -1,13 +1,13 @@
-package july.lease.MypageController_KSW.Service;
+package july.lease.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import july.lease.MypageController_KSW.Dto.MyPageMainInfoDto;
-import july.lease.MypageController_KSW.Dto.MyPageMainItemsDto;
-import july.lease.MypageController_KSW.Mapper.MyPageMapper;
+import july.lease.dao.mypage.MyPageMapper;
+import july.lease.dto.MyPageMainInfoDto;
+import july.lease.dto.MyPageMainItemsDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

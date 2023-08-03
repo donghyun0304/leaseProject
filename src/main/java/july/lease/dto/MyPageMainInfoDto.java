@@ -1,4 +1,4 @@
-package july.lease.MypageController_KSW.Dto;
+package july.lease.dto;
 
 import lombok.Getter;
 import lombok.Setter;
