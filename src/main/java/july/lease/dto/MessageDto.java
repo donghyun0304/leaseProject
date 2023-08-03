@@ -1,4 +1,4 @@
-package july.lease.domain;
+package july.lease.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,8 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Message {
-	
+public class MessageDto {
 	private Long messageId;
 	private Long myId;
 	private Long yourId;
@@ -21,10 +20,13 @@ public class Message {
 	private String yourNickname;
 	private String messageText;
 	
-	public Message() {
+	public MessageDto() {
+		
 	}
 
-	public Message(Long myId, Long yourId, Long messageContentId) {
+	public MessageDto(Long messageId, Long myId, Long yourId, Long messageContentId, char messageReadStatus,
+			char messageDeleteStatus, Long orderId, String messageCreateDate, String myNickname, String yourNickname,
+			String messageText) {
 		this.messageId = messageId;
 		this.myId = myId;
 		this.yourId = yourId;
@@ -37,5 +39,5 @@ public class Message {
 		this.yourNickname = yourNickname;
 		this.messageText = messageText;
 	}
-
+	
 }

@@ -6,7 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/Project_chat.css">
+<link rel="stylesheet" href="../../../../resources/css/Project_chat.css">
+<script type="text/javascript">
+
+	window.addEventListener('load', function() {
+		
+		fetch('/getOrderIdMessageList/1/1/messages/add')
+		// 요청결과를 js object형식으로 반환
+		.then(response => response.json())
+		// 콜백함수 익명함수로 쓰려면 이렇게 써야함!
+		.then(map=>getList(map));
+		
+	});
+	
+	function getList(map){
+		let list = map.msgList;
+		
+		console.log(list);
+	}
+</script>
 </head>
 <body>
     <header>
@@ -15,7 +33,7 @@
     <main>
         <div class="thead">
             <div class="Product_image">
-                <img src="../../resources/images/airbed.jpg" alt="">
+                <img src="../../../../resources/images/airbed.jpg" alt="">
             </div>
             <div class="Product_info">
                 <div class="Product_title">제목제목제목제목제목제목</div>
