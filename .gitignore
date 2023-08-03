@@ -79,6 +79,7 @@ application.properties
 application-test.properties
 WEB-INF/web.xml
 !src/main/webapp/
+Servers/
 
 
 ### IntelliJ IDEA ###
