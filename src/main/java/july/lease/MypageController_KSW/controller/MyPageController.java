@@ -1,4 +1,4 @@
-package july.lease.MypageController_KSW.controller;
+package july.lease.MypageController_KSW.Controller;
 
 import java.util.List;
 
@@ -25,21 +25,21 @@ public class MyPageController {
 	@GetMapping("/{memberId}")
 	public String MyPageMain(@PathVariable Long memberId, Model model) {
 		
-		String name = myPageService.findByName(memberId); // 마이페이지에 이름 가져오기
+		String name = myPageService.findByName(memberId); // 留덉씠�럹�씠吏��뿉 �씠由� 媛��졇�삤湲�
 		if (name == null) {
 			return "redirect:../login";
 		}
-		List<Integer> compressInfo = myPageService.compressInfo(memberId); // 메인 박스 4개 
+		List<Integer> compressInfo = myPageService.compressInfo(memberId); // 硫붿씤 諛뺤뒪 4媛� 
 		model.addAttribute("myName", name);
 		model.addAttribute("compressInfo", compressInfo);
 		log.info("name = {}",name);
 		log.info("compressInfo = {}", compressInfo);
 		
-		List<MyPageMainInfoDto> confirmInfo = myPageService.confirmCheck(memberId); // 현재 대여요청
+		List<MyPageMainInfoDto> confirmInfo = myPageService.confirmCheck(memberId); // �쁽�옱 ���뿬�슂泥�
 		model.addAttribute("confirmInfo", confirmInfo);
 		log.info("confirmInfo = {}", confirmInfo);
 		
-		List<MyPageMainItemsDto> getMyItems = myPageService.getMyitems(memberId); // 내 물건목록 가져오기
+		List<MyPageMainItemsDto> getMyItems = myPageService.getMyitems(memberId); // �궡 臾쇨굔紐⑸줉 媛��졇�삤湲�
 		model.addAttribute("getMyItems", getMyItems);
 		log.info("getMyItems = {}", getMyItems);
 		
@@ -48,7 +48,7 @@ public class MyPageController {
 	
 	@GetMapping("/{memberId}/orderlist")
 	public String OrderList(@PathVariable Long memberId, Model model) {
-		String name = myPageService.findByName(memberId); // 마이페이지에 이름 가져오기
+		String name = myPageService.findByName(memberId); // 留덉씠�럹�씠吏��뿉 �씠由� 媛��졇�삤湲�
 		if (name == null) {
 			return "redirect:../login";
 		}

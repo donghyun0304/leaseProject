@@ -6,10 +6,10 @@
  <mapper namespace="july.lease.dao.member.MemberMapper">
 	
 	<select id="login" resultType="Member">
-		select member_id, member_email, member_name, member_nickname,
+		select member_id, member_email, member_password, member_name, member_nickname,
 				member_phone, member_create_date, member_delete_status
 		from member 
-		where member_email=#{memberEmail} and member_password=#{memberPassword}
+		where member_email=#{memberEmail}
 	</select>
 	
 	<select id="selectOne" resultType="Member">
@@ -19,5 +19,31 @@
 		where member_id=#{memberId}
 	</select>
 	
+	<insert id="insert">
+		insert into member 
+		values (seq_member_id.NEXTVAL, #{memberEmail}, #{memberPassword}, #{memberName}, #{memberNickname}, #{memberPhone}, sysdate, 'N')
+	</insert>
+	
+	<select id="idCheck" resultType="int">
+		select count(*) from member where member_email=#{memberEmail}
+	</select>
+	
+	<select id="phoneCheck" resultType="int">
+		select count(*) from member where member_phone=#{memberPhone}
+	</select>
+	
+	<select id="findbyEmail" resultType="Member">
+		select member_email
+		from member
+		where member_phone=#{memberPhone}
+	</select>
+	
+	<update id="searchPw">
+		update member set member_password=#{memberPassword} where member_phone=#{memberPhone}
+	</update>
+	
+	<select id="nickNameCheck" resultType="int">
+		select count(*) from member where member_nickname=#{memberNickname}
+	</select>
 	
 </mapper>
