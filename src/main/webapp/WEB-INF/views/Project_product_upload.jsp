@@ -33,7 +33,7 @@
                     <span>사진은 최대 8장까지 가능합니다.</span>
                 </div>
             </div>
-            <input type = "file" class = "real-upload" accpt="image/*" id = "fileUpload" required multiple><br>
+            <input type = "file" name="images" class = "real-upload" accept="image/*" id = "fileUpload" required multiple><br>
         </div>
     </div>
     <hr>
@@ -42,14 +42,14 @@
         <div class='content_title'>
             <h3>제목 : </h3>
             <div>
-                <input type="text" name="" id="" class="errorsborder" autofocus>
+                <input type="text" name="productName" id="" path="productName" class="errorsborder" autofocus>
                 <div class="errors">제목 에러메시지 출력</div>
             </div>
         </div>
         <div class='content_price'>
             <h3>가격 : </h3>
             <div>
-                <input type="text" name="" id="">
+                <input type="text" name="productPrice" path="productPrice" id="" >
                 <div class="errors">가격 에러메시지 출력</div>
             </div>
         </div>
@@ -61,10 +61,10 @@
                     <option value="option_first1">대분류2</option>    
                     <option value="option_first1">대분류3</option>    
                 </select>
-                <select name="category" class="category_second">
-                    <option value="option_second1">중분류1</option>    
-                    <option value="option_second1">중분류2</option>    
-                    <option value="option_second1">중분류3</option>    
+                <select name="categoryId" class="category_second">
+                    <option value="101">중분류1</option>    
+                    <option value="102">중분류2</option>    
+                    <option value="103">중분류3</option>    
                 </select>
                 <div class="errors">카테고리 에러메시지 출력</div>
             </div>
@@ -73,7 +73,7 @@
         <div class='content_details'>
             <h3>제품상세 : </h3>
             <div>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="productContent" path="productContent" id=""  cols="30" rows="10"></textarea>
                 <div class="errors">제품상세 에러메시지 출력</div>
             </div>
         </div>
@@ -82,8 +82,8 @@
             <h3>날짜 :</h3>
             <div class="subCalBox">
                 <nav class="subCal_location">
-                    <input type="text" name="" id='subStartDate' value="" hidden>
-                    <input type="text" name="" id='subEndDate' value="" hidden>  
+                    <input type="text" name="" id='subStartDate' value="" hidden> <!-- name에 값을 안넣어야 날짜데이터가 제대로 들어옴 -->
+                    <input type="text" name="" id='subEndDate' value="" hidden>  <!-- name에 값을 안넣어야 날짜데이터가 제대로 들어옴 -->
                     <div class='subCalendar'>
                         <div class='subCal toCal'>
                             <div class='subCalTop'>
@@ -132,7 +132,7 @@
         </div>
         <div class = "bottom">
             <input type="reset" class = "reset" value="초기화">
-            <input type="button" class = "product_regi" value="등록하기">
+            <input type="submit" class = "product_regi" value="등록하기">
         </div>
     </div>
     
