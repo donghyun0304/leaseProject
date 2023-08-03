@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="july.lease.dao.rentDate.RentDateMapper">
+
+	<insert id="save">
+        <selectKey keyProperty="rentDateId" resultType="Long" order="BEFORE">
+            select seq_rent_date_id.nextval
+			from dual
+        </selectKey>
+        insert into rent_date(rent_date_id, product_id,
+        			rent_able_start_date, rent_able_end_date)
+		values(#{rentDateId}, #{productId}, 
+			   TO_DATE(#{rentAbleStartDate}, 'yyyy-mm-dd hh24:mi:ss'), 
+			   TO_DATE(#{rentAbleEndDate}, 'yyyy-mm-dd hh24:mi:ss'))
+    </insert>
+    
+    <select id="findByRentDateId" resultType="RentDate">
+		select rent_date_id, product_id, rent_able_start_date, rent_able_end_date
+		from rent_date
+		where rent_date_id = #{rentDateId}
+	</select>
+    
+</mapper>
