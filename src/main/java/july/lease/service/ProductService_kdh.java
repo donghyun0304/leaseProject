@@ -1,7 +1,9 @@
 package july.lease.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,21 +11,25 @@ import org.springframework.transaction.annotation.Transactional;
 import july.lease.common.FileStore;
 import july.lease.dao.product.ProductDao;
 import july.lease.dao.productImage.ProductImageDao;
+import july.lease.dao.rentDate.RentDateDao;
 import july.lease.domain.Product;
 import july.lease.domain.ProductImage;
+import july.lease.domain.RentDate;
 import july.lease.dto.AddProductDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-
+@Slf4j
 public class ProductService_kdh {
 	
 	private final ProductDao productDao;
 	private final ProductImageDao productImageDao;
+	private final RentDateDao rentDateDao;
 	private final FileStore fileStore;
 	
-//	@Transactional
+	@Transactional
 	public Long addProduct(Long memberId, AddProductDto productDto) throws IOException {
 		
 		Product product = new Product(memberId, productDto.getCategoryId(), productDto.getProductName(),
@@ -35,6 +41,9 @@ public class ProductService_kdh {
 		setProductIdInImages(saveProduct.getProductId(), images);
 		productImageDao.save(images);
 		
+		saveRentDates(saveProduct.getProductId(),productDto.getRentAbleStartDate(), 
+				productDto.getRentAbleEndDate());
+
 		return saveProduct.getProductId();
 	}
 	
@@ -44,5 +53,21 @@ public class ProductService_kdh {
 		.forEach(image -> {
 			image.setProductId(productId);
 		});
+	}
+	
+	private void saveRentDates(Long productId, List<String> startDates,
+								List<String> endDates) {
+		
+		List<RentDate> rentDateList = new ArrayList<>();
+		int rentDatesSize = startDates.size();
+		
+		for(int i=0; i<rentDatesSize; i++) {
+			RentDate rentDate = new RentDate(productId, startDates.get(i),
+									endDates.get(i));
+			rentDateList.add(rentDate);
+		}
+		
+		rentDateDao.save(rentDateList);
+		
 	}
 }
