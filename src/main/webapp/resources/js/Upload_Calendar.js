@@ -336,7 +336,7 @@ function createEnabledDate(startDate, endDate) {
 
     box.innerHTML += scrip;
 }
-=======
+
 window.addEventListener('load',function(){
 
     let date = new Date();
