@@ -42,15 +42,19 @@
         <div class='content_title'>
             <h3>제목 : </h3>
             <div>
-                <input type="text" name="productName" id="" path="productName" class="errorsborder" autofocus>
-                <div class="errors">제목 에러메시지 출력</div>
+                <form:input type="text" name="productName" id="" path="productName" cssErrorClass="errorsborder"/>
+                <div class="errors">
+                	<form:errors path="productName"/>
+        		</div>
             </div>
         </div>
         <div class='content_price'>
             <h3>가격 : </h3>
             <div>
-                <input type="text" name="productPrice" path="productPrice" id="" >
-                <div class="errors">가격 에러메시지 출력</div>
+                <form:input type="text" name="productPrice" path="productPrice" id="" cssErrorClass="errorsborder"/>
+                <div class="errors">
+                	<form:errors path="productPrice"/>
+        		</div>
             </div>
         </div>
         <div class='content_category'>
@@ -61,20 +65,24 @@
                     <option value="option_first1">대분류2</option>    
                     <option value="option_first1">대분류3</option>    
                 </select>
-                <select name="categoryId" class="category_second">
+                <select name="categoryId" path="categoryId" class="category_second">
                     <option value="101">중분류1</option>    
                     <option value="102">중분류2</option>    
                     <option value="103">중분류3</option>    
                 </select>
-                <div class="errors">카테고리 에러메시지 출력</div>
+                <div class="errors">
+                	<form:errors path="categoryId"/>
+        		</div>
             </div>
         </div>
         
         <div class='content_details'>
             <h3>제품상세 : </h3>
             <div>
-                <textarea name="productContent" path="productContent" id=""  cols="30" rows="10"></textarea>
-                <div class="errors">제품상세 에러메시지 출력</div>
+                <form:textarea name="productContent" path="productContent" id=""  cols="30" rows="10" cssErrorClass="errorsborder"/>
+                <div class="errors">
+                	<form:errors path="productContent"/>
+        		</div>
             </div>
         </div>
         <div class='lengthCheck'>0/1000자</div>
