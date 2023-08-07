@@ -18,16 +18,16 @@ public class MessageDataController_ksh {
 	
 	private final MessageService messageService;
 
-	@GetMapping("/getOrderIdMessageList/{memberId}/{orderId}/messages/add")
-	public Map<String, Object> getMessageList(@PathVariable("memberId") Long memberId, @PathVariable("orderId") Long orderId) {
+	@GetMapping("/getOrderIdMessageList/{memberId}/messages/{orderId}")
+	public Map<String, Object> getOrderIdMessageList(@PathVariable("memberId") Long memberId, @PathVariable("orderId") Long orderId) {
 		
 		log.info("restMemberId : "+ memberId);
 		log.info("restOrderId : "+ orderId);
 		
 		Map<String, Object> map = new HashMap<>();
-		map.put("msgList", messageService.getMessageList());
-		
-		
+		// 채팅 내용
+		map.put("msgList", messageService.getOrderMessageList(orderId));
+
 		return map;
 	}
 }

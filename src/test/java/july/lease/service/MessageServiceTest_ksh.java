@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import july.lease.dto.MessageDto;
+import july.lease.dto.OrderMessageDto;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
@@ -21,12 +22,25 @@ public class MessageServiceTest_ksh {
 	@Test
 	public void getMessageList() {
 		
-		List<MessageDto> list = messageService.getMessageList();
+		List<MessageDto> list = messageService.getOrderMessageList(2L);
 		
 		for(int i=0; i<list.size(); i++) {
 			log.info("message={}", list.get(i));
 		}
 	}
 	
+	@Test
+	public void getOneProductInfoTest() {
+		
+		// orderId
+		OrderMessageDto msgProductInfo = messageService.getOneProductInfo(2L);
+		
+		log.info("========productInfo========");
+		log.info(msgProductInfo.getSellerName());
+		log.info(msgProductInfo.getProductName());
+		log.info(msgProductInfo.getProductImage());
+		log.info(msgProductInfo.getOrderRentStartDate());
+		log.info(msgProductInfo.getOrderRentEndDate());
+	}
 	
 }

@@ -7,61 +7,61 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../resources/css/Project_header.css">
 <script src="../../resources/js/calendar.js"></script>
+<script src="../../resources/js/fetch.js"></script>
 <script type="text/javascript">
 
 	window.addEventListener('load', function() {
 		// 카테고리 
-	
-		fetch('/category')
-		.then(response => response.json())
-		.then(function(map){
-			let list = map.list;
-			
-			// 카테고리를 대분류 중분류로 저장할 맵 
-			const categoryS = new Map();
-			
-			list.forEach(cate=>{
-				if(cate.categoryId2 === 0) {
-					// 대분류
- 					categoryS.set(cate.categoryId, {categoryName: cate.categoryName, categoryId : cate.categoryId, subcategory : []});
-				} else {
-					// cate.categoryId가 0이 아니면 중분류를 의미
-					const cateParentId = categoryS.get(cate.categoryId2);
-					if(cateParentId != null) {
-						// 부모카테고리가 있으면 subcategory에 배열 추가
-						cateParentId.subcategory.push({categoryName: cate.categoryName, categoryId : cate.categoryId});
-					}
-				}
-			})
-			
-			let category = "<nav>"
-				 		 + "<ul class = 'categoryMenu'>";
-			
-			// 맵에서 카테고리 대분류 찍고 중분류있으면 서브메뉴 만들기
-			categoryS.forEach((pCate, categoryId)=>{
-				category += "<li><a href = '/list?category="+pCate.categoryName+"&categoryId="+pCate.categoryId+"' id = 'category-size'>"+pCate.categoryName+"</a>";
-				
-				if(pCate.subcategory) {
-					category += "<ul class = 'submenu'>";
-					pCate.subcategory.forEach(subCate => {
-						category += "<li><a href = '/list?category="+subCate.categoryName+"&categoryId="+subCate.categoryId+"' id = 'subcategory-size'>"+subCate.categoryName+"</a></li>";				
-					})
-					category +="</ul>";
-				}
-				
-				category += "</li>";
-			})
-			 
-			category += "</ul>"
-		 	 	 	 + "</nav>";
+		fetchGet('/category', categoryList);
 
-			categorytop.innerHTML=category;
-			
-			message.innerText+="("+map.notReadM+")";
-
-		});	
-		
 	})
+	
+	function categoryList(map){
+
+		let list = map.list;
+		
+		// 카테고리를 대분류 중분류로 저장할 맵 
+		const categoryS = new Map();
+		
+		list.forEach(cate=>{
+			if(cate.categoryId2 === 0) {
+				// 대분류
+					categoryS.set(cate.categoryId, {categoryName: cate.categoryName, categoryId : cate.categoryId, subcategory : []});
+			} else {
+				// cate.categoryId가 0이 아니면 중분류를 의미
+				const cateParentId = categoryS.get(cate.categoryId2);
+				if(cateParentId != null) {
+					// 부모카테고리가 있으면 subcategory에 배열 추가
+					cateParentId.subcategory.push({categoryName: cate.categoryName, categoryId : cate.categoryId});
+				}
+			}
+		})
+		
+		let category = "<nav>"
+			 		 + "<ul class = 'categoryMenu'>";
+		
+		// 맵에서 카테고리 대분류 찍고 중분류있으면 서브메뉴 만들기
+		categoryS.forEach((pCate, categoryId)=>{
+			category += "<li><a href = '/list?category="+pCate.categoryName+"&categoryId="+pCate.categoryId+"' id = 'category-size'>"+pCate.categoryName+"</a>";
+			
+			if(pCate.subcategory) {
+				category += "<ul class = 'submenu'>";
+				pCate.subcategory.forEach(subCate => {
+					category += "<li><a href = '/list?category="+subCate.categoryName+"&categoryId="+subCate.categoryId+"' id = 'subcategory-size'>"+subCate.categoryName+"</a></li>";				
+				})
+				category +="</ul>";
+			}
+			
+			category += "</li>";
+		})
+		 
+		category += "</ul>"
+	 	 	 	 + "</nav>";
+
+		categorytop.innerHTML=category;
+		
+		message.innerText+="("+map.notReadM+")";
+	}
 	
 </script>
 </head>
