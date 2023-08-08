@@ -32,8 +32,8 @@ public class HeaderService {
 			new HeaderDto(cate.getCategoryId(), cate.getCategoryId2(), cate.getCategoryName())).collect(Collectors.toList());
 	}
 	
-	public int notReadMessageCnt() {
-		return headerDao.notReadMessageCnt();
+	public int notReadMessageCnt(Long memberId) {
+		return headerDao.notReadMessageCnt(memberId);
 	}
 	
 }

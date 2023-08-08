@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 	
 	function categoryList(map){
 
-		let list = map.list;
+		const list = map.list;
 		
 		// 카테고리를 대분류 중분류로 저장할 맵 
 		const categoryS = new Map();
@@ -60,18 +61,38 @@
 
 		categorytop.innerHTML=category;
 		
-		message.innerText+="("+map.notReadM+")";
+		//message.innerText+="("+map.notReadM+")";
 	}
+	
+	 function popup(url) {
+	    	const name = "MyMessageList";
+	        const x = window.screen.width-600;
+	        const y = window.screen.height-100;
+	        let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+	    	
+	    	window.open(url, name, option);
+	    }
 	
 </script>
 </head>
 <body>
+memberId : ${memberId}<!-- 멤버아이디가 있으면 마이페이지랑 쪽지 뜨게 수정 -->
     <header>
         <div class='header_top'>
             <ul class='header_top_menu'>
-                <li class='header_page'><a href="http://127.0.0.1:5502/Project.html" id='message'>쪽지</a></li>
-                <li class='header_page'><a href="http://127.0.0.1:5502/Project.html">마이페이지</a></li>
-                <li class='header_page'><a href="/login">로그인</a></li>
+            
+            	<c:if test="${not empty memberId}" var="login">
+            		<li class='header_page'><a href="#" id='message' onclick="popup('/members/${memberId}/messages')">쪽지</a></li>
+	                <li class='header_page'><a href="http://127.0.0.1:5502/Project.html">마이페이지</a></li>
+	                <li class='header_page'><a href="/logout">로그아웃</a></li>
+            	</c:if>
+            	
+            	<c:if test="${not login}">
+            	    <li class='header_page'><a href="/login" id='message'>쪽지</a></li>
+	                <li class='header_page'><a href="http://127.0.0.1:5502/Project.html">마이페이지</a></li>
+                	<li class='header_page'><a href="/login">로그인</a></li>
+                </c:if>
+                
             </ul>
         </div>
         <div class='head'>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,43 +10,48 @@
 <script src="../../../../resources/js/fetch.js"></script>
 <script type="text/javascript">
 
+	var yourId;
+	
 	window.addEventListener('load', function() {
-		console.log("chat 페이지")
-		getOrderMsgList();
+		getMessage();
 		
 		// 메세지 등록 버튼 이벤트
 		btnMsgWrite.addEventListener('click', function(){
-			msgWrite();
+			let msgText = document.querySelector('#msgWrite').value;
+			
+			if(msgText !== '') {
+				msgWrite();
+				document.querySelector('#msgWrite').value='';
+			} else {
+				return;
+			}
 		});
 	});
 	
 	// 메세지리스트 요청
-	function getOrderMsgList(){
-		// /getOrderIdMessageList/{memberId}/messages/{orderId} 멤버아이디랑 오더아이디 넣어서 요청
-		fetchGet('/getOrderIdMessageList/1/messages/4', orderMsgListView);
+	function getMessage(){
+		fetchGet(`/getMessages/${memberId}/${productId}/${roomNo}`, getMessageList);
 	}
 	
 	// 메세지 뷰 생성
-	function orderMsgListView(map){
+	function getMessageList(map){
 		let list = map.msgList;
-		let loginId = 1;
 		
 		let msgDivStr = '';
 		
-		if(list.length>0) {
-			// 근데 쿼리에서 오더아이디로 가져오니까...
+		if(!list.isEmpty) {
 			// 그냥 my_id는 보낸사람 
 			// your_id는 받는사람
 			// 로그인한 아이디랑 같은 my_id가  보낸사람 그 외에는 받는사람
-			// 일단 지금 로그인을 member 1번이 했다고 가정
 			list.forEach(msg => {
 				// 챗박스는 공통
 				msgDivStr += '<div class="chatBox" style="overflow-x:hidden; overflow-y:hidden; height: 100%;">'
 				
-				if(msg.myId === loginId) {
+				if(msg.myId === ${memberId}) {
 					// 내가 보낸 메세지
+					yourId = msg.yourId;
 	                msgDivStr += '<div class="myinfo">'
-	                		   + '<span class="myId">'+msg.myNickname+'</span>'
+	                		   + '<span class="myId">'+msg.sender+'</span>'
 	                		   + '</div>'
 	                		   + '<div class="myChat">'
 	                		   + msg.messageText
@@ -54,8 +59,9 @@
 	                		   + '<span class="sendDate myDate">'+msg.messageCreateDate+'</span>';
 				} else {
 					// 상대방이 보낸 메세지(내가 받은 메세지)
+					yourId = msg.myId;
 					msgDivStr += '<div class="yourinfo">'
-		             		   + '<span class="yourId">'+msg.yourNickname+'</span>'
+		             		   + '<span class="yourId">'+msg.sender+'</span>'
 		             		   + '</div>'
 		             		   + '<div class="yourChat">'
 		             		   + msg.messageText
@@ -65,67 +71,78 @@
 				msgDivStr += '</div>';
 
 			})	
+		} else {
+			msgDivStr += list;
 		}
-		
-		
+
 		chatRoom.innerHTML=msgDivStr;
 	}
 	
+	// 메세지 보내기
 	function msgWrite(){
 		console.log("버튼이벤트 테스트");
-		/*
-			메세지에 들어가야할 정보가 음 ..
-			외래키가  메세지 테이블에 걸려이있어서 메세지 컨텐츠 테이블에 먼저 입력이 된후에 메세지 테이블에 입력되야함
-			
-			메세지 컨텐츠 테이블
-			private Long messageContentId; // 시퀀스
-			private String messageText; //메세지 내용
-			
-			메세지 테이블 
-			private Long messageId; // 시퀀스
-			private Long myId; // 로그인 아이디
-			private Long yourId; // 주문한사람 아이디 <- 주문정보에서 주문자아이디 뽑아서 input 박스에 넣어서 hidden해두기
-			private Long messageContentId; // 메세지 컨텐츠 테이블에 등록한 id
-			private char messageReadStatus; // 디폴트 N
-			private char messageDeleteStatus; // 디폴트 N
-			private Long orderId; // 주문 정보에서 주문번호 뽑아서 input 박스에 넣어서 hidden해두기
-			private String messageCreateDate; // sysdate
-			
-			그러면 받아야할게 메세지 내용, 로그인 아이디, 주문자 아이디, 주문아이디 
-			url
-			/getOrderIdMessageList/{memberId}/{orderId}/messages/add
-			
-			
-			window.location.href url 받아와서 구분자로 나눠서 memberId 저장 orderId 저장하면 주문자 아이디만 저장해두기
-	*/
-		let url = window.location.href;
-		console.log(url);
+		
+		// 1. 파라메터 수집
+		let myId = ${memberId};
+		let productId = ${productId};
+		let roomNo = ${roomNo};
+		let messageText = document.querySelector('#msgWrite').value;
+		
+		// 2. javascript 객체 만들기
+		let message = {
+			myId : myId,
+			yourId : yourId,
+			productId : productId,
+			roomNo : roomNo,
+			messageText : messageText
+		};
+		
+		console.log("message: ",message);
+		
+		// 3. 서버에 요청(POST)
+		fetchPost('/messages/insert', message, write);
+	}
+	
+	function write(map) {
+		if(map.result == 'success'){
+			// 등록성공
+			// 리스트 조회및 출력
+			getMessage();
+		} else {
+			// 등록실패
+			alert(map.message);
+		}
+		console.log(map.result);
 	}
 </script>
 </head>
 <body>
 <wrap>
     <header>
-        <a href="#">나가기</a>
+        <a href="/members/${memberId}/messages">나가기</a>
     </header>
+<!-- info : ${msgOrderInfo} -->	
+	memberId : ${memberId}
+	productId : ${productId}
+	roomNo : ${roomNo}
     <main>
-    
+
     	<!-- 제품정보 시작 -->
         <div class="thead">
             <div class="Product_image">
-                <img src="../../../../resources/images/${msgOrderInfo.productImage}" alt="">
+                <img src="../../../../resources/images/${pInfo.storeImageName}" alt="" style="cursor:pointer;" onclick='location.href="/produts/${productId}"'>
             </div>
             <div class="Product_info">
-                <div class="Product_title">${msgOrderInfo.productName}</div>
-                <div class="Product_date">대여기간 : ${msgOrderInfo.orderRentStartDate} ~ ${msgOrderInfo.orderRentEndDate}</div>
+                <div class="Product_title">${pInfo.productName}</div>
+				<div class="Product_date">지역 : ${pInfo.location}</div>
                 <div class="Product_subinfo">
-                    <div class="Product_seller">${msgOrderInfo.sellerName}</div>
+                    <div class="Product_seller">${pInfo.sellerName}</div>
                     
                 </div>
             </div>
         </div>
     	<!-- 제품정보 끝 -->
-    
+
     	<!-- 메세지 시작 -->
         <div class="chatRoom" id="chatRoom" style="height: 100%;">
             

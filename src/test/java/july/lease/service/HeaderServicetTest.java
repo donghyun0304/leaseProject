@@ -30,6 +30,6 @@ public class HeaderServicetTest {
 	
 	@Test
 	public void notReadMessageCnt() {
-		log.info(String.valueOf(headerService.notReadMessageCnt()));
+		log.info(String.valueOf(headerService.notReadMessageCnt(2L)));
 	}
 }
