@@ -34,6 +34,8 @@ public class MessageDataController_ksh extends CommonRestController{
 		
 		List<Message> list = messageService.getMessage(roomNo);
 		
+		map.put("msgList", list);
+		
 		return map;
 	}
 	

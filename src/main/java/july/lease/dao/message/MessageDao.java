@@ -30,18 +30,19 @@ public class MessageDao {
 		return messageMapper.getMyAllMessageList(memberId);
 	};
 	
-	// messageContent 저장
 	public int insertMessageContent(Message msgVo) {
 		return messageMapper.insertMessageContent(msgVo);
 	}
 	
-	// message 저장
 	public int insertMessage(Message msgVo) {
 		return messageMapper.insertMessage(msgVo);
 	}
 	
-	// roomNo 조회
-	public Long findRoomNo(@Param("myId") Long myId,@Param("productId") Long productId) {
+	public Long findRoomNo(Long myId, Long productId) {
 		return messageMapper.findRoomNo(myId, productId);
+	}
+	
+	public Long maxRoomNo() {
+		return messageMapper.maxRoomNo();
 	}
 }

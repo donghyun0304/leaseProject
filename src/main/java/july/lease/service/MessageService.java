@@ -26,5 +26,5 @@ public interface MessageService {
 	public int insertMessage(Message msgVo);
 	
 	// roomNo 조회
-	public Long findRoomNo(@Param("myId") Long myId, @Param("productId") Long productId);
+	public Long findRoomNo(Long myId, Long productId);
 }
