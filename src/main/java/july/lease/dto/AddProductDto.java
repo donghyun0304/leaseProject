@@ -29,6 +29,8 @@ public class AddProductDto {
 	@NotNull
 	private Long categoryId;
 	@NotNull
+	private Long categoryId3;
+	@NotNull
 	private List<String> rentAbleStartDate;
 	@NotNull
 	private List<String> rentAbleEndDate;

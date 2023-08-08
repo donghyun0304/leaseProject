@@ -29,4 +29,10 @@ public class ProductDao {
 	public List<Product> findAllForHome(){
 		return productMapper.findAllForHome();
 	}
+	
+	public Product findByProductIdForEdit(Long productId) {
+		Product product = productMapper.findByProductIdForEdit(productId);
+		log.info("findByProductIdForEdit={}",product);
+		return product;
+	}
 }

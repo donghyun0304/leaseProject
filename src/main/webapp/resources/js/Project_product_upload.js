@@ -1,3 +1,33 @@
+function kindChange(e){
+	var sleep = ["텐트","매트","쉘터","침낭","기타"];
+	var utensil = ["그릴","화로","토치","코펠","기타"];
+	var convenienceGoods = ["테이블","의자","파워뱅크","행어","워터저그","기타"];
+	var etc = ["기타"];
+	var target = document.querySelector(".category_second");
+	
+	if(e.value == "1") var d = sleep;
+	else if(e.value == "2") var d = utensil;
+	else if(e.value == "3") var d = convenienceGoods;
+	else if(e.value == "4") var d = etc;
+	
+	target.options.length = 0;
+	
+	for(let x = 0; x < d.length; x++){
+		var opt = document.createElement("option");
+		if (e.value == "4") { // e.value가 4인 경우
+			opt.value = "400";
+		} else if (x == d.length - 1) { // d의 배열이 마지막 인덱스인 경우
+			opt.value = (parseInt(e.value) * 100 + 99).toString();
+		} else {
+			opt.value = (parseInt(e.value) * 100 + x + 1).toString();
+		}
+
+		console.log(opt.value);
+		opt.innerHTML = d[x];
+		target.appendChild(opt);
+	}
+}
+
 function previewImage(f){
     var file = f.files;
 
@@ -95,5 +125,3 @@ function copyFiles(files) {
     }
     return copiedFiles;
   }
-
-

@@ -14,6 +14,7 @@ public class Product {
 	private Long productId;
 	private Long memberId;
 	private Long categoryId;
+	private Long categoryId3; //카테고리 아이디 추가
 	private String productName;
 	private Integer productPrice;
 	private String productContent;
@@ -34,5 +35,7 @@ public class Product {
 		this.productContent = productContent;
 		this.location = location;
 	}
+	
+	
 
 }

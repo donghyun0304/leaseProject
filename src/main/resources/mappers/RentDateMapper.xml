@@ -20,5 +20,26 @@
 		from rent_date
 		where rent_date_id = #{rentDateId}
 	</select>
+	
+	<select id="findByProductId" resultType="RentDate">
+		select rent_date_id, product_id, 
+    	to_char(rent_able_start_date, 'YYYY-MM-DD') as rent_able_start_date,
+    	to_char(rent_able_end_date, 'YYYY-MM-DD') as rent_able_end_date
+		from rent_date
+		where product_id = #{productId}
+	</select>
+	
+	<!-- 2:대기, 3:승인 // order_confirm_status가 대기와 승인인 데이터만 조회 -->
+	<select id="checkOrders" resultType="july.lease.dto.RentOrderStatusDto">
+		select a.rent_able_start_date, a.rent_able_end_date, 
+       		   b.order_rent_start_date, b.order_rent_end_date, 
+       		   b.order_confirm_status
+			   from rent_date a
+			   inner join orders b 
+			   		on a.rent_date_id = b.rent_date_id
+			   where a.product_id = #{productId} and b.order_confirm_status in (1,2)
+	</select>
+	
+	
     
 </mapper>

@@ -30,12 +30,21 @@
 		from product
 	</select>
 	
+	<select id="findByProductIdForEdit" resultType="Product">
+		select a.member_id, a.product_name, a.product_price,
+			   b.category_id, b.category_id2, a.product_content,
+			   a.product_end_status, a.location
+		from product a
+		inner join category b
+    		on a.category_id = b.category_id
+		where a.product_id = #{productId}
+	</select>
+	
 	<select id="findRoomNo" resultType="Long">
 		select room_no
 		from message
 		where my_id=#{myId} and product_id=#{productId}
 	</select>
-	
 	
 	
 
