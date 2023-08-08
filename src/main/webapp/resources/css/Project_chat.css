@@ -169,10 +169,12 @@ main{
     color: rgb(242, 242, 242);
     border-radius: 0.7rem;
     word-break: break-all;
+    display: inline-block;
 }
 
 .yourChat{
     background-color: #3dc852;
+
 }
 
 
@@ -184,6 +186,7 @@ main{
 .myDate{
     float: right;
     clear: right;
+    text-align: right;
 }
 
 
@@ -192,6 +195,8 @@ main{
     font-size: 0.9rem;
     color: rgb(138, 138, 138);
     margin-top: 0.4rem;
+    width: 100%;
+    display: inline-block;
 
 }
 

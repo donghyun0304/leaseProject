@@ -34,6 +34,6 @@ public class HeaderDaoTest {
 	@Test
 	public void notReadMessageCnt() {
 		
-		log.info(String.valueOf(headerDao.notReadMessageCnt()));
+		log.info(String.valueOf(headerDao.notReadMessageCnt(2L)));
 	}
 }

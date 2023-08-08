@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import july.lease.dto.HeaderDto;
 import july.lease.service.HeaderService;
@@ -29,9 +30,10 @@ public class HeaderController_ksh {
 		
 		// 카테고리 리스트 맵에 put
 		map.put("list", list);
-		// 헤더에 쪽지부분 map 저장해서 같이 보내기
 		
-		map.put("notReadM", headerService.notReadMessageCnt());
+		// 
+		// 헤더에 쪽지부분 map 저장해서 같이 보내기
+		//map.put("notReadM", headerService.notReadMessageCnt(memberId));
 		// 맵 반환
 		return map;
 	}
