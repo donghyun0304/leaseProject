@@ -3,6 +3,7 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,16 +61,42 @@
         <div class='content_category'>
             <h3>카테고리 : </h3>
             <div>
-                <select name="category" class="category_first">
-                    <option value="option_first1">대분류1</option>    
-                    <option value="option_first1">대분류2</option>    
-                    <option value="option_first1">대분류3</option>    
-                </select>
-                <select name="categoryId" path="categoryId" class="category_second">
-                    <option value="101">중분류1</option>    
-                    <option value="102">중분류2</option>    
-                    <option value="103">중분류3</option>    
-                </select>
+                <form:select name="categoryId3" class="category_first" path="categoryId3" onchange="kindChange(this)">
+                    <form:option value="" label="선택해주세요."/>
+                    <form:option value="1" label="취침용품"/>
+                    <form:option value="2" label="취사용품"/>
+                   	<form:option value="3" label="편의용품"/>
+                   	<form:option value="4" label="기타"/>
+                </form:select>
+                <form:select name="categoryId" path="categoryId" class="category_second">
+                    <form:option value="" label="선택해주세요."/>
+                	<c:if test="${product.categoryId3 == '1'}">
+     				   <form:option value="101" label="텐트"/>
+     				   <form:option value="102" label="매트"/>
+     				   <form:option value="103" label="쉘터"/>
+     				   <form:option value="104" label="침낭"/>
+     				   <form:option value="199" label="기타"/>
+   					 </c:if>
+   					 <c:if test="${product.categoryId3 == '2'}">
+     				   <form:option value="201" label="그릴"/>
+     				   <form:option value="202" label="화로"/>
+     				   <form:option value="203" label="토치"/>
+     				   <form:option value="204" label="코펠"/>
+     				   <form:option value="299" label="기타"/>
+   					 </c:if>
+   					 <c:if test="${product.categoryId3 == '3'}">
+     				   <form:option value="301" label="테이블"/>
+     				   <form:option value="302" label="의자"/>
+     				   <form:option value="303" label="파워뱅크"/>
+     				   <form:option value="304" label="행어"/>
+     				   <form:option value="305" label="워터저그"/>
+     				   <form:option value="399" label="기타"/>
+   					 </c:if>
+   					 <c:if test="${product.categoryId3 == '4'}">
+     				   <form:option value="400" label="기타"/>
+   					 </c:if>
+   					 
+                </form:select>
                 <div class="errors">
                 	<form:errors path="categoryId"/>
         		</div>
@@ -90,7 +117,7 @@
             <h3>날짜 :</h3>
             <div class="subCalBox">
                 <nav class="subCal_location">
-                    <input type="text" name="" id='subStartDate' value="" hidden> <!-- name에 값을 안넣어야 날짜데이터가 제대로 들어옴 -->
+                    <input type="text" name="" id='subStartDate' value="" hidden path="rentAbleStartDate"> <!-- name에 값을 안넣어야 날짜데이터가 제대로 들어옴 -->
                     <input type="text" name="" id='subEndDate' value="" hidden>  <!-- name에 값을 안넣어야 날짜데이터가 제대로 들어옴 -->
                     <div class='subCalendar'>
                         <div class='subCal toCal'>
@@ -133,9 +160,27 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="errors">
+                	<form:errors path="rentAbleStartDate"/>
+        		</div>
                 </nav>
-                <aside class="enabledBox"></aside>
+                
+                <aside class="enabledBox">
+                <c:if test="${product.rentAbleStartDate !=null}">
+                <c:forEach var="index" begin="0" end="${product.rentAbleStartDate.size()-1}">
+                	 <c:set var="startDate" value="${product.rentAbleStartDate[index]}" />
+    				 <c:set var="endDate" value="${product.rentAbleEndDate[index]}" />
+                		<aside class="enabledDate">
+                			<span>${startDate} ~ ${endDate}</span>
+                				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="subCalendar_cancel">
+                					<path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"></path>
+                				</svg>
+                				<input type="text" name="rentAbleStartDate" class="subStartDate" value="${startDate}" hidden>
+                				<input type="text" name="rentAbleEndDate" class="subEndDate" value="${endDate}" hidden>
+                		</aside>
+                	</c:forEach>
+                </c:if>
+                </aside>
             </div>
         </div>
         <div class = "bottom">

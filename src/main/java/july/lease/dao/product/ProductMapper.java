@@ -14,5 +14,7 @@ public interface ProductMapper {
 	Product findByProductId(Long productId);
 	
 	List<Product> findAllForHome();
+	
+	Product findByProductIdForEdit(Long productId);
 
 }

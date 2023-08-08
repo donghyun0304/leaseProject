@@ -3,7 +3,6 @@ package july.lease.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +15,8 @@ import july.lease.domain.Product;
 import july.lease.domain.ProductImage;
 import july.lease.domain.RentDate;
 import july.lease.dto.AddProductDto;
+import july.lease.dto.EditProductResponseDto;
+import july.lease.dto.RentOrderStatusDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -69,5 +70,23 @@ public class ProductService_kdh {
 		
 		rentDateDao.save(rentDateList);
 		
+	}
+	
+	public EditProductResponseDto findByProductIdForEdit(Long productId) {
+		Product product = productDao.findByProductIdForEdit(productId);
+		List<ProductImage> images = productImageDao.findAllByProductId(productId);
+		List<RentDate> rentDates = rentDateDao.findByProductId(productId);
+		
+		EditProductResponseDto editProductDto = new EditProductResponseDto(
+				product.getMemberId(), product.getProductName(), product.getProductPrice(),
+				product.getProductContent(), product.getCategoryId(), product.getCategoryId3(),
+				rentDates, images, product.getProductEndStatus(), product.getLocation()
+				);
+		log.info("findByProductIdForEdit editProductDto={}",editProductDto);
+		return editProductDto;
+	}
+	
+	public List<RentOrderStatusDto> checkOrders(Long productId){
+		return rentDateDao.checkOrders(productId);
 	}
 }
