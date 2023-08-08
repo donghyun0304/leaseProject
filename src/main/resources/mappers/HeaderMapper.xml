@@ -8,6 +8,8 @@
 	</select>
 	
 	<select id="notReadMessageCnt">
-		select count(MESSAGE_READ_STATUS) from message where MESSAGE_READ_STATUS='N'
+		select count(MESSAGE_READ_STATUS) 
+		from message 
+		where my_id=#{memberId} and MESSAGE_READ_STATUS='N'
 	</select>
 </mapper>

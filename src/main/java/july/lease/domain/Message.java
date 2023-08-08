@@ -8,7 +8,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Message {
-	
 	private Long messageId;
 	private Long myId;
 	private Long yourId;
@@ -17,24 +16,20 @@ public class Message {
 	private char messageDeleteStatus;
 	private Long orderId;
 	private String messageCreateDate;
-	private String myNickname;
-	private String yourNickname;
+	private Long productId;
+	private Long roomNo;
+
+	private String sender;
+	private String reciver;
 	private String messageText;
-	
-	private String orderRentStartDate; // 대여기간
-	private String orderRentEndDate; // 대여기간
-	private String productName; // 상품명
-	private String productImage;// 이미지
-	private String sellerName; // 판매자
 	
 	public Message() {
 		
 	}
 
 	public Message(Long messageId, Long myId, Long yourId, Long messageContentId, char messageReadStatus,
-			char messageDeleteStatus, Long orderId, String messageCreateDate, String myNickname, String yourNickname,
-			String messageText, String orderRentStartDate, String orderRentEndDate, String productName,
-			String productImage, String sellerName) {
+			char messageDeleteStatus, Long orderId, String messageCreateDate, Long productId, Long roomNo,
+			String sender, String reciver, String messageText) {
 		super();
 		this.messageId = messageId;
 		this.myId = myId;
@@ -44,14 +39,21 @@ public class Message {
 		this.messageDeleteStatus = messageDeleteStatus;
 		this.orderId = orderId;
 		this.messageCreateDate = messageCreateDate;
-		this.myNickname = myNickname;
-		this.yourNickname = yourNickname;
+		this.productId = productId;
+		this.roomNo = roomNo;
+		
+		this.sender = sender;
+		this.reciver = reciver;
 		this.messageText = messageText;
-		this.orderRentStartDate = orderRentStartDate;
-		this.orderRentEndDate = orderRentEndDate;
-		this.productName = productName;
-		this.productImage = productImage;
-		this.sellerName = sellerName;
 	}
+
+	public Message(Long myId, Long productId, Long roomNo, String messageText) {
+		super();
+		this.myId = myId;
+		this.productId = productId;
+		this.roomNo = roomNo;
+		this.messageText = messageText;
+	}
+
 
 }

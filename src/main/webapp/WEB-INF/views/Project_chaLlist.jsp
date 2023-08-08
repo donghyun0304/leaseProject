@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,62 +16,31 @@
             modal.classList.remove('active');
         });
     }
-
-    function popup(){
-        window.open("달력.html", "", "width: 100, height: 100");
-    }*/
+*/
 </script>
 </head>
 <body>
 <div class="container">
+memberId : ${memberId}
         <header>
             <h1>쪽지함</h1>
         </header>
+            
         <main>
-            <div class = "message-box" onclick = "popup()">
-                <div class = "message-img">
-                    <img src="image/tent1.jpg" alt="" id = "img1">
-                     <p class = "product_name">상품명 (대여기간 : 00/00)</p>
-                     <p>대화상대</p>
-                     <p>마지막 메세지 내용</p>
-                </div>
-            </div>
-            
-            <div class = "message-box" onclick = "popup()">
-                <div class = "message-img">
-                    <img src="image/tent2.jpeg" alt="" id = "img1">
-                    <p class = "product_name">상품명 (대여기간 : 00/00)</p>
-                    <p>대화상대</p>
-                    <p>마지막 메세지 내용</p>
-                </div>
-            </div>
-            
-            <div class = "message-box" onclick = "popup()">
-                <div class = "message-img">
-                    <img src="image/tent3.jpeg" alt="" id = "img1">
-                    <p class = "product_name">상품명 (대여기간 : 00/00)</p>
-                    <p>대화상대</p>
-                    <p>마지막 메세지 내용</p>
-                </div>
-            </div>
-            
-            <div class = "message-box" onclick = "popup()">
-                <div class = "message-img">
-                    <img src="image/tent4.jpeg" alt="" id = "img1">
-                    <p class = "product_name">상품명 (대여기간 : 00/00)</p>
-                    <p>대화상대</p>
-                    <p>마지막 메세지 내용</p>
-                </div>
-            </div>
-            
-            <div class = "message-box" onclick = "popup()">
-                <div class = "message-img">
-                    <img src="image/tent5.jpg" alt="" id = "img1">
-                    <p class = "product_name">상품명 (대여기간 : 00/00)</p>
-                    <p>대화상대</p>
-                    <p>마지막 메세지 내용</p>
-                </div>           
-            </div>
+	        <!-- 쪽지 리스트 -->
+	        <!-- memberId랑 myId가 같으면 내가 보낸거 -->
+	        <!-- memberId랑 yourId가 같으면 내가 받은거니까 yourId=myId가 돼야함 -->
+	        <c:forEach items="${allChatList}" var="list">
+	        	<div class = "message-box" onclick = "location.href='/members/${memberId}/messages/${list.productId }/${list.roomNo}';">
+	                <div class = "message-img">
+	                    <img src="../../../../resources/images/${list.storeImageName}" alt="" class= "img">
+	                     <p class = "product_name">${list.productName}</p>
+	                     <p>${list.myId eq memberId ? list.reciver : list.sender}</p>
+	                     <p>${list.messageText}</p>
+	                </div>
+	            </div>
+	        </c:forEach>
+
         </main>
         <footer>
             <!-- <input type="button" value="창 닫기" onclick = "window.close()" id = "close"> -->
