@@ -1,8 +1,6 @@
 package july.lease.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +40,7 @@ public class MessageServiceImpl implements MessageService{
 	public int insertMessage(Message msgVo) {
 		int res=0;
 		try {
-			//msgVo.setYourId(messageDao.findYourId(msgVo.getRoomNo(), msgVo.getMyId()));
+			// 트랜잭션 수정해두기 2번째 인서트 실패하면 1번째 롤백되게
 			messageDao.insertMessageContent(msgVo); // 첫 번째 인서트 문
 			res = messageDao.insertMessage(msgVo); // 두 번째 인서트 문
 		} catch (Exception e) {
@@ -53,8 +51,13 @@ public class MessageServiceImpl implements MessageService{
 
 	@Override
 	public Long findRoomNo(Long myId, Long productId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Long roomNo = messageDao.findRoomNo(myId, productId);
+		
+		if(roomNo == null) {
+			// 룸넘버가 null이면 roomNo 최대값+1 해주기
+			roomNo = messageDao.maxRoomNo()+1;
+		}
+		return roomNo;
 	}
-
 }

@@ -29,6 +29,12 @@ public class MessageViewContrlloer_ksh {
 		log.info("viewproductId : "+ productId);
 		log.info("viewroomNo : "+ roomNo);
 
+		if(roomNo == 0L) {
+			roomNo = messageService.findRoomNo(memberId, productId);
+			String redirectUrl = "/members/" + memberId + "/messages/" + productId + "/" + roomNo;
+            return "redirect:" + redirectUrl;
+		}
+		
 		ProductMessageInfoDto pInfo = messageService.getOneProductInfo(productId);
 		model.addAttribute("pInfo", pInfo);
 		

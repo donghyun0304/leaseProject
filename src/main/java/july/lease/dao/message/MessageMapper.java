@@ -30,4 +30,6 @@ public interface MessageMapper {
 	// roomNo 조회
 	public Long findRoomNo(@Param("myId") Long myId,@Param("productId") Long productId);
 	
+	// roomNo 최대값 조회
+	public Long maxRoomNo();
 }

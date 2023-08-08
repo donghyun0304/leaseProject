@@ -68,6 +68,14 @@ public class MessageServiceTest_ksh {
 		int res = messageService.insertMessage(msg);
 		
 		log.info("res={}", res);
+	}
+	
+	@Test
+	public void findRoomNo() {
+		log.info("findRoomNo");
 		
+		Long roomNo = messageService.findRoomNo(1L, 6L);
+		
+		log.info("roomNo={}", roomNo);
 	}
 }

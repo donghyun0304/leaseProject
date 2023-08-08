@@ -14,7 +14,7 @@
 	
 	window.addEventListener('load', function() {
 		getMessage();
-		
+
 		// 메세지 등록 버튼 이벤트
 		btnMsgWrite.addEventListener('click', function(){
 			let msgText = document.querySelector('#msgWrite').value;
@@ -39,7 +39,7 @@
 		
 		let msgDivStr = '';
 		
-		if(!list.isEmpty) {
+		if(list.length>0) {
 			// 그냥 my_id는 보낸사람 
 			// your_id는 받는사람
 			// 로그인한 아이디랑 같은 my_id가  보낸사람 그 외에는 받는사람
@@ -72,7 +72,8 @@
 
 			})	
 		} else {
-			msgDivStr += list;
+			yourId=${pInfo.memberId};
+			console.log("yourId",yourId);
 		}
 
 		chatRoom.innerHTML=msgDivStr;
@@ -125,6 +126,7 @@
 	memberId : ${memberId}
 	productId : ${productId}
 	roomNo : ${roomNo}
+	판매자Id=${pInfo.memberId};
     <main>
 
     	<!-- 제품정보 시작 -->

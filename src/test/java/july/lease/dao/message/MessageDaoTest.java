@@ -43,6 +43,7 @@ public class MessageDaoTest {
 		log.info(String.valueOf(pInfo.getProductPrice()));
 		log.info(pInfo.getLocation());
 		log.info(pInfo.getStoreImageName());
+		log.info(String.valueOf(pInfo.getMemberId()));
 
 		
 	}

@@ -36,7 +36,7 @@ memberId : ${memberId}
 	                    <img src="../../../../resources/images/${list.storeImageName}" alt="" class= "img">
 	                     <p class = "product_name">${list.productName}</p>
 	                     <p>${list.myId eq memberId ? list.reciver : list.sender}</p>
-	                     <p>${list.messageText}</p>
+	                     <p>${list.messageText} ${list.messageCreateDate}</p>
 	                </div>
 	            </div>
 	        </c:forEach>

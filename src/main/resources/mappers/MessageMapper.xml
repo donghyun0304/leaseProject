@@ -5,12 +5,12 @@
 
 	<!-- 메세지 조회 -->
 	<select id="getMessage" resultType="Message">
-		select m.message_id, my_mem.member_nickname as sender, m.my_id, your_mem.member_nickname as reciver, m.your_id,
-		    mc.message_text, m.message_read_status,m.message_delete_status, 
+		select m.room_no, m.product_id, m.message_read_status, mc.message_text, my_mem.member_nickname as sender, m.my_id,
+		    your_mem.member_nickname as reciver, m.your_id,
 		    case  when to_char(m.message_create_date, 'yyyy-mm-dd') = to_char(sysdate, 'yyyy-mm-dd') 
-				    then to_char(m.message_create_date, 'HH24:MI:SS')
-				    else to_char(m.message_create_date, 'YYYY-MM-DD')
-				    end as message_Create_Date
+		                    then to_char(m.message_create_date, 'HH24:MI:SS')
+		                    else to_char(m.message_create_date, 'YYYY-MM-DD')
+		                    end as message_Create_Date
 		from message m
 		inner join message_content mc on m.message_content_id = mc.message_content_id
 		inner join member my_mem on m.my_id = my_mem.member_id
@@ -20,9 +20,9 @@
 	
 	<!-- 메세지에 대한 상품 조회 -->
 	<select id="getOneProductInfo" resultType="july.lease.dto.ProductMessageInfoDto">
-		select product_name, product_price, location, member_nickname as seller_name, store_image_name
+		select product_name, product_price, location, member_nickname as seller_name, store_image_name, member_id
 		from (
-		    select p.product_name, p.product_price, p.location, m.member_nickname, i.store_image_name,
+		    select p.product_name, p.product_price, p.location, m.member_nickname, i.store_image_name,p.member_id,
 		    row_number() over(partition by i.product_id order by product_image_id) as rn
 		    from product p
 		    inner join member m on p.member_id = m.member_id
@@ -33,8 +33,12 @@
 
 	<!-- 리스트 조회 -->
 	<select id="getMyAllMessageList" resultType="july.lease.dto.MyAllMessageListDto">
-		select m.room_no, m.product_id, m.message_create_date, m.message_read_status, mc.message_text, my_mem.member_nickname as sender, m.my_id,
-		    your_mem.member_nickname as reciver, m.your_id, p.product_name, i.store_image_name
+		select m.room_no, m.product_id, m.message_read_status, mc.message_text, my_mem.member_nickname as sender, m.my_id,
+		    your_mem.member_nickname as reciver, m.your_id, p.product_name, i.store_image_name,
+		    case  when to_char(m.message_create_date, 'yyyy-mm-dd') = to_char(sysdate, 'yyyy-mm-dd') 
+						    then to_char(m.message_create_date, 'HH24:MI:SS')
+						    else to_char(m.message_create_date, 'YYYY-MM-DD')
+						    end as message_Create_Date
 		from message m
 		inner join message_content mc on m.message_content_id = mc.message_content_id
 		inner join member my_mem on m.my_id = my_mem.member_id
@@ -44,6 +48,7 @@
 		    on m.product_id = i.product_id
 		where message_id in (select max(message_id) as message_id from message group by room_no) and
 		    (my_id=#{memberId} or your_id=#{yourId}) and m.message_delete_status='N'
+		order by m.message_create_date desc
 	</select>
 	
 	<insert id="insertMessageContent">
@@ -61,4 +66,7 @@
 		group by room_no
 	</select>
 	
+	<select id="maxRoomNo" resultType="Long">
+		select max(room_no) from message
+	</select>
 </mapper>
