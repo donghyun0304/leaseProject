@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -18,6 +20,7 @@ import july.lease.common.FileStore;
 import july.lease.dto.AddProductDto;
 import july.lease.dto.EditProductRequestDto;
 import july.lease.dto.EditProductResponseDto;
+import july.lease.dto.RentAbleRequestDto;
 import july.lease.dto.RentOrderStatusDto;
 import july.lease.service.MemberServiceImpl;
 import july.lease.service.ProductService_kdh;
@@ -87,21 +90,33 @@ public class ProductController_kdh {
 		
 		List<RentOrderStatusDto> rentOrderStatus= productService_kdh.checkOrders(productId);
 		
-		// rent_date에 맞는 orders가 존재하는지 체크
-		if(!rentOrderStatus.isEmpty()) {
-			model.addAttribute("rentOrderStatus", rentOrderStatus);
-//			bindingResult.reject("rentOrders", new Object[] {rentOrderStatus}, null);
-		}
+//		// rent_date에 맞는 orders가 존재하는지 체크
+//		if(!rentOrderStatus.isEmpty()) {
+//			model.addAttribute("rentOrderStatus", rentOrderStatus);	
+//			bindingResult.reject("rentOrderStatus", new Object[]{}, null);
+//		}
 		
 		if(bindingResult.hasErrors()) {
 			log.info("errors={}", bindingResult);
-			model.addAttribute("productResponse", new EditProductResponseDto());
 			return "Project_product_edit";
 		}
 	
 		return "/products/" + productId;
 		
 	}
+	
+	@ResponseBody
+	@GetMapping(value = "/products/{productId}/edit/rentdate/orders", produces = "application/json")
+	public int rentOrderStatus(String rentAbleStartDate, String rentAbleEndDate) {
+		log.info("ProductController_kdh rentOrderStatus={}", rentAbleStartDate);
+		RentAbleRequestDto rentAble = new RentAbleRequestDto(rentAbleStartDate, rentAbleEndDate);
+		log.info("================= rentAble ={}",rentAble);
+		return productService_kdh.rentOrderStatusSize(rentAble);
+	}
+	
+	
+	
+	
 	
 	
 }

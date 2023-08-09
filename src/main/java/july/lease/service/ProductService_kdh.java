@@ -16,6 +16,7 @@ import july.lease.domain.ProductImage;
 import july.lease.domain.RentDate;
 import july.lease.dto.AddProductDto;
 import july.lease.dto.EditProductResponseDto;
+import july.lease.dto.RentAbleRequestDto;
 import july.lease.dto.RentOrderStatusDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -88,5 +89,9 @@ public class ProductService_kdh {
 	
 	public List<RentOrderStatusDto> checkOrders(Long productId){
 		return rentDateDao.checkOrders(productId);
+	}
+	
+	public int rentOrderStatusSize(RentAbleRequestDto rentAbleRequestDto) {
+		return rentDateDao.rentOrderStatusSize(rentAbleRequestDto);
 	}
 }
