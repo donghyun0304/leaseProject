@@ -16,6 +16,7 @@
 		inner join member my_mem on m.my_id = my_mem.member_id
 		inner join member your_mem on m.your_id = your_mem.member_id
 		where room_no=#{roomNo} and message_delete_status = 'N'
+		order by m.message_id
 	</select>
 	
 	<!-- 메세지에 대한 상품 조회 -->
@@ -68,5 +69,23 @@
 	
 	<select id="maxRoomNo" resultType="Long">
 		select max(room_no) from message
+	</select>
+	
+	<update id="readCheck">
+		update message
+		set message_read_status='Y'
+		where room_no=#{roomNo} and your_id=#{myId} and message_read_status='N'
+	</update>
+	
+	<select id="countUnreadMessage" resultType="int">
+		select count(message_read_status) from message
+		<choose>
+			<when test="roomNo==null">
+				where your_id=#{yourId} and message_read_status='N'
+			</when>
+			<otherwise>
+				where room_no=#{roomNo} and your_id=#{yourId} and message_read_status='N'
+			</otherwise>
+		</choose>
 	</select>
 </mapper>

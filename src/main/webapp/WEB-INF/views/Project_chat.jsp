@@ -11,22 +11,35 @@
 <script type="text/javascript">
 
 	var yourId;
+
+	getMessage();
 	
 	window.addEventListener('load', function() {
-		getMessage();
+		
+		// getMessage();
 
 		// 메세지 등록 버튼 이벤트
-		btnMsgWrite.addEventListener('click', function(){
-			let msgText = document.querySelector('#msgWrite').value;
-			
-			if(msgText !== '') {
-				msgWrite();
-				document.querySelector('#msgWrite').value='';
-			} else {
-				return;
-			}
-		});
+		btnMsgWrite.addEventListener('click', writeEvent);
 	});
+	
+	// 엔터 누르면 버튼 이벤트
+	function writeEventEnter(event) {
+	    if (event.keyCode === 13) { 
+	        event.preventDefault();
+	        writeEvent();
+	    }
+	}
+	
+	function writeEvent(){
+		let msgText = document.querySelector('#msgWrite').value;
+		
+		if(msgText.trim() !== '') {
+			msgWrite();
+			document.querySelector('#msgWrite').value='';
+		} else {
+			return false;
+		}
+	}
 	
 	// 메세지리스트 요청
 	function getMessage(){
@@ -77,6 +90,8 @@
 		}
 
 		chatRoom.innerHTML=msgDivStr;
+		window.scrollTo(0, document.querySelector('main').scrollHeight);
+
 	}
 	
 	// 메세지 보내기
@@ -119,18 +134,20 @@
 </head>
 <body>
 <wrap>
-    <header>
+
+<!--
+    <header style=" position: fixed;">
         <a href="/members/${memberId}/messages">나가기</a>
     </header>
-<!-- info : ${msgOrderInfo} -->	
+ info : ${msgOrderInfo} 
 	memberId : ${memberId}
 	productId : ${productId}
 	roomNo : ${roomNo}
 	판매자Id=${pInfo.memberId};
+	-->	
     <main>
-
     	<!-- 제품정보 시작 -->
-        <div class="thead">
+        <div class="thead" style="position: sticky; top:0; z-index: 100;">
             <div class="Product_image">
                 <img src="../../../../resources/images/${pInfo.storeImageName}" alt="" style="cursor:pointer;" onclick='location.href="/produts/${productId}"'>
             </div>
@@ -142,6 +159,7 @@
                     
                 </div>
             </div>
+            <a href="/members/${memberId}/messages">나가기</a>
         </div>
     	<!-- 제품정보 끝 -->
 
@@ -150,18 +168,17 @@
             
         </div>
         <!-- 메세지 끝 -->
-        
-        <!-- 댓글 작성 -->
-        <div class="tfoot" >
-            <div class="tfootBox">
-                <textarea class="chatContent" id="msgWrite" cols="30" rows="10" placeholder="메세지를 입력해주세요."></textarea>
+    </main>
+            <!-- 댓글 작성 -->
+        <div class="tfoot"  style="position: sticky; bottom:0; z-index: 100;">
+            <div class="tfootBox"   >
+                <textarea class="chatContent" id="msgWrite" cols="30" rows="10" placeholder="메세지를 입력해주세요." onkeydown="writeEventEnter(event)"></textarea>
                 <button class="chatSend" id="btnMsgWrite">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path d="M49.9 27.8C15.1 12.7-19.2 50.1-1.2 83.5L68.1 212.2c4.4 8.3 12.6 13.8 21.9 15c0 0 0 0 0 0l176 22c3.4 .4 6 3.3 6 6.7s-2.6 6.3-6 6.7l-176 22s0 0 0 0c-9.3 1.2-17.5 6.8-21.9 15L-1.2 428.5c-18 33.4 16.3 70.8 51.1 55.7L491.8 292.7c32.1-13.9 32.1-59.5 0-73.4L49.9 27.8z"/></svg>
                 </button>
             </div>
         </div>
-    </main>
 
 </body>
 </html>

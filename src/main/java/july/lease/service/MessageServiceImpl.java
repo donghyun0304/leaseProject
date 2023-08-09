@@ -10,54 +10,70 @@ import july.lease.domain.Message;
 import july.lease.dto.MyAllMessageListDto;
 import july.lease.dto.ProductMessageInfoDto;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class MessageServiceImpl implements MessageService{
 
 	private final MessageDao messageDao;
 	
+	// 메세지 조회
 	@Override
-	public List<Message> getMessage(Long roomNo) {
+	public List<Message> getMessage(Long myId, Long roomNo) {
+		
+		// 메세지 읽음 처리
+		messageDao.readCheck(myId, roomNo);
 		
 		return messageDao.getMessage(roomNo);
 	}
 
+	// 제품 정보
 	@Override
 	public ProductMessageInfoDto getOneProductInfo(Long productId) {
 		return messageDao.getOneProductInfo(productId);
 	}
 	
+	// 메세지 리스트
 	@Override
 	public List<MyAllMessageListDto> getMyAllMessageList(Long memberId) {
-		return messageDao.getMyAllMessageList(memberId);
+		
+		List<MyAllMessageListDto> list = messageDao.getMyAllMessageList(memberId);
+		
+		// 안읽은 메세지 개수
+		list.forEach(msg -> {
+			msg.setNoReadMcnt(messageDao.countUnreadMessage(memberId, msg.getRoomNo()));
+		});
+		
+		return list;
 	}
 
 	@Transactional
 	@Override
 	public int insertMessage(Message msgVo) {
 		int res=0;
-		try {
-			// 트랜잭션 수정해두기 2번째 인서트 실패하면 1번째 롤백되게
-			messageDao.insertMessageContent(msgVo); // 첫 번째 인서트 문
-			res = messageDao.insertMessage(msgVo); // 두 번째 인서트 문
-		} catch (Exception e) {
-		    // 롤백
-		}
+		
+		res = messageDao.insertMessageContent(msgVo);
+		res = messageDao.insertMessage(msgVo);
+		
 		return res;
 	}
 
 	@Override
 	public Long findRoomNo(Long myId, Long productId) {
 		
-		Long roomNo = messageDao.findRoomNo(myId, productId);
+		Long no = messageDao.findRoomNo(myId, productId);
+		Long roomNo = no==null?0:no;
 		
-		if(roomNo == null) {
+		if(roomNo == 0) {
 			// 룸넘버가 null이면 roomNo 최대값+1 해주기
 			roomNo = messageDao.maxRoomNo()+1;
 		}
 		return roomNo;
 	}
+
+	@Override
+	public int countUnreadMessage(Long yourId, Long roomNo) {
+		return messageDao.countUnreadMessage(yourId, roomNo);
+	}
+
 }

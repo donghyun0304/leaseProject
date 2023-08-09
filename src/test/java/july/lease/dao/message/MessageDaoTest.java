@@ -63,7 +63,7 @@ public class MessageDaoTest {
 	public void insertMessageTest() {
 		Message msg = new Message();
 		msg.setMyId(1L);
-		msg.setYourId(2L);
+		//msg.setYourId(2L);
 		msg.setProductId(6L);
 		msg.setRoomNo(1L);
 		msg.setMessageText("테스트으ㅡㅇ");
@@ -79,5 +79,21 @@ public class MessageDaoTest {
 	public void findRoomNo() {
 		Long roomNo = messageDao.findRoomNo(1L, 6L);
 		log.info("roomNo={}", roomNo);
+	}
+	
+	@Test
+	public void readCheckTest() {
+		int readCheck = messageDao.readCheck(1L, 1L);
+		
+		Assertions.assertThat(readCheck).isEqualTo(4);
+	}
+	
+	@Test
+	public void countUnreadMessage() {
+		int cntM1 = messageDao.countUnreadMessage(2L, 1L);
+		Assertions.assertThat(cntM1).isEqualTo(1);
+		
+		int cntM2 = messageDao.countUnreadMessage(2L, null);
+		Assertions.assertThat(cntM2).isEqualTo(1);
 	}
 }

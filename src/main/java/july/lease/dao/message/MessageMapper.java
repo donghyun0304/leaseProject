@@ -32,4 +32,9 @@ public interface MessageMapper {
 	
 	// roomNo 최대값 조회
 	public Long maxRoomNo();
+	
+	// 메세지 읽음 처리
+	public int readCheck(@Param("myId") Long myId, @Param("roomNo") Long roomNo);
+	
+	public int countUnreadMessage(@Param("yourId") Long yourId, @Param("roomNo") Long roomNo);
 }

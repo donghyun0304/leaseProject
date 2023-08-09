@@ -2,6 +2,9 @@ package july.lease.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,10 +49,27 @@ public class MessageViewContrlloer_ksh {
 		
 		log.info("chatList");
 		
-		List<MyAllMessageListDto> allChatList = messageService.getMyAllMessageList(memberId);
+    	List<MyAllMessageListDto> allChatList = messageService.getMyAllMessageList(memberId);
+    	
 		model.addAttribute("allChatList", allChatList);
-		
 		return "Project_chaLlist";
+
+		// 로그인 구현 다 되면 맞춰서 바꾸기
+//		HttpServletRequest request
+
+//        HttpSession session = request.getSession();
+//        Long sessionMemberId = (Long)session.getAttribute("memberId");
+
+//        // url접근 막기
+//        if (sessionMemberId == memberId) {
+//            // 로그인한 아이디와 memberId가 같으면 
+//        	List<MyAllMessageListDto> allChatList = messageService.getMyAllMessageList(memberId);
+//    		model.addAttribute("allChatList", allChatList);
+//    		return "Project_chaLlist";
+//        } else {
+//            // 다르면
+//        	return "Project_login";
+//        }
 	}
 	
 }
