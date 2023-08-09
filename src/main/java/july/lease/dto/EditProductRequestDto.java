@@ -36,8 +36,8 @@ public class EditProductRequestDto {
 	private List<String> rentAbleEndDate;
 	@Size(min=1, max=8)
 	private List<MultipartFile> images;
-	@NotBlank
-	private String location;
+//	@NotBlank
+//	private String location;
 	
 	public EditProductRequestDto() {
 	}
@@ -46,7 +46,7 @@ public class EditProductRequestDto {
 			Integer productPrice, String productContent,
 			Long categoryId, Long categoryId3,
 			List<String> rentAbleStartDate, List<String> rentAbleEndDate,
-			List<MultipartFile> images, String location) {
+			List<MultipartFile> images) { //임시로 로케이션제거
 		
 		this.productName = productName;
 		this.productPrice = productPrice;
@@ -56,7 +56,7 @@ public class EditProductRequestDto {
 		this.rentAbleStartDate = rentAbleStartDate;
 		this.rentAbleEndDate = rentAbleEndDate;
 		this.images = images;
-		this.location = location;
+//		this.location = location;
 	}
 	
 	

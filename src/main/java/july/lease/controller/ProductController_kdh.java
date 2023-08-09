@@ -95,6 +95,7 @@ public class ProductController_kdh {
 		
 		if(bindingResult.hasErrors()) {
 			log.info("errors={}", bindingResult);
+			model.addAttribute("productResponse", new EditProductResponseDto());
 			return "Project_product_edit";
 		}
 	
