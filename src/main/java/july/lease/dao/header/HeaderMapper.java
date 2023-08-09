@@ -9,7 +9,9 @@ import july.lease.domain.Category;
 @Mapper
 public interface HeaderMapper {
 
+	// 카테고리 가져오기
 	List<Category> getCategory();
-
-	int notReadMessageCnt();
+	
+	// 안읽은 쪽지 카운트
+	int notReadMessageCnt(Long memberId);
 }

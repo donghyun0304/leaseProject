@@ -1,13 +1,16 @@
 package july.lease.service;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import july.lease.dao.message.MessageDao;
 import july.lease.domain.Message;
-import july.lease.dto.MessageDto;
+import july.lease.dto.MyAllMessageListDto;
+import july.lease.dto.ProductMessageInfoDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,19 +22,39 @@ public class MessageServiceImpl implements MessageService{
 	private final MessageDao messageDao;
 	
 	@Override
-	public List<MessageDto> getMessageList() {
-		List<Message> list= messageDao.getMessageListf();
+	public List<Message> getMessage(Long roomNo) {
 		
-		return listToMessageDto(list);
+		return messageDao.getMessage(roomNo);
 	}
 
 	@Override
-	public List<MessageDto> listToMessageDto(List<Message> list) {
-		
-		return list.stream().map(msg->new MessageDto(msg.getMessageId(), msg.getMyId(), msg.getYourId(),
-				msg.getMessageContentId(), msg.getMessageReadStatus(), msg.getMessageDeleteStatus(),
-				msg.getOrderId(), msg.getMessageCreateDate(), msg.getMyNickname(), msg.getYourNickname(),
-				msg.getMessageText())).collect(Collectors.toList());
+	public ProductMessageInfoDto getOneProductInfo(Long productId) {
+		return messageDao.getOneProductInfo(productId);
+	}
+	
+	@Override
+	public List<MyAllMessageListDto> getMyAllMessageList(Long memberId) {
+		return messageDao.getMyAllMessageList(memberId);
+	}
+
+	@Transactional
+	@Override
+	public int insertMessage(Message msgVo) {
+		int res=0;
+		try {
+			//msgVo.setYourId(messageDao.findYourId(msgVo.getRoomNo(), msgVo.getMyId()));
+			messageDao.insertMessageContent(msgVo); // 첫 번째 인서트 문
+			res = messageDao.insertMessage(msgVo); // 두 번째 인서트 문
+		} catch (Exception e) {
+		    // 롤백
+		}
+		return res;
+	}
+
+	@Override
+	public Long findRoomNo(Long myId, Long productId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -19,7 +19,7 @@ public class HeaderDao {
 		return headerMapper.getCategory();
 	}
 	
-	public int notReadMessageCnt() {
-		return headerMapper.notReadMessageCnt();
+	public int notReadMessageCnt(Long memberId) {
+		return headerMapper.notReadMessageCnt(memberId);
 	}
 }

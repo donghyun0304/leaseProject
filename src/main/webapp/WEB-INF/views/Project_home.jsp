@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +11,10 @@
     <script src="../../resources/js/Project_home.js"></script>
 
 </head>
-<%@include file="../includes/Project_header.jsp"%>
+<%@include file="../includes/Project_header.jsp" %>
 <body>
     <main>
+
         <div id='contents' class='contents'>
 
             <div id='banner'>
@@ -23,113 +24,38 @@
             
             <div id='latestProduct' class='latestProduct'>
                 <div>
-                    <p class='categoryT' >최근등록한상품</p>
+                    <p class='categoryT' >인기상품</p>
                 </div>
+                <!-- 한달동안 대여가 많이 된 인기 상품 리스트 -->
                 <div style='padding-top: 1.3em;'>
-                    <a href='#'>
+                <c:forEach items="${popularItem}" var="item">
+                    <a onclick="requestAction('/products/${item.productId}')" href='#'>
                         <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
+                            <img class='thumbnail' src="../../resources/images/${item.productImageName}" >
+                            <p class='product_title'>${item.productName }</p>
+                            <p class='product_price'>${item.productPrice}원/일</p>
                         </div>
                     </a>
-
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-
-                    <a href='#'>
-                        <div class='product'>
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-
-                </div>
-
+                </c:forEach>    
+				</div>
             </div>
 
             <div id='categoryProduct' class='categoryProduct'>
                 <div>
                     <p class='categoryT'>전체상품</p>
                 </div>
+                <!-- 전체 상품 리스트 -->
                 <div style='padding-top: 1.3em;'>
+                <c:forEach items="${getAllItem }" var="item">
 
-                    <a href='#'>
+                    <a onclick="requestAction('/products/${item.productId}')" href='#'>
                         <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
+                            <img class='thumbnail' src="../../resources/images/${item.productImageName}" >
+                            <p class='product_title'>${item.productName }</p>
+                            <p class='product_price'>${item.productPrice}원/일</p>
                         </div>
                     </a>
-
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
-                    
-                    <a href='#'>
-                        <div class='product' >
-                            <img class='thumbnail' src='111.png' >
-                            <p class='product_title'>상품명</p>
-                            <p class='product_price'>000,000원/일</p>
-                        </div>
-                    </a>
+                 </c:forEach>
                     <br>
                     <br>
                     <button id='btnView'>더보기</button>

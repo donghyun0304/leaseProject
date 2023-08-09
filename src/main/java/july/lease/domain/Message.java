@@ -8,7 +8,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Message {
-	
 	private Long messageId;
 	private Long myId;
 	private Long yourId;
@@ -17,14 +16,21 @@ public class Message {
 	private char messageDeleteStatus;
 	private Long orderId;
 	private String messageCreateDate;
-	private String myNickname;
-	private String yourNickname;
+	private Long productId;
+	private Long roomNo;
+
+	private String sender;
+	private String reciver;
 	private String messageText;
 	
 	public Message() {
+		
 	}
 
-	public Message(Long myId, Long yourId, Long messageContentId) {
+	public Message(Long messageId, Long myId, Long yourId, Long messageContentId, char messageReadStatus,
+			char messageDeleteStatus, Long orderId, String messageCreateDate, Long productId, Long roomNo,
+			String sender, String reciver, String messageText) {
+		super();
 		this.messageId = messageId;
 		this.myId = myId;
 		this.yourId = yourId;
@@ -33,9 +39,21 @@ public class Message {
 		this.messageDeleteStatus = messageDeleteStatus;
 		this.orderId = orderId;
 		this.messageCreateDate = messageCreateDate;
-		this.myNickname = myNickname;
-		this.yourNickname = yourNickname;
+		this.productId = productId;
+		this.roomNo = roomNo;
+		
+		this.sender = sender;
+		this.reciver = reciver;
 		this.messageText = messageText;
 	}
+
+	public Message(Long myId, Long productId, Long roomNo, String messageText) {
+		super();
+		this.myId = myId;
+		this.productId = productId;
+		this.roomNo = roomNo;
+		this.messageText = messageText;
+	}
+
 
 }
