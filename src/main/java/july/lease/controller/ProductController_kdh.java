@@ -60,17 +60,21 @@ public class ProductController_kdh {
 	
 	@GetMapping("/products/{productId}/edit")
 	public String editForm(@PathVariable Long productId,
+			@ModelAttribute("productRequest") EditProductRequestDto productRequest,
 			@SessionAttribute(name = "memberId", required = false)Long memberId,
 			Model model) {
 		
-		EditProductResponseDto product = productService_kdh.findByProductIdForEdit(productId);
-		
+		EditProductResponseDto productResponse = productService_kdh.findByProductIdForEdit(productId);
+		//jsp폼에서 제품상세 <form:textarea>에서 path기능을 사용하기 위한 코드
+		productRequest.setProductContent(productResponse.getProductContent());
+		productRequest.setCategoryId(productResponse.getCategoryId());
+		productRequest.setCategoryId3(productResponse.getCategoryId3());
 		//로그인한 회원이 올린 상품인지 확인
-		if(product.getMemberId() != memberId){
+		if(productResponse.getMemberId() != memberId){
 			throw new IllegalArgumentException();
 		}
 		
-		model.addAttribute("product", product);
+		model.addAttribute("productResponse", productResponse);
 		model.addAttribute("productId", productId);
 		
 		return "Project_product_edit";
@@ -78,7 +82,7 @@ public class ProductController_kdh {
 	
 	@PostMapping("/products/{productId}/edit")
 	public String editProduct(@PathVariable Long productId, Model model,
-			@Validated @ModelAttribute("product") EditProductRequestDto editProductRequestDto,
+			@Validated @ModelAttribute("productRequest") EditProductRequestDto editProductRequestDto,
 			BindingResult bindingResult) {
 		
 		List<RentOrderStatusDto> rentOrderStatus= productService_kdh.checkOrders(productId);
@@ -86,7 +90,7 @@ public class ProductController_kdh {
 		// rent_date에 맞는 orders가 존재하는지 체크
 		if(!rentOrderStatus.isEmpty()) {
 			model.addAttribute("rentOrderStatus", rentOrderStatus);
-			bindingResult.reject("rentOrders", new Object[] {rentOrderStatus}, null);
+//			bindingResult.reject("rentOrders", new Object[] {rentOrderStatus}, null);
 		}
 		
 		if(bindingResult.hasErrors()) {
