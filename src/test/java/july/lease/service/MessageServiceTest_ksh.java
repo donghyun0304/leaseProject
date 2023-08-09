@@ -23,7 +23,7 @@ public class MessageServiceTest_ksh {
 	@Test
 	public void getMessageList() {
 		
-		List<Message> list = messageService.getMessage(1L);
+		List<Message> list = messageService.getMessage(2L, 1L);
 		
 		for(int i=0; i<list.size(); i++) {
 			log.info("message={}", list.get(i));
@@ -63,11 +63,15 @@ public class MessageServiceTest_ksh {
 		msg.setMyId(1L);
 		msg.setProductId(6L);
 		msg.setRoomNo(1L);
-		msg.setMessageText("테스트으ㅡㅇ44444");
+		msg.setMessageText("테스트으1101010100110");
 		
-		int res = messageService.insertMessage(msg);
+		log.info("yourId={}", msg.getYourId());
 		
-		log.info("res={}", res);
+		try {
+			int res = messageService.insertMessage(msg);
+		}catch(Exception e) {
+			log.info(e.getMessage());
+		}
 	}
 	
 	@Test

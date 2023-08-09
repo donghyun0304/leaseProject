@@ -14,7 +14,7 @@ import july.lease.dto.ProductMessageInfoDto;
 public interface MessageService {
 	
 	// 상품별 메세지 리스트
-	public List<Message> getMessage(Long roomNo);
+	public List<Message> getMessage(Long myId, Long roomNo);
 	
 	// 주문안했을경우에 대한 제품 정보
 	public ProductMessageInfoDto getOneProductInfo(Long productId);
@@ -27,4 +27,8 @@ public interface MessageService {
 	
 	// roomNo 조회
 	public Long findRoomNo(Long myId, Long productId);
+	
+	// 안읽은 메세지 
+	public int countUnreadMessage(Long yourId, Long roomNo);
+
 }

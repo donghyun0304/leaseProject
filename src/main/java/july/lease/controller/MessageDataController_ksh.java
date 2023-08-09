@@ -25,14 +25,13 @@ public class MessageDataController_ksh extends CommonRestController{
 	
 	private final MessageService messageService;
 	
-	//@GetMapping("/getOrderIdMessageList/{memberId}/messages/{productId}/{roomNo}")
 	@GetMapping("/getMessages/{memberId}/{productId}/{roomNo}")
 	public Map<String, Object> getMessage(@PathVariable("memberId") Long memberId, 
 			@PathVariable("productId") Long productId, @PathVariable("roomNo") Long roomNo, Model model) {
 
 		Map<String, Object> map = new HashMap<>();
 		
-		List<Message> list = messageService.getMessage(roomNo);
+		List<Message> list = messageService.getMessage(memberId, roomNo);
 		
 		map.put("msgList", list);
 		

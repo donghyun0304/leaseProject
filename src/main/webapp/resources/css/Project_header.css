@@ -324,14 +324,15 @@ header .head{
     float: left;
     max-height: 3px;
     transition: 1s;
-     z-index: 200;
-     background-color: whitesmoke;
-     border-radius: 0.5rem;
-     width: 120px;
+    z-index: 200;
+    background-color: whitesmoke;
+    border-radius: 0.5rem;
+    width: 120px;
+    position: relative;
 }
 
 .categoryMenu .submenu li {
-
+	z-index:300;
     margin-left: 1rem;
     
 }
@@ -364,4 +365,8 @@ header .head{
 .message-box{
     border: 2px solid black;
     width: 75rem;
+}
+
+.fixed {
+  position: fixed;
 }

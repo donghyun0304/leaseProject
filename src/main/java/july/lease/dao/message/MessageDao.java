@@ -45,4 +45,12 @@ public class MessageDao {
 	public Long maxRoomNo() {
 		return messageMapper.maxRoomNo();
 	}
+	
+	public int readCheck(Long myId, Long roomNo) {
+		return messageMapper.readCheck(myId, roomNo);
+	}
+	
+	public int countUnreadMessage(Long yourId, Long roomNo) {
+		return messageMapper.countUnreadMessage(yourId, roomNo);
+	}
 }

@@ -20,6 +20,7 @@ public class MyAllMessageListDto {
 	private Long yourId;
 	private String productName;
 	private String storeImageName;
+	private int noReadMcnt;
 	
 
 	public MyAllMessageListDto() {
@@ -29,7 +30,7 @@ public class MyAllMessageListDto {
 
 	public MyAllMessageListDto(Long roomNo, Long productId, String messageCreateDate, char messageReadStatus,
 			String messageText, String sender, Long myId, String reciver, Long yourId, String productName,
-			String storeImageName) {
+			String storeImageName, int noReadMcnt) {
 		super();
 		this.roomNo = roomNo;
 		this.productId = productId;
@@ -42,7 +43,7 @@ public class MyAllMessageListDto {
 		this.yourId = yourId;
 		this.productName = productName;
 		this.storeImageName = storeImageName;
+		this.noReadMcnt = noReadMcnt;
 	}
-
 	
 }
