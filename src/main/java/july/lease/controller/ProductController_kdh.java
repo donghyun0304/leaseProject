@@ -32,8 +32,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ProductController_kdh {
 	
-	private final FileStore fileStore;
-	
 	private final ProductService_kdh productService_kdh;
 	private final MemberServiceImpl memberService;
 	
@@ -86,9 +84,9 @@ public class ProductController_kdh {
 	@PostMapping("/products/{productId}/edit")
 	public String editProduct(@PathVariable Long productId, Model model,
 			@Validated @ModelAttribute("productRequest") EditProductRequestDto editProductRequestDto,
-			BindingResult bindingResult) {
-		
-		List<RentOrderStatusDto> rentOrderStatus= productService_kdh.checkOrders(productId);
+			BindingResult bindingResult) throws IOException {
+		log.info("ProductContorller_kdh editProduct={}", editProductRequestDto);
+//		List<RentOrderStatusDto> rentOrderStatus= productService_kdh.checkOrders(productId);
 		
 //		// rent_date에 맞는 orders가 존재하는지 체크
 //		if(!rentOrderStatus.isEmpty()) {
@@ -100,6 +98,8 @@ public class ProductController_kdh {
 			log.info("errors={}", bindingResult);
 			return "Project_product_edit";
 		}
+		
+		productService_kdh.editProduct(productId, editProductRequestDto);
 	
 		return "/products/" + productId;
 		

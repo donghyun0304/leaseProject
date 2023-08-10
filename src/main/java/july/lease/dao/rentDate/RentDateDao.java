@@ -46,5 +46,11 @@ public class RentDateDao {
 		log.info("RentDateDao rentOrderStatusSize={}", result);
 		return result;
 	}
+	
+	public void delete(List<RentDate> rentDates) {
+		for(RentDate rentDate : rentDates) {
+			rentDateMapper.delete(rentDate.getRentDateId());	
+		}
+	}
 
 }

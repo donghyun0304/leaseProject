@@ -21,6 +21,11 @@
 		where product_id = #{productId}
 	</select>
 	
+	<delete id="deleteProductImageByProductId">
+		delete from product_image
+		where product_id = #{productId}
+	</delete>
+	
 	
 	
 	

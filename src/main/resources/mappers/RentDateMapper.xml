@@ -49,6 +49,12 @@
 		and b.rent_able_end_date = to_date(#{rentAbleEndDate}, 'YYYY/MM/DD')
 	</select>
 	
+	<delete id="delete">
+		delete 
+		from rent_date
+		where rent_date_id = #{rentDateId}
+	</delete>
+	
 	
     
 </mapper>

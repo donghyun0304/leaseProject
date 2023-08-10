@@ -11,15 +11,15 @@
         </selectKey>
         insert into product(product_id, member_id, category_id, product_name,
         				    product_price, product_content, location,
-        				    product_create_date, product_end_status)
+        				    product_create_date, product_end_status, product_status)
 		values(#{productId}, #{memberId}, #{categoryId}, #{productName},
-			   #{productPrice}, #{productContent}, #{location}, sysdate, 'N')
+			   #{productPrice}, #{productContent}, #{location}, sysdate, 'N', 1)
     </insert>
     
 	<select id="findByProductId" resultType="Product">
 		select product_id, member_id, category_id, product_name,
 			   product_price, product_content, location,
-        	   product_create_date, product_end_status
+        	   product_create_date, product_end_status, product_status
 			   from product
 			   where product_id = #{productId}
 	</select>
@@ -45,6 +45,15 @@
 		from message
 		where my_id=#{myId} and product_id=#{productId}
 	</select>
+	
+	<update id="editProduct">
+		update product
+		set category_id = #{product.categoryId},
+    		product_name = #{product.productName},
+    		product_price = #{product.productPrice},
+    		product_content = #{product.productContent}
+		where product_id = #{productId}
+	</update>
 	
 	
 
