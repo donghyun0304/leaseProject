@@ -40,6 +40,21 @@
 			   where a.product_id = #{productId} and b.order_confirm_status in (1,2)
 	</select>
 	
+	<select id="rentOrderStatusSize" resultType="int">
+		select count(*)
+		from orders a
+		left join rent_date b 
+			on a.rent_date_id = b.rent_date_id
+		where b.rent_able_start_date = to_date(#{rentAbleStartDate}, 'YYYY/MM/DD') 
+		and b.rent_able_end_date = to_date(#{rentAbleEndDate}, 'YYYY/MM/DD')
+	</select>
+	
+	<delete id="delete">
+		delete 
+		from rent_date
+		where rent_date_id = #{rentDateId}
+	</delete>
+	
 	
     
 </mapper>

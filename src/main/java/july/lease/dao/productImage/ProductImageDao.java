@@ -27,4 +27,7 @@ public class ProductImageDao {
 		return productImageMapper.findAllByProductId(productId);
 	}
 	
+	public void deleteProductImageByProductId(Long productId){
+		productImageMapper.deleteProductImageByProductId(productId);
+	}
 }

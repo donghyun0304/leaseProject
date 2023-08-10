@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import july.lease.domain.Product;
+import july.lease.dto.EditProductRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,5 +35,9 @@ public class ProductDao {
 		Product product = productMapper.findByProductIdForEdit(productId);
 		log.info("findByProductIdForEdit={}",product);
 		return product;
+	}
+	
+	public void editProduct(Long productId, EditProductRequestDto productRequestDto) {
+		productMapper.editProduct(productId, productRequestDto);
 	}
 }

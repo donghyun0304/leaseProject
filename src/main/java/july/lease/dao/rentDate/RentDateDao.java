@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import july.lease.domain.RentDate;
+import july.lease.dto.RentAbleRequestDto;
 import july.lease.dto.RentOrderStatusDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +39,18 @@ public class RentDateDao {
 		log.info("checkOrders rentOrderStatusDto={}",rentOrderStatusDto);
 		// rentOrderStatusDto가 널이면 비어인는 컬렉션 반환
 		return rentOrderStatusDto != null ? rentOrderStatusDto : Collections.emptyList();
+	}
+	
+	public int rentOrderStatusSize(RentAbleRequestDto rentAbleRequestDto) {
+		int result = rentDateMapper.rentOrderStatusSize(rentAbleRequestDto);
+		log.info("RentDateDao rentOrderStatusSize={}", result);
+		return result;
+	}
+	
+	public void delete(List<RentDate> rentDates) {
+		for(RentDate rentDate : rentDates) {
+			rentDateMapper.delete(rentDate.getRentDateId());	
+		}
 	}
 
 }

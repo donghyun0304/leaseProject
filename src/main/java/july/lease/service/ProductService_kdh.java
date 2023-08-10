@@ -1,11 +1,14 @@
 package july.lease.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import july.lease.common.FileStore;
 import july.lease.dao.product.ProductDao;
@@ -15,7 +18,9 @@ import july.lease.domain.Product;
 import july.lease.domain.ProductImage;
 import july.lease.domain.RentDate;
 import july.lease.dto.AddProductDto;
+import july.lease.dto.EditProductRequestDto;
 import july.lease.dto.EditProductResponseDto;
+import july.lease.dto.RentAbleRequestDto;
 import july.lease.dto.RentOrderStatusDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +34,9 @@ public class ProductService_kdh {
 	private final ProductImageDao productImageDao;
 	private final RentDateDao rentDateDao;
 	private final FileStore fileStore;
+	
+	@Value("${file.dir}")
+    private String fileDir;
 	
 	@Transactional
 	public Long addProduct(Long memberId, AddProductDto productDto) throws IOException {
@@ -88,5 +96,99 @@ public class ProductService_kdh {
 	
 	public List<RentOrderStatusDto> checkOrders(Long productId){
 		return rentDateDao.checkOrders(productId);
+	}
+	
+	public int rentOrderStatusSize(RentAbleRequestDto rentAbleRequestDto) {
+		return rentDateDao.rentOrderStatusSize(rentAbleRequestDto);
+	}
+	
+	@Transactional
+	public void editProduct(Long productId, EditProductRequestDto productRequestDto) throws IOException {
+		
+		List<MultipartFile> images = productRequestDto.getImages();
+		//MultipartFile이 1개 이상이면 모든 이미지 삭제
+		if(images.size()>0) {
+			//DB에 있는 이미지 객체 먼저 찾고
+			List<ProductImage> findImagesInDB = productImageDao.findAllByProductId(productId);
+			log.info("ProductService_kdh editProduct 실행확인");
+			//DB에 이미지데이터 삭제
+			productImageDao.deleteProductImageByProductId(productId);
+			//이미지객체를 통해 로컬디렉토리에 이미지파일 삭제
+			removeAllImages(findImagesInDB);
+
+			//로컬디렉토리에 이미지 저장
+			List<ProductImage> savedImageInLocal = 
+										fileStore.storeFiles(productRequestDto.getImages());
+			setProductIdInImages(productId, savedImageInLocal);
+			productImageDao.save(savedImageInLocal);
+		}
+		
+		//Rent_date 검증 로직
+		List<RentDate> dbRentDates = rentDateDao.findByProductId(productId);
+		int dbSize = dbRentDates.size();
+		int dtoSize = productRequestDto.getRentAbleStartDate().size();
+		
+		checkSaveAndDeleteIfValidOrNot(productRequestDto,dbRentDates, productId, dbSize, dtoSize);
+		
+		productDao.editProduct(productId, productRequestDto);
+			
+	}
+	
+	
+	private void removeAllImages(List<ProductImage> images) {
+		images.stream()
+				.forEach(image -> {
+					if(!new File(fileDir + image.getStoreImageName()).delete()) {
+						log.info("===============================로컬이미지파일삭제실패");
+					}
+				});
+	}
+	
+	private void checkSaveAndDeleteIfValidOrNot(
+			EditProductRequestDto productRequestDto,List<RentDate> dbRentDates,
+			Long productId, int dbSize, int dtoSize) {
+		List<RentDate> updateList = new ArrayList<>();
+		List<RentDate> deleteList = new ArrayList<>();
+		
+		for(int i=0; i<dbSize; i++) {
+			log.info("Rent_Date db기준 검증로직 시작");
+			String dbStartDate = dbRentDates.get(i).getRentAbleStartDate();
+			int cnt = 0;
+			for(int j=0; j<dtoSize; j++) {
+				String dtoStartDate = productRequestDto.getRentAbleStartDate().get(j);
+				// 1. db에 존재하고 dto에서도 존재하는거 (무시해야됨)
+				if (dbStartDate.equals(dtoStartDate)){
+					break;
+					}
+				else cnt++;
+			}
+			// 2. db에는 존재했는데 dto에서 삭제해서 db에서도 삭제해야될것
+			if (cnt == dtoSize) {
+				deleteList.add(dbRentDates.get(i));				
+			}
+		}
+				
+		for(int i=0; i<dtoSize; i++) {
+			log.info("Rent_Date dto기준 검증로직 시작");
+			String dtoStartDate = productRequestDto.getRentAbleStartDate().get(i);
+			int cnt = 0;
+			for(int j=0; j<dbSize; j++) {
+				String dbStartDate = dbRentDates.get(j).getRentAbleStartDate();
+				// 1. db에 존재하고 dto에서도 존재하는거 (무시해야됨)
+				if (dtoStartDate.equals(dbStartDate)) {
+					break;
+				}
+				else cnt++;
+			}
+			// 2. dto에는 존재하지만 db에는 존재하지않아서 db에 추가해야할것
+			if (cnt == dbSize) {
+				updateList.add(new RentDate(productId,
+						productRequestDto.getRentAbleStartDate().get(i),
+						productRequestDto.getRentAbleEndDate().get(i)));				
+			}
+		}
+		
+		rentDateDao.save(updateList);
+		rentDateDao.delete(deleteList);
 	}
 }

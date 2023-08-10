@@ -22,6 +22,7 @@ public class Product {
 	private String productCreateDate;
 	private char productEndStatus;
 	private List<ProductImage> images;
+	private int productStatus;
 	
 	public Product() {
 	}
