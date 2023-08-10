@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import july.lease.dao.member.MemberDao;
 import july.lease.dao.member.MemberMapper;
+import july.lease.domain.Criteria;
 import july.lease.domain.Product;
 import july.lease.dto.HomeItemDto;
 import july.lease.dto.HomePopularItemDto;
@@ -19,11 +20,15 @@ public class HomeDao {
 
 	private final HomeMapper homeMapper;
 	
-	public List<HomeItemDto> getAllItem(){
-		return homeMapper.getAllItem();
+	public List<HomeItemDto> getAllItem(Criteria cri){
+		return homeMapper.getAllItem(cri);
 	}
 	
 	public List<HomePopularItemDto> popularItem(){
 		return homeMapper.popularItem();
+	}
+	
+	public List<HomeItemDto> getAllItemAJAX(Long startRow, Long endRow){
+		return homeMapper.getAllItemAJAX(startRow, endRow);
 	}
 }
