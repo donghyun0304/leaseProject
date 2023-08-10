@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,19 +10,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../resources/css/Project_list.css">
     <script src="../../resources/js/Project_list.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 </head>
 <%@include file="../includes/Project_header.jsp" %>
 <body>
     <main>
+    cri:${cri }
         <div id='contents' class='contents'>
 
 
             <div class='ctegorybox'>
                 <!-- 카테고리 or 검색어 , 총 수량 -->
                 <div id='categorytitle' style=' display: flex;'>
-                    <p id='ctegoryT' >텐트</p>
-                    <p id='numT' >(총0개)</p>
+                    <p id='ctegoryT' >category</p>
+                    <p id='numT' ></p>
                 </div>
                 <hr>
                 <!-- 인기도순 최신등록순 -->
@@ -60,201 +63,35 @@
                 </ul>
             </div>
 
-            <div id='categoryProduct'>
+         <div id='categoryProduct' class='categoryProduct'>
+<input type="text" value="${cri.categoryId }" name="categoryId" id="categoryId">
+    <div style='padding-top: 1.3em;'>
+    		<div class="productList">
+	               <c:forEach items="${items }" var="item" end='11'>
+	                <ul class='product'>
+			            <a href='/products/${item.productId}'>
+		                    <li><img class='thumbnail' src="../../../../resources/images/${item.storeImageName}" alt="${item.productName} 이미지"></li>
+		                    <li class='productName'><p class='product_title'>${item.productName }</p></li>
+		                    <li class='productPrice'><p class='product_price'>${item.productPrice}원/일</p></li>
+			            </a>
+	                </ul>
+	        </c:forEach>
+	         <c:if test="${fn:length(items) > 11}">
+	           <div class="moreBox">
+	               <button class="getMore">
+	                   <span>더보기</span>
+	                   <svg width="0.7rem" height="0.7rem" viewBox="0 0 9 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 6L8.39711 0.75H0.602886L4.5 6Z" fill="currentColor"></path></svg>
+	               </button>
+	           </div>
+	          </c:if>
 
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
+   
+    
+</div>
 
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='zx.png' >
-                        <p class='product_title'>원터치 놀이텐트</p>
-                        <p class='product_price'>2,000원/일</p>
-                    </div>
-                </a>
 
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
 
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <a href='#'>
-                    <div class='product' >
-                        <img class='thumbnail' src='111.png' >
-                        <p class='product_title'>상품명</p>
-                        <p class='product_price'>000,000원/일</p>
-                    </div>
-                </a>
-
-                <br>
-                <br>
-            </div>
-
-            <!-- <div id='pageNavi'>
-
-                <button id='btnPage'>1</button>
-                <button id='btnPage'>2</button>
-                <button id='btnPage'>3</button>
-            </div> -->
-
-            <!-- 페이지 블럭 생성 -->
-            <nav>
-                <ul id='pageNavi'>
-                    <li class='btnPage'>
-                        <svg width='1rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path d="M288 94c0-16.6-13.5-30-30-30c-6.3 0-12.5 2-17.6 5.7L9.9 236.6C3.7 241.1 0 248.3 0 256s3.7 14.9 9.9 19.4L240.3 442.3c5.1 3.7 11.3 5.7 17.6 5.7c16.6 0 30-13.4 30-30V318.9L464.7 442.6c5.1 3.5 11.1 5.4 17.3 5.4c16.6 0 30.1-13.5 30.1-30.1V94.1C512 77.5 498.5 64 481.9 64c-6.2 0-12.2 1.9-17.3 5.4L288 193.1V94zm0 157.7L464 128.5v255L288 260.3v-8.6zM64.9 256L240 129.2V382.8L64.9 256z"/></svg>
-                    </li>
-                    <li class='btnPage active' onclick="change_btnPage(event)">
-                        <span class='page_number'>1</span>
-                    </li>
-                    <li class='btnPage' onclick="change_btnPage(event)">
-                        <span class='page_number'>2</span>
-                    </li>
-                    <li class='btnPage' onclick="change_btnPage(event)">
-                        <span class='page_number'>3</span>
-                    </li>
-                    <li class='btnPage'>
-                        <svg width='1rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path d="M224 94c0-16.6 13.5-30 30-30c6.3 0 12.5 2 17.6 5.7L502.1 236.6c6.2 4.5 9.9 11.7 9.9 19.4s-3.7 14.9-9.9 19.4L271.7 442.3c-5.1 3.7-11.3 5.7-17.6 5.7c-16.6 0-30-13.4-30-30V318.9L47.3 442.6c-5.1 3.5-11.1 5.4-17.3 5.4C13.5 448 0 434.5 0 417.9V94.1C0 77.5 13.5 64 30.1 64c6.2 0 12.2 1.9 17.3 5.4L224 193.1V94zm0 157.7L48 128.5v255L224 260.3v-8.6zM447.1 256L272 129.2V382.8L447.1 256z"/></svg>
-                    </li>
-                </ul>
-            </nav>
+           
 
         </div>
     </main>

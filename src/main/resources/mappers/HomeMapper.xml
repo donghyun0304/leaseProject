@@ -3,35 +3,70 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         
 <mapper namespace="july.lease.dao.home.HomeMapper">
+	<select id="countProduct" resultType="int">
+		SELECT COUNT(*) FROM PRODUCT
+	</select>
+	
+	<!-- 페이징 메인 전체상품 -->
+	<select id="getAllItem" resultType="july.lease.dto.HomeItemDto">
+		SELECT 
+			productId,
+			productName,
+			productPrice,
+			storeImageName				
+		FROM (
+			SELECT  p.PRODUCT_ID as productId,
+				    p.PRODUCT_NAME as productName,
+				    p.PRODUCT_PRICE productPrice,
+				    pi.STORE_IMAGE_NAME AS storeImageName,
+				    ROW_NUMBER() OVER (PARTITION BY p.PRODUCT_ID ORDER BY pi.UPLOAD_IMAGE_NAME DESC) AS rn
+			FROM 	
+					PRODUCT P
+			LEFT JOIN
+			    	product_image pi ON p.PRODUCT_ID = pi.PRODUCT_ID
+			ORDER BY PRODUCT_CREATE_DATE DESC
+			)
+		WHERE RN = 1
+	</select>
+	
+		<select id="getAllItemAJAX" resultType="july.lease.dto.HomeItemDto">
+			SELECT A.productId, A.productName, A.productPrice, A.storeImageName
+			FROM (
+					SELECT productId, productName, productPrice, storeImageName, ROWNUM as RNUM			
+					FROM (
+						SELECT  p.PRODUCT_ID as productId,
+							    p.PRODUCT_NAME as productName,
+							    p.PRODUCT_PRICE productPrice,
+							    pi.STORE_IMAGE_NAME AS storeImageName,
+							    ROW_NUMBER() OVER (PARTITION BY p.PRODUCT_ID ORDER BY pi.UPLOAD_IMAGE_NAME DESC) AS rn
+						FROM 	
+								PRODUCT P
+						LEFT JOIN
+						    	product_image pi ON p.PRODUCT_ID = pi.PRODUCT_ID
+						ORDER BY PRODUCT_CREATE_DATE DESC
+						)
+					WHERE RN = 1
+			    ) A
+			WHERE A.RNUM BETWEEN #{startRow} AND #{endRow}
+	</select>
+
 	<select id="popularItem" resultType="july.lease.dto.HomePopularItemDto"> <!-- 메인 인기상품 -->
-	SELECT
-	    p.PRODUCT_ID AS productId,
-	    p.PRODUCT_NAME AS productName,
-	    p.PRODUCT_PRICE AS productPrice,
-	    pi.UPLOAD_IMAGE_NAME AS productImageName,
-	    (o.ORDER_RENT_END_DATE - o.ORDER_RENT_START_DATE) AS rentDays
-	FROM
-	    orders o
-	JOIN
-	    product p ON o.PRODUCT_ID = p.PRODUCT_ID
-	JOIN
-	    product_image pi ON p.PRODUCT_ID = pi.PRODUCT_ID
-	ORDER BY rentDays DESC
-	</select>
-	
-	<select id="getAllItem" resultType="july.lease.dto.HomeItemDto"> <!-- 메인 전체상품 -->
 		SELECT
-		    p.PRODUCT_ID as productId,
-		    p.PRODUCT_NAME as productName,
-		    p.PRODUCT_PRICE productPrice,
-		    pi.UPLOAD_IMAGE_NAME AS productImageName
+		    p.PRODUCT_ID AS productId,
+		    p.PRODUCT_NAME AS productName,
+		    p.PRODUCT_PRICE AS productPrice,
+		    pi.STORE_IMAGE_NAME AS storeImageName,
+		    (o.ORDER_RENT_END_DATE - o.ORDER_RENT_START_DATE) AS rentDays
 		FROM
-		    product p
-		LEFT JOIN
+		    orders o
+		JOIN
+		    product p ON o.PRODUCT_ID = p.PRODUCT_ID
+		JOIN
 		    product_image pi ON p.PRODUCT_ID = pi.PRODUCT_ID
+		ORDER BY rentDays DESC
 	</select>
 	
-	
+
 	
 	
 </mapper>

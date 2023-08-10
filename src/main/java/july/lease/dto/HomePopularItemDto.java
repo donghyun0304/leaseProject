@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class HomePopularItemDto {
-		String productImageName;
+		String storeImageName;
 		String productName;
 		String productPrice;
 		String productId;
@@ -17,9 +17,9 @@ public class HomePopularItemDto {
 			
 		}
 		
-		public HomePopularItemDto(String productImageName, String productName, String productPrice, String productId) {
+		public HomePopularItemDto(String storeImageName, String productName, String productPrice, String productId) {
 			super();
-			this.productImageName = productImageName;
+			this.storeImageName = storeImageName;
 			this.productName = productName;
 			this.productPrice = productPrice;
 			this.productId = productId;

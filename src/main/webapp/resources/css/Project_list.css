@@ -1,6 +1,6 @@
 .contents{
     width: 75rem;
-    height: 100rem;
+    /*height: 100rem;*/
     /* background-color: antiquewhite; */
 }
 .ctegorybox{
@@ -28,21 +28,34 @@
 }
 .product{
     width: 17rem;
-    height: 18rem;
+    height: 20rem;
     display: inline-block;
-    margin-left: 1.2rem;
-    margin-top: 1.2rem;
+    margin: 3px;
     border: 1px solid lightgrey;
+    padding: 0px;
     /* background-color: white;    */
 }
 
-.thumbnail{
-    width: 100%;
+.thumbnail {
+    width: 90%;
     height: 70%;
+    margin-top: 0.5rem;
     display: grid;
-    /* background-color: skyblue; */
+
 }
-.product_title{
+
+.getMore{
+    width: 80px;
+    height: 40px; 
+    object-fit: cover; 
+    background-color: transparent;
+    border: none;
+    display: flex;
+    margin-top: 2rem;
+    cursor:pointer;
+}
+
+.product_title {
     width: 90%;
     display: grid; 
     height: 2rem;
@@ -91,7 +104,7 @@
     margin: 0;
 }
 
-/* 서브메뉴 */
+/* �꽌釉뚮찓�돱 */
 .sortType{
     margin: 0;
     display: inline-block;
@@ -159,7 +172,7 @@
     margin: 0;
     display: inline-block;
     border: 1px solid gray;
-    /* 위  오 아래 왼쪽*/
+    /* �쐞  �삤 �븘�옒 �쇊履�*/
     padding: 0.1rem 0.1rem 0.1rem 0.5rem;
     border-radius: 0.4rem;
 }
