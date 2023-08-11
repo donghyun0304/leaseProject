@@ -108,7 +108,7 @@ public class ProductController_kdh {
 	}
 	
 	@ResponseBody
-	@PostMapping("/products/{productId}/orders")
+	@PostMapping("/products/{productId}/orders/count")
 	public int checkOrders(@PathVariable Long productId) {
 		return ordersService.checkOrdersIfValid(productId);
 	}
