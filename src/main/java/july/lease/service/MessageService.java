@@ -30,5 +30,7 @@ public interface MessageService {
 	
 	// 안읽은 메세지 
 	public int countUnreadMessage(Long yourId, Long roomNo);
-
+	
+	// 메세지 삭제
+	public int deleteMessage(Long roomNo);
 }

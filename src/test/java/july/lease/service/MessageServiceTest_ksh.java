@@ -82,4 +82,11 @@ public class MessageServiceTest_ksh {
 		
 		log.info("roomNo={}", roomNo);
 	}
+	
+	@Test
+	public void deleteTest() {
+		int res = messageService.deleteMessage(1L);
+		
+		log.info("res={}", res);
+	}
 }

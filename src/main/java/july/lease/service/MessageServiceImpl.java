@@ -17,29 +17,29 @@ public class MessageServiceImpl implements MessageService{
 
 	private final MessageDao messageDao;
 	
-	// 메세지 조회
 	@Override
 	public List<Message> getMessage(Long myId, Long roomNo) {
 		
 		// 메세지 읽음 처리
 		messageDao.readCheck(myId, roomNo);
 		
+		// 메세지 조회
 		return messageDao.getMessage(roomNo);
 	}
 
-	// 제품 정보
 	@Override
 	public ProductMessageInfoDto getOneProductInfo(Long productId) {
+		// 제품 정보
 		return messageDao.getOneProductInfo(productId);
 	}
 	
-	// 메세지 리스트
+	
 	@Override
 	public List<MyAllMessageListDto> getMyAllMessageList(Long memberId) {
-		
+		// 메세지 리스트 조회
 		List<MyAllMessageListDto> list = messageDao.getMyAllMessageList(memberId);
 		
-		// 안읽은 메세지 개수
+		// 안읽은 메세지 개수 조회
 		list.forEach(msg -> {
 			msg.setNoReadMcnt(messageDao.countUnreadMessage(memberId, msg.getRoomNo()));
 		});
@@ -51,7 +51,7 @@ public class MessageServiceImpl implements MessageService{
 	@Override
 	public int insertMessage(Message msgVo) {
 		int res=0;
-		
+		// 메세지 삽입
 		res = messageDao.insertMessageContent(msgVo);
 		res = messageDao.insertMessage(msgVo);
 		
@@ -60,13 +60,13 @@ public class MessageServiceImpl implements MessageService{
 
 	@Override
 	public Long findRoomNo(Long myId, Long productId) {
+		// roomNo 찾기
+		Long roomNo = messageDao.findRoomNo(myId, productId);
+		Long maxRoomNo = messageDao.maxRoomNo();
 		
-		Long no = messageDao.findRoomNo(myId, productId);
-		Long roomNo = no==null?0:no;
-		
-		if(roomNo == 0) {
+		if(roomNo == null) {
 			// 룸넘버가 null이면 roomNo 최대값+1 해주기
-			roomNo = messageDao.maxRoomNo()+1;
+			roomNo = (maxRoomNo == null ? 0 : maxRoomNo)+1;
 		}
 		return roomNo;
 	}
@@ -74,6 +74,15 @@ public class MessageServiceImpl implements MessageService{
 	@Override
 	public int countUnreadMessage(Long yourId, Long roomNo) {
 		return messageDao.countUnreadMessage(yourId, roomNo);
+	}
+
+	@Override
+	public int deleteMessage(Long roomNo) {
+		// TODO Auto-generated method stub
+		
+		int res = messageDao.deleteMessage(roomNo);
+		
+		return res;
 	}
 
 }

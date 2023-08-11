@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel='stylesheet' href='../../resources/css/Project_chatList.css'>
+<script src="../../../../resources/js/fetch.js"></script>
 <script>
 
 	window.addEventListener('load', function() {
@@ -21,27 +22,47 @@
 				}
 			});
 			
-			console.log("deleteCheckArr : ", deleteCheckArr);
+			try{				
+				fetchPost('/messages/delete', deleteCheckArr, deleteMessage);
+			}catch(e){
+				console.log('fetchPost', e);
+			}
 			
 		});
+		
+		// 버튼 전체선택
+		checkAll.addEventListener('click', function(){
+			console.log("전체선택");
+			const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+			
+			checkboxes.forEach((checkbox) => {
+				checkbox.checked = checkAll.checked;
+			})
+		});
+		
 	})
-/*
-    window.onload=function(){
-        let close = document.getElementById('close');
-        
-        close.addEventListener('click', function(){
-            modal.classList.remove('active');
-        });
-    }
-*/
+	
+	function deleteMessage(map){
+		
+		console.log("map = ", map.message);
+		
+		if(map.message === "success") {
+			window.location.reload();
+		} else {
+			alert("삭제중 오류가 발생했습니다. 다시 시도해주세요.");
+			window.location.reload();
+		}
+	}
+
 </script>
 </head>
 <body>
 <div class="container">
+
         <header>
             <h1>쪽지함</h1>
+             <input type="checkbox" value="전체선택" id = "checkAll"> 전체선택
             <input type="button" value="삭제" id = "btnDelete">
-            <input type="button" value="창닫기" id = "btnClose">
         </header>
             
         <main>
@@ -61,9 +82,6 @@
 	        </c:forEach>
 
         </main>
-        <footer>
-            <!-- <input type="button" value="창 닫기" onclick = "window.close()" id = "close"> -->
-        </footer>
     </div>
 </body>
 </html>
