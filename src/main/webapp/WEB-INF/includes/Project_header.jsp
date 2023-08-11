@@ -90,7 +90,6 @@
 </head>
 <body>
 memberId: ${memberId}
-cri: ${cri}
     <header>
         <div class='header_top'>
             <ul class='header_top_menu'>
@@ -116,10 +115,10 @@ cri: ${cri}
             <!-- 검색 폼 시작 -->
             <form method="get" name='searchFormS' action="/list">
 	            <div class='search'>
-	                <input type="text" name="startDate" id="startDate" class='/hidden' value="${not empty cri.startDate? cri.startDate : '' }">
-	                <input type="text" name="endDate" id="endDate" class='/hidden' value="${not empty cri.startDate? cri.endDate : '' }">
-	                <input type="text" name="startDateIndex" id="startDateIndex" class='/hidden' value='0'>
-	                <input type="text" name="endDateIndex" id="endDateIndex" class='/hidden' value='0'>
+	                <input type="text" name="startDate" id="startDate" class='hidden' value="${not empty cri.startDate? cri.startDate : '' }">
+	                <input type="text" name="endDate" id="endDate" class='hidden' value="${not empty cri.startDate? cri.endDate : '' }">
+	                <input type="text" name="startDateIndex" id="startDateIndex" class='hidden' value='0'>
+	                <input type="text" name="endDateIndex" id="endDateIndex" class='hidden' value='0'>
 	                
 	                <input type="search" name="search" id="search" placeholder='검색어' autocomplete='off' value="${not empty cri.search ? cri.search : ''}">
 	                <svg width='1.2rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
