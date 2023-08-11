@@ -33,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductController_kdh {
 	
 	private final ProductService_kdh productService_kdh;
-	private final MemberServiceImpl memberService;
 	private final OrdersService ordersService;
 	
 	@GetMapping("/products/add")
@@ -125,15 +124,15 @@ public class ProductController_kdh {
 	public String product(@PathVariable Long productId, Model model) {
 		ProductDetailResponseDto responseDto = productService_kdh.findByProductIdForProductDetail(productId);
 		List<ProductListDto> list = productService_kdh.findByMemberIdExceptProductWithProductId(responseDto.getMemberId(), productId);
+		String orderRentDateStr = ordersService.findOrderRentDateByProductId(productId);
 		
 		model.addAttribute("product", responseDto);
 		model.addAttribute("productList", list);
+		model.addAttribute("productsCount", list.size()+1);
+		model.addAttribute("orderRentDate", orderRentDateStr);
+		
 		return "Project_product_details";
 	}
 	
-	
-	
-	
-	
-	
+
 }
