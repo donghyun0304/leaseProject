@@ -214,5 +214,9 @@ public class ProductService_kdh {
 		return responseDto;
 	}
 	
+	public void delete(Long productId) {
+		productDao.delete(productId);
+	}
+	
 	
 }

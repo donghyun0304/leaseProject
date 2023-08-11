@@ -53,4 +53,8 @@ public class ProductDao {
 		log.info("ProductDao findByProductIdForProductDetail={}", product);
 		return product;
 	}
+	
+	public void delete(Long productId) {
+		productMapper.delete(productId);
+	}
 }
