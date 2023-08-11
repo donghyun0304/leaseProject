@@ -81,11 +81,15 @@
 		select count(message_read_status) from message
 		<choose>
 			<when test="roomNo==null">
-				where your_id=#{yourId} and message_read_status='N'
+				where your_id=#{yourId} and message_read_status='N' and message_delete_status = 'N'
 			</when>
 			<otherwise>
-				where room_no=#{roomNo} and your_id=#{yourId} and message_read_status='N'
+				where room_no=#{roomNo} and your_id=#{yourId} and message_read_status='N' and message_delete_status = 'N'
 			</otherwise>
 		</choose>
 	</select>
+	
+	<update id="deleteMessage">
+		update message set message_delete_status = 'Y' where room_no=#{roomNo}
+	</update>
 </mapper>

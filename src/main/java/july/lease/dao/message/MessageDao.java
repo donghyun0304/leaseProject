@@ -53,4 +53,8 @@ public class MessageDao {
 	public int countUnreadMessage(Long yourId, Long roomNo) {
 		return messageMapper.countUnreadMessage(yourId, roomNo);
 	}
+	
+	public int deleteMessage(Long roomNo) {
+		return messageMapper.deleteMessage(roomNo);
+	}
 }

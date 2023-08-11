@@ -36,5 +36,9 @@ public interface MessageMapper {
 	// 메세지 읽음 처리
 	public int readCheck(@Param("myId") Long myId, @Param("roomNo") Long roomNo);
 	
+	// 안읽은 메세지 카운트
 	public int countUnreadMessage(@Param("yourId") Long yourId, @Param("roomNo") Long roomNo);
+	
+	// 메세지 삭제
+	public int deleteMessage(Long roomNo);
 }
