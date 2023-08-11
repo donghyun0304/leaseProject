@@ -27,4 +27,6 @@ public interface ProductMapper {
 	
 	Product findByProductIdForProductDetail(Long productId);
 	
+	void delete(Long productId);
+	
 }

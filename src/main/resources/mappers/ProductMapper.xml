@@ -87,5 +87,11 @@
     		on a.category_id = b.category_id
 		where a.product_id = #{productId}
 	</select>
+	
+	<update id="delete">
+		update product
+		set product_end_status = 'Y'
+		where product_id = #{productId}
+	</update>
 
 </mapper>

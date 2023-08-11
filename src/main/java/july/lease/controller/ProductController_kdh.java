@@ -22,6 +22,7 @@ import july.lease.dto.ProductDetailResponseDto;
 import july.lease.dto.ProductListDto;
 import july.lease.dto.RentAbleRequestDto;
 import july.lease.service.MemberServiceImpl;
+import july.lease.service.OrdersService;
 import july.lease.service.ProductService_kdh;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ public class ProductController_kdh {
 	
 	private final ProductService_kdh productService_kdh;
 	private final MemberServiceImpl memberService;
+	private final OrdersService ordersService;
 	
 	@GetMapping("/products/add")
 	public String addForm(@ModelAttribute("product") AddProductDto productDto) {
@@ -105,6 +107,19 @@ public class ProductController_kdh {
 		log.info("================= rentAble ={}",rentAble);
 		return productService_kdh.rentOrderStatusSize(rentAble);
 	}
+	
+	@ResponseBody
+	@PostMapping("/products/{productId}/orders")
+	public int checkOrders(@PathVariable Long productId) {
+		return ordersService.checkOrdersIfValid(productId);
+	}
+	
+	@PostMapping("/products/{productId}/delete")
+	public String delete(@PathVariable Long productId) {
+		productService_kdh.delete(productId);
+		return "redirect:/products/" + productId;
+	}
+	
 	
 	@GetMapping("/products/{productId}")
 	public String product(@PathVariable Long productId, Model model) {
