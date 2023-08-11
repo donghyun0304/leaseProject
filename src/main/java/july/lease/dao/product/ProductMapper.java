@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import july.lease.domain.Product;
 import july.lease.dto.EditProductRequestDto;
+import july.lease.dto.ProductListDto;
 
 @Mapper
 public interface ProductMapper {
@@ -21,4 +22,9 @@ public interface ProductMapper {
 	
 	void editProduct(@Param("productId")Long productId, @Param("product") EditProductRequestDto productRequestDto);
 
+	List<ProductListDto> findByMemberIdExceptProductWithProductId(
+			@Param("memberId")Long memberId, @Param("productId")Long productId);
+	
+	Product findByProductIdForProductDetail(Long productId);
+	
 }

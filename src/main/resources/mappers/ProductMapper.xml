@@ -55,7 +55,37 @@
 		where product_id = #{productId}
 	</update>
 	
-	
+	<select id="findByMemberIdExceptProductWithProductId" resultType="july.lease.dto.ProductListDto">
+		SELECT member_nickname, product_id, product_name, 
+			   product_price, upload_image_name, store_image_name
+		FROM (
+		  SELECT
+		    b.member_nickname,
+		    a.product_id,
+		    a.product_name,
+		    a.product_price,
+		    c.upload_image_name,
+		    c.store_image_name,
+		    c.product_image_id,
+		    a.product_create_date,
+		    ROW_NUMBER() OVER (PARTITION BY a.product_id ORDER BY c.product_image_id) AS rn
+		  FROM product a
+		  LEFT JOIN member b ON a.member_id = b.member_id
+		  LEFT JOIN product_image c ON a.product_id = c.product_id
+		  WHERE b.member_id = #{memberId} AND a.product_id != #{productId}
+		)
+		WHERE rn = 1
+		ORDER BY product_create_date DESC
+	</select>
 
+	<select id="findByProductIdForProductDetail" resultType="Product">
+		select a.member_id, a.product_name, a.product_price,
+			   b.category_id, b.category_id2, b.category_name, a.product_content,
+			   a.product_end_status, a.location
+		from product a
+		inner join category b
+    		on a.category_id = b.category_id
+		where a.product_id = #{productId}
+	</select>
 
 </mapper>

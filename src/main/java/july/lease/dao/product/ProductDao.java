@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import july.lease.domain.Product;
 import july.lease.dto.EditProductRequestDto;
+import july.lease.dto.ProductListDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,5 +40,17 @@ public class ProductDao {
 	
 	public void editProduct(Long productId, EditProductRequestDto productRequestDto) {
 		productMapper.editProduct(productId, productRequestDto);
+	}
+	
+	public List<ProductListDto> findByMemberIdExceptProductWithProductId(Long memberId, Long productId){
+		List<ProductListDto> list = productMapper.findByMemberIdExceptProductWithProductId(memberId, productId);
+		log.info("ProductDao findByMemberIdExceptProductWithProductId={}",list);
+		return list;
+	}
+	
+	public Product findByProductIdForProductDetail(Long productId) {
+		Product product = productMapper.findByProductIdForProductDetail(productId);
+		log.info("ProductDao findByProductIdForProductDetail={}", product);
+		return product;
 	}
 }
