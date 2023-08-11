@@ -20,6 +20,8 @@ import july.lease.domain.RentDate;
 import july.lease.dto.AddProductDto;
 import july.lease.dto.EditProductRequestDto;
 import july.lease.dto.EditProductResponseDto;
+import july.lease.dto.ProductDetailResponseDto;
+import july.lease.dto.ProductListDto;
 import july.lease.dto.RentAbleRequestDto;
 import july.lease.dto.RentOrderStatusDto;
 import lombok.RequiredArgsConstructor;
@@ -191,4 +193,26 @@ public class ProductService_kdh {
 		rentDateDao.save(updateList);
 		rentDateDao.delete(deleteList);
 	}
+	
+	public List<ProductListDto> findByMemberIdExceptProductWithProductId(Long memberId, Long productId){
+		return productDao.findByMemberIdExceptProductWithProductId(memberId, productId);
+	}
+	
+	public ProductDetailResponseDto findByProductIdForProductDetail(Long productId) {
+		Product product = productDao.findByProductIdForProductDetail(productId);
+		
+		List<ProductImage> images = productImageDao.findAllByProductId(productId);
+		List<RentDate> rentDates = rentDateDao.findByProductId(productId);
+		
+		ProductDetailResponseDto responseDto = new ProductDetailResponseDto(
+				product.getMemberId(), product.getProductName(), product.getProductPrice(),
+				product.getCategoryId(), product.getCategoryId2(), product.getCategoryName(),
+				product.getProductContent(), product.getProductEndStatus(),
+				product.getLocation(), images, rentDates);
+		
+		log.info("ProductService_kdh findByMemberIdExceptProductWithProductId responseDto={}", responseDto);
+		return responseDto;
+	}
+	
+	
 }

@@ -11,17 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import july.lease.common.FileStore;
 import july.lease.dto.AddProductDto;
 import july.lease.dto.EditProductRequestDto;
 import july.lease.dto.EditProductResponseDto;
+import july.lease.dto.ProductDetailResponseDto;
+import july.lease.dto.ProductListDto;
 import july.lease.dto.RentAbleRequestDto;
-import july.lease.dto.RentOrderStatusDto;
 import july.lease.service.MemberServiceImpl;
 import july.lease.service.ProductService_kdh;
 import lombok.RequiredArgsConstructor;
@@ -86,13 +85,6 @@ public class ProductController_kdh {
 			@Validated @ModelAttribute("productRequest") EditProductRequestDto editProductRequestDto,
 			BindingResult bindingResult) throws IOException {
 		log.info("ProductContorller_kdh editProduct={}", editProductRequestDto);
-//		List<RentOrderStatusDto> rentOrderStatus= productService_kdh.checkOrders(productId);
-		
-//		// rent_date에 맞는 orders가 존재하는지 체크
-//		if(!rentOrderStatus.isEmpty()) {
-//			model.addAttribute("rentOrderStatus", rentOrderStatus);	
-//			bindingResult.reject("rentOrderStatus", new Object[]{}, null);
-//		}
 		
 		if(bindingResult.hasErrors()) {
 			log.info("errors={}", bindingResult);
@@ -101,7 +93,7 @@ public class ProductController_kdh {
 		
 		productService_kdh.editProduct(productId, editProductRequestDto);
 	
-		return "/products/" + productId;
+		return "redirect:/products/" + productId;
 		
 	}
 	
@@ -112,6 +104,16 @@ public class ProductController_kdh {
 		RentAbleRequestDto rentAble = new RentAbleRequestDto(rentAbleStartDate, rentAbleEndDate);
 		log.info("================= rentAble ={}",rentAble);
 		return productService_kdh.rentOrderStatusSize(rentAble);
+	}
+	
+	@GetMapping("/products/{productId}")
+	public String product(@PathVariable Long productId, Model model) {
+		ProductDetailResponseDto responseDto = productService_kdh.findByProductIdForProductDetail(productId);
+		List<ProductListDto> list = productService_kdh.findByMemberIdExceptProductWithProductId(responseDto.getMemberId(), productId);
+		
+		model.addAttribute("product", responseDto);
+		model.addAttribute("productList", list);
+		return "Project_product_details";
 	}
 	
 	
