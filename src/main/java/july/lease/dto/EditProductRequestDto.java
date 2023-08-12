@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import july.lease.domain.ProductImage;
 import july.lease.domain.RentDate;
+import july.lease.validation.ValidFiles;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -34,7 +35,7 @@ public class EditProductRequestDto {
 	private List<String> rentAbleStartDate;
 	@NotNull
 	private List<String> rentAbleEndDate;
-	@Size(min=1, max=8)
+	@ValidFiles(max=8)
 	private List<MultipartFile> images;
 //	@NotBlank
 //	private String location;

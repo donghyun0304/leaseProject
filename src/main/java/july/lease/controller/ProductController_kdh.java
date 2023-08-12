@@ -24,6 +24,7 @@ import july.lease.dto.RentAbleRequestDto;
 import july.lease.service.MemberServiceImpl;
 import july.lease.service.OrdersService;
 import july.lease.service.ProductService_kdh;
+import july.lease.service.RentDateService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,6 +35,7 @@ public class ProductController_kdh {
 	
 	private final ProductService_kdh productService_kdh;
 	private final OrdersService ordersService;
+	private final RentDateService rentDateService;
 	
 	@GetMapping("/products/add")
 	public String addForm(@ModelAttribute("product") AddProductDto productDto) {
@@ -72,7 +74,7 @@ public class ProductController_kdh {
 		productRequest.setCategoryId3(productResponse.getCategoryId3());
 		//로그인한 회원이 올린 상품인지 확인
 		if(productResponse.getMemberId() != memberId){
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 		}
 		
 		model.addAttribute("productResponse", productResponse);
@@ -125,11 +127,14 @@ public class ProductController_kdh {
 		ProductDetailResponseDto responseDto = productService_kdh.findByProductIdForProductDetail(productId);
 		List<ProductListDto> list = productService_kdh.findByMemberIdExceptProductWithProductId(responseDto.getMemberId(), productId);
 		String orderRentDateStr = ordersService.findOrderRentDateByProductId(productId);
+		String rentDateStr = rentDateService.findRentAbleDateByProductId(productId);
 		
 		model.addAttribute("product", responseDto);
 		model.addAttribute("productList", list);
 		model.addAttribute("productsCount", list.size()+1);
 		model.addAttribute("orderRentDate", orderRentDateStr);
+		model.addAttribute("rentDate", rentDateStr);
+	
 		
 		return "Project_product_details";
 	}

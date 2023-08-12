@@ -37,7 +37,7 @@
 			   from rent_date a
 			   inner join orders b 
 			   		on a.rent_date_id = b.rent_date_id
-			   where a.product_id = #{productId} and b.order_confirm_status in (1,2)
+			   where a.product_id = #{productId} and b.order_confirm_status in (2,3,4)
 	</select>
 	
 	<select id="rentOrderStatusSize" resultType="int">
@@ -54,6 +54,15 @@
 		from rent_date
 		where rent_date_id = #{rentDateId}
 	</delete>
+	
+	<select id="findRentAbleDateByProductId" resultType="String">
+		select 
+		to_char(a.rent_able_start_date,'yyyy-mm-dd') || '|' || to_char(a.rent_able_end_date, 'yyyy-mm-dd') as rent_date
+		from rent_date a
+		inner join product b
+		on a.product_id = b.product_id
+		where b.product_id = #{productId}
+	</select>
 	
 	
 	

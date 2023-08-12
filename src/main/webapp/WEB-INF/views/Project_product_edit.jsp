@@ -30,15 +30,18 @@
                 <div class='view_image_click'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width='2rem'>
                         <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-                    <span>사진은 최대 8장까지 가능합니다.</span>
+                    <span>사진은 최소 1장부터 최대 8장까지 가능합니다.</span>
                 </div>
+                <c:if test="${productResponse.images !=null}">
                 <c:forEach var="image" items="${productResponse.images}">
             		<div class="view_image">
                 		<img src="../../../../resources/images/${image.storeImageName}" alt="${image.uploadImageName}" width="320" height="320"/>
             		</div>
         		</c:forEach>
+        		</c:if>
+   
             </div>
-            <input type = "file" name="images" class = "real-upload" accept="image/*" id = "fileUpload" required multiple><br>
+            <input type = "file" name="images" class = "real-upload" accept="image/*" id = "fileUpload" multiple><br>
         </div>
     </div>
     <hr>

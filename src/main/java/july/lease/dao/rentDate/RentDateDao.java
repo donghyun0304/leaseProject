@@ -52,5 +52,21 @@ public class RentDateDao {
 			rentDateMapper.delete(rentDate.getRentDateId());	
 		}
 	}
+	
+	public String findRentAbleDateByProductId(Long productId) {
+		List<String> rentDates = rentDateMapper.findRentAbleDateByProductId(productId);
+		log.info("RentDateDao findRentAbleDateByProductId={}", rentDates);
+		
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<rentDates.size(); i++) {
+		    sb.append(rentDates.get(i));
+		    if(rentDates.size()-1 != i) {
+		        sb.append(",");
+		    }
+		}
+		log.info("RentDateDao findRentAbleDateByProductId={}", sb.toString());
+		
+		return sb.toString();
+	}
 
 }
