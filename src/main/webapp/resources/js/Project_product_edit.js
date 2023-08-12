@@ -162,39 +162,39 @@ window.addEventListener('load',function(){
 		})
 	}
 
-	function getMoreList(list){
-
-		var locate = document.querySelector(".myLeaseStatus");
-		var moreBox = document.querySelector(".moreBox");
-		var length = list.length;
-
-		for (var i=0;i<length;i++){
-			var result = list[i];
-			var content = '';
-			if (result.productId != ''){
-	           	content +=  "<li class='productIdx'><a href='#'>" + result.productId + "</a></li>"
-	           	content +=  "<li class='productImage'><a href='#'><img src='../../resources/images/" + result.productImage + "' alt=''></a></li>"
-	           	content +=  "<li class='productTitle'><a href='#'>" + result.productName + "</a></li>"
-	           	content +=  "<li class='productLeaseStartDate'><a href='#'>" + result.startDate + "</a></li>"
-	           	content +=  "<li class='productLeaseEndDate'><a href='#'>" + result.endDate + "</a></li>"
-	           	content +=  "<li class='productLeaseDay'><a href='#'>" + result.countDate + "일</a></li>"
-	           	content +=  "<li class='productLeaseStatus'><a href='#'>" + result.memberName + "</a></li>"
-	           	content +=  "<li class='productLeaseConfirm'>"
-	           	content +=      "<button class='confirmBtn " + result.orderId + "'>확정</button>"
-	           	content +=       "<button class='cancelBtn " + result.orderId + "'>보류</button>"
-	           	content +=   "</li>"
-				const tempUl = document.createElement("ul");
-				tempUl.classList.add("listMain");
-				tempUl.innerHTML = content;
-				locate.insertBefore(tempUl, moreBox);
-			}
-		}
-		moreBox = document.querySelector(".moreBox");
-		if (list.length < 5){
-			moreBox.remove();
-		}
-
-	}
+//	function getMoreList(list){
+//
+//		var locate = document.querySelector(".myLeaseStatus");
+//		var moreBox = document.querySelector(".moreBox");
+//		var length = list.length;
+//
+//		for (var i=0;i<length;i++){
+//			var result = list[i];
+//			var content = '';
+//			if (result.productId != ''){
+//	           	content +=  "<li class='productIdx'><a href='#'>" + result.productId + "</a></li>"
+//	           	content +=  "<li class='productImage'><a href='#'><img src='../../resources/images/" + result.productImage + "' alt=''></a></li>"
+//	           	content +=  "<li class='productTitle'><a href='#'>" + result.productName + "</a></li>"
+//	           	content +=  "<li class='productLeaseStartDate'><a href='#'>" + result.startDate + "</a></li>"
+//	           	content +=  "<li class='productLeaseEndDate'><a href='#'>" + result.endDate + "</a></li>"
+//	           	content +=  "<li class='productLeaseDay'><a href='#'>" + result.countDate + "일</a></li>"
+//	           	content +=  "<li class='productLeaseStatus'><a href='#'>" + result.memberName + "</a></li>"
+//	           	content +=  "<li class='productLeaseConfirm'>"
+//	           	content +=      "<button class='confirmBtn " + result.orderId + "'>확정</button>"
+//	           	content +=       "<button class='cancelBtn " + result.orderId + "'>보류</button>"
+//	           	content +=   "</li>"
+//				const tempUl = document.createElement("ul");
+//				tempUl.classList.add("listMain");
+//				tempUl.innerHTML = content;
+//				locate.insertBefore(tempUl, moreBox);
+//			}
+//		}
+//		moreBox = document.querySelector(".moreBox");
+//		if (list.length < 5){
+//			moreBox.remove();
+//		}
+//
+//	}
     
     
     

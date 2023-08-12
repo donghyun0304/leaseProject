@@ -108,8 +108,19 @@ public class ProductService_kdh {
 	public void editProduct(Long productId, EditProductRequestDto productRequestDto) throws IOException {
 		
 		List<MultipartFile> images = productRequestDto.getImages();
+		log.info("editProduct images={}",images);
+		
+		//실제로 파일이 첨부됐는지 확인하는 로직
+		boolean allFilesEmpty = true;
+		for (MultipartFile file : images) {
+		    if (!file.isEmpty()) {
+		        allFilesEmpty = false;
+		        break;
+		    }
+		}
+		
 		//MultipartFile이 1개 이상이면 모든 이미지 삭제
-		if(images.size()>0) {
+		if(!allFilesEmpty) {
 			//DB에 있는 이미지 객체 먼저 찾고
 			List<ProductImage> findImagesInDB = productImageDao.findAllByProductId(productId);
 			log.info("ProductService_kdh editProduct 실행확인");
