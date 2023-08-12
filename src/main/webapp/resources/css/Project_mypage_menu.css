@@ -20,8 +20,8 @@
     --border-color: #b0b0b0;
     --main-color: rgb(0, 0, 0);
     --main-color-hover: rgb(80, 80, 80);
-    --main-font-color: rgb(0, 0, 0);
-    --main-font-color-hover: rgb(255, 255, 255);
+    --main-font-color: rgb(255, 255, 255);
+    --main-font-color-hover: rgb(0, 0, 0);
     --confirm-color: rgb(83, 216, 127);
     --cancel-color: rgb(253, 105, 105);
     --confirm-color-hover: rgb(75, 174, 108);
@@ -56,6 +56,7 @@ aside{
 
 .myMenuList{
     font-size: 1.2rem;
+    padding: 0px;
 }
 
 .myMenu{

@@ -106,7 +106,9 @@ ul{
 }
 
 
-.editInfo_button a{
+.editInfo_button input[type=submit]{
+    background-color: var(--main-color);
+    border: none;
     width: 100%;
     height: 100%;
     display: inline-block;
@@ -118,7 +120,7 @@ ul{
     border-radius: 0.5rem;
 }
 
-.editInfo_button a:hover{
+.editInfo_button input[type=submit]:hover{
     background-color: var(--main-color-hover);
     color: #ebebeb;
     
@@ -132,4 +134,9 @@ ul{
     max-height: 30rem;
     box-shadow: 2px 2px 5px rgb(185, 185, 185);
     
+}
+
+.errors{
+    text-align: center;
+    color: red;
 }
