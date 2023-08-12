@@ -14,12 +14,10 @@ import july.lease.dto.MyAllMessageListDto;
 import july.lease.dto.ProductMessageInfoDto;
 import july.lease.service.MessageService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
-@Slf4j
-public class MessageViewContrlloer_ksh extends RuntimeException{
+public class MessageViewContrlloer_ksh{
 	
 	private final MessageService messageService;
 

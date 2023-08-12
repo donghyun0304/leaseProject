@@ -46,7 +46,7 @@
 		categoryS.forEach((pCate, categoryId)=>{
 			category += "<li><a href = '/list?categoryName="+pCate.categoryName+"&categoryId="+pCate.categoryId+"' id = 'category-size'>"+pCate.categoryName+"<span>∨</span></a>";
 			
-			if(pCate.subcategory) {2
+			if(pCate.subcategory.length>0) {
 				category += "<ul class = 'submenu'>";
 				pCate.subcategory.forEach(subCate => {
 					category += "<li><a href = '/list?categoryName="+subCate.categoryName+"&categoryId="+subCate.categoryId+"' id = 'subcategory-size'>"+subCate.categoryName+"</a></li>";				
@@ -98,7 +98,7 @@
             </ul>
         </div>
         <div class='head'>
-            <div class='logo'><a href="/">로고자리</a></div>
+            <div class='logo'><a href="/"><img src="../../../../resources/images/rogo.png" alt="" class= "img" style="width: 100%;"></a></div>
             
             
             <!-- 검색 폼 시작 -->
