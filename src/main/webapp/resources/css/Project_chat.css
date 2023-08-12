@@ -34,6 +34,7 @@ a{
 body{
     width: 100%;
     height: 100%;
+
 }
 
 header{
@@ -115,8 +116,6 @@ main{
     overflow: auto;
     overflow-y: auto;
     width: 100%;
-    height: 37.5rem;
-    /* max-height: 35rem; */
     background-color: rgb(249, 249, 249);
 }
 
@@ -160,10 +159,8 @@ main{
 
 .chatBox{
     width: 100%;
-    min-height: 8rem;
     padding: 0.3rem 1rem;
     overflow: scroll;
-
 }
 
 .yourinfo, .myinfo{

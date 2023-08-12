@@ -151,7 +151,7 @@
     	<!-- 제품정보 끝 -->
 
     	<!-- 메세지 시작 -->
-        <div class="chatRoom" id="chatRoom" style="height: 100%;">
+        <div class="chatRoom" id="chatRoom" style="height: 100%; min-height: 31rem">
             
         </div>
         <!-- 메세지 끝 -->
