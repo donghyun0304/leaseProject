@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-public class MessageDataController_ksh extends CommonRestController{
+public class MessageDataController_ksh{
 	
 	private final MessageService messageService;
 	
@@ -46,7 +46,7 @@ public class MessageDataController_ksh extends CommonRestController{
 		
 		try {
 			int res = messageService.insertMessage(msgVo);
-			map = responseMap(res, "등록");
+			map.put("result", "success");
 					
 		}catch (Exception e) {
 			map.put("result", "fail");
