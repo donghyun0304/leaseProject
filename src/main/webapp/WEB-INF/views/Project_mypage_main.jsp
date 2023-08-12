@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
     <link rel="stylesheet" href="../../resources/css/Project_mypage_main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../resources/js/Project_mypage_main.js"></script>
 </head>
 <%@include file="../includes/Project_header.jsp" %>
 <body>
@@ -66,42 +69,37 @@
                         <li>신청인</li>
                         <li>대여확정</li>
                     </ul>
-                    <c:forEach var="item" items="${confirmInfo}">
-                    	 <ul class='listMain'>
-	                        <li class='productIdx'><a href="#">${item.productId}</a></li>
-	                        <li class='productImage'><a href="#"><img src="../../resources/images/${item.productImage}" alt=""></a></li>
-	                        <li class='productTitle'><a href="#">${item.productName}</a></li>
-	                        <li class='productLeaseStartDate'><a href="#">${item.startDate}</a></li>
-	                        <li class='productLeaseEndDate'><a href="#">${item.endDate}</a></li>
-	                        <li class='productLeaseDay'><a href="#">${item.countDate}일</a></li>
-	                        <li class='productLeaseStatus'><a href="#">대기중</a></li>
-	                        <li class='productLeaseConfirm'>
-	                            <button class='confirmBtn'>확정</button>
-	                            <button class='cancelBtn'>보류</button>
-	                        </li>
-	                    </ul>
-                    </c:forEach>
-                </div>
-
-                <div class='itemList'>
-                    <div class='myPageTitle'><a href="#">내 물건 ></a></div>
-                    <div class='items'>
-                    
-                    	<c:forEach var="item" items="${getMyItems}" end="3">
-	                        <div class='item'>
-	                            <a href="#">
-	                                <div class='itemImage'>
-	                                    <img src="../../resources/images/${item.productImage }" alt="">
-	                                </div>
-	                                <div class='itemTitle'>${item.productName }</div>
-	                                <div class='itemPrice'>
-	                                    <div class='price'>${item.productPrice}원</div>
-	                                    <div class='price_day'>/일</div>
-	                                </div>
-	                            </a>
-	                        </div>
-                        </c:forEach>
-                    </div>
+                    <c:set var="check" value="${confirmInfo}"/>
+                    <c:choose>
+                    	<c:when test="${empty check}">
+                    		<ul class="listMain empty"><span>대여요청이 없습니다.</span></ul>
+                    	</c:when>
+                    	<c:otherwise>
+		                    	<c:forEach var="item" items="${check}" end="4">
+				                    	 <ul class='listMain'>
+					                        <li class='productIdx'><a href="#">${item.productId}</a></li>
+					                        <li class='productImage'><a href="#"><img src="../../resources/images/${item.productImage}" alt=""></a></li>
+					                        <li class='productTitle'><a href="#">${item.productName}</a></li>
+					                        <li class='productLeaseStartDate'><a href="#">${item.startDate}</a></li>
+					                        <li class='productLeaseEndDate'><a href="#">${item.endDate}</a></li>
+					                        <li class='productLeaseDay'><a href="#">${item.countDate}일</a></li>
+					                        <li class='productLeaseStatus'><a href="#">${item.memberName }</a></li>
+					                        <li class='productLeaseConfirm'>
+					                            <button class='confirmBtn ${item.orderId }'>확정</button>
+					                            <button class='cancelBtn ${item.orderId }'>보류</button>
+					                        </li>
+					                    </ul>
+				                    </c:forEach>
+			                    <c:if test="${fn:length(check) > 5}">
+				                    <div class="moreBox">
+				                        <button class="getMore">
+				                            <span>더보기</span>
+				                            <svg width="0.7rem" height="0.7rem" viewBox="0 0 9 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 6L8.39711 0.75H0.602886L4.5 6Z" fill="currentColor"></path></svg>
+				                        </button>
+				                    </div>
+			                    </c:if>
+                    	</c:otherwise>	
+                    </c:choose>
                 </div>
             </div>
         </div>

@@ -20,8 +20,8 @@
     --border-color: #b0b0b0;
     --main-color: rgb(0, 0, 0);
     --main-color-hover: rgb(80, 80, 80);
-    --main-font-color: rgb(0, 0, 0);
-    --main-font-color-hover: rgb(255, 255, 255);
+    --main-font-color: rgb(255, 255, 255);
+    --main-font-color-hover: rgb(0, 0, 0);
     --confirm-color: rgb(83, 216, 127);
     --cancel-color: rgb(253, 105, 105);
     --confirm-color-hover: rgb(75, 174, 108);
@@ -137,6 +137,11 @@ main{
     height: 7rem;
 }
 
+.listMain.empty span{
+	color: #b0b0b0;
+    width: 100%;
+}
+
 .leaseTitle{
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
@@ -226,74 +231,19 @@ main{
     background-color: var(--cancel-color-hover);
 }
 
+.moreBox{
+    width: 100%;
+    text-align: center;
+}
+
+.getMore{
+    width: 5rem;
+    height: 2rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    color: #949494;
+    background-color: rgba(255, 255, 255, 0);
+}
+
 /*끝*/
-
-/* itemList 시작 */
-
-.itemList{
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.items{
-    display: flex;
-    gap: 1rem;
-}
-
-.items .item{
-    width: 13.8rem;
-    height: 19rem;
-    border-radius: var(--border-radius);
-    box-shadow: 2px 2px 5px rgb(185, 185, 185);
-}
-
-.itemImage{
-    width: 100%;
-    height: 13.675rem;
-}
-
-.itemImage img{
-    width:100%;
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
-}
-
-.itemTitle{
-    width: 100%;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    padding: 0 1rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.itemPrice{
-    width: 100%;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    padding-left: 1rem;
-    display: flex;
-    gap: 0.3rem;
-    justify-content: flex-end;
-}
-
-.itemPrice .price{
-    font-size: 1.4rem;
-    font-weight: bold;
-}
-
-.itemPrice .price_day{
-    line-height: 3rem;
-    margin-right: 0.5rem;
-}
-
-
-.leaseList{
-    width: 100%;
-    margin-top: 1rem;
-}
-/* itemList 끝 */
-
-
-
