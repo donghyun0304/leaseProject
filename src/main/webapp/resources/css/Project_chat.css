@@ -56,7 +56,7 @@ main{
 .thead{
     width: 100%;
     height: 6rem;
-    background-color: rgb(238, 238, 238);
+    background-color: #d9caaa;
     display: flex;
     align-items: center;
     margin: 0;
@@ -73,6 +73,8 @@ main{
 .Product_image img{
     width: 5rem;
     height: 5rem;
+    border-radius: 70%;
+    overflow: hidden;
    /*border-radius: 3rem;*/
 }
 
@@ -88,15 +90,26 @@ main{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    color: #454438;
 }
 
 .Product_subinfo{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    color: #8b8b8b;
+    color: #454438;
 }
 
+.Product_seller{
+	color: #454438;
+}
+
+.Product_date{
+	color: #454438;
+}
+#backBtn{
+	color: #454438;
+}
 .chatRoom{
 	position: relative;
     overflow: auto;
@@ -110,13 +123,13 @@ main{
 .tfoot{
     width: 100%;
     height: 8rem;
-    background-color: rgb(224, 224, 224);
+    background-color: #d9caaa;
     display: flex;
 }
 
 .tfootBox{
     width: 95%;
-    border: 1px solid black;
+    border: 1px solid #949058;
     margin: 0.8rem;
     background-color: white;
     display: flex;
@@ -172,6 +185,10 @@ main{
     border-radius: 0.7rem;
     word-break: break-all;
     display: inline-block;
+}
+
+.yourId, .myId{
+	color: #454438;
 }
 
 .yourChat{

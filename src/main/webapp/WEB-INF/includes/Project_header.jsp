@@ -12,16 +12,6 @@
 <script type="text/javascript">
 
 	window.addEventListener('load', function() {
-	
-		// 쿼리파라미터
-		const queryString = window.location.search;
-		const params = new URLSearchParams(queryString);
-		const alertMessage = params.get('alertMessage');
-		
-		
-		if(alertMessage !== '' && alertMessage !== null){
-			alert(alertMessage);
-		}
 		
 		// 카테고리 
 		fetchGet('/category', categoryList);
@@ -54,7 +44,7 @@
 		
 		// 맵에서 카테고리 대분류 찍고 중분류있으면 서브메뉴 만들기
 		categoryS.forEach((pCate, categoryId)=>{
-			category += "<li><a href = '/list?categoryName="+pCate.categoryName+"&categoryId="+pCate.categoryId+"' id = 'category-size'>"+pCate.categoryName+"</a>";
+			category += "<li><a href = '/list?categoryName="+pCate.categoryName+"&categoryId="+pCate.categoryId+"' id = 'category-size'>"+pCate.categoryName+"<span>∨</span></a>";
 			
 			if(pCate.subcategory) {2
 				category += "<ul class = 'submenu'>";

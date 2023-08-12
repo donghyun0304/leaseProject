@@ -85,7 +85,6 @@
 			})	
 		} else {
 			yourId=${pInfo.memberId};
-			console.log("yourId",yourId);
 		}
 
 		chatRoom.innerHTML=msgDivStr;
@@ -95,8 +94,6 @@
 	
 	// 메세지 보내기
 	function msgWrite(){
-		console.log("버튼이벤트 테스트");
-		
 		// 1. 파라메터 수집
 		let myId = document.querySelector('[name=memberId]').value;
 		let productId = document.querySelector('[name=productId]').value;
@@ -132,9 +129,9 @@
 <body>
 <wrap>
 
-	<input type="text" value="${memberId}" style=" display:znone; " name="memberId">
-	<input type="text" value="${productId}" style=" display:znone; " name="productId">
-	<input type="text" value="${roomNo}" style=" display:znone; " name="roomNo">
+	<input type="text" value="${memberId}" style=" display:none; " name="memberId">
+	<input type="text" value="${productId}" style=" display:none; " name="productId">
+	<input type="text" value="${roomNo}" style=" display:none; " name="roomNo">
     <main>
     	<!-- 제품정보 시작 -->
         <div class="thead" style="position: sticky; top:0; z-index: 100;">
@@ -149,7 +146,7 @@
                     
                 </div>
             </div>
-            <a href="/members/${memberId}/messages">나가기</a>
+            <a id="backBtn" href="/members/${memberId}/messages">나가기</a>
         </div>
     	<!-- 제품정보 끝 -->
 
