@@ -59,8 +59,6 @@
 </head>
 <body>
 <div class="container">
-		<input type="text" name="alertM" id="alertM" value="${alertMessage}"> 
-
         <header>
             <h1 id="headerN" >쪽지함</h1>
             <div id="checkA" "><input type="checkbox" value="전체선택" id = "checkAll"> 

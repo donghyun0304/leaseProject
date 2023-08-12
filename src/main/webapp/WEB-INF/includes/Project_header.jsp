@@ -79,7 +79,6 @@
 </script>
 </head>
 <body>
-memberId: ${memberId}
     <header>
         <div class='header_top'>
             <ul class='header_top_menu'>
