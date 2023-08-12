@@ -282,16 +282,23 @@ header .head{
 }
 
 .submenu{
-    overflow: hidden;
+    display: none;
     padding: 0;
+    
+}
+
+.submenu li{
+    padding: 0.5rem;
+    
 }
 
 .categoryMenu li{
-    
     width: 180px;
     height: 40px;
     position: relative;
     float: left;
+
+    
  
 }
 
@@ -309,32 +316,36 @@ header .head{
     border-radius: 0.5rem;
     font-family: 'Pretendard_light';
     
+    color: #454438;
+    
 }
 
 .categoryMenu li a:hover{
-    background-color: lightgray;
-    color: white;
+    color: #d9caaa;
 }
 
 .categoryMenu li a:hover + .submenu,  .submenu:hover{
+	display: block;
+	background-color: white;
     max-height: 500px;
 }
 
 .submenu{
     float: left;
     max-height: 3px;
-    transition: 1s;
     z-index: 200;
-    background-color: whitesmoke;
-    border-radius: 0.5rem;
+    /*background-color: #efe9da;;*/
+    border-radius: 0.4rem;
+    border : 1px solid #454438;
     width: 120px;
     position: relative;
+    align-self: center;
+    padding-left: 0.5rem;
 }
 
 .categoryMenu .submenu li {
 	z-index:300;
-    margin-left: 1rem;
-    
+	padding: 0 0.5rem;
 }
 
 .categoryMenu .submenu li a{

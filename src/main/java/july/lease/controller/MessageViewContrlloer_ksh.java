@@ -1,7 +1,5 @@
 package july.lease.controller;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class MessageViewContrlloer_ksh {
+public class MessageViewContrlloer_ksh extends RuntimeException{
 	
 	private final MessageService messageService;
 
@@ -33,12 +31,10 @@ public class MessageViewContrlloer_ksh {
 		HttpSession session = request.getSession();
 		Long sessionMemberId = (Long)session.getAttribute("memberId");
 		
-		String alertMessage = "잘못된 접근입니다.";
-		String encodedMessage = URLEncoder.encode(alertMessage, StandardCharsets.UTF_8);
 		
 		// url접근 막기
 		if (sessionMemberId != memberId) {
-			return "redirect:/?alertMessage="+encodedMessage;
+			throw new IllegalStateException();
 		} 
 		
 		if(roomNo == 0L) {
@@ -59,12 +55,10 @@ public class MessageViewContrlloer_ksh {
 		HttpSession session = request.getSession();
 		Long sessionMemberId = (Long)session.getAttribute("memberId");
 		
-		String alertMessage = "잘못된 접근입니다.";
-		String encodedMessage = URLEncoder.encode(alertMessage, StandardCharsets.UTF_8);
 		
 		// url접근 막기
 		if (sessionMemberId != memberId) {
-			return "redirect:/?alertMessage="+encodedMessage;
+			throw new IllegalStateException();
 		} 
 		
 		List<MyAllMessageListDto> allChatList = messageService.getMyAllMessageList(memberId);
