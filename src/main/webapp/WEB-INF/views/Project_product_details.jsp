@@ -1,155 +1,194 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>${product.productName } : 상세페이지</title>
     <link rel="stylesheet" href="../../resources/css/Project_product_details.css">
+    <link rel="stylesheet" href="../../resources/css/Project_product_details_calendar.css">
     <link rel="stylesheet" href="../../resources/css/calendar_one.css">
     <script src="../../resources/js/project_product_details.js"></script>
-    <script src='../../resources/js/calendar_one.js'></script>
+    <script src='../../resources/js/Project_product_details_calendar.js'></script>
 </head>
 <%@include file="../includes/Project_header.jsp" %>
 <body>
       <main>   
-        <div class="product">
+          <div class="product">
             <div class='product_section_one'>     
                 
                 <div id="container" >               
                     <button class="arrow" id="left">&lang;</button>  
                     <button class="arrow" id="right">&rang;</button>
                 </div>          
-                <div class = "small_image_list">
-                    <img src="image/tent1.jpg" class='small_image' onclick="doShow(this.src)"/></li>            
-                    <img src="image/tent2.jpeg" class='small_image' onclick="doShow(this.src)"/></li>            
-                    <img src="image/tent3.jpeg" class='small_image' onclick="doShow(this.src)"/></li>            
-                    <img src="image/tent4.jpeg" class='small_image' onclick="doShow(this.src)"/></li>            
-                    <img src="image/tent5.jpg" class='small_image' onclick="doShow(this.src)"/></li>        
-                    <img src="image/tent1.jpg" class='small_image' onclick="doShow(this.src)"/></li>            
-                    <img src="image/tent2.jpeg" class='small_image' onclick="doShow(this.src)"/></li>            
-                    <img src="image/tent3.jpeg" class='small_image' onclick="doShow(this.src)"/></li>            
-                  
-                </div> 
             </div>
       
-            <div class='product_section_two'>
-                <div class='product_info'>
-                    <div class='info_part' style='width: 20rem;'>
-                        상품 제목 <br>
-                        10,000 원
-                    </div>                    
-                    <div class='info_part'>
-                        <button id='edit_button' >수정하기</button>
+            <form action="#" method="post">
+                <div class='product_section_two'>
+                    <div class='product_info'>
+                        <div class="product_title">${product.productName }</div>
+                        <div class="product_price">${product.productPrice }원/일</div>
                     </div>
-                </div>
-            
-                <input type="text" name="" id="subStartDate" class='hidden'>
-                <input type="text" name="" id="subEndDate" class='hidden'>
-                <div class='subCalendar'>
-                    <div class='subCal_header'>
-                        <h3>대여일</h3>
+                    <hr>
+                    <div class="product_details_info">
+                        <div class="product_rent_count">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+                            <span>0</span>
+                        </div>
+                        <div class="product_view_count">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>
+                            <span>0</span>
+                        </div>
+                        <div class="product_upload_date">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
+                            <span>0000-00-00</span>
+                        </div>
                     </div>
-                    <div class='subCal toCal'> <!-- toCal 없애야함-->
-                        <div class='subCalTop'>
-                            <span id='subPreBtn'>
-                                <svg transform='rotate(180)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                    <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
-                            </span>
-                            <div>
-                                <span id='subPreYear'></span>
-                                <span>.</span>
-                                <span id='subPreMonth'></span>
+                    
+                    <div class="product_status">
+                        <div class="product_location_form">
+                            <div class="product_label">거래지역</div>
+                            <div class="product_info_location">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                                <span>서울</span>
+                            </div>
+                        </div>
+                        <div class="product_label_form">
+                            <div class="product_label">카테고리</div>
+                            <ul class='product_tag_list'>
+                                <li class='tagbox'><a href="#">#텐트</a></li>
+                                <li class='tagbox'><a href="#">#캠핑</a></li>
+                                <li class='tagbox'><a href="#">#아웃도어</a></li>    
+                            </ul>
+                        </div>
+                        <div class="product_rent_date_form">
+                            <div class="product_label">대여가능일</div>
+                            <div class="product_info_rent_date">
+                                <input type="text" name="" id="subStartDate" class='hidden'>
+                                <input type="text" name="" id="subEndDate" class='hidden'>
+                                <input type="text" name="" id="possibleDate" value='${orderRentDate }' hidden>
+                                <input type="text" name="" id='impossibleDate' value='${rentDate }' hidden>
+                                <div class='subCalendar'>
+                                    <div class='subCal toCal'>
+                                        <div class='subCalTop'>
+                                            <span id='subPreBtn'>
+                                                <svg transform='rotate(180)' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                    <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+                                            </span>
+                                            <div>
+                                                <span id='subPreYear'></span>
+                                                <span>.</span>
+                                                <span id='subPreMonth'></span>
+                
+                                            </div>
+                                            <span id='subNextBtn'>
+                                                <svg width='0.8rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+                                            </span>
+                                        </div>
+                                        <ul class='subWeekTitle'>
+                                            <li class="subCol">일</li>
+                                            <li class="subCol">월</li>
+                                            <li class="subCol">화</li>
+                                            <li class="subCol">수</li>
+                                            <li class="subCol">목</li>
+                                            <li class="subCol">금</li>
+                                            <li class="subCol">토</li>
+                                        </ul>
+                                        <ul class='subDays'>
+                
+                                        </ul>
+                                    </div>
+                                    <div id='subSearchForm'>
+                                        <div>
+                                            <span>시작일 : </span>
+                                            <span class="subStart">0000-00-00</span>
+                                        </div>
+                                        <div>
+                                            <span>종료일 : </span>
+                                            <span class="subEnd">0000-00-00</span>
+                                        </div>
+                                    </div>
+                                </div>             
 
                             </div>
-                            <span id='subNextBtn'>
-                                <svg width='0.8rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
-                            </span>
                         </div>
-                        <ul class='subWeekTitle'>
-                            <li class="subCol">일</li>
-                            <li class="subCol">월</li>
-                            <li class="subCol">화</li>
-                            <li class="subCol">수</li>
-                            <li class="subCol">목</li>
-                            <li class="subCol">금</li>
-                            <li class="subCol">토</li>
-                        </ul>
-                        <ul class='subDays'>
+                    </div>
 
-                        </ul>
+                    <div class="product_buttons">
+                        <button class="chat">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z"/></svg>
+                            <span>쪽지</span>
+                        </button>
+                        <button type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+                            <span>대여하기</span>
+                        </button>
                     </div>
-                    <div id='subSearchForm'>
-                        <div>
-                            <span>시작일 : </span>
-                            <span class="subStart">0000-00-00</span>
-                        </div>
-                        <div>
-                            <span>종료일 : </span>
-                            <span class="subEnd">0000-00-00</span>
+                    <!-- <div class="product_buttons">
+                        <button class="product_edit">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
+                            <span>수정하기</span>
+                        </button>
+                        <button class="product_delete">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>    
+                            <span>삭제하기</span>
+                        </button>
+                    </div> -->
+                </div>
+            </form>
+        </div>
+        
+        <div class='product_detail'>
+            <hr>
+            <div class='detail_section'>
+                <div class="detail_section_detail">
+                    <h4 class='product_detail_title'>상품상세</h4>
+                    <span class='product_detail_content'>
+                        ${product.productContent }
+                    </span>                 
+                </div>         
+                <div class='detail_section_three'>
+                    <h4 class='product_detail_title'>판매자 상점정보</h4>
+                    <div class='user_info'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 640 512"><path d="M36.8 192H603.2c20.3 0 36.8-16.5 36.8-36.8c0-7.3-2.2-14.4-6.2-20.4L558.2 21.4C549.3 8 534.4 0 518.3 0H121.7c-16 0-31 8-39.9 21.4L6.2 134.7c-4 6.1-6.2 13.2-6.2 20.4C0 175.5 16.5 192 36.8 192zM64 224V384v80c0 26.5 21.5 48 48 48H336c26.5 0 48-21.5 48-48V384 224H320V384H128V224H64zm448 0V480c0 17.7 14.3 32 32 32s32-14.3 32-32V224H512z"/></svg>
+                        <div class='user_info_detail'>
+                            <div class='user_nickName'>${productList[0].memberNickname }</div>
+                            <div class='uesr_info_detail_list'>
+                                <div class='user_info_label'>상품</div>
+                                <div class='user_info_value'>${productsCount}</div>
+                            </div>
                         </div>
                     </div>
-                </div>             
-                <div class='tag_list'>
-                    <ul style='padding: 0.5rem 0rem 0rem 0rem;'>
-                        <li class='tagbox'>#텐트 </li>
-                        <li class='tagbox'>#캠핑 </li>
-                        <li class='tagbox'>#아웃도어 </li>    
-                    </ul>                
-                </div>
-                <div class="product_buttons">
-                    <button>찜♥</button>
-                    <button>쪽지</button>
-                    <button>대여하기</button>
-                </div>
+                    <ul class='summary_products'>
+                    	<c:forEach var="item" items="${productList}">
+	                        <li class='summary_product'>
+	                            <a href='#'>
+	                                <img src='../../../../resources/images/${item.storeImageName}'>
+	                                <div>
+	                                    <span class='summary_product_price'>${item.productPrice }원</span>
+	                                </div>
+	                            </a>
+	                        </li>              		
+                    	</c:forEach>
+                    </ul>
+                    
+                    <c:if test="${productsCount - fn:length(productList) - 1 != 0}">           
+	                    <div class='moreBox'>
+	                        <a href="#">
+	                            <span><span>${productsCount - fn:length(productList) - 1 }개</span> 상품 더보기</span>
+	                            <svg width='0.8rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+	                        </a>
+	                    </div>
+	                </c:if>
+                    <hr>
+                </div>            
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class='product_detail'>
-        <hr>
-        <br>
-        <div class='detail_section'>
-            <div class="detail_section_one">
-               
-                <ul><h4 id='product_detail_title'>상품상세</h4>
-                    <li id="product_detail_content">    
-                        상품상세정보입니다.
-                    </li>
-                   
-                </ul>                   
-            </div>     
-            <div class='detail_section_two'></div>     
-            <div class='detail_section_three'>
-                <h4 id='user_store'>판매자 상점정보</h4>
-                    <ul class='user_store_info'>
-                        <li id='user_nickname'>판매자 (닉네임): 짱구야 </li><br>
-                        <li id='sell_products'>판매중인 상품 : </li>
-                            <table class='sell_product'>
-                                <tr class='sell_item_list' id='sell_item1'>
-                                    <td><img src='image/tent1.jpg'></td>
-                                    <td class='item_info'>텐트1 / 50,000 원 / 일 </td>
-                                </tr>
-                                <tr class='sell_item_list' id='sell_item2'>
-                                    <td><img src='image/tent2.jpeg'></td>
-                                    <td class='item_info'>텐트2 / 50,000 원 / 일 </td>
-                                </tr>
-                                <tr class='sell_item_list' id='sell_item3'>
-                                    <td><img src='image/tent3.jpeg'></td>
-                                    <td class='item_info'>텐트3 / 50,000 원 / 일 </td>
-                                </tr>
-                            </table>
-                    </ul>
-            </div>            
-        </div>
     </main>
-    <%@include file="../includes/Project_footer.jsp" %>
 </body>
+    <%@include file="../includes/Project_footer.jsp" %>
 </html>
