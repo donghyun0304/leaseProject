@@ -15,8 +15,9 @@ public class MyPageInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
 		String requestURI = request.getRequestURI();
-		
-		String memberId = requestURI.substring(requestURI.lastIndexOf("/")+1); 
+		requestURI = requestURI.replaceAll("/members/", "");
+		requestURI = requestURI.substring(0, requestURI.indexOf("/") == -1 ? requestURI.length() : requestURI.indexOf("/"));
+		String memberId = requestURI; 
 		log.info("마이페이지 인증체크 인터셉터 실행 {}, memberId = {}", requestURI, memberId);
 
 		HttpSession session = request.getSession();
@@ -27,7 +28,7 @@ public class MyPageInterceptor implements HandlerInterceptor{
 			log.info("접속사용자 = {}, 요청된 memberId = {}", sessionValue, memberId);
 			response.sendRedirect("/");
 		}
-
+		log.info("인증된 사용자 접속 승인");
 		return true;
 	}
 
