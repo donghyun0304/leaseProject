@@ -30,7 +30,7 @@ public class MemberController extends CommonRestController {
 		
 	}
 	
-	@GetMapping("/home/kakao")
+	@GetMapping("/kakao")
 	 public String login(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
         String kaccess_Token = memberService.getAccessToken(code);
         Member kakao = memberService.getUserInfo(kaccess_Token);
@@ -57,12 +57,8 @@ public class MemberController extends CommonRestController {
 		} 
 		
         session.setAttribute("memberId", kakao.getMemberId());	
-        if(state==null) {
-        	return "redirect:/";
-        } else {
-        	return "redirect:" + state;
-        }
-        
+     
+        return "redirect:" + state;
     }
 	
 	@GetMapping("/login/naver")
@@ -70,7 +66,7 @@ public class MemberController extends CommonRestController {
 	}
 	
 	
-	@GetMapping("/home/naver")
+	@GetMapping("/naver")
 	public String naverLogin_callback(HttpServletRequest request, Member member, HttpSession session, HttpServletResponse response) {
 		String state = request.getParameter("state");
 		Member nmember = memberService.naverLogin(request);
@@ -95,12 +91,11 @@ public class MemberController extends CommonRestController {
 			}
 		}
 		session.setAttribute("memberId",nmember.getMemberId());
-		
-		if(state==null) {
-        	return "redirect:/";
-        } else {
-        	return "redirect:" + state;
-        }
+		if(!state.equalsIgnoreCase(null)) {
+			return "redirect:" + state;			
+		}else {
+			return "redirect:" + state;
+		}
 	}
 	
 	@GetMapping("/login")
@@ -128,7 +123,7 @@ public class MemberController extends CommonRestController {
 
 			Map<String, Object> map = responseMap(REST_SUCCESS, "");
 			
-			map.put("url", "/");
+			map.put("url", "/home");
 			
 			return map;
 		} else {
@@ -270,5 +265,10 @@ public class MemberController extends CommonRestController {
 		} else {
 			return responseMap(REST_FAIL, "");
 		}
+	}
+	
+	@GetMapping("/mypage_main")
+	public String mypage_main() {
+		return "/Project_mypage_main";
 	}
 }

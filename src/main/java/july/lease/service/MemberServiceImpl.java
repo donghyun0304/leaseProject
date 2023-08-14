@@ -182,7 +182,7 @@ public class MemberServiceImpl implements MemberService {
 	    String code = request.getParameter("code");
 	    String state = request.getParameter("state");
 	    try {
-		    String redirectURI = URLEncoder.encode("http://localhost:8080/home/naver", "UTF-8");
+		    String redirectURI = URLEncoder.encode("http://localhost:8080/naver", "UTF-8");
 		    String apiURL;
 		    apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
 		    apiURL += "client_id=" + clientId;
@@ -257,7 +257,7 @@ public class MemberServiceImpl implements MemberService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=124198d768a446e334a4d562c4c29d2e");
-            sb.append("&redirect_uri=http://localhost:8080/home/kakao");
+            sb.append("&redirect_uri=http://localhost:8080/kakao");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
