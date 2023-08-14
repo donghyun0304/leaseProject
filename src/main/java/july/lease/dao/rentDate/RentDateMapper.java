@@ -3,6 +3,7 @@ package july.lease.dao.rentDate;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import july.lease.domain.RentDate;
 import july.lease.dto.RentAbleRequestDto;
@@ -24,4 +25,7 @@ public interface RentDateMapper {
 	void delete(Long rentDateId);
 	
 	List<String> findRentAbleDateByProductId(Long productId);
+	
+	Long findRentDateIdByRentAbleStartDateAndProductId(
+			@Param("startDate") String rentAbleStartDate, @Param("productId") Long productId);
 }

@@ -37,5 +37,14 @@
 		where b.product_id = #{productId} and a.order_confirm_status in (2,3,4)
 		order by a.order_rent_start_date asc
 	</select>
+	
+	<select id="findByOrderId" resultType="Orders">
+		select order_id, member_id, product_id, rent_date_id, order_create_date,
+			   order_confirm_status, order_rent_start_date, order_rent_end_date,
+			   order_price, order_request
+		from orders
+		where order_id = #{orderId}
+	
+	</select>
     
 </mapper>

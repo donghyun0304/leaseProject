@@ -68,5 +68,11 @@ public class RentDateDao {
 		
 		return sb.toString();
 	}
+	
+	public Long findRentDateIdByRentAbleStartDateAndProductId(String rentAbleStartDate, Long productId ) {
+		Long result = rentDateMapper.findRentDateIdByRentAbleStartDateAndProductId(rentAbleStartDate, productId);
+		log.info("findRentDateIdByRentAbleStartDateAndProductId={}", result);
+		return result;
+	}
 
 }

@@ -596,6 +596,184 @@ header .category{
     height: 100%;
     display: inline-block;
   }
+  
+  #modal-box{
+    /* border: 1px solid black; */
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+  
+    display: none;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: rgba(0, 0, 0, 0.411);
+    z-index: 200;
+  }
+  #modal-box.active{
+    display: flex;
+  }
+  
+  #modal-contents{
+    background-color:#fff;
+    width:600px;
+    padding:20px;
+    border-radius:5px;
+    position:relative;
+  }
+  
+  #modal-contents button {
+    background-color:#fff;
+    color:#ccc;
+    font-size:20px;
+    border:none;
+    outline:none;
+    position:absolute;
+    top:10px;
+    right:10px;
+  }
+  
+  
+  #h2 {
+    font-size:2rem;  
+    margin-bottom:20px ;
+    border: 3px solid red;
+  }
+  #profile {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border:5px solid #ccc;
+    padding:10px;
+  }
+  #desc {
+    margin:10px 20px;
+  }
+  #desc p {
+    font-size:1rem;
+    line-height:1.5;
+  }
+
+  #profile img{
+    width: 100px;
+    height: 100px;
+  }
+
+.productLeaseConfirm{
+    justify-content: space-evenly;
+    line-height: 30px;
+}
+
+.productLeaseConfirm .confirmBtn{
+    background-color: var(--confirm-color);
+}
+
+.productLeaseConfirm .cancelBtn{
+    background-color: var(--cancel-color);
+    
+}
+
+.productLeaseConfirm .confirmBtn:hover{
+    background-color: var(--confirm-color-hover);
+}
+
+.productLeaseConfirm .cancelBtn:hover{
+    background-color: var(--cancel-color-hover);
+}
+
+div #modal-contents{
+   width: 60rem;
+}
+
+div #profile{
+   height: 30rem;
+}
+
+#desc{
+   margin:10px 20px;
+}
+
+#desc p.text-date{
+    font-size:1.2rem;
+    line-height:3rem;
+    width: 30rem;
+    float: center;
+  }
+  
+#desc p.text-num{
+    font-size:1.2rem;
+    line-height:3rem;
+    width: 30rem;
+  }
+  
+ #desc p.text-price{
+    font-size:1.5rem;
+    line-height:3rem;
+    width: 30rem;
+  }
+  
+  #desc p.text-totalPrice{
+    font-size:1.7rem;
+    line-height:5rem;
+    width: 30rem;
+    font-weight: bold;
+  }
+
+div #profile{
+}
+
+div #profile img{
+   width: 12rem;
+   height: 12rem;
+   text-align: center;
+   border-radius: 100%;
+}
+
+div #desc{
+}
+
+
+.image-content{
+    border-right: 3px solid #ddd;
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 3.5rem;
+}
+
+.text-contents{
+    padding: 30px;
+    float: center;
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    line-height: 3rem;
+}
+
+#rent_button:hover{
+    background-color: yellow;
+    border: 0px;
+    border-radius: 3rem;
+    font-size: 1.2rem;
+}
+
+#rent_button{
+   width: 10rem;
+   height: 3rem;
+    border: 0px;
+    border-radius: 3rem;
+    font-size: 1.2rem;
+}
+
+#top-title{
+   line-height: 5rem;
+}
+
+button#close{
+   font-size: 2.2rem;
+}
 
 
 

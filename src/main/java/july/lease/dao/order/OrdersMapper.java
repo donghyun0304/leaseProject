@@ -4,15 +4,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import july.lease.dto.OrderRentDateDto;
-import july.lease.dto.OrderRequestDto;
+import july.lease.domain.Orders;
 
 @Mapper
 public interface OrdersMapper {
 	
 	int checkOrdersIfValid(Long productId);
 	
-	void save(OrderRequestDto order);
+	void save(Orders order);
 	
 	List<String> findOrderRentDateByProductId(Long productId);
+	
+	Orders findByOrderId(Long orderId);
 }
