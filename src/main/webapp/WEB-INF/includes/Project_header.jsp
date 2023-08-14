@@ -12,8 +12,7 @@
 <script type="text/javascript">
 
 	window.addEventListener('load', function() {
-		
-		// 카테고리 
+
 		fetchGet('/category', categoryList);
 
 	})
