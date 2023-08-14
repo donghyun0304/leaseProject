@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import july.lease.domain.Member;
 import july.lease.service.MemberService;
@@ -131,6 +132,16 @@ public class MemberController extends CommonRestController {
 		}
 		
 	}
+	
+	@PostMapping("/logout")
+	public String logout(HttpServletRequest request) {
+	    HttpSession session = request.getSession(false);
+	    if (session != null) {
+	        session.invalidate();
+	    }
+	    return "redirect:/";
+	}
+	
 	
 	@GetMapping("/members/add")
 	public String register() {
