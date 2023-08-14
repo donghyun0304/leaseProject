@@ -124,6 +124,7 @@ public class ProductController_kdh {
 	
 	@GetMapping("/products/{productId}")
 	public String product(@PathVariable Long productId, Model model) {
+		
 		ProductDetailResponseDto responseDto = productService_kdh.findByProductIdForProductDetail(productId);
 		List<ProductListDto> list = productService_kdh.findByMemberIdExceptProductWithProductId(responseDto.getMemberId(), productId);
 		String orderRentDateStr = ordersService.findOrderRentDateByProductId(productId);
@@ -135,7 +136,6 @@ public class ProductController_kdh {
 		model.addAttribute("orderRentDate", orderRentDateStr);
 		model.addAttribute("rentDate", rentDateStr);
 	
-		
 		return "Project_product_details";
 	}
 	
