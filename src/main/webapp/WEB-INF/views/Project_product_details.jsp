@@ -27,7 +27,7 @@
                 </div>          
             </div>
       
-            <form action="#" method="post">
+            <form action="/products/${productId}/orders" method="post">
                 <div class='product_section_two'>
                     <div class='product_info'>
                         <div class="product_title">${product.productName }</div>
@@ -68,10 +68,10 @@
                         <div class="product_rent_date_form">
                             <div class="product_label">대여가능일</div>
                             <div class="product_info_rent_date">
-                                <input type="text" name="" id="subStartDate" class='hidden'>
-                                <input type="text" name="" id="subEndDate" class='hidden'>
-                                <input type="text" name="" id="possibleDate" value='${rentDate }' hidden>
-                                <input type="text" name="" id='impossibleDate' value='${orderRentDate }' hidden>
+                                <input type="text" name="orderRentStartDate" id="subStartDate" class='hidden'>
+                                <input type="text" name="orderRentEndDate" id="subEndDate" class='hidden'>
+                                <input type="text" name="rentDate" id="possibleDate" value='${rentDate}' hidden>
+                                <input type="text" name="" id='impossibleDate' value='${orderRentDate}' hidden>
                                 <div class='subCalendar'>
                                     <div class='subCal toCal'>
                                         <div class='subCalTop'>
@@ -123,10 +123,41 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z"/></svg>
                             <span>쪽지</span>
                         </button>
-                        <button type="submit">
+                        
+                        <div class = "productLeaseConfirm">
+                        <button type="button" id = "product-sellReserve">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                             <span>대여하기</span>
                         </button>
+                        <div id = "modal-box">
+                    		<div id = "modal-contents">
+                    		<button id = "close">&times;</button>
+                    			<h2 id = "top-title">예약 확인</h2>
+                    			<div id = "profile">
+                    			
+                    			<div class = "image-content">
+                    				<img src = "../../../../resources/images/${product.images[0].storeImageName}" alt = ""><br>
+                    			</div>
+                    			
+                    				<div id = "desc">
+                    					<h2>상품명</h2><br>
+                    					<p class = "text-date" id="text-date" name="text-date"></p>
+                    					<p class = "text-num" id = "total-date" name = "total-date">대여일 : </p>
+                    					<p class = "text-price">${product.productPrice}</p>
+                    					
+                    					<p class = "text-totalPrice" id = "totalmodalprice"></p>
+                    					<input type = "text" name="orderPrice" style="display:none;" id = "inputTotalmodalprice">
+                    					
+                    					<div class = "bottom">
+                    					<input type="submit" id = "rent_button" value="대여 신청하기">
+                    					</div>
+                    				</div>
+                    			</div>
+                    		</div>
+                    	</div>
+                        </div>
+                        
+                        
                     </div>
                     <!-- <div class="product_buttons">
                         <button class="product_edit">
@@ -189,6 +220,55 @@
             </div>
         </div>
     </main>
+    <script type = "text/javascript">
+        window.addEventListener('load', function(){
+            let open = document.getElementById('product-sellReserve');
+            let close = document.getElementById('close');
+            let modal = document.getElementById('modal-box');
+    
+            
+            
+            open.addEventListener('click', function(){
+                let startDate = document.querySelector('#subStartDate').value;
+                let endDate = document.querySelector('#subEndDate').value;
+                let modalprice = document.querySelector('.text-price').textContent;
+                
+                console.log("startDate", startDate);
+                console.log("endDate", endDate);
+                console.log("modalprice", modalprice);
+                
+                document.querySelector('#text-date').innerText = '대여 기간 : '+startDate+' ~ '+endDate;
+                
+                var arr1 = startDate.split('-');
+                var arr2 = endDate.split('-');
+                
+                var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+                var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+                
+                var diff = dat2 - dat1;
+                var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
+                var currMonth = currDay * 30; // 월
+                var currYear = currMonth * 12; // 년
+                
+                document.querySelector('#total-date').innerText = '총 일수 : '+ parseInt(diff/currDay) + '박' + parseInt((diff/currDay+1)) + '일';
+                document.querySelector('.text-price').textContent = '가격 : '+modalprice;
+                document.querySelector('#totalmodalprice').innerText = '최종가격 : '+modalprice*parseInt(diff/currDay+1);
+                document.querySelector('#inputTotalmodalprice').value = parseInt(modalprice*parseInt(diff/currDay+1));
+                
+                modal.classList.add('active');
+            });
+    
+            close.addEventListener('click', function(){
+                modal.classList.remove('active');
+            });
+        })
+        
+        // document.getElementById("product-sellReserve").onclick = function(){
+        //     alert("대여 예약 되었습니다.");
+        // };
+        
+        
+        </script>
 </body>
     <%@include file="../includes/Project_footer.jsp" %>
 </html>

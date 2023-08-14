@@ -64,6 +64,14 @@
 		where b.product_id = #{productId}
 	</select>
 	
+	<select id="findRentDateIdByRentAbleStartDateAndProductId" resultType="Long">
+		select a.rent_date_id
+		from rent_date a
+		inner join product b
+			on a.product_id = b.product_id
+		where to_char(a.rent_able_start_date, 'yyyy-mm-dd') = #{startDate} and b.product_id = #{productId}
+	</select>
+	
 	
 	
 	

@@ -23,9 +23,12 @@ public class OrdersDao {
 		return result;
 	}
 	
-	public Orders save(OrderRequestDto order) {
+	public Orders save(Orders order) {
 		ordersMapper.save(order);
-		return null;
+		Orders findOrder = ordersMapper.findByOrderId(order.getOrderId());
+		log.info("save order={}", findOrder);
+		
+		return findOrder;
 	}
 	
 	public String findOrderRentDateByProductId(Long productId){
@@ -42,6 +45,10 @@ public class OrdersDao {
 		log.info("OrdersDao findOrderRentDateByProductId={}", sb.toString());
 		
 		return sb.toString();
+	}
+	
+	public Orders findByOrderId(Long orderId) {
+		return ordersMapper.findByOrderId(orderId);
 	}
 
 }
