@@ -26,7 +26,7 @@ public class OrdersService {
 	public String findOrderRentDateByProductId(Long productId) {
 		String result = ordersDao.findOrderRentDateByProductId(productId);
 		log.info("OrderService findOrderRentDateByProductId={}", result);
-		return result;	
+		return result;		
 	}
 	
 	public Orders save(Long memberId, Long productId, OrderRequestDto orderRequestDto) {

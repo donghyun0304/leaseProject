@@ -127,13 +127,13 @@ window.addEventListener('load',function(){
 			svg.addEventListener('click', function(){
 				let result = svg.parentNode.childNodes;
 				let resultSpan = '';
-				for (let i=0;i<result.length;i++){
-					if (result[i].tagName == "SPAN"){
-						resultSpan = result[i].textContent;
-						break;
-					}
+				for (let i = 0; i < result.length; i++) {
+				    if (result[i].tagName == "SPAN") {
+				        resultSpan = result[i].textContent;
+				        break;
+				    }
 				}
-				let resultArr = result.split(' ~ ');
+				let resultArr = resultSpan.split(' ~ ');
 
 				var rentAbleDate = {
 						rentAbleStartDate : resultArr[0],
@@ -150,7 +150,7 @@ window.addEventListener('load',function(){
 					        // 바로 버튼 삭제
 							svg.parentNode.remove();
 					    } else if (response > 0) {
-					    	alert('이 기간에 주문이 ' + response + '건 조회되었습니다. 삭제를 원할경우 마이페이지에서 대여취소 또는 대여완료를 해주세요.');
+					    	alert('이 기간에 주문이 ' + response + '건 조회되었습니다.\n삭제를 원할경우 마이페이지에서 대여취소 또는 대여완료를 해주세요.');
 					        return;
 					    }
 					},
