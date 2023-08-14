@@ -20,18 +20,11 @@ public interface MemberService {
 	public int nickNameCheck(Member member);
 	public Member naverLogin(HttpServletRequest request);
 	public int ninsert(Member member);
-<<<<<<< HEAD
 	public Member findbyEmailCheck(Member member);
-=======
-	public Member phoneCheck2(Member member);
->>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 	public String getAccessToken (String authorize_code);
 	public Member getUserInfo (String kaccess_Token);
 	public int kinsert(Member member);
 	public Member socialLogin(Member member);
-<<<<<<< HEAD
 	public Member searchPwCheck(Member member);
-=======
->>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 
 }

@@ -16,15 +16,9 @@ public interface MemberMapper {
 	public int searchPw(Member member);
 	public int nickNameCheck(Member member);
 	public int ninsert(Member member);
-<<<<<<< HEAD
 	public Member findbyEmailCheck(Member member);
 	public int kinsert(Member member);
 	public Member socialLogin(Member member);
 	public Member searchPwCheck(Member member);
-=======
-	public Member phoneCheck2(Member member);
-	public int kinsert(Member member);
-	public Member socialLogin(Member member);
->>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 }
 
