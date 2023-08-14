@@ -123,7 +123,7 @@ public class MemberController extends CommonRestController {
 
 			Map<String, Object> map = responseMap(REST_SUCCESS, "");
 			
-			map.put("url", "/home");
+			map.put("url", "/");
 			
 			return map;
 		} else {
