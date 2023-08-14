@@ -15,9 +15,8 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	private static final String[] EXCLUDE_PATHS = {
 			"/**", "/login", "/resources/**", "/members/add", "/findbyEmail", "/findbyEmailRes",
-			"/searchPw" ,"/home/naver", "/home/kakao", "/loginAction", "/registerAction",
-			"/idCheck", "/phoneCheck", "/findbyEmailAction", "/searchPwAction", "/nickNameCheck",
-			"/check/**", "/searchPwCheck", "/findbyEmailCheck"
+			"/searchPw" ,"/idCheck", "/phoneCheck", "/findbyEmailAction", "/searchPwAction",
+			"/nickNameCheck", "/check/**", "/searchPwCheck", "/findbyEmailCheck", "/error", "/naver", "/kakao"
 	};
 	
 	@Override

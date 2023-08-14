@@ -49,10 +49,14 @@
             <div class='login_social_login'>
 			  <%
 			    String clientId = "WPbsOJi72I4GB5iqARDX";//애플리케이션 클라이언트 아이디값";
-			    String redirectURI = URLEncoder.encode("http://localhost:8080/home/naver", "UTF-8");
+			    String redirectURI = URLEncoder.encode("http://localhost:8080/naver", "UTF-8");
 			    SecureRandom random = new SecureRandom();
 			    String redirectURL = request.getParameter("redirectURL");
 			    String state = redirectURL;
+			    
+			    if(state==null){
+			    	state="";
+			    }
 			    
 			    // 요청 URL -> 네이버 로그인및 사용자 정보제공 동의 -> 콜백으로 코드를 제공
 			    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -62,7 +66,7 @@
 			    session.setAttribute("state", state);
 			 %>
                 <a href="<%=apiURL%>"><button class='login_naver'>네이버로 로그인</button></a>
-                 <a href="https:kauth.kakao.com/oauth/authorize?client_id=124198d768a446e334a4d562c4c29d2e&redirect_uri=http://localhost:8080/home/kakao&response_type=code&state=${param.redirectURL}">
+                 <a href="https:kauth.kakao.com/oauth/authorize?client_id=124198d768a446e334a4d562c4c29d2e&redirect_uri=http://localhost:8080/kakao&response_type=code&state=${param.redirectURL}">
                  <button class='login_kakao'>카카오로 로그인</button>
                  </a>
             </div>
