@@ -433,10 +433,10 @@ header .category{
     cursor: pointer;
   }
 
-  .product_buttons button[type=submit]{
+  #product-sellReserve{
     background-color: red;
   }
-  .product_buttons button[type=submit]:hover{
+  #product-sellReserve:hover{
     background-color: rgb(228, 1, 1);
   }
 
