@@ -51,8 +51,13 @@ public class MemberDao {
 		return memberMapper.ninsert(member);
 	}
 	
+<<<<<<< HEAD
 	public Member findbyEmailCheck(Member member) {
 		return memberMapper.findbyEmailCheck(member);
+=======
+	public Member phoneCheck2(Member member) {
+		return memberMapper.phoneCheck2(member);
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 	}
 	
 	public int kinsert(Member member) {
@@ -62,9 +67,12 @@ public class MemberDao {
 	public Member socialLogin(Member member) {
 		return memberMapper.socialLogin(member);
 	}
+<<<<<<< HEAD
 	
 	public Member searchPwCheck(Member member) {
 		return memberMapper.searchPwCheck(member);
 	}
+=======
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 }
 

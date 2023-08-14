@@ -140,10 +140,16 @@ public class MemberServiceImpl implements MemberService {
 			
 			Map<String, String> response = (Map<String, String>) responseBody.get("response");
 			String phone = response.get("mobile").replace("-", "");
+<<<<<<< HEAD
 			String name = response.get("name");
 			Member memberPhone = new Member();
 			
 			memberPhone.setMemberName(name);
+=======
+			
+			Member memberPhone = new Member();
+			
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 			memberPhone.setMemberPhone(phone);
 			
 			Member naverMember = new Member();
@@ -230,6 +236,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Member findbyEmailCheck(Member member) {
 		
 		String getMemberPhone = member.getMemberPhone().replace("-", "");
@@ -237,6 +244,11 @@ public class MemberServiceImpl implements MemberService {
 		member.setMemberPhone(getMemberPhone);
 		
 		return memberDao.findbyEmailCheck(member);
+=======
+	public Member phoneCheck2(Member member) {
+		
+		return memberDao.phoneCheck2(member);
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 	}
 	
 	public String getAccessToken (String authorize_code) {
@@ -335,7 +347,10 @@ public class MemberServiceImpl implements MemberService {
 	        
 	        Member memberPhone = new Member();
 	        
+<<<<<<< HEAD
 	        memberPhone.setMemberName(name);
+=======
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 	        memberPhone.setMemberPhone(phoneNumber);
 			
 	        Member kakaoMember = new Member();
@@ -381,4 +396,8 @@ public class MemberServiceImpl implements MemberService {
 		return member;
 	}
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df

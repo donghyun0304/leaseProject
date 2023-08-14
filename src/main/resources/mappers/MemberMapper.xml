@@ -54,8 +54,13 @@
 		select count(*) from member where member_nickname=#{memberNickname}
 	</select>
 	
+<<<<<<< HEAD
 	<select id="findbyEmailCheck" resultType="Member">
 		select member_name, member_phone from member where member_name=#{memberName} and member_phone=#{memberPhone}
+=======
+	<select id="phoneCheck2" resultType="Member">
+		select social_login from member where member_phone=#{memberPhone}
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 	</select>
 	<insert id="kinsert">
 		insert into member values (seq_member_id.NEXTVAL, #{memberEmail}, '', #{memberName}, #{memberNickname}, #{memberPhone}, sysdate, 'N', 'Kakao')

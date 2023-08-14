@@ -25,21 +25,30 @@ public class MemberController extends CommonRestController {
 
 	private final MemberService memberService;
 	
+<<<<<<< HEAD
 	@GetMapping("/home")
 		public String home() {
 			return "/Project_home";
 		}
 	
+=======
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 	@GetMapping("/login/kakao")
 	public void kakaoLogin() {
 		
 	}
 	
 	@GetMapping("/home/kakao")
+<<<<<<< HEAD
 	 public String login(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
         String kaccess_Token = memberService.getAccessToken(code);
         Member kakao = memberService.getUserInfo(kaccess_Token);
         String state = request.getParameter("state");
+=======
+	 public String login(@RequestParam("code") String code, HttpSession session, HttpServletResponse response) {
+        String kaccess_Token = memberService.getAccessToken(code);
+        Member kakao = memberService.getUserInfo(kaccess_Token);
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
         
         if(kakao==null) {
         	try {
@@ -49,7 +58,11 @@ public class MemberController extends CommonRestController {
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter w = response.getWriter();
 				w.write("<script>alert('이미 가입한 정보가 있습니다');");
+<<<<<<< HEAD
 				w.write("history.go(-1)");
+=======
+				w.write("location.href = '/login'");
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 				w.write("</script>");
 				w.flush();
 				w.close();
@@ -59,11 +72,19 @@ public class MemberController extends CommonRestController {
 				e.printStackTrace();
 			}
         	
+<<<<<<< HEAD
 		} 
 		
         session.setAttribute("memberId", kakao.getMemberId());	
      
         return "redirect:" + state;
+=======
+		} else {
+			session.setAttribute("memberId", kakao.getMemberId());
+		}
+        
+        return "redirect:/home";
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
     }
 	
 	@GetMapping("/login/naver")
@@ -73,9 +94,16 @@ public class MemberController extends CommonRestController {
 	
 	@GetMapping("/home/naver")
 	public String naverLogin_callback(HttpServletRequest request, Member member, HttpSession session, HttpServletResponse response) {
+<<<<<<< HEAD
 		String state = request.getParameter("state");
 		Member nmember = memberService.naverLogin(request);
 
+=======
+		
+		
+		Member nmember = memberService.naverLogin(request);
+		
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 		if(nmember==null) {
 			
 			try {
@@ -85,7 +113,11 @@ public class MemberController extends CommonRestController {
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter w = response.getWriter();
 				w.write("<script>alert('이미 가입한 정보가 있습니다');");
+<<<<<<< HEAD
 				w.write("history.go(-1)");
+=======
+				w.write("location.href = '/login'");
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 				w.write("</script>");
 				w.flush();
 				w.close();
@@ -94,10 +126,19 @@ public class MemberController extends CommonRestController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
 		}
 		session.setAttribute("memberId",nmember.getMemberId());
 		
 		return "redirect:" + state;
+=======
+		} else {
+			
+		}
+		session.setAttribute("memberId",nmember.getMemberId());
+		
+		return "redirect:/home";
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
 	}
 	
 	@GetMapping("/login")
@@ -273,4 +314,8 @@ public class MemberController extends CommonRestController {
 	public String mypage_main() {
 		return "/Project_mypage_main";
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b00a92506c040c063add12d9f9447c3be40dc8df
