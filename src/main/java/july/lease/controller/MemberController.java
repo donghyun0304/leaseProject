@@ -1,13 +1,18 @@
 package july.lease.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import july.lease.domain.Member;
@@ -20,36 +25,116 @@ public class MemberController extends CommonRestController {
 
 	private final MemberService memberService;
 	
+	@GetMapping("/login/kakao")
+	public void kakaoLogin() {
+		
+	}
+	
+	@GetMapping("/home/kakao")
+	 public String login(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
+        String kaccess_Token = memberService.getAccessToken(code);
+        Member kakao = memberService.getUserInfo(kaccess_Token);
+        String state = request.getParameter("state");
+        
+        if(kakao==null) {
+        	try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out;
+				
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter w = response.getWriter();
+				w.write("<script>alert('이미 가입한 정보가 있습니다');");
+				w.write("history.go(-1)");
+				w.write("</script>");
+				w.flush();
+				w.close();
+		
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+		} 
+		
+        session.setAttribute("memberId", kakao.getMemberId());	
+     
+        return "redirect:" + state;
+    }
+	
+	@GetMapping("/login/naver")
+	public void naverLogin(){
+	}
+	
+	
+	@GetMapping("/home/naver")
+	public String naverLogin_callback(HttpServletRequest request, Member member, HttpSession session, HttpServletResponse response) {
+		String state = request.getParameter("state");
+		Member nmember = memberService.naverLogin(request);
+
+		if(nmember==null) {
+			
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out;
+				
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter w = response.getWriter();
+				w.write("<script>alert('이미 가입한 정보가 있습니다');");
+				w.write("history.go(-1)");
+				w.write("</script>");
+				w.flush();
+				w.close();
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		session.setAttribute("memberId",nmember.getMemberId());
+		
+		return "redirect:" + state;
+	}
+	
 	@GetMapping("/login")
 	public String login() {
 		return "/Project_login";
 	}
 	
-	@PostMapping("/loginAction")
-	public @ResponseBody Map<String, Object> loginAction(@RequestBody Member member, HttpSession session){
-		
+	@PostMapping("/login")
+	public @ResponseBody Map<String, Object> loginAction(@RequestBody Member member, HttpSession session, HttpServletRequest request){
+		String redirectURL = member.getRedirectURL();
 		member = memberService.login(member);
 		
-		if(member!=null) {
-			session.setAttribute("memberId", member.getMemberId());
+		if(!redirectURL.equals("") && member!=null) {
 			
+			session.setAttribute("memberId", member.getMemberId());
+
 			Map<String, Object> map = responseMap(REST_SUCCESS, "");
 			
-			map.put("url", "/");
+			map.put("url", redirectURL);
 			
 			return map;
 			
+		} else if(redirectURL.equals("") && member!=null) {
+			session.setAttribute("memberId", member.getMemberId());
+
+			Map<String, Object> map = responseMap(REST_SUCCESS, "");
+			
+			map.put("url", "/home");
+			
+			return map;
 		} else {
 			return responseMap(REST_FAIL, "");
 		}
+		
 	}
 	
-	@GetMapping("/register")
+	@GetMapping("/members/add")
 	public String register() {
 		return "/Project_register";
 	}
 	
-	@PostMapping("/registerAction")
+	@PostMapping("/members/add")
 	public @ResponseBody Map<String, Object> registerAction(@RequestBody Member member){
 		
 		try {
@@ -83,7 +168,31 @@ public class MemberController extends CommonRestController {
 		
 		int res = memberService.phoneCheck(member);
 		
-		if(res==1) {
+		if(res==0) {
+			return responseMap(REST_SUCCESS, "");
+		} else {
+			return responseMap(REST_FAIL, "");
+		}
+	}
+	
+	@PostMapping("/findbyEmailCheck")
+	public @ResponseBody Map<String, Object> findbyEmailCheck(@RequestBody Member member){
+		
+		member = memberService.findbyEmailCheck(member);
+		
+		if(member!=null) {
+			return responseMap(REST_SUCCESS, "");
+		} else {
+			return responseMap(REST_FAIL, "");
+		}
+	}
+	
+	@PostMapping("/searchPwCheck")
+	public @ResponseBody Map<String, Object> searchPwCheck(@RequestBody Member member){
+		
+		member = memberService.searchPwCheck(member);
+		
+		if(member!=null) {
 			return responseMap(REST_SUCCESS, "");
 		} else {
 			return responseMap(REST_FAIL, "");
@@ -96,17 +205,23 @@ public class MemberController extends CommonRestController {
 		return "/Project_findbyEmail";
 	}
 	
+	@GetMapping("/findbyEmailRes")
+	public String findbyEmailResult() {
+		return "/Project_findbyEmailRes";
+	}
+	
 	@PostMapping("/findbyEmailAction")
 	public @ResponseBody Map<String, Object> findbyEmailAction(@RequestBody Member member, HttpSession session){
 		
 		member = memberService.findbyEmail(member);
-		
 		if(member!=null) {
 			session.setAttribute("memberEmail", member.getMemberEmail());
+			session.setAttribute("socialLogin", member.getSocialLogin());
+			session.setAttribute("memberName", member.getMemberName());
 			
 			Map<String, Object> map = responseMap(REST_SUCCESS, "");
 			
-			map.put("url", "/");
+			map.put("url", "/findbyEmailRes");
 			
 			return map;
 			

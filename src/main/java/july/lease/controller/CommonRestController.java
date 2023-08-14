@@ -13,8 +13,8 @@ public class CommonRestController {
 	protected final String REST_FAIL = "fail";
 	
 	/**
-	 * 입력, 수정, 삭제의 경우 int값을 반환
-	 * 결과를 받아서 Map을 생성 후 반환
+	 * 입력, 수정, 삭제의 경우 int를 반환
+	 * 결과를 받아서 map을 생성 후 반환
 	 */
 	public Map<String, Object> responseMap(int res, String msg){
 		Map<String, Object> map = new HashMap<String, Object>();

@@ -26,10 +26,10 @@ public class SmsService {
 	    }          
 	    to = to.replaceAll("-", "");
 	    HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("to", to);    // 수신전화번호 (ajax로 view화면에서 받아온 값으로 넘김)
-	    params.put("from", "01035674431");    // 발신 전화번호, 테스트시에는 발신, 수신 둘다 본인 번호로 하면 됨
+	    params.put("to", to);    // 수신전화번호(ajax로 view 화면에서 받아온 값으로 넘김)
+	    params.put("from", "01035674431");    // 발신전화번호, 테스트시에는 발신, 수신 둘다 본인 번호로 하면 됨
 	    params.put("type", "sms"); 
-	    params.put("text", "������ȣ�� [" + numStr + "] �Դϴ�.");
+	    params.put("text", "인증번호는 [" + numStr + "] 입니다.");
 	
 	    coolsms.send(params); // 메시지 전송
 	        
@@ -63,8 +63,8 @@ public class SmsService {
 	    
 	    to = to.replaceAll("-", "");
 	    HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("to", to);    // 수신전화번호 (ajax로 view화면에서 받아온 값으로 넘김)
-	    params.put("from", "01035674431");    // 발신 전화번호, 테스트시에는 발신, 수신 둘다 본인 번호로 하면 됨
+	    params.put("to", to);    // 수신전화번호 (ajax로 view 화면에서 받아온 값으로 넘김)
+	    params.put("from", "01035674431");    // 발신전화번호, 테스트시에는 발신, 수신 둘다 본인 번호로 하면 됨
 	    params.put("type", "sms"); 
 	    params.put("text", "임시 비밀번호는 [" + randompassword + "] 입니다. 반드시 비밀번호를 변경하시기 바랍니다.");
 	

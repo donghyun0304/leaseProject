@@ -3,7 +3,7 @@
 *{
     box-sizing: border-box;
     margin: 0 auto;
-    font-family: Pretendard;
+    font-family: 'Pretendard';
 }
 
 @font-face {
@@ -29,7 +29,7 @@ ul{
 }
 
 a{
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
@@ -286,7 +286,7 @@ header .category{
 
 
 
-.login_area{
+.findResult_area{
     width: 100%;
     display: flex;
     align-items: center;
@@ -294,104 +294,58 @@ header .category{
     /* background-color: bisque; */
 }
 
-.login_center{
+.findResult_center{
     width: 25rem;
     /* background-color: blanchedalmond; */
 }
 
-.login_logo{
+.findResult_logo{
+    font-family: "Pretendard_Bold";
     width: 100%;
     text-align: center;
     margin: 5rem 0;
-
+    font-size: 2.2rem;
 }
 
-div[class^=login_box]{
-    font-size: 1.2rem;
-    margin: 1rem 0;
+.findResult_Content{
+    text-align: center;
 }
-div[class^=login_box] input{
-    margin: 0.4rem 0;
+
+.findResult_title{
     width: 100%;
-    height: 2.5rem;
-    font-size: 0.9rem;
-    padding: 1rem;
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    outline-color: 1px snow var(--border-color);
-
+    height: 3rem;
+    line-height: 3rem;
+    background-color: #d5d5d5;
+    margin-bottom: 1.5rem;
 }
 
-.login_button{
+.findResult{
     width: 100%;
-    height: 3.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid var(--main-color);
-    background-color: var(--main-color);
+    height: 8rem;
+    line-height: 8rem;
+    font-size: 1.1rem;
+}
+
+.findResult_Btn{
     margin-top: 1.5rem;
+    width: 100%;
+    height: 4rem;
+    background-color: antiquewhite;
+}
+
+.findResult_Btn a{
+    width: 100%;
+    height: 100%;
+    line-height: 4rem;
+    display: inline-block;
+    background-color: var(--main-color);
     color: white;
-    font-size: 1.3rem;
+    border-radius: var(--border-radius);
+    font-size: 1.5rem;
 }
 
-#button_login{
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	line-height: 3.5rem;
-	display: inline-block;
-}
-
-
-.login_button:hover{
+.findResult_Btn a:hover{
     background-color: var(--main-color-hover);
 }
 
-.login_look{
-    display: flex;
-    margin: 1.5rem 0;
-    margin-bottom: 2.5rem;
-}
-.login_look div a{
-    color: #6b6b6b;
-}
 
-.login_social_login{
-    width: 100%;
-}
-
-.login_social_login [class^='login']{
-    width: 100%;
-    height: 3.3rem;
-    background-color: white;
-    border: 1px solid rgb(203, 203, 203);
-    border-radius: 0.5rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: larger;
-    cursor: pointer;
-}
-
-.login_social_login [class^='login']:hover{
-    background-color: #f3f3f3;
-}
-
-
-.login_box_pw{
-    margin-top: 1rem;
-}
-
-input:focus{
-    outline: 2.5px solid var(--main-color);
-    border-radius: 0.3rem;
-    box-shadow: none;
-}
-
-.errors{
-    text-align: center;
-    color: red;
-}
-.errorsborder{
-    border: 2px solid rgb(255, 114, 114);
-}
