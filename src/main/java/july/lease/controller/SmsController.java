@@ -17,7 +17,7 @@ public class SmsController {
 		return SmsService.PhoneNumberCheck(to);
 	}
 	
-	// coolSMS 구현 로직 연결  
+	// coolSMS 구현 로직 연결 
 	@GetMapping("/check/sendPassword")
 	public @ResponseBody String sendPassword(@RequestParam(value="to") String to) throws CoolsmsException {  	
 		return SmsService.TemporaryPassword(to);

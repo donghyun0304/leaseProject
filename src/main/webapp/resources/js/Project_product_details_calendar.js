@@ -262,28 +262,32 @@ function isPossible(year, month, tag) {
     tempUlList.forEach((li, index) => {
         if (!li.classList.contains('empty') && !li.classList.contains('today') && !li.classList.contains('disabled')){
             let possible = new Date(year, month, li.textContent); // 기준일
-            for (var m = 0;m<pDate.length;m++){
-                let splitStartDate = pDate[m][0].split('-');
-                let splitEnddate = pDate[m][1].split('-');
-                let possibleStartDate = new Date(splitStartDate[0], splitStartDate[1], splitStartDate[2]); // 가능한날짜 시작일
-                let possibleEndDate = new Date(splitEnddate[0], splitEnddate[1], splitEnddate[2]); // 가능한날짜 종료일
-
-                if (possibleStartDate <= possible && possibleEndDate >= possible){ // 기준일이 시작일보다 크고 종료일보다 작을때
-                    li.classList.add('possible');
-                }
-            }
-            for (var n = 0;n<impDate.length;n++){
-                let splitStartDate = impDate[n][0].split('-');
-                let splitEnddate = impDate[n][1].split('-');
-                let impossibleStartDate = new Date(splitStartDate[0], splitStartDate[1], splitStartDate[2]); // 불가능한날짜 시작일
-                let impossibleEndDate = new Date(splitEnddate[0], splitEnddate[1], splitEnddate[2]); // 불가능한날짜 종료일
-
-                if (impossibleStartDate <= possible && impossibleEndDate >= possible){ // 기준일이 시작일보다 크고 종료일보다 작을때
-                    li.classList.add('impossible');
-                    li.classList.remove('possible');
-                    li.classList.add('disabled');
-                }
-            }
+            if (possibleDate.value != '' && possibleDate.value != null){
+	            for (var m = 0;m<pDate.length;m++){
+	                let splitStartDate = pDate[m][0].split('-');
+	                let splitEnddate = pDate[m][1].split('-');
+	                let possibleStartDate = new Date(splitStartDate[0], splitStartDate[1], splitStartDate[2]); // 가능한날짜 시작일
+	                let possibleEndDate = new Date(splitEnddate[0], splitEnddate[1], splitEnddate[2]); // 가능한날짜 종료일
+	
+	                if (possibleStartDate <= possible && possibleEndDate >= possible){ // 기준일이 시작일보다 크고 종료일보다 작을때
+	                    li.classList.add('possible');
+	                }
+	            }
+	        }
+	        if (impossibleDate.value != '' && impossibleDate.value != null){
+	            for (var n = 0;n<impDate.length;n++){
+	                let splitStartDate = impDate[n][0].split('-');
+	                let splitEnddate = impDate[n][1].split('-');
+	                let impossibleStartDate = new Date(splitStartDate[0], splitStartDate[1], splitStartDate[2]); // 불가능한날짜 시작일
+	                let impossibleEndDate = new Date(splitEnddate[0], splitEnddate[1], splitEnddate[2]); // 불가능한날짜 종료일
+	
+	                if (impossibleStartDate <= possible && impossibleEndDate >= possible){ // 기준일이 시작일보다 크고 종료일보다 작을때
+	                    li.classList.add('impossible');
+	                    li.classList.remove('possible');
+	                    li.classList.add('disabled');
+	                }
+	            }
+	       }
         }
     })
 

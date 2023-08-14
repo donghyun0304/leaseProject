@@ -64,36 +64,28 @@
             </div>
 
          <div id='categoryProduct' class='categoryProduct'>
-<input type="text" value="${cri.categoryId }" name="categoryId" id="categoryId">
-    <div style='padding-top: 1.3em;'>
-    		<div class="productList">
-	               <c:forEach items="${items }" var="item" end='11'>
-	                <ul class='product'>
-			            <a href='/products/${item.productId}'>
-		                    <li><img class='thumbnail' src="../../../../resources/images/${item.storeImageName}" alt="${item.productName} 이미지"></li>
-		                    <li class='productName'><p class='product_title'>${item.productName }</p></li>
-		                    <li class='productPrice'><p class='product_price'>${item.productPrice}원/일</p></li>
-			            </a>
-	                </ul>
-	        </c:forEach>
-	         <c:if test="${fn:length(items) > 11}">
-	           <div class="moreBox">
-	               <button class="getMore">
-	                   <span>더보기</span>
-	                   <svg width="0.7rem" height="0.7rem" viewBox="0 0 9 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 6L8.39711 0.75H0.602886L4.5 6Z" fill="currentColor"></path></svg>
-	               </button>
-	           </div>
-	          </c:if>
-
-   
-    
-</div>
-
-
-
-           
-
-        </div>
+			<input type="text" value="${cri.categoryId }" name="categoryId" id="categoryId">
+    			<div style='padding-top: 1.3em;'>
+    				<div class="productList">
+	               		<c:forEach items="${items }" var="item" end='11'>
+	                		<ul class='product'>
+					            <a href='/products/${item.productId}'>
+				                    <li class='productImage'><img class='thumbnail' src="../../../../resources/images/${item.storeImageName}" alt="${item.productName} 이미지"></li>
+				                    <li class='productName'><p class='product_title'>${item.productName }</p></li>
+				                    <li class='productPrice'><p class='product_price'>${item.productPrice}원/일</p></li>
+					            </a>
+			                </ul>
+	        			</c:forEach>
+				        <c:if test="${fn:length(items) > 11}">
+				           <div class="moreBox">
+				               <button class="getMore">
+				                   <span>더보기</span>
+				                   <svg width="0.7rem" height="0.7rem" viewBox="0 0 9 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 6L8.39711 0.75H0.602886L4.5 6Z" fill="currentColor"></path></svg>
+				               </button>
+				           </div>
+				         </c:if>
+					</div>
+        	</div>
     </main>
    <%@include file="../includes/Project_footer.jsp" %>
 </body>
