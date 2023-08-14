@@ -57,8 +57,12 @@ public class MemberController extends CommonRestController {
 		} 
 		
         session.setAttribute("memberId", kakao.getMemberId());	
-     
-        return "redirect:" + state;
+        if(state==null) {
+        	return "redirect:/";
+        } else {
+        	return "redirect:" + state;
+        }
+        
     }
 	
 	@GetMapping("/login/naver")
@@ -92,7 +96,11 @@ public class MemberController extends CommonRestController {
 		}
 		session.setAttribute("memberId",nmember.getMemberId());
 		
-		return "redirect:" + state;
+		if(state==null) {
+        	return "redirect:/";
+        } else {
+        	return "redirect:" + state;
+        }
 	}
 	
 	@GetMapping("/login")
@@ -120,7 +128,7 @@ public class MemberController extends CommonRestController {
 
 			Map<String, Object> map = responseMap(REST_SUCCESS, "");
 			
-			map.put("url", "/home");
+			map.put("url", "/");
 			
 			return map;
 		} else {
