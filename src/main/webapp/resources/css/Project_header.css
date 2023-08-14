@@ -29,8 +29,8 @@ ul{
 }
 
 a{
-    color: white;
-    text-decoration: none;
+	text-decoration: none;
+    color: black;
 }
 
     /* 헤더 CSS시작 */
