@@ -14,9 +14,10 @@ public class WebConfig implements WebMvcConfigurer {
 	LoginInterceptor loginInterceptor;
 	
 	private static final String[] EXCLUDE_PATHS = {
-			"/**", "/login", "/resources/**", "/members/add", "/findbyEmail", "/findbyEmailRes",
+			"/", "/login", "/logout", "/resources/**", "/members/add", "/findbyEmail", "/findbyEmailRes",
 			"/searchPw" ,"/idCheck", "/phoneCheck", "/findbyEmailAction", "/searchPwAction",
-			"/nickNameCheck", "/check/**", "/searchPwCheck", "/findbyEmailCheck", "/error", "/naver", "/kakao"
+			"/nickNameCheck", "/check/**", "/searchPwCheck", "/findbyEmailCheck", "/error",
+			"/naver", "/kakao", "/**"
 	};
 	
 	@Override
