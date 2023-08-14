@@ -39,7 +39,6 @@
             <div class='findEmail_button'>
                 <a href="#" id="button_findbyEmail">이메일 찾기</a>
             </div>
-
         </div>
 
     </div>
@@ -80,6 +79,7 @@
     		userPhone.addEventListener('blur',function(){
     		
     			let memberPhone = document.querySelector('#userPhone').value;
+
     			if(!userPhone.value){
     				phoneCheckRes.value='0';
     				return;
@@ -94,14 +94,16 @@
     			
     			let obj={memberPhone : userPhone.value};
     			fetchPost("/phoneCheck", obj, (map) => {
+    				
     		    	  if(map.result=="success"){
-    		    		  
+    		    		 
     		    	  } else {
     		    		  alert("가입하지 않은 휴대폰 번호입니다");
     		    		  userPhone.focus();
     		    		  userPhone.value='';
     		    	  }
     		      });
+    		      
     		});	
     		
     		button_findbyEmail.addEventListener('click', function(e){
@@ -140,6 +142,8 @@
 				location.href= map.url;
 			}
 		}
+    	
+    	
     		
     		
     		function name_check(memberName){

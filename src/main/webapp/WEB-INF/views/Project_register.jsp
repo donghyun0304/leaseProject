@@ -24,33 +24,40 @@
             <div class='regi_box_id'>
                 <h5>이메일 주소 *</h5>
                 <input type="email" name="userId" id="userId" placeholder='예) email@naver.com' autocomplete='off'>
+                <div class="errors"></div>
             </div>
             <div class='regi_box_pw'>
                 <h5>비밀번호 *</h5>
                 <input type="password" name="userPw" id="userPw" placeholder='대소문자, 숫자, 특수문자를 포함해서 8~15자 이상' maxlength='15' autocomplete='off'>
+                <div class="errors"></div>
             </div>
             <div class='regi_box_pw_check'>
                 <h5>비밀번호 확인 *</h5>
                 <input type="password" name="userPwCheck" id="userPwCheck" maxlength='15' autocomplete='off'>
+                <div class="errors"></div>
             </div>
             <div class='regi_box_nickname'>
                 <h5>닉네임</h5>
                 <input type="text" name="userNickname" id="userNickname" autocomplete='off'>
+                <div class="errors"></div>
             </div>
             <div class='regi_box_name'>
                 <h5>이름</h5>
                 <input type="text" name="userName" id="userName" autocomplete='off'>
+                <div class="errors"></div>
             </div>
             <div class='regi_box_phone'>
                 <h5>휴대폰번호</h5>
                 <div>
                     <input type="tel" name="userPhone" id="userPhone" onkeypress='phoneNum()' maxlength='13' autocomplete='off'>
                     <button class='phoneCheck' id='check'>인증번호발송</button>
+                    <div class="errors"></div>
                 </div>
             </div>
             <div class='regi_box_phone_check'>
                 <input type="text" name='phonCheckNum' id='phoneCheckNum' autocomplete='off'>
                 <button class='phoneCheck' id='phoneCheck'>인증번호확인</button>
+                <div class="errors"></div>
             </div>
             <div class='regi_button'>
                 <a href="#" id="button_register">가입하기</a>
@@ -143,6 +150,7 @@ window.addEventListener('load', function(){
   		 	userPw.value='';
 			return;
 		}
+		
 	});
 	
 	userPwCheck.addEventListener('blur',function(){
@@ -182,6 +190,7 @@ window.addEventListener('load', function(){
   		 	userName.value='';
 			return;
 		}
+		
 	});
 	
 	
@@ -192,12 +201,14 @@ window.addEventListener('load', function(){
 			nickNameCheckRes.value='0';
 			return;
 		}
+		
 		if(!nickName_check(memberNickname)){
 			alert('닉네임은 한글, 영어 대소문자, 숫자를 사용하여 최소 2자리, 최대 8자리까지만 가능합니다.');
 			userNickname.focus();
 			userNickname.value='';
 			return;
-		} 
+		}
+		
 		let obj={memberNickname : userNickname.value};
 		fetchPost("/nickNameCheck", obj, (map) => {
 	    	  if(map.result=="success"){
@@ -299,7 +310,7 @@ window.addEventListener('load', function(){
 		console.log('회원가입obj : ', obj);
 		
 		// 회원가입 요청
-		fetchPost('/registerAction', obj, (map)=>{
+		fetchPost('/members/add', obj, (map)=>{
 			if(map.result == 'success'){
 				location.href='/login';
 				alert('회원가입이 완료되었습니다');

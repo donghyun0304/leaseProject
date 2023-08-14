@@ -155,7 +155,7 @@
     			let obj={memberEmail : userId.value};
     			fetchPost("/idCheck", obj, (map) => {
     		    	  if(map.result=="success"){
-    		    		  alert("가입하지 않은 아이디입니다.");
+    		    		  alert("가입하지 않은 이메일입니다.");
     		    		  userId.focus();
     		    		  userId.value='';
     		    	  }
@@ -170,14 +170,14 @@
     				nameCheckRes.value ='0';
     				return;
     			}
-    			/*
+    			
     			if(!name_check(memberName)){
     				alert('이름은 한글만 입력할 수 있습니다');
     				userName.focus();
     	  		 	userName.value='';
     				return;
     			}
-    			*/
+    			
     		});
     		
     		userPhone.addEventListener('blur',function(){
@@ -259,5 +259,5 @@
     			console.log('fetchPost', e)
     		}
     	}
-</script>    	
+</script>      	
 </html>

@@ -14,7 +14,7 @@ public class MemberDao {
 	private final MemberMapper memberMapper;
 	
 	public Member login(Member member) {
-	
+		
 		return memberMapper.login(member);
 	}
 	
@@ -45,5 +45,21 @@ public class MemberDao {
 	
 	public int nickNameCheck(Member member) {
 		return memberMapper.nickNameCheck(member);
+	}
+	
+	public int ninsert(Member member) {
+		return memberMapper.ninsert(member);
+	}
+	
+	public Member phoneCheck2(Member member) {
+		return memberMapper.phoneCheck2(member);
+	}
+	
+	public int kinsert(Member member) {
+		return memberMapper.kinsert(member);
+	}
+	
+	public Member socialLogin(Member member) {
+		return memberMapper.socialLogin(member);
 	}
 }
