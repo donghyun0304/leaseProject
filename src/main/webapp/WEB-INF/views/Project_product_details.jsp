@@ -9,11 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${product.productName } : 상세페이지</title>
-    <link rel="stylesheet" href="../../resources/css/Project_product_details.css">
-    <link rel="stylesheet" href="../../resources/css/Project_product_details_calendar.css">
-    <link rel="stylesheet" href="../../resources/css/calendar_one.css">
-    <script src="../../resources/js/project_product_details.js"></script>
-    <script src='../../resources/js/Project_product_details_calendar.js'></script>
+    <link rel="stylesheet" href="../../../../resources/css/Project_product_details.css">
+    <link rel="stylesheet" href="../../../../resources/css/Project_product_details_calendar.css">
+    <link rel="stylesheet" href="../../../../resources/css/calendar_one.css">
+    <script src="../../../../resources/js/project_product_details.js"></script>
+    <script src='../../../../resources/js/Project_product_details_calendar.js'></script>
 </head>
 <%@include file="../includes/Project_header.jsp" %>
 <body>
@@ -70,8 +70,8 @@
                             <div class="product_info_rent_date">
                                 <input type="text" name="" id="subStartDate" class='hidden'>
                                 <input type="text" name="" id="subEndDate" class='hidden'>
-                                <input type="text" name="" id="possibleDate" value='${orderRentDate }' hidden>
-                                <input type="text" name="" id='impossibleDate' value='${rentDate }' hidden>
+                                <input type="text" name="" id="possibleDate" value='${rentDate }' hidden>
+                                <input type="text" name="" id='impossibleDate' value='${orderRentDate }' hidden>
                                 <div class='subCalendar'>
                                     <div class='subCal toCal'>
                                         <div class='subCalTop'>
