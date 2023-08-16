@@ -25,6 +25,7 @@ public class Product {
 	private char productEndStatus;
 	private List<ProductImage> images;
 	private int productStatus;
+	private int productVisitCount;
 	
 	public Product() {
 	}
