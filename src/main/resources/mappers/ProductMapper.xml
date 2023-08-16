@@ -81,7 +81,14 @@
 
 	<select id="findByProductIdForProductDetail" resultType="Product">
 		select a.member_id, a.product_name, a.product_price,
-			   b.category_id, b.category_id2, b.category_name, a.product_content,
+			   b.category_id, b.category_id2, b.category_name, 
+			   CASE b.category_id3
+	           WHEN 1 THEN '취침용품'
+	           WHEN 2 THEN '취사용품'
+	           WHEN 3 THEN '테이블'
+	           WHEN 4 THEN '기타'
+       		   END AS category_name2, 
+       		   a.product_content,
 			   a.product_end_status, a.location, a.product_visit_count, to_char(a.product_create_date, 'yyyy-mm-dd') as product_create_date
 		from product a
 		inner join category b

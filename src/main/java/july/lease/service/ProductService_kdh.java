@@ -221,6 +221,7 @@ public class ProductService_kdh {
 		ProductDetailResponseDto responseDto = new ProductDetailResponseDto(
 				product.getMemberId(), product.getProductName(), product.getProductPrice(),
 				product.getCategoryId(), product.getCategoryId2(), product.getCategoryName(),
+				product.getCategoryName2(),
 				product.getProductContent(), product.getProductEndStatus(),
 				product.getLocation(), product.getProductVisitCount(), 
 				product.getProductCreateDate(), images, rentDates);

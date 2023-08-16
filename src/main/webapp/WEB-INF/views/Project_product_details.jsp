@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -31,7 +32,7 @@
                 <div class='product_section_two'>
                     <div class='product_info'>
                         <div class="product_title">${product.productName }</div>
-                        <div class="product_price">${product.productPrice }원/일</div>
+                        <div class="product_price"><fmt:formatNumber value="${product.productPrice}" pattern="###,###" />원/일</div>
                     </div>
                     <hr>
                     <div class="product_details_info">
@@ -60,9 +61,8 @@
                         <div class="product_label_form">
                             <div class="product_label">카테고리</div>
                             <ul class='product_tag_list'>
-                                <li class='tagbox'><a href="#">#텐트</a></li>
-                                <li class='tagbox'><a href="#">#캠핑</a></li>
-                                <li class='tagbox'><a href="#">#아웃도어</a></li>    
+                                <li class='tagbox'><a href="/list?category=${product.categoryName}">#${product.categoryName}</a></li>
+                                <li class='tagbox'><a href="/list?category=${product.categoryName2}">#${product.categoryName2}</a></li>  
                             </ul>
                         </div>
                         <div class="product_rent_date_form">
