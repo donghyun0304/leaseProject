@@ -277,9 +277,5 @@ public class MemberController extends CommonRestController {
 			return responseMap(REST_FAIL, "");
 		}
 	}
-	
-	@GetMapping("/mypage_main")
-	public String mypage_main() {
-		return "/Project_mypage_main";
-	}
+
 }
