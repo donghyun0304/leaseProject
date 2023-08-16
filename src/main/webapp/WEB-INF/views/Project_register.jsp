@@ -64,9 +64,9 @@
             <div class='regi_button'>
                 <a href="#" id="button_register">가입하기</a>
             </div>
-            <input type="text" value='1' id="idCheckRes">
-            <input type="text" value='1' id="nickNameCheckRes">
-            <input type="text" value='5' id="phoneCheckRes">
+            <input type="hidden" value='1' id="idCheckRes">
+            <input type="hidden" value='1' id="nickNameCheckRes">
+            <input type="hidden" value='5' id="phoneCheckRes">
         </div>
 
     </div>
