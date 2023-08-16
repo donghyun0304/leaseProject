@@ -108,7 +108,7 @@
 	                <input type="text" name="startDate" id="startDate" class='hidden' value="${startDate}">
 	                <input type="text" name="endDate" id="endDate" class='hidden' value="${endDate }">
 	                <input type="text" name="sort" id="sort" class='hidden' value="${sort }">
-	               	<input type="text" name="category" id="category" class="hidden" value="">
+	               	<input type="text" name="category" id="category" class="hidden" value="${searchTitle }">
 	                <input type="search" name="search" id="search" placeholder='검색어' autocomplete='off' value="${search}">
 	                <svg width='1.2rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 	                    <path d="M368 208A160 160 0 1 0 48 208a160 160 0 1 0 320 0zM337.1 371.1C301.7 399.2 256.8 416 208 416C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208c0 48.8-16.8 93.7-44.9 129.1L505 471c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L337.1 371.1z"/></svg></a> 
