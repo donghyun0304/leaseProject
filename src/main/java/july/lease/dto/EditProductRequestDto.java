@@ -31,6 +31,10 @@ public class EditProductRequestDto {
 	private Long categoryId;
 	@NotNull
 	private Long categoryId3;
+	@NotBlank
+	private String region1;
+	@NotBlank
+	private String region2;
 	@NotNull
 	private List<String> rentAbleStartDate;
 	@NotNull
@@ -47,7 +51,7 @@ public class EditProductRequestDto {
 			Integer productPrice, String productContent,
 			Long categoryId, Long categoryId3,
 			List<String> rentAbleStartDate, List<String> rentAbleEndDate,
-			List<MultipartFile> images) { //임시로 로케이션제거
+			List<MultipartFile> images) { 
 		
 		this.productName = productName;
 		this.productPrice = productPrice;

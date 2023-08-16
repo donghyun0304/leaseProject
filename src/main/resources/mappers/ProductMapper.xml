@@ -51,7 +51,8 @@
 		set category_id = #{product.categoryId},
     		product_name = #{product.productName},
     		product_price = #{product.productPrice},
-    		product_content = #{product.productContent}
+    		product_content = #{product.productContent},
+    		location = #{product.region1} || ' ' || #{product.region2}
 		where product_id = #{productId}
 	</update>
 	

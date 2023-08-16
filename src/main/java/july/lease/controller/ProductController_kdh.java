@@ -81,6 +81,8 @@ public class ProductController_kdh {
 		productRequest.setProductContent(productResponse.getProductContent());
 		productRequest.setCategoryId(productResponse.getCategoryId());
 		productRequest.setCategoryId3(productResponse.getCategoryId3());
+		productRequest.setRegion1(productResponse.getRegion1());
+		productRequest.setRegion2(productResponse.getRegion2());
 		//로그인한 회원이 올린 상품인지 확인
 		if(productResponse.getMemberId() != memberId){
 			throw new IllegalStateException();

@@ -31,14 +31,16 @@ public class EditProductResponseDto {
 	private Long categoryId;
 	@NotNull
 	private Long categoryId3;
+	@NotBlank
+	private String region1;
+	@NotBlank
+	private String region2;
 	@NotNull
 	List<RentDate> rentDates;
 	@Size(min=1, max=8)
 	private List<ProductImage> images;
 	@NotBlank
 	private char productEndStatus;
-	@NotBlank
-	private String location;
 	
 	public EditProductResponseDto() {
 	}
@@ -46,7 +48,7 @@ public class EditProductResponseDto {
 	public EditProductResponseDto(Long memberId, String productName,
 			Integer productPrice, String productContent,
 			Long categoryId, Long categoryId3, List<RentDate> rentDates,
-			List<ProductImage> images, char productEndStatus, String location) {
+			List<ProductImage> images, char productEndStatus, String region1, String region2) {
 		
 		this.memberId = memberId;
 		this.productName = productName;
@@ -57,7 +59,8 @@ public class EditProductResponseDto {
 		this.rentDates = rentDates;
 		this.images = images;
 		this.productEndStatus = productEndStatus;
-		this.location = location;
+		this.region1 = region1;
+		this.region2 = region2;
 	}
 	
 	
