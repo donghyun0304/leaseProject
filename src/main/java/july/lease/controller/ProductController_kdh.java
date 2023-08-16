@@ -1,7 +1,16 @@
 package july.lease.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
+import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,12 +30,12 @@ import july.lease.dto.EditProductResponseDto;
 import july.lease.dto.ProductDetailResponseDto;
 import july.lease.dto.ProductListDto;
 import july.lease.dto.RentAbleRequestDto;
-import july.lease.service.MemberServiceImpl;
 import july.lease.service.OrdersService;
 import july.lease.service.ProductService_kdh;
 import july.lease.service.RentDateService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequiredArgsConstructor
@@ -124,12 +133,15 @@ public class ProductController_kdh {
 	
 	@GetMapping("/products/{productId}")
 	public String product(@PathVariable Long productId, Model model,
-			@SessionAttribute(name = "memberId", required = false)Long memberId) {
+			@SessionAttribute(name = "memberId", required = false)Long memberId,
+			HttpServletRequest request, HttpServletResponse response) {
 		
 		ProductDetailResponseDto responseDto = productService_kdh.findByProductIdForProductDetail(productId);
 		List<ProductListDto> list = productService_kdh.findByMemberIdExceptProductWithProductId(responseDto.getMemberId(), productId);
 		String orderRentDateStr = ordersService.findOrderRentDateByProductId(productId);
 		String rentDateStr = rentDateService.findRentAbleDateByProductId(productId);
+		
+		visitCountValidation(productId, responseDto, request, response);
 		
 		boolean status = true;
 		if(memberId != responseDto.getMemberId()) {
@@ -146,6 +158,37 @@ public class ProductController_kdh {
 	
 		return "Project_product_details";
 	}
+	
+	private void visitCountValidation(Long productId, ProductDetailResponseDto responseDto, HttpServletRequest request, HttpServletResponse response) {
+        Cookie cookie = null;
+        if (request.getCookies() != null) {
+            cookie = Arrays.stream(request.getCookies())
+                    .filter(c -> c.getName().equals("productView")) // productView 쿠키가 있는지 필터링함
+                    .findFirst()// filter조건에 일치하는 가장 앞에 있는 요소 1개를 Optional로 리턴함. 없으면 empty 리턴
+                    .map(c -> { // Optional에 Cookie가 있으면 꺼내서 수행
+                        if (!c.getValue().contains("[" + productId + "]")) {
+                            log.info("쿠키가 있어서 실행");
+                            productService_kdh.addVisitCount(productId, responseDto);
+                            c.setValue(c.getValue() + "[" + productId + "]");
+                        }
+                        return c;
+                    })
+                    .orElseGet(() -> { // Optional에 Cookie가 없으면 수행
+                        log.info("쿠키가 없어서 실행");
+                        productService_kdh.addVisitCount(productId, responseDto);
+                        return new Cookie("productView", "[" + productId + "]");
+                    });
+        } else {
+        	productService_kdh.addVisitCount(productId, responseDto);
+            cookie = new Cookie("postView", "[" + productId + "]");
+        }
+
+        long todayEndSecond = LocalDate.now().atTime(LocalTime.MAX).toEpochSecond(ZoneOffset.UTC);
+        long currentSecond = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        cookie.setPath("/"); // 모든 경로에서 접근 가능
+        cookie.setMaxAge((int) (todayEndSecond - currentSecond)); // 오늘 하루 자정까지 남은 시간초 설정
+        response.addCookie(cookie);
+    }
 	
 
 }
