@@ -1,4 +1,5 @@
 window.addEventListener('load', function(){
+	
      // 이미지 배열 만들기
      pics = ['tent1.jpg', 'tent2.jpeg', 'tent3.jpeg'
      , 'tent4.jpeg', 'tent5.jpg'];
@@ -78,3 +79,4 @@ function stop(){
 function doShow(imgSrc){
     document.getElementById("container").style.backgroundImage = 'url('+imgSrc+')';
 }
+
