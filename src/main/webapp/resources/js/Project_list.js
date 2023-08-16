@@ -31,7 +31,6 @@ window.addEventListener('load',function(){
 	        var startDate = document.querySelector('#startDate').value;
 	        var endDate = document.querySelector('#endDate').value;
 	        var sort = document.querySelector('#sort').value;
-
 			var moreDate = {
                 startDate: startDate, // 수정: 대여 시작 날짜
 				startRow : startRow,
@@ -69,7 +68,7 @@ window.addEventListener('load',function(){
 
 			if (result.productId != ''){  
 				content += "<a href='/products/" + result.productId + "'>"
-				content += "<li class='productImage'><img class='thumbnail' src='../../resources/images/" + result.storeImageName + "' alt='${item.productName}'></li>"
+				content += "<li class='productImage'><img class='thumbnail' src='../../../../resources/images/" + result.storeImageName + "' alt=''></li>"
 				content += "<li class='productName'><p class='product_title'>" + result.productName + "</p></li>"
 				content += "<li class='productPrice'><p class='product_price'>" + result.productPrice + "원/일</p></li></a>"
 

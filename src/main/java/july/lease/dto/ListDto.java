@@ -13,4 +13,5 @@ public class ListDto {
 	private String storeImageName;
 	private String productName;
 	private String productPrice;
+	private String category;
 }

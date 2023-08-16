@@ -187,7 +187,7 @@
 	</update>
 	
 	<select id="sellItemsModal" resultType="july.lease.dto.MyPageSellitemsModalDto"> <!-- 대여중일때 모달창에 띄울 정보 조회 -->
-		SELECT PRODUCT.PRODUCT_ID AS productId, FIRST_IMAGE.STORE_IMAGE_NAME AS productImage, PRODUCT_NAME AS productTitle, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') || ' ~ ' || TO_CHAR(ORDER_RENT_END_DATE, 'YYYY-MM-DD') AS rentDate, MEMBER_NAME AS rentMemberName
+		SELECT PRODUCT.PRODUCT_ID AS productId, STORE_IMAGE_NAME AS productImage, PRODUCT_NAME AS productTitle, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') || ' ~ ' || TO_CHAR(ORDER_RENT_END_DATE, 'YYYY-MM-DD') AS rentDate, MEMBER_NAME AS rentMemberName
 		FROM ORDERS
 		JOIN MEMBER ON (ORDERS.MEMBER_ID = MEMBER.MEMBER_ID)
 		JOIN PRODUCT ON (PRODUCT.PRODUCT_ID = ORDERS.PRODUCT_ID)

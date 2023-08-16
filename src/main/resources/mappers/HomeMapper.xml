@@ -12,7 +12,7 @@
 		SELECT 
 			productId,
 			productName,
-			productPrice,
+			TO_CHAR(productPrice, 'FM999,999,999') as productPrice,
 			storeImageName				
 		FROM (
 			SELECT  p.PRODUCT_ID as productId,
@@ -30,7 +30,7 @@
 	</select>
 	
 		<select id="getAllItemAJAX" resultType="july.lease.dto.HomeItemDto">
-			SELECT A.productId, A.productName, A.productPrice, A.storeImageName
+			SELECT A.productId, A.productName, TO_CHAR(A.productPrice, 'FM999,999,999') as productPrice, A.storeImageName
 			FROM (
 					SELECT productId, productName, productPrice, storeImageName, ROWNUM as RNUM			
 					FROM (
@@ -54,7 +54,7 @@
 		SELECT
 		    p.PRODUCT_ID AS productId,
 		    p.PRODUCT_NAME AS productName,
-		    p.PRODUCT_PRICE AS productPrice,
+		    TO_CHAR(p.PRODUCT_PRICE,'FM999,999,999') AS productPrice,
 		    pi.STORE_IMAGE_NAME AS storeImageName,
 		    (o.ORDER_RENT_END_DATE - o.ORDER_RENT_START_DATE) AS rentDays
 		FROM
