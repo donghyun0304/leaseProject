@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +23,7 @@ public class AddProductDto {
 	private String productName;
 	@Range(min = 1, max = 1000000) @NotNull
 	private Integer productPrice;
-	@NotBlank
+	@NotBlank @Size(max=1000) 
 	private String productContent;
 	@NotNull
 	private Long categoryId;
