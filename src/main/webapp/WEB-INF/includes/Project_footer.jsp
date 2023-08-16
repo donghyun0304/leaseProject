@@ -22,15 +22,26 @@
             </div>
             <div class="tec_serv">
                 <h3>기술</h3>
-                <span>기술명</span>
-                <span>기술명</span>
+                <span>문자인증 API</span>
+                <span>소셜 로그인 API</span>
+                <span>Interceptor</span>
             </div>
             <div>
                 <h3>개발환경</h3>
-
+				<span>Spring Boot</span>
+				<span>Java</span>
+				<span>HTML</span>
+				<span>CSS</span>
+				<span>JavaScript</span>
+				<span>GitHub</span>
             </div>
             <div>
                 <h3>페이지</h3>
+                <a href="/">홈</a>
+                <a href="/login">로그인</a>
+                <a href="/members/add">회원가입</a>
+                <a href="/members/${memberId }">마이페이지</a>
+                
             </div>
         </div>
         <div class="foot_bottom_bottom">

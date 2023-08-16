@@ -48,8 +48,8 @@
             <div class='findEmail_button'>
                 <a href="#" id="button_searchPw">비밀번호 찾기</a>
             </div>
-            	<input type="text" value='1' id="idCheckRes">
-                <input type="text" value='5' id="phoneCheckRes">
+            	<input type="hidden" value='1' id="idCheckRes">
+                <input type="hidden" value='5' id="phoneCheckRes">
             
         </div>
 
