@@ -14,7 +14,7 @@
 	
 	<select id="selectOne" resultType="Member">
 		select member_id, member_email, member_password, member_name, member_nickname,
-				member_phone, member_create_date, member_delete_status, socialLogin
+				member_phone, member_create_date, member_delete_status, social_Login
 		from member
 		where member_id=#{memberId}
 	</select>
