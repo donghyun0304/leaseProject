@@ -3,6 +3,7 @@ package july.lease.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -45,7 +46,7 @@ public class ProductService_kdh {
 		
 		Product product = new Product(memberId, productDto.getCategoryId(), productDto.getProductName(),
 										productDto.getProductPrice(), productDto.getProductContent()
-										, "서울"); //우선 서울로 넣어놓음
+										, productDto.getRegion1() + " " + productDto.getRegion2()); //우선 서울로 넣어놓음
 		Product saveProduct = productDao.save(product);
 		
 		List<ProductImage> images = fileStore.storeFiles(productDto.getImages());
@@ -87,10 +88,12 @@ public class ProductService_kdh {
 		List<ProductImage> images = productImageDao.findAllByProductId(productId);
 		List<RentDate> rentDates = rentDateDao.findByProductId(productId);
 		
+		String[] regions = product.getLocation().split(" ");
+		
 		EditProductResponseDto editProductDto = new EditProductResponseDto(
 				product.getMemberId(), product.getProductName(), product.getProductPrice(),
 				product.getProductContent(), product.getCategoryId(), product.getCategoryId3(),
-				rentDates, images, product.getProductEndStatus(), product.getLocation()
+				rentDates, images, product.getProductEndStatus(), regions[0], regions[1]
 				);
 		log.info("findByProductIdForEdit editProductDto={}",editProductDto);
 		return editProductDto;

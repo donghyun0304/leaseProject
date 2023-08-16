@@ -101,6 +101,94 @@
         		</div>
             </div>
         </div>
+        <div class='content_region'>
+            <h3>지역 : </h3>
+            <div>
+                <form:select name="region1" path="region1" class="region_first" onchange="kindChange2(this)">
+                    <form:option value="" label="선택해주세요."/>
+                    <form:option value="서울특별시" label="서울특별시"/>
+                    <form:option value="인천광역시" label="인천광역시"/>
+                   	<form:option value="경기도" label="경기도"/>
+                </form:select>
+                <form:select name="region2" path="region2" class="region_second">
+                    <form:option value="" label="선택해주세요."/>
+                	<c:if test="${product.region1.equals('서울특별시')}">
+     				   <form:option value="강남구" label="강남구"/>
+     				   <form:option value="강동구" label="강동구"/>
+     				   <form:option value="강북구" label="강북구"/>
+     				   <form:option value="강서구" label="강서구"/>
+     				   <form:option value="관악구" label="관악구"/>
+     				   <form:option value="광진구" label="광진구"/>
+     				   <form:option value="구로구" label="구로구"/>
+     				   <form:option value="금천구" label="금천구"/>
+     				   <form:option value="노원구" label="노원구"/>
+     				   <form:option value="도봉구" label="도봉구"/>
+     				   <form:option value="동대문구" label="동대문구"/>
+     				   <form:option value="동작구" label="동작구"/>
+     				   <form:option value="마포구" label="마포구"/>
+     				   <form:option value="서대문구" label="서대문구"/>
+     				   <form:option value="서초구" label="서초구"/>
+     				   <form:option value="성동구" label="성동구"/>
+     				   <form:option value="성북구" label="성북구"/>
+     				   <form:option value="송파구" label="송파구"/>
+     				   <form:option value="양천구" label="양천구"/>
+     				   <form:option value="영등포구" label="영등포구"/>
+     				   <form:option value="용산구" label="용산구"/>
+     				   <form:option value="은평구" label="은평구"/>
+     				   <form:option value="종로구" label="종로구"/>
+     				   <form:option value="중구" label="중구"/>
+     				   <form:option value="중량구" label="중량구"/>
+   					 </c:if>
+   					 <c:if test="${product.region1.equals('인천광역시')}">
+     				   <form:option value="중구" label="중구"/>
+     				   <form:option value="동구" label="동구"/>
+     				   <form:option value="미추홀구" label="미추홀구"/>
+     				   <form:option value="연수구" label="연수구"/>
+     				   <form:option value="남동구" label="남동구"/>
+     				   <form:option value="부평구" label="부평구"/>
+     				   <form:option value="계양구" label="계양구"/>
+     				   <form:option value="서구" label="서구"/>
+     				   <form:option value="강호군" label="강호군"/>
+     				   <form:option value="옹진군" label="옹진군"/>
+   					 </c:if>
+   					 <c:if test="${product.region1.equals('경기도')}">
+     				   <form:option value="수원시" label="수원시"/>
+     				   <form:option value="성남시" label="성남시"/>
+     				   <form:option value="용인시" label="용인시"/>
+     				   <form:option value="안양시" label="안양시"/>
+     				   <form:option value="안산시" label="안산시"/>
+     				   <form:option value="과천시" label="과천시"/>
+     				   <form:option value="광명시" label="광명시"/>
+     				   <form:option value="광주시" label="광주시"/>
+     				   <form:option value="군포시" label="군포시"/>
+     				   <form:option value="부천시" label="부천시"/>
+     				   <form:option value="시흥시" label="시흥시"/>
+     				   <form:option value="김포시" label="김포시"/>
+     				   <form:option value="안성시" label="안성시"/>
+     				   <form:option value="오산시" label="오산시"/>
+     				   <form:option value="의왕시" label="의왕시"/>
+     				   <form:option value="이천시" label="이천시"/>
+     				   <form:option value="평택시" label="평택시"/>
+     				   <form:option value="하남시" label="하남시"/>
+     				   <form:option value="화성시" label="화성시"/>
+     				   <form:option value="여주시" label="여주시"/>
+     				   <form:option value="양평군" label="양평군"/>
+     				   <form:option value="고양시" label="고양시"/>
+     				   <form:option value="구리시" label="구리시"/>
+     				   <form:option value="남양주시" label="남양주시"/>
+     				   <form:option value="동두천시" label="동두천시"/>
+     				   <form:option value="양주시" label="양주시"/>
+     				   <form:option value="의정부시" label="의정부시"/>
+     				   <form:option value="파주시" label="파주시"/>
+     				   <form:option value="포천시" label="포천시"/>
+   					 </c:if>
+   					 
+                </form:select>
+                <div class="errors">
+                	<form:errors path="region2"/>
+        		</div>
+            </div>
+        </div>
         
         <div class='content_details'>
             <h3>제품상세 : </h3>
