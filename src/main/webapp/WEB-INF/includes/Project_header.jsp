@@ -43,12 +43,12 @@
 		
 		// 맵에서 카테고리 대분류 찍고 중분류있으면 서브메뉴 만들기
 		categoryS.forEach((pCate, categoryId)=>{
-			category += "<li><a href = '/list?categoryName="+pCate.categoryName+"&categoryId="+pCate.categoryId+"' id = 'category-size'>"+pCate.categoryName+"<span>∨</span></a>";
+			category += "<li><a href = '/list?startDate=&endDate=&sort=&category="+pCate.categoryName+"&search=' id = 'category-size'>"+pCate.categoryName+"<span>∨</span></a>";
 			
 			if(pCate.subcategory.length>0) {
 				category += "<ul class = 'submenu'>";
 				pCate.subcategory.forEach(subCate => {
-					category += "<li><a href = '/list?categoryName="+subCate.categoryName+"&categoryId="+subCate.categoryId+"' id = 'subcategory-size'>"+subCate.categoryName+"</a></li>";				
+					category += "<li><a href = '/list?startDate=&endDate=&sort=&category="+subCate.categoryName+"&search=' id = 'subcategory-size'>"+subCate.categoryName+"</a></li>";				
 				})
 				category +="</ul>";
 			}
