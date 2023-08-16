@@ -64,8 +64,8 @@
                         <div class="product_label_form">
                             <div class="product_label">카테고리</div>
                             <ul class='product_tag_list'>
-                                <li class='tagbox'><a href="/list?category=${product.categoryName}">#${product.categoryName}</a></li>
-                                <li class='tagbox'><a href="/list?category=${product.categoryName2}">#${product.categoryName2}</a></li>  
+                                <li class='tagbox'><a href="/list?startDate=&endDate=&sort=&category=${product.categoryName}&search=">#${product.categoryName}</a></li>
+                                <li class='tagbox'><a href="/list?startDate=&endDate=&sort=&category=${product.categoryName2}&search=">#${product.categoryName2}</a></li>  
                             </ul>
                         </div>
                         <div class="product_rent_date_form">
