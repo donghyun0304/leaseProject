@@ -13,12 +13,15 @@
     <link rel="stylesheet" href="../../../../resources/css/Project_product_details.css">
     <link rel="stylesheet" href="../../../../resources/css/Project_product_details_calendar.css">
     <link rel="stylesheet" href="../../../../resources/css/calendar_one.css">
+    
     <script src="../../../../resources/js/project_product_details.js"></script>
     <script src='../../../../resources/js/Project_product_details_calendar.js'></script>
 </head>
 <%@include file="../includes/Project_header.jsp" %>
 <body>
-      <main>   
+      <main>
+      <input type="text" name="memberId" value="${memberId}" class="hidden">
+      <input type="text" name="productId" value="${productId}" class="hidden">
           <div class="product">
             <div class='product_section_one'>     
                 
@@ -131,7 +134,7 @@
 		                        </button>
                     		</c:when>
                     		<c:otherwise>
-                    		    <button class="chat">
+                    		    <button class="chat" id="chat" name="chat">
 		                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z"/></svg>
 		                            <span>쪽지</span>
 		                        </button>
@@ -222,6 +225,24 @@
     </main>
     <script type = "text/javascript">
         window.addEventListener('load', function(){
+        	
+        	chat.addEventListener('click', function(e){
+        		e.preventDefault();
+
+        	    const name = "MyMessageList";
+        	    const x = window.screen.width-600;
+        	    const y = window.screen.height-100;
+        	    
+        	    const mId = document.querySelector("[name=memberId]").value;
+        	    const pId = document.querySelector("[name=productId]").value;
+        	    
+        	    const url = '/members/'+mId+'/messages/'+pId+'/0';
+
+        	    let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+        	    	
+        	    window.open(url, name, option);
+        	});
+        	
             let open = document.getElementById('product-sellReserve');
             let close = document.getElementById('close');
             let modal = document.getElementById('modal-box');
