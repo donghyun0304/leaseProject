@@ -28,6 +28,29 @@ function kindChange(e){
 	}
 }
 
+function kindChange2(e){
+	var seoul = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중량구"];
+	var incheon = ["중구","동구","미추홀구","연수구","남동구","부평구","계양구","서구","강화군","옹진군"];
+	var gyeonggi = ["수원시","성남시","용인시","안양시","안산시","과천시","광명시","광주시","군포시","부천시","시흥시","김포시","안성시","오산시","의왕시","이천시","평택시","하남시","화성시","여주시","양평군","고양시","구리시","남양주시","동두천시","양주시","의정부시","파주시","포천시"];
+	var target = document.querySelector(".region_second");
+	
+	if(e.value == "서울특별시") var d = seoul;
+	else if(e.value == "인천광역시") var d = incheon;
+	else if(e.value == "경기도") var d = gyeonggi;
+	
+	target.options.length = 0;
+	
+	for(x in d){
+		var opt = document.createElement("option");
+		opt.value = d[x];
+		opt.innerHTML = d[x];
+
+		console.log(opt.value);
+		opt.innerHTML = d[x];
+		target.appendChild(opt);
+	}
+}
+
 function previewImage(f){
     var file = f.files;
 

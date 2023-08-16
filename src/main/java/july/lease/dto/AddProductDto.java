@@ -28,6 +28,10 @@ public class AddProductDto {
 	private Long categoryId;
 	@NotNull
 	private Long categoryId3;
+	@NotBlank
+	private String region1;
+	@NotBlank
+	private String region2;
 	@NotNull
 	private List<String> rentAbleStartDate;
 	@NotNull

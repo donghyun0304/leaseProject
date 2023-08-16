@@ -45,7 +45,7 @@ public class ProductService_kdh {
 		
 		Product product = new Product(memberId, productDto.getCategoryId(), productDto.getProductName(),
 										productDto.getProductPrice(), productDto.getProductContent()
-										, "서울"); //우선 서울로 넣어놓음
+										, productDto.getRegion1() + " " + productDto.getRegion2()); //우선 서울로 넣어놓음
 		Product saveProduct = productDao.save(product);
 		
 		List<ProductImage> images = fileStore.storeFiles(productDto.getImages());
