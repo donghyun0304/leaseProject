@@ -50,7 +50,7 @@
 			                        <li class='productLeaseStatus'><a href="#">${item.productStatus }</a></li>
 			                        <li class="productLeaseChat">
 			                        	<c:if test="${item.productStatus eq '대여확정'}">
-			                        		<a href="/members/${memberId}/messages/${item.productId}/0" class="chatConnect">연락하기</a>
+			                        		<a href="#" class="chatConnect" onclick="popup('/members/${memberId}/messages/${item.productId }/0')">연락하기</a>
 			                        	</c:if>
 			                        </li>
 			                    </ul>
@@ -102,6 +102,15 @@
 		
 		
 	})
+	
+	function popup(url) {
+		const name = "MyMessageList";
+	    const x = window.screen.width-600;
+	    const y = window.screen.height-100;
+	    let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+		
+		window.open(url, name, option);
+	}
 	
 	function getMoreList(list){
 		
