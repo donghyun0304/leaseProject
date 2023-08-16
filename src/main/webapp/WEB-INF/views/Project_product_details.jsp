@@ -119,54 +119,56 @@
                     </div>
 
                     <div class="product_buttons">
-                        <button class="chat">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z"/></svg>
-                            <span>쪽지</span>
-                        </button>
-                        
-                        <button type="button" id = "product-sellReserve">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                            <span>대여하기</span>
-                        </button>
-                        <div id = "modal-box">
-                    		<div id = "modal-contents">
-                    		<button id = "close" type="button">&times;</button>
-                    			<h2 id = "top-title">예약 확인</h2>
-                    			<div id = "profile">
-                    			
-                    			<div class = "image-content">
-                    				<img src = "../../../../resources/images/${product.images[0].storeImageName}" alt = ""><br>
-                    			</div>
-                    			
-                    				<div id = "desc">
-                    					<h2>상품명</h2><br>
-                    					<p class = "text-date" id="text-date" name="text-date"></p>
-                    					<p class = "text-num" id = "total-date" name = "total-date">대여일 : </p>
-                    					<p class = "text-price">${product.productPrice}</p>
-                    					
-                    					<p class = "text-totalPrice" id = "totalmodalprice"></p>
-                    					<input type = "text" name="orderPrice" style="display:none;" id = "inputTotalmodalprice">
-                    					
-                    					<div class = "bottom">
-                    					<input type="submit" id = "rent_button" value="대여 신청하기">
-                    					</div>
-                    				</div>
-                    			</div>
-                    		</div>
-                    	</div>
-                        
-                        
+                    	<c:choose>
+                    		<c:when test="${isMyItem}">
+                    		   <button class="product_edit">
+		                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
+		                            <span>수정하기</span>
+		                        </button>
+		                        <button class="product_delete">
+		                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>    
+		                            <span>삭제하기</span>
+		                        </button>
+                    		</c:when>
+                    		<c:otherwise>
+                    		    <button class="chat">
+		                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z"/></svg>
+		                            <span>쪽지</span>
+		                        </button>
+		                        
+		                        <button type="button" id = "product-sellReserve">
+		                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+		                            <span>대여하기</span>
+		                        </button>
+		                        <div id = "modal-box">
+		                    		<div id = "modal-contents">
+		                    		<button id = "close" type="button">&times;</button>
+		                    			<h2 id = "top-title">예약 확인</h2>
+		                    			<div id = "profile">
+		                    			
+		                    			<div class = "image-content">
+		                    				<img src = "../../../../resources/images/${product.images[0].storeImageName}" alt = ""><br>
+		                    			</div>
+		                    			
+		                    				<div id = "desc">
+		                    					<h2>상품명</h2><br>
+		                    					<p class = "text-date" id="text-date" name="text-date"></p>
+		                    					<p class = "text-num" id = "total-date" name = "total-date">대여일 : </p>
+		                    					<p class = "text-price">${product.productPrice}</p>
+		                    					
+		                    					<p class = "text-totalPrice" id = "totalmodalprice"></p>
+		                    					<input type = "text" name="orderPrice" style="display:none;" id = "inputTotalmodalprice">
+		                    					
+		                    					<div class = "bottom">
+		                    					<input type="submit" id = "rent_button" value="대여 신청하기">
+		                    					</div>
+		                    				</div>
+		                    			</div>
+		                    		</div>
+		                    	</div>	
+                    		</c:otherwise>
+                    	</c:choose> 
                     </div>
-                    <!-- <div class="product_buttons">
-                        <button class="product_edit">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
-                            <span>수정하기</span>
-                        </button>
-                        <button class="product_delete">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>    
-                            <span>삭제하기</span>
-                        </button>
-                    </div> -->
                 </div>
             </form>
         </div>
