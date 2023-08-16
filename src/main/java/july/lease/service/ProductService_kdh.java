@@ -219,7 +219,8 @@ public class ProductService_kdh {
 				product.getMemberId(), product.getProductName(), product.getProductPrice(),
 				product.getCategoryId(), product.getCategoryId2(), product.getCategoryName(),
 				product.getProductContent(), product.getProductEndStatus(),
-				product.getLocation(), images, rentDates);
+				product.getLocation(), product.getProductVisitCount(), 
+				product.getProductCreateDate(), images, rentDates);
 		
 		log.info("ProductService_kdh findByMemberIdExceptProductWithProductId responseDto={}", responseDto);
 		return responseDto;
@@ -227,6 +228,10 @@ public class ProductService_kdh {
 	
 	public void delete(Long productId) {
 		productDao.delete(productId);
+	}
+	
+	public int addVisitCount(Long productId, ProductDetailResponseDto responseDto) {
+		return productDao.addVisitCount(productId, responseDto);
 	}
 	
 	

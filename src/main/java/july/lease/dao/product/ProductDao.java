@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import july.lease.domain.Product;
 import july.lease.dto.EditProductRequestDto;
+import july.lease.dto.ProductDetailResponseDto;
 import july.lease.dto.ProductListDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -56,5 +57,9 @@ public class ProductDao {
 	
 	public void delete(Long productId) {
 		productMapper.delete(productId);
+	}
+	
+	public int addVisitCount(Long productId, ProductDetailResponseDto responseDto) {
+		return productMapper.addVisitCount(productId, responseDto);
 	}
 }

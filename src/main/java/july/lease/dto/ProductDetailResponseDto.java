@@ -22,6 +22,8 @@ public class ProductDetailResponseDto {
 	private String productContent;
 	private char productEndStatus;
 	private String location;
+	private int productVisitCount;
+	private String productCreateDate;
 	private List<ProductImage> images;
 	private List<RentDate> rentDates;
 	
@@ -30,6 +32,7 @@ public class ProductDetailResponseDto {
 	
 	public ProductDetailResponseDto(Long memberId, String productName, Integer productPrice, Long categoryId,
 			Long categoryId2, String categoryName, String productContent, char productEndStatus, String location,
+			int productVisitCount, String productCreateDate,
 			List<ProductImage> images, List<RentDate> rentDates) {
 		this.memberId = memberId;
 		this.productName = productName;
@@ -40,6 +43,8 @@ public class ProductDetailResponseDto {
 		this.productContent = productContent;
 		this.productEndStatus = productEndStatus;
 		this.location = location;
+		this.productVisitCount = productVisitCount;
+		this.productCreateDate = productCreateDate;
 		this.images = images;
 		this.rentDates = rentDates;
 	}
