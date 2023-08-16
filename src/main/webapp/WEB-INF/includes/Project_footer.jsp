@@ -40,8 +40,12 @@
                 <a href="/">홈</a>
                 <a href="/login">로그인</a>
                 <a href="/members/add">회원가입</a>
+                <c:if test="${not empty memberId}">
                 <a href="/members/${memberId }">마이페이지</a>
-                
+                </c:if>
+                <c:if test="${empty memberId}">
+                <a href="/login">마이페이지</a>
+                </c:if>
             </div>
         </div>
         <div class="foot_bottom_bottom">
