@@ -59,6 +59,10 @@ public class ProductDao {
 		productMapper.delete(productId);
 	}
 	
+	public void reRent(Long productId) {
+		productMapper.reRent(productId);
+	}
+	
 	public int addVisitCount(Long productId, ProductDetailResponseDto responseDto) {
 		return productMapper.addVisitCount(productId, responseDto);
 	}

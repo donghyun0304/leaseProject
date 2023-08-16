@@ -235,6 +235,10 @@ public class ProductService_kdh {
 		productDao.delete(productId);
 	}
 	
+	public void reRent(Long productId) {
+		productDao.reRent(productId);
+	}
+	
 	public int addVisitCount(Long productId, ProductDetailResponseDto responseDto) {
 		return productDao.addVisitCount(productId, responseDto);
 	}

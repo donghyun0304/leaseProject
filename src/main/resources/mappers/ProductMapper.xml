@@ -102,6 +102,12 @@
 		where product_id = #{productId}
 	</update>
 	
+	<update id="reRent">
+		update product
+		set product_end_status = 'N'
+		where product_id = #{productId}
+	</update>
+	
 	<update id="addVisitCount">
         <selectKey keyProperty="responseDto.productVisitCount" resultType="int" order="AFTER">
             select product_visit_count
