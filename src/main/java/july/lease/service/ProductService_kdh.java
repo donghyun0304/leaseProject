@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -238,5 +239,8 @@ public class ProductService_kdh {
 		return productDao.addVisitCount(productId, responseDto);
 	}
 	
+	public List<String> getImage(Long productId){
+		return productImageDao.findAllByProductId(productId).stream().map(x -> x.getStoreImageName()).collect(Collectors.toList());
+	}
 	
 }

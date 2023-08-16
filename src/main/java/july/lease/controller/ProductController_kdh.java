@@ -199,5 +199,11 @@ public class ProductController_kdh {
         response.addCookie(cookie);
     }
 	
+	@GetMapping("/products/{productId}/getImage")
+	private @ResponseBody List<String> getImage(@PathVariable Long productId){
+		List<String> list = productService_kdh.getImage(productId);
+		return list;
+	}
+	
 
 }
