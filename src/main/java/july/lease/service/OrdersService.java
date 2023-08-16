@@ -1,6 +1,7 @@
 package july.lease.service;
 
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Service;
 
@@ -35,8 +36,12 @@ public class OrdersService {
 		
 		log.info("=========check ={}", rentDate);
 		
+//		getStartDateIfInRangeWithOrderRentEndDate(
+//				rentDate, orderRequestDto.getOrderRentStartDate(),
+//				orderRequestDto.getOrderRentEndDate());
+		
 		String rentDateFirst = 
-				getStartDateIfInRange(rentDate, orderRequestDto.getOrderRentStartDate());
+				getStartDateIfInRangeWithOrderRentStartDate(rentDate, orderRequestDto.getOrderRentStartDate());
 		
 		Long rentDateId = rentDateDao.findRentDateIdByRentAbleStartDateAndProductId(rentDateFirst, productId);
 		
@@ -53,7 +58,7 @@ public class OrdersService {
 
 	}
 	
-	private String getStartDateIfInRange(String rentDate, String orderRentStartDate) {
+	private String getStartDateIfInRangeWithOrderRentStartDate(String rentDate, String orderRentStartDate) {
 		
 		 String[] dateRanges = rentDate.split(",");
 
@@ -69,8 +74,41 @@ public class OrdersService {
 	        return null;
 	}
 	
+//	 private static void getStartDateIfInRangeWithOrderRentEndDate(String rentDate, String orderRentStartDate, String orderRentEndDate) {
+//	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//	        LocalDate orderRentStart = LocalDate.parse(orderRentStartDate, formatter);
+//	        LocalDate orderRentEnd = LocalDate.parse(orderRentEndDate, formatter);
+//	        LocalDate previousEndDate = null;
+//
+//	        String[] dateRanges = rentDate.split(",");
+//	        
+//	        for (int i = 0; i < dateRanges.length; i++) {
+//	            String[] dates = dateRanges[i].split("\\|");
+//	            LocalDate startDate = LocalDate.parse(dates[0], formatter);
+//	            LocalDate endDate = LocalDate.parse(dates[1], formatter);
+//
+//	            // If there's a gap between date ranges
+//	            if (previousEndDate != null && !startDate.minusDays(1).isEqual(previousEndDate)) {
+//	                if ((orderRentStart.isAfter(previousEndDate) && orderRentStart.isBefore(startDate)) ||
+//	                    (orderRentEnd.isAfter(previousEndDate) && orderRentEnd.isBefore(startDate))) {
+//	                    System.out.println("The order dates are not available for reservation!");
+//	                    return;
+//	                }
+//	            }
+//	            
+//	            // If the order dates are within the current date range
+//	            if (!orderRentStart.isBefore(startDate) && !orderRentEnd.isAfter(endDate)) {
+//	                System.out.println("The order dates are in range!");
+//	                return;
+//	            }
+//
+//	            previousEndDate = endDate;
+//	        }
+//
+//	        throw new IllegalArgumentException("날짜 오류");
+//	    }
+	}
 	
 	
 	
 
-}

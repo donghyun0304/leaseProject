@@ -62,6 +62,7 @@
 		inner join product b
 		on a.product_id = b.product_id
 		where b.product_id = #{productId}
+		order by a.rent_able_start_date asc
 	</select>
 	
 	<select id="findRentDateIdByRentAbleStartDateAndProductId" resultType="Long">
