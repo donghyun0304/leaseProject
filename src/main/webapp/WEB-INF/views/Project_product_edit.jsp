@@ -208,8 +208,8 @@
             </div>
         </div>
         <div class = "bottom">
-            <input type="reset" class = "reset" value="초기화">
-            <input type="submit" class = "product_regi" value="등록하기">
+           
+            <input type="submit" class = "product_regi" value="수정하기">
         </div>
     </div>
     

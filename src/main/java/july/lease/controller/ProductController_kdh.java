@@ -123,18 +123,26 @@ public class ProductController_kdh {
 	
 	
 	@GetMapping("/products/{productId}")
-	public String product(@PathVariable Long productId, Model model) {
+	public String product(@PathVariable Long productId, Model model,
+			@SessionAttribute(name = "memberId", required = false)Long memberId) {
 		
 		ProductDetailResponseDto responseDto = productService_kdh.findByProductIdForProductDetail(productId);
 		List<ProductListDto> list = productService_kdh.findByMemberIdExceptProductWithProductId(responseDto.getMemberId(), productId);
 		String orderRentDateStr = ordersService.findOrderRentDateByProductId(productId);
 		String rentDateStr = rentDateService.findRentAbleDateByProductId(productId);
 		
+		boolean status = true;
+		if(memberId != responseDto.getMemberId()) {
+			status = false;
+		} 
+		model.addAttribute("isMyItem", status);
+		
 		model.addAttribute("product", responseDto);
 		model.addAttribute("productList", list);
 		model.addAttribute("productsCount", list.size()+1);
 		model.addAttribute("orderRentDate", orderRentDateStr);
 		model.addAttribute("rentDate", rentDateStr);
+		
 	
 		return "Project_product_details";
 	}

@@ -11,9 +11,9 @@
         </selectKey>
         insert into product(product_id, member_id, category_id, product_name,
         				    product_price, product_content, location,
-        				    product_create_date, product_end_status, product_status)
+        				    product_create_date, product_end_status, product_status, product_visit_count)
 		values(#{productId}, #{memberId}, #{categoryId}, #{productName},
-			   #{productPrice}, #{productContent}, #{location}, sysdate, 'N', 1)
+			   #{productPrice}, #{productContent}, #{location}, sysdate, 'N', 1, 0)
     </insert>
     
 	<select id="findByProductId" resultType="Product">
