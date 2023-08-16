@@ -224,17 +224,15 @@
         </div>
     </main>
     <script type = "text/javascript">
+   	 	const mId = document.querySelector("[name=memberId]").value;
         window.addEventListener('load', function(){
         	
         	chat.addEventListener('click', function(e){
         		e.preventDefault();
 
-        		
         	    const name = "MyMessageList";
         	    const x = window.screen.width-600;
         	    const y = window.screen.height-100;
-        	    
-        	    const mId = document.querySelector("[name=memberId]").value;
         	    const pId = document.querySelector("[name=productId]").value;
         	    
         	    if(mId === '') {
@@ -254,42 +252,47 @@
             
             
             open.addEventListener('click', function(){
-                let startDate = document.querySelector('#subStartDate').value;
-                let endDate = document.querySelector('#subEndDate').value;
-                let modalprice = document.querySelector('.text-price').textContent;
-                
-                console.log("startDate", startDate);
-                console.log("endDate", endDate);
-                console.log("modalprice", modalprice);
-                
-                document.querySelector('#text-date').innerText = '대여 기간 : '+startDate+' ~ '+endDate;
-                
-                var arr1 = startDate.split('-');
-                var arr2 = endDate.split('-');
-                
-                var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
-                var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
-                
-                var diff = dat2 - dat1;
-                var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
-                var currMonth = currDay * 30; // 월
-                var currYear = currMonth * 12; // 년
-                
-                let priceNumber = parseInt(modalprice.replace(/\D/g, ''));
-
-             // 숫자를 ###,### 형식으로 변환
-             let formattedModalPrice = priceNumber.toLocaleString('en-US');
-
-             
-                
-                document.querySelector('#total-date').innerText = '총 일수 : '+ parseInt(diff/currDay) + '박' + parseInt((diff/currDay+1)) + '일';
-                document.querySelector('.text-price').textContent = '가격 : ' + formattedModalPrice + '원';
-                let total2 = modalprice * parseInt(diff/currDay+1);
-                let formattedTotal2 = total2.toLocaleString('en-US');
-                document.querySelector('#totalmodalprice').innerText = '최종가격 : '+ formattedTotal2 + '원';
-                document.querySelector('#inputTotalmodalprice').value = parseInt(modalprice*parseInt(diff/currDay+1));
-                
-                modal.classList.add('active');
+            	
+            	if(mId === '') {
+        	    	alert("로그인이 필요합니다.");
+        	    } else {
+	                let startDate = document.querySelector('#subStartDate').value;
+	                let endDate = document.querySelector('#subEndDate').value;
+	                let modalprice = document.querySelector('.text-price').textContent;
+	                
+	                console.log("startDate", startDate);
+	                console.log("endDate", endDate);
+	                console.log("modalprice", modalprice);
+	                
+	                document.querySelector('#text-date').innerText = '대여 기간 : '+startDate+' ~ '+endDate;
+	                
+	                var arr1 = startDate.split('-');
+	                var arr2 = endDate.split('-');
+	                
+	                var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+	                var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+	                
+	                var diff = dat2 - dat1;
+	                var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
+	                var currMonth = currDay * 30; // 월
+	                var currYear = currMonth * 12; // 년
+	                
+	                let priceNumber = parseInt(modalprice.replace(/\D/g, ''));
+	
+	             // 숫자를 ###,### 형식으로 변환
+	             let formattedModalPrice = priceNumber.toLocaleString('en-US');
+	
+	             
+	                
+	                document.querySelector('#total-date').innerText = '총 일수 : '+ parseInt(diff/currDay) + '박' + parseInt((diff/currDay+1)) + '일';
+	                document.querySelector('.text-price').textContent = '가격 : ' + formattedModalPrice + '원';
+	                let total2 = modalprice * parseInt(diff/currDay+1);
+	                let formattedTotal2 = total2.toLocaleString('en-US');
+	                document.querySelector('#totalmodalprice').innerText = '최종가격 : '+ formattedTotal2 + '원';
+	                document.querySelector('#inputTotalmodalprice').value = parseInt(modalprice*parseInt(diff/currDay+1));
+	                
+	                modal.classList.add('active');
+        	    }
             });
     
             close.addEventListener('click', function(){
