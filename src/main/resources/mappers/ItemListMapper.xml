@@ -9,7 +9,7 @@
 	 
 	    SELECT 
 	        productName,
-		    productPrice,
+		    TO_CHAR(productPrice, 'FM999,999,999') as productPrice,
 		    productId,
 		    storeImageName,
 		    categoryId
@@ -52,7 +52,7 @@
 	 	SELECT 
 	 			A.productId, 
 	 			A.productName, 
-	 			A.productPrice, 
+	 			TO_CHAR(A.productPrice, 'FM999,999,999'), 
 	 			A.storeImageName, 
 	 			A.categoryId
 		FROM (

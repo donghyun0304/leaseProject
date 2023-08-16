@@ -53,7 +53,7 @@
 }
 #desc {
   margin:10px 20px;
-  width: 20rem;
+  width: 23rem;
 }
 
 .product-info{
@@ -66,6 +66,12 @@
 
 .product-info tr th{
   height: 2rem;
+}
+
+.product-info tbody tr td:last-child{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 #profile img{
