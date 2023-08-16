@@ -25,7 +25,7 @@ public class OrdersController_kdh {
 	
 	@GetMapping("/products/{productId}/orders/confirm")
 	public String checkOrder(@ModelAttribute("order") CheckOrderRequestDto orderRequestDto) {
-		return "";
+		return "Project_product_comp";
 	}
 	
 	@PostMapping("/products/{productId}/orders")
@@ -38,6 +38,6 @@ public class OrdersController_kdh {
 		Orders saveOrder = ordersService.save(memberId, productId, orderRequestDto);
 		model.addAttribute("order", saveOrder);
 		
-		return "redirect:/";
+		return "redirect:/products/" + productId + "/orders/confirm";
 	}
 }
