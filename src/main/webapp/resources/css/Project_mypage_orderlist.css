@@ -172,18 +172,3 @@ main{
     background-color: var(--main-color-hover);
 }
 
-
-.moreBox{
-    width: 100%;
-    text-align: center;
-}
-
-.getMore{
-    width: 5rem;
-    height: 2rem;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    color: #949494;
-    background-color: rgba(255, 255, 255, 0);
-}

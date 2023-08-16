@@ -209,7 +209,7 @@
                         </div>
                     </div>
                     <ul class='summary_products'>
-                    	<c:forEach var="item" items="${productList}">
+                    	<c:forEach var="item" items="${productList}" end="5">
 	                        <li class='summary_product'>
 	                            <a href='#'>
 	                                <img src='../../../../resources/images/${item.storeImageName}'>
@@ -221,10 +221,10 @@
                     	</c:forEach>
                     </ul>
                     
-                    <c:if test="${productsCount - fn:length(productList) - 1 != 0}">           
+                    <c:if test="${productsCount - 6 - 1 >= 0}">           
 	                    <div class='moreBox'>
 	                        <a href="#">
-	                            <span><span>${productsCount - fn:length(productList) - 1 }개</span> 상품 더보기</span>
+	                            <span><span>${productsCount - 6 - 1 }개</span> 상품 더보기</span>
 	                            <svg width='0.8rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
 	                        </a>
 	                    </div>

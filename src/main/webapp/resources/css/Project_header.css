@@ -19,8 +19,8 @@
 :root {
     --border-radius: 0.5rem;
     --border-color: #5a5849;
-    --main-color: rgb(0, 0, 0);
-    --main-color-hover: rgb(80, 80, 80);
+    --main-color: rgb(191,171,128);
+    --main-color-hover: rgb(165 147 108);;
 }
 
 ul{
@@ -92,8 +92,7 @@ header .head{
 .search{
     width: 25rem;
     height: 2.5rem;
-    /* background-color: antiquewhite; */
-    border: 0.15rem solid var(--border-color);
+    border: 0.15rem solid var(--main-color);
     display: flex;
     position: relative;
 }
@@ -116,7 +115,7 @@ header .head{
 
 
 .search svg{
-    fill: var(--border-color);
+    fill: var(--main-color);
     cursor: pointer;
 }
 
@@ -128,7 +127,7 @@ header .head{
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
-    border: 0.2rem solid var(--border-color);
+    border: 0.2rem solid var(--main-color);
     background-color: white;
     z-index: 100;
 }
@@ -376,4 +375,11 @@ header .head{
 
 .fixed {
   position: fixed;
+}
+.errors{
+    color: red;
+    font-size: 0.9rem;
+}
+.errorsborder{
+    border: 2px solid rgb(255, 114, 114);
 }
