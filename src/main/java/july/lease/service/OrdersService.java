@@ -107,7 +107,15 @@ public class OrdersService {
 //
 //	        throw new IllegalArgumentException("날짜 오류");
 //	    }
+	
+	public int findConfirmStatusCountByProductId(Long productId) {
+		return ordersDao.findConfirmStatusCountByProductId(productId);
 	}
+	
+	
+	}
+
+
 	
 	
 	

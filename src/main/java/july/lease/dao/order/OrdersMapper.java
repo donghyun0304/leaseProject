@@ -16,4 +16,6 @@ public interface OrdersMapper {
 	List<String> findOrderRentDateByProductId(Long productId);
 	
 	Orders findByOrderId(Long orderId);
+	
+	int findConfirmStatusCountByProductId(Long productId);
 }
