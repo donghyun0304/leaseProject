@@ -25,7 +25,7 @@
             <input type="text" id="redirectLogin" value="로그인 후 이용 가능한 메뉴 입니다">
             </c:if>
             <div class='login_logo'>
-                로고자리
+                <img src="../../../../resources/images/rogo.png" alt="" class= "img" style="width: 70%">
             </div>
             
             <div class='login_box_id'>
