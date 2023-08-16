@@ -23,14 +23,14 @@ public class ListController_hsb {
         this.itemListService = itemListService;
     }
 
-    @ModelAttribute("cri")
+//    @ModelAttribute("cri")
     public Criteria createCriteria() {
         Criteria cri = new Criteria();
         cri.setPageStart();
         return cri;
     }
     
-    @GetMapping("/list")
+//    @GetMapping("/list")
     public String list( Criteria cri,
 			            @RequestParam(name = "page", defaultValue = "1") int page, 
 			            Model model) {
