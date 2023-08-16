@@ -20,7 +20,7 @@ public class AddProductDto {
 	
 	@NotBlank
 	private String productName;
-	@Range(min = 1, max = 100000) @NotNull
+	@Range(min = 1, max = 1000000) @NotNull
 	private Integer productPrice;
 	@NotBlank
 	private String productContent;
