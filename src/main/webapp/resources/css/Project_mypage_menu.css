@@ -17,9 +17,6 @@
 
 :root {
     --border-radius: 0.5rem;
-    --border-color: #b0b0b0;
-    --main-color: rgb(0, 0, 0);
-    --main-color-hover: rgb(80, 80, 80);
     --main-font-color: rgb(255, 255, 255);
     --main-font-color-hover: rgb(0, 0, 0);
     --confirm-color: rgb(83, 216, 127);
@@ -41,7 +38,6 @@ ul{
 aside{
     width: 13rem;
     border-radius: var(--border-radius);
-    /* border: 1px solid black; */
     margin: 0;
     padding: 1.5rem;
     max-height: 30rem;
@@ -61,4 +57,19 @@ aside{
 
 .myMenu{
     margin: 1.5rem 0;
+}
+
+.moreBox{
+    width: 100%;
+    text-align: center;
+}
+
+.getMore{
+    width: 5rem;
+    height: 2rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    color: #949494;
+    background-color: rgba(255, 255, 255, 0);
 }

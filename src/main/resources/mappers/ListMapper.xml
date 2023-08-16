@@ -13,7 +13,7 @@
 		    SELECT PRODUCT_ID, STORE_IMAGE_NAME, ROW_NUMBER() OVER (PARTITION BY PRODUCT_ID ORDER BY PRODUCT_IMAGE_ID) AS ROW_NUM
 		    FROM PRODUCT_IMAGE
 		) P_IMAGE ON (PRODUCT.PRODUCT_ID = P_IMAGE.PRODUCT_ID AND P_IMAGE.ROW_NUM = 1)
-		
+		JOIN MEMBER ON (PRODUCT.MEMBER_ID = MEMBER.MEMBER_ID)
 		<!-- 희망대여일에 대한 조건 -->
 		<if test="startDate != '' and endDate != ''">
 			JOIN (SELECT PRODUCT_ID, RENT_ABLE_START_DATE, RENT_ABLE_END_DATE
@@ -31,7 +31,7 @@
 			WHERE PRODUCT_END_STATUS = 'N' AND #{category} in (C1NAME, C2NAME) 
 			</when>
 			<otherwise>		
-			WHERE PRODUCT_END_STATUS = 'N' AND PRODUCT_NAME LIKE '%' || #{searchWord} || '%'			
+			WHERE PRODUCT_END_STATUS = 'N' AND (PRODUCT_NAME LIKE '%' || #{searchWord} || '%' OR MEMBER_NICKNAME LIKE '%' || #{searchWord} || '%' )
 			</otherwise>
 		</choose>
 			
@@ -59,6 +59,7 @@
 			    SELECT PRODUCT_ID, STORE_IMAGE_NAME, ROW_NUMBER() OVER (PARTITION BY PRODUCT_ID ORDER BY PRODUCT_IMAGE_ID) AS ROW_NUM
 			    FROM PRODUCT_IMAGE
 			) P_IMAGE ON (PRODUCT.PRODUCT_ID = P_IMAGE.PRODUCT_ID AND P_IMAGE.ROW_NUM = 1)
+			JOIN MEMBER ON (PRODUCT.MEMBER_ID = MEMBER.MEMBER_ID)
 			<!-- 희망대여일에 대한 조건 -->
 			<if test="startDate != '' and endDate != ''">
 			JOIN (SELECT PRODUCT_ID, RENT_ABLE_START_DATE, RENT_ABLE_END_DATE
@@ -76,7 +77,7 @@
 				WHERE PRODUCT_END_STATUS = 'N' AND #{category} in (C1NAME, C2NAME) 
 				</when>
 				<otherwise>		
-				WHERE PRODUCT_END_STATUS = 'N' AND PRODUCT_NAME LIKE '%' || #{searchWord} || '%'			
+				WHERE PRODUCT_END_STATUS = 'N' AND (PRODUCT_NAME LIKE '%' || #{searchWord} || '%' OR MEMBER_NICKNAME LIKE '%' || #{searchWord} || '%' )			
 				</otherwise>
 			</choose>
 			<!-- 정렬조건 -->
@@ -107,7 +108,8 @@
 			WHERE PRODUCT_END_STATUS = 'N' AND #{category} in (C1NAME, C2NAME) 
 			</when>
 			<otherwise>		
-			WHERE PRODUCT_END_STATUS = 'N' AND PRODUCT_NAME LIKE '%' || #{searchWord} || '%'			
+			JOIN MEMBER ON (PRODUCT.MEMBER_ID = MEMBER.MEMBER_ID)
+			WHERE PRODUCT_END_STATUS = 'N' AND (PRODUCT_NAME LIKE '%' || #{searchWord} || '%' OR MEMBER_NICKNAME LIKE '%' || #{searchWord} || '%' )		
 			</otherwise>
 		</choose>
 	</select>
