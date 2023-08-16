@@ -229,6 +229,7 @@
         	chat.addEventListener('click', function(e){
         		e.preventDefault();
 
+        		
         	    const name = "MyMessageList";
         	    const x = window.screen.width-600;
         	    const y = window.screen.height-100;
@@ -236,11 +237,14 @@
         	    const mId = document.querySelector("[name=memberId]").value;
         	    const pId = document.querySelector("[name=productId]").value;
         	    
-        	    const url = '/members/'+mId+'/messages/'+pId+'/0';
-
-        	    let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+        	    if(mId === '') {
+        	    	alert("로그인이 필요합니다.");
+        	    } else {
+	        	    const url = '/members/'+mId+'/messages/'+pId+'/0';
+	        	    let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+	        	    window.open(url, name, option);
+        	    }
         	    	
-        	    window.open(url, name, option);
         	});
         	
             let open = document.getElementById('product-sellReserve');
