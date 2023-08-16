@@ -21,7 +21,9 @@ public class OrdersService {
 	private final RentDateDao rentDateDao;
 	
 	public int checkOrdersIfValid(Long productId) {
-		return ordersDao.checkOrdersIfValid(productId);
+		int result = ordersDao.checkOrdersIfValid(productId);
+		log.info("첵오더스={}", result);
+		return result;
 	}
 	
 	public String findOrderRentDateByProductId(Long productId) {
