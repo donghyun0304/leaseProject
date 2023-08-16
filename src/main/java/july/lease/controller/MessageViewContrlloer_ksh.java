@@ -52,10 +52,9 @@ public class MessageViewContrlloer_ksh{
 		
 		HttpSession session = request.getSession();
 		Long sessionMemberId = (Long)session.getAttribute("memberId");
-		
-		
+
 		// url접근 막기
-		if (sessionMemberId != memberId) {
+		if (!(sessionMemberId + "").equals(memberId + "")) {
 			throw new IllegalStateException();
 		} 
 		
