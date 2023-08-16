@@ -264,11 +264,16 @@
             
             open.addEventListener('click', function(){
             	
+                let startDate = document.querySelector('#subStartDate').value;
+                let endDate = document.querySelector('#subEndDate').value;
+                if (startDate == '' || endDate == ''){
+                	alert("대여일을 설정해주세요.");
+                	return;
+                }
             	if(mId === '') {
         	    	alert("로그인이 필요합니다.");
-        	    } else {
-	                let startDate = document.querySelector('#subStartDate').value;
-	                let endDate = document.querySelector('#subEndDate').value;
+        	    	return;
+        	    }
 	                let modalprice = document.querySelector('.text-price').textContent;
 	                
 	                console.log("startDate", startDate);
@@ -303,7 +308,6 @@
 	                document.querySelector('#inputTotalmodalprice').value = parseInt(modalprice*parseInt(diff/currDay+1));
 	                
 	                modal.classList.add('active');
-        	    }
             });
     
             close.addEventListener('click', function(){
