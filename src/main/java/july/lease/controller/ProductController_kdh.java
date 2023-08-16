@@ -140,6 +140,7 @@ public class ProductController_kdh {
 		List<ProductListDto> list = productService_kdh.findByMemberIdExceptProductWithProductId(responseDto.getMemberId(), productId);
 		String orderRentDateStr = ordersService.findOrderRentDateByProductId(productId);
 		String rentDateStr = rentDateService.findRentAbleDateByProductId(productId);
+		int confirmStatusCount = ordersService.findConfirmStatusCountByProductId(productId);
 		
 		visitCountValidation(productId, responseDto, request, response);
 		
@@ -154,6 +155,7 @@ public class ProductController_kdh {
 		model.addAttribute("productsCount", list.size()+1);
 		model.addAttribute("orderRentDate", orderRentDateStr);
 		model.addAttribute("rentDate", rentDateStr);
+		model.addAttribute("confirmStatusCount", confirmStatusCount);
 		
 	
 		return "Project_product_details";

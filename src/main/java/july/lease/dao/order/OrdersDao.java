@@ -50,5 +50,9 @@ public class OrdersDao {
 	public Orders findByOrderId(Long orderId) {
 		return ordersMapper.findByOrderId(orderId);
 	}
+	
+	public int findConfirmStatusCountByProductId(Long productId) {
+		return ordersMapper.findConfirmStatusCountByProductId(productId);
+	}
 
 }
