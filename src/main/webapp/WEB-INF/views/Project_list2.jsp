@@ -49,7 +49,7 @@
          <div id='categoryProduct' class='categoryProduct'>
     			<div style='padding-top: 1.3em;'>
     				<div class="productList">
-	               		<c:forEach items="${getList }" var="item" end='7'>
+	               		<c:forEach items="${getList }" var="item" end='11'>
 	                		<ul class='product'>
 					            <a href='/products/${item.productId}'>
 				                    <li class='productImage'><img class='thumbnail' src="../../../../resources/images/${item.storeImageName}" alt="${item.productName} 이미지"></li>
@@ -58,7 +58,7 @@
 					            </a>
 			                </ul>
 	        			</c:forEach>
-				        <c:if test="${fn:length(getList) > 8}">
+				        <c:if test="${fn:length(getList) > 12}">
 				           <div class="moreBox">
 				               <button class="getMore">
 				                   <span>더보기</span>

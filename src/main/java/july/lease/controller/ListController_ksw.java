@@ -29,13 +29,13 @@ public class ListController_ksw {
 	
 	@GetMapping
 	public String getList(Model model, String search, String startDate, String endDate, String sort) {
-		
+		sort = (sort == null || sort.equals("")) ? "popular" : sort;
 		List<ListDto> getList = listService.getList(search, startDate, endDate, sort);
 		model.addAttribute("getList", getList);
 		model.addAttribute("search", search == null ? "" : search);
 		model.addAttribute("startDate", startDate == null ? "" : startDate);
 		model.addAttribute("endDate", endDate == null ? "" : endDate);
-		model.addAttribute("sort", sort == null ? "" : sort);
+		model.addAttribute("sort", sort);
 		String getCount = listService.getCount(search, startDate, endDate);
 		model.addAttribute("getCount", getCount); // 검색결과 개수
 		model.addAttribute("searchTitle", search);

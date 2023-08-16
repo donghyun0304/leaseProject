@@ -44,13 +44,13 @@
 	   		<div style='padding-top: 1.3em;'>
 	    		<div class="productList">
 			        <c:forEach items="${items }" var="item" end="11">
-			                <ul class='product'>
-					            <a href='/products/${item.productId}'>
-				                    <li class='productImage'><img class='thumbnail' src="../../../../resources/images/${item.storeImageName}1" alt="${item.productName} 이미지"></li>
-				                    <li class='productName'><p class='product_title'>${item.productName }</p></li>
-				                    <li class='productPrice'><p class='product_price'>${item.productPrice}원/일</p></li>
-					            </a>
-			                </ul>
+		                <ul class='product'>
+				            <a href='/products/${item.productId}'>
+			                    <li class='productImage'><img class='thumbnail' src="../../../../resources/images/${item.storeImageName}" alt="${item.productName} 이미지"></li>
+			                    <li class='productName'><p class='product_title'>${item.productName }</p></li>
+			                    <li class='productPrice'><p class='product_price'>${item.productPrice}원/일</p></li>
+				            </a>
+		                </ul>
 			        </c:forEach>
 			        <c:if test="${fn:length(items) > 11}">
 			           <div class="moreBox">

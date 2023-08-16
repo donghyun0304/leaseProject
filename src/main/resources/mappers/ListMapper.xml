@@ -69,11 +69,13 @@
 	<select id="getCount" resultType="String">
 	    SELECT count(product.product_id)
 	    FROM PRODUCT
+	    <if test="startDate != '' or endDate != ''">
 	    JOIN (SELECT PRODUCT_ID, RENT_ABLE_START_DATE, RENT_ABLE_END_DATE
 	            FROM RENT_DATE
 			        WHERE TO_DATE(#{startDate}, 'YYYY-MM-DD') BETWEEN RENT_ABLE_START_DATE AND RENT_ABLE_END_DATE
 			        	AND TO_DATE(#{endDate}, 'YYYY-MM-DD') BETWEEN RENT_ABLE_START_DATE AND RENT_ABLE_END_DATE
 	            ) R ON (R.PRODUCT_ID = PRODUCT.PRODUCT_ID)
+		</if>
 	    WHERE PRODUCT_END_STATUS = 'N' AND PRODUCT_NAME LIKE '%' || #{searchWord} || '%'
 	</select>
 </mapper>     

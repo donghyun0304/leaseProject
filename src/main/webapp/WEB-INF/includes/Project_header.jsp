@@ -91,7 +91,7 @@
             	<c:if test="${not login}">
             	    <li class='header_page'><a href="/login" id='message'>쪽지</a></li>
 	                <li class='header_page'><a href="/login">마이페이지</a></li>
-                	<li class='header_page'><a href="/login">로그인</a></li>
+                	<li class='header_page'><a href="/login">로그인/회원가입</a></li>
                 </c:if>
                 
             </ul>
