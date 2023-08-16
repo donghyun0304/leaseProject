@@ -81,6 +81,13 @@ public class ProductController_kdh {
 			Model model) {
 		
 		EditProductResponseDto productResponse = productService_kdh.findByProductIdForEdit(productId);
+		
+		//판매중단된 경우 상품수정페이지로 들어가려하면 홈 띄우기
+		if(productResponse.getProductEndStatus() == 'Y') {
+			return "redirect:/";
+		}
+		
+		
 		//jsp폼에서 제품상세 <form:textarea>에서 path기능을 사용하기 위한 코드
 		productRequest.setProductContent(productResponse.getProductContent());
 		productRequest.setCategoryId(productResponse.getCategoryId());
@@ -136,6 +143,14 @@ public class ProductController_kdh {
 		productService_kdh.delete(productId);
 		return "redirect:/products/" + productId;
 	}
+	
+	@PostMapping("/products/{productId}/rerent")
+	public String reRent(@PathVariable Long productId) {
+		productService_kdh.reRent(productId);
+		return "redirect:/products/" + productId;
+	}
+	
+	
 	
 	
 	@GetMapping("/products/{productId}")

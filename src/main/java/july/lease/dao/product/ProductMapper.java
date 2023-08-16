@@ -30,6 +30,8 @@ public interface ProductMapper {
 	
 	void delete(Long productId);
 	
+	void reRent(Long productId);
+	
 	int addVisitCount(@Param("productId") Long productId, @Param("responseDto") ProductDetailResponseDto responseDto);
 	
 }
