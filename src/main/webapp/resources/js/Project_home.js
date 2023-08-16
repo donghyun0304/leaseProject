@@ -52,7 +52,7 @@ window.addEventListener('load', function(){
     			var list_length = $(".productList .product").length;
     			
     			startRow = list_length + 1;
-    			endRow = startRow + 3;
+    			endRow = startRow + 7;
     			var moreDate = {
     				startRow : startRow,
     				endRow : endRow
