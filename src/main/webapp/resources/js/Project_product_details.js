@@ -55,7 +55,7 @@ window.addEventListener('load', function(){
 	            if (parseInt(responseData) > 0) {
 	                alert('이 상품에 주문이 ' + responseData + '건 조회 되었습니다.\n삭제를 원하시면 마이페이지에서 대여취소 또는 대여완료를 해주세요.');
 	            } else if (parseInt(responseData) == 0) {
-	                if (confirm('삭제하시겠습니까?')) {
+	                if (confirm('삭제 하시겠습니까?')) {
 	                	
 	                	$.ajax({
 	                        url: window.location.pathname + "/delete",

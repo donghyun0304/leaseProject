@@ -275,9 +275,18 @@
                 var currMonth = currDay * 30; // 월
                 var currYear = currMonth * 12; // 년
                 
+                let priceNumber = parseInt(modalprice.replace(/\D/g, ''));
+
+             // 숫자를 ###,### 형식으로 변환
+             let formattedModalPrice = priceNumber.toLocaleString('en-US');
+
+             
+                
                 document.querySelector('#total-date').innerText = '총 일수 : '+ parseInt(diff/currDay) + '박' + parseInt((diff/currDay+1)) + '일';
-                document.querySelector('.text-price').textContent = '가격 : '+modalprice;
-                document.querySelector('#totalmodalprice').innerText = '최종가격 : '+modalprice*parseInt(diff/currDay+1);
+                document.querySelector('.text-price').textContent = '가격 : ' + formattedModalPrice + '원';
+                let total2 = modalprice * parseInt(diff/currDay+1);
+                let formattedTotal2 = total2.toLocaleString('en-US');
+                document.querySelector('#totalmodalprice').innerText = '최종가격 : '+ formattedTotal2 + '원';
                 document.querySelector('#inputTotalmodalprice').value = parseInt(modalprice*parseInt(diff/currDay+1));
                 
                 modal.classList.add('active');
