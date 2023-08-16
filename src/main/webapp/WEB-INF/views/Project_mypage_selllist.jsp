@@ -103,7 +103,7 @@
                     		<c:otherwise>
                     		     <c:forEach var="endItem" items="${check}">
 			                        <div class='item'>
-			                            <a href="#">
+			                            <a href="/products/${endItem.productId }">
 			                                <div class='itemImage'>
 			                                    <img src="../../resources/images/${endItem.images[0].storeImageName}" alt="">
 			                                </div>

@@ -148,7 +148,6 @@ public class ProductController_kdh {
 		String orderRentDateStr = ordersService.findOrderRentDateByProductId(productId);
 		String rentDateStr = rentDateService.findRentAbleDateByProductId(productId);
 		int confirmStatusCount = ordersService.findConfirmStatusCountByProductId(productId);
-		
 		visitCountValidation(productId, responseDto, request, response);
 		
 		boolean status = true;

@@ -24,6 +24,7 @@
 					PRODUCT P
 			LEFT JOIN
 			    	product_image pi ON p.PRODUCT_ID = pi.PRODUCT_ID
+			WHERE P.PRODUCT_END_STATUS = 'N'
 			ORDER BY PRODUCT_CREATE_DATE DESC
 			)
 		WHERE RN = 1
@@ -43,6 +44,7 @@
 								PRODUCT P
 						LEFT JOIN
 						    	product_image pi ON p.PRODUCT_ID = pi.PRODUCT_ID
+						WHERE P.PRODUCT_END_STATUS = 'N'
 						ORDER BY PRODUCT_CREATE_DATE DESC
 						)
 					WHERE RN = 1
@@ -63,6 +65,7 @@
 		    product p ON o.PRODUCT_ID = p.PRODUCT_ID
 		JOIN
 		    product_image pi ON p.PRODUCT_ID = pi.PRODUCT_ID
+		WHERE P.PRODUCT_END_STATUS = 'N'   
 		ORDER BY rentDays DESC
 	</select>
 	
