@@ -300,7 +300,9 @@ header .category{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-size : 100% 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
   }
   
   .arrow {
