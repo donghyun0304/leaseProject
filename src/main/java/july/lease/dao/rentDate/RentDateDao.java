@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import july.lease.domain.RentDate;
+import july.lease.dto.RentAbleDateDto;
 import july.lease.dto.RentAbleRequestDto;
 import july.lease.dto.RentOrderStatusDto;
 import lombok.RequiredArgsConstructor;
@@ -73,6 +74,10 @@ public class RentDateDao {
 		Long result = rentDateMapper.findRentDateIdByRentAbleStartDateAndProductId(rentAbleStartDate, productId);
 		log.info("findRentDateIdByRentAbleStartDateAndProductId={}", result);
 		return result;
+	}
+	
+	public List<RentAbleDateDto> findRentAbleDatesWithinOrderDates(Long productId, String orderRentStartDate, String orderRentEndDate) {
+		return rentDateMapper.findRentAbleDatesWithinOrderDates(productId, orderRentStartDate, orderRentEndDate);
 	}
 
 }

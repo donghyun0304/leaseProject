@@ -2,12 +2,14 @@ package july.lease.dao.product;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import july.lease.domain.Product;
 import july.lease.dto.EditProductRequestDto;
 import july.lease.dto.ProductDetailResponseDto;
 import july.lease.dto.ProductListDto;
+import july.lease.dto.RentAbleDateDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -70,4 +72,6 @@ public class ProductDao {
 	public String findNicknameByProductId(Long productId) {
 		return productMapper.findNicknameByProductId(productId);
 	}
+	
+	
 }
