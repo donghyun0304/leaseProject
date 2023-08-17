@@ -136,7 +136,7 @@
     	<!-- 제품정보 시작 -->
         <div class="thead" style="position: sticky; top:0; z-index: 100;">
             <div class="Product_image">
-                <img src="../../../../resources/images/${pInfo.storeImageName}" alt="" style="cursor:pointer;" onclick='location.href="/produts/${productId}"'>
+                <img src="../../../../resources/images/${pInfo.storeImageName}" alt="">
             </div>
             <div class="Product_info">
                 <div class="Product_title">${pInfo.productName}</div>
