@@ -65,9 +65,9 @@
 			    apiURL += "&state=" + state;
 			    session.setAttribute("state", state);
 			 %>
-                <a href="<%=apiURL%>"><button class='login_naver'>네이버로 로그인</button></a>
+                <a href="<%=apiURL%>"><button class='login_naver'>네이버 로그인</button></a>
                  <a href="https:kauth.kakao.com/oauth/authorize?client_id=124198d768a446e334a4d562c4c29d2e&redirect_uri=http://localhost:8080/kakao&response_type=code&state=${param.redirectURL}">
-                 <button class='login_kakao'>카카오로 로그인</button>
+                 <button class='login_kakao'>카카오 로그인</button>
                  </a>
             </div>
             <input type="hidden" id="redirectURL" value="${param.redirectURL}"> 
@@ -78,4 +78,5 @@
 </body>
 
 <%@include file="../includes/Project_footer.jsp" %>
+
 </html>
