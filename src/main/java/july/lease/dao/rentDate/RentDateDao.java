@@ -42,8 +42,8 @@ public class RentDateDao {
 		return rentOrderStatusDto != null ? rentOrderStatusDto : Collections.emptyList();
 	}
 	
-	public int rentOrderStatusSize(RentAbleRequestDto rentAbleRequestDto) {
-		int result = rentDateMapper.rentOrderStatusSize(rentAbleRequestDto);
+	public int rentOrderStatusSize(Long productId, RentAbleRequestDto rentAbleRequestDto) {
+		int result = rentDateMapper.rentOrderStatusSize(productId, rentAbleRequestDto);
 		log.info("RentDateDao rentOrderStatusSize={}", result);
 		return result;
 	}

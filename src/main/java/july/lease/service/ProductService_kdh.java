@@ -104,8 +104,8 @@ public class ProductService_kdh {
 		return rentDateDao.checkOrders(productId);
 	}
 	
-	public int rentOrderStatusSize(RentAbleRequestDto rentAbleRequestDto) {
-		return rentDateDao.rentOrderStatusSize(rentAbleRequestDto);
+	public int rentOrderStatusSize(Long productId, RentAbleRequestDto rentAbleRequestDto) {
+		return rentDateDao.rentOrderStatusSize(productId, rentAbleRequestDto);
 	}
 	
 	@Transactional

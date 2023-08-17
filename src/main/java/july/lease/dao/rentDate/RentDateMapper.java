@@ -21,7 +21,7 @@ public interface RentDateMapper {
 	
 	List<RentOrderStatusDto> checkOrders(Long productId);
 	
-	int rentOrderStatusSize(RentAbleRequestDto rentAbleRequestDto);
+	int rentOrderStatusSize(@Param("productId") Long productId, @Param("rentAble") RentAbleRequestDto rentAbleRequestDto);
 	
 	void delete(Long rentDateId);
 	
