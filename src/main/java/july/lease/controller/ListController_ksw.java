@@ -36,6 +36,7 @@ public class ListController_ksw {
 		model.addAttribute("startDate", startDate == null ? "" : startDate);
 		model.addAttribute("endDate", endDate == null ? "" : endDate);
 		model.addAttribute("sort", sort);
+		model.addAttribute("category", category);
 		String getCount = listService.getCount(search, startDate, endDate, category);
 		model.addAttribute("getCount", getCount); // 검색결과 개수
 		model.addAttribute("searchTitle", search == null || search.equals("") ? category == null || category.equals("") ? "전체결과" : category : search);
