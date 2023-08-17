@@ -214,7 +214,7 @@
 	                            <a href='#'>
 	                                <img src='../../../../resources/images/${item.storeImageName}'>
 	                                <div>
-	                                    <span class='summary_product_price'>${item.productPrice }원</span>
+	                                    <span class='summary_product_price'><fmt:formatNumber value="${item.productPrice}" pattern="###,###" />원</span>
 	                                </div>
 	                            </a>
 	                        </li>              		
