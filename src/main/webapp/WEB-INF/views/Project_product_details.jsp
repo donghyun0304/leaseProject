@@ -12,7 +12,6 @@
     <title>${product.productName } : 상세페이지</title>
     <link rel="stylesheet" href="../../../../resources/css/Project_product_details.css">
     <link rel="stylesheet" href="../../../../resources/css/Project_product_details_calendar.css">
-    <link rel="stylesheet" href="../../../../resources/css/calendar_one.css">
     <script src="../../../../resources/js/Project_product_details.js"></script>
     <script src='../../../../resources/js/Project_product_details_calendar.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

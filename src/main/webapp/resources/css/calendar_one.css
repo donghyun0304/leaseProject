@@ -43,7 +43,7 @@ a{
     flex-wrap: wrap;
     border: 0.2rem solid var(--border-color);
     background-color: white;
-    z-index: 100;
+    border-radius: 1rem;
 }
 
 .subCalendar.active{
