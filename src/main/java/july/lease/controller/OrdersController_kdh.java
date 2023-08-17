@@ -31,13 +31,19 @@ public class OrdersController_kdh {
 	}
 	
 	@PostMapping("/products/{productId}/orders")
-	public String order(@ModelAttribute OrderRequestDto orderRequestDto,
-			@PathVariable Long productId,
+	public String order(@Validated @ModelAttribute OrderRequestDto orderRequestDto,
+			BindingResult bindingResult,@PathVariable Long productId,
 			@SessionAttribute(name = "memberId", required = false)Long memberId, Model model) {
 		
 		log.info("OrdersController orderRequestDto={}", orderRequestDto);
-		
-			Orders saveOrder = ordersService.save(memberId, productId, orderRequestDto);
+		Orders saveOrder = null;
+		try {		
+			 saveOrder = ordersService.save(memberId, productId, orderRequestDto);
+		} catch(IllegalArgumentException e) {
+			log.info("잘못된 날짜 선택");
+			bindingResult.reject("InvalidDates");
+			return "redirect:/products/" + productId;
+		}
 
 		
 		model.addAttribute("order", saveOrder);

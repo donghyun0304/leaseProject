@@ -80,6 +80,8 @@ public class OrdersService {
 	        return null;
 	}
 	
+	
+	// 8.17-19, 8.21-22 를 대여가능일로 했을때 고객이 8.19-21을 선택했을경우 예외터트리는 로직
 	 private static void getStartDateIfInRangeWithOrderRentEndDate(List<RentAbleDateDto> rentAbleDates, String orderRentStartDate, String orderRentEndDate) {
 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	        
@@ -89,7 +91,7 @@ public class OrdersService {
 	        	LocalDate startDate2 = LocalDate.parse(rentAbleDates.get(i+1).getRentAbleStartDate(), formatter);
 	        	  	
 	        	if(!endDate1.plusDays(1).equals(startDate2)) {
-	        		 throw new IllegalArgumentException("날짜를 다시 선택 해 ㅈ");
+	        		 throw new IllegalArgumentException("날짜를 다시 선택 해 주세요.");
 	        	} 
 	        }
 
