@@ -118,5 +118,13 @@
         set product_visit_count = product_visit_count + 1
         where product_id = #{productId}
     </update>
+    
+    <select id="findNicknameByProductId" resultType="String">
+    	select a.member_nickname
+		from member a
+		inner join product b
+		on a.member_id = b.member_id
+		where product_id = #{productId}
+    </select>
 
 </mapper>

@@ -66,4 +66,8 @@ public class ProductDao {
 	public int addVisitCount(Long productId, ProductDetailResponseDto responseDto) {
 		return productMapper.addVisitCount(productId, responseDto);
 	}
+	
+	public String findNicknameByProductId(Long productId) {
+		return productMapper.findNicknameByProductId(productId);
+	}
 }

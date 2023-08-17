@@ -163,6 +163,8 @@ public class ProductController_kdh {
 		String orderRentDateStr = ordersService.findOrderRentDateByProductId(productId);
 		String rentDateStr = rentDateService.findRentAbleDateByProductId(productId);
 		int confirmStatusCount = ordersService.findConfirmStatusCountByProductId(productId);
+		String memberNickname = productService_kdh.findNicknameByProductId(productId);
+		
 		visitCountValidation(productId, responseDto, request, response);
 		
 		boolean status = true;
@@ -177,6 +179,7 @@ public class ProductController_kdh {
 		model.addAttribute("orderRentDate", orderRentDateStr);
 		model.addAttribute("rentDate", rentDateStr);
 		model.addAttribute("confirmStatusCount", confirmStatusCount);
+		model.addAttribute("nickname", memberNickname);
 		
 	
 		return "Project_product_details";

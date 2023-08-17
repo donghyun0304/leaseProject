@@ -73,6 +73,9 @@
 		where to_char(a.rent_able_start_date, 'yyyy-mm-dd') = #{startDate} and b.product_id = #{productId}
 	</select>
 	
+	<select id="findRentAbleDatesWithinOrderDates" resultType="july.lease.dto.RentAbleDateDto">
+		
+	</select>
 	
 	
 	

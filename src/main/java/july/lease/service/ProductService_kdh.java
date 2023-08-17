@@ -247,4 +247,8 @@ public class ProductService_kdh {
 		return productImageDao.findAllByProductId(productId).stream().map(x -> x.getStoreImageName()).collect(Collectors.toList());
 	}
 	
+	public String findNicknameByProductId(Long productId) {
+		return productDao.findNicknameByProductId(productId);
+	}
+	
 }
