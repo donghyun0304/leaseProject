@@ -100,7 +100,10 @@ public class MemberController extends CommonRestController {
 	}
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(HttpSession session) {
+		if(session.getAttribute("memberId")!=null) {
+			return "redirect:/";
+		}
 		return "/Project_login";
 	}
 	
@@ -144,7 +147,10 @@ public class MemberController extends CommonRestController {
 	
 	
 	@GetMapping("/members/add")
-	public String register() {
+	public String register(HttpSession session) {
+		if(session.getAttribute("memberId")!=null) {
+			return "redirect:/";
+		}
 		return "/Project_register";
 	}
 	
