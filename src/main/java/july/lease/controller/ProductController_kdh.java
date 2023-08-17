@@ -124,11 +124,12 @@ public class ProductController_kdh {
 	
 	@ResponseBody
 	@GetMapping(value = "/products/{productId}/edit/rentdate/orders", produces = "application/json")
-	public int rentOrderStatus(String rentAbleStartDate, String rentAbleEndDate) {
+	public int rentOrderStatus(String rentAbleStartDate, String rentAbleEndDate,
+			@PathVariable Long productId) {
 		log.info("ProductController_kdh rentOrderStatus={}", rentAbleStartDate);
 		RentAbleRequestDto rentAble = new RentAbleRequestDto(rentAbleStartDate, rentAbleEndDate);
 		log.info("================= rentAble ={}",rentAble);
-		return productService_kdh.rentOrderStatusSize(rentAble);
+		return productService_kdh.rentOrderStatusSize(productId, rentAble);
 	}
 	
 	@ResponseBody
