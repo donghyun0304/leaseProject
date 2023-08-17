@@ -41,9 +41,9 @@ a{
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
-    border: 0.2rem solid var(--border-color);
+    border: 0.2rem solid var(--main-color);
     background-color: white;
-    z-index: 100;
+    border-radius: 1rem;
 }
 
 .subCalendar.active{

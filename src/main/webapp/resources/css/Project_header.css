@@ -23,6 +23,10 @@
     --main-color-hover: rgb(165 147 108);;
 }
 
+hr{
+	border-color: var(--main-color);
+}
+
 ul{
    list-style: none; 
     color: black;
@@ -225,6 +229,7 @@ header .head{
 
 .select{
     background-color: yellow;
+    color: black;
 }
 
 .disabled{
