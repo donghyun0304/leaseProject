@@ -34,4 +34,5 @@ public interface ProductMapper {
 	
 	int addVisitCount(@Param("productId") Long productId, @Param("responseDto") ProductDetailResponseDto responseDto);
 	
+	String findNicknameByProductId(Long productId);
 }

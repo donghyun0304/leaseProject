@@ -40,4 +40,13 @@ public class OrdersController_kdh {
 		
 		return "redirect:/products/" + productId + "/orders/confirm";
 	}
+	
+	private boolean checkOrderIfValid() {
+		
+		
+		
+		
+		
+		return false;
+	}
 }
