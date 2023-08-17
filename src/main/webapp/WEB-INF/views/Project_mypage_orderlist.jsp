@@ -118,6 +118,7 @@
 		var locate = document.querySelector(".myLeaseStatus");
 		var moreBox = document.querySelector(".moreBox");
 		var length = list.length;
+		console.log(length)
 		for (var i=0;i<length;i++){
 			var result = list[i];
 			var content = '';
@@ -140,11 +141,12 @@
 				tempUl.classList.add("listMain");
 				tempUl.innerHTML = content;
 				locate.insertBefore(tempUl, moreBox);
-				moreBox = document.querySelector(".moreBox");
-				if (list.length < 5){
-					moreBox.remove();
-				}
 			}
+			
+		}
+		moreBox = document.querySelector(".moreBox");
+		if (list.length < 5){
+			moreBox.remove();
 		}
 		
 	}
