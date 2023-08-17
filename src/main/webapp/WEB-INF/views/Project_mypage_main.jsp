@@ -76,14 +76,15 @@
                     	</c:when>
                     	<c:otherwise>
 		                    	<c:forEach var="item" items="${check}" end="4">
+		                    			<c:set var="productId" value="${item.productId}"/>
 				                    	 <ul class='listMain'>
-					                        <li class='productIdx'><a href="#">${item.productId}</a></li>
-					                        <li class='productImage'><a href="#"><img src="../../resources/images/${item.productImage}" alt=""></a></li>
-					                        <li class='productTitle'><a href="#">${item.productName}</a></li>
-					                        <li class='productLeaseStartDate'><a href="#">${item.startDate}</a></li>
-					                        <li class='productLeaseEndDate'><a href="#">${item.endDate}</a></li>
-					                        <li class='productLeaseDay'><a href="#">${item.countDate}일</a></li>
-					                        <li class='productLeaseStatus'><a href="#">${item.memberName }</a></li>
+					                        <li class='productIdx'><a href="../../products/${productId }">${productId}</a></li>
+					                        <li class='productImage'><a href="../../products/${productId}"><img src="../../resources/images/${item.productImage}" alt=""></a></li>
+					                        <li class='productTitle'><a href="../../products/${productId }">${item.productName}</a></li>
+					                        <li class='productLeaseStartDate'><a href="../../products/${productId }">${item.startDate}</a></li>
+					                        <li class='productLeaseEndDate'><a href="../../products/${productId }">${item.endDate}</a></li>
+					                        <li class='productLeaseDay'><a href="../../products/${productId }">${item.countDate}일</a></li>
+					                        <li class='productLeaseStatus'><a href="../../products/${productId }">${item.memberName }</a></li>
 					                        <li class='productLeaseConfirm'>
 					                        	<c:choose>
 					                        		<c:when test="${item.orderConfirmStatus == 2}">

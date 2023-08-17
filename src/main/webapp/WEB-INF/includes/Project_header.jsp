@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/Project_header.css">
-<script src="../../resources/js/calendar.js"></script>
-<script src="../../resources/js/fetch.js"></script>
+<link rel="stylesheet" href="../../../resources/css/Project_header.css">
+<script src="../../../resources/js/calendar.js"></script>
+<script src="../../../resources/js/fetch.js"></script>
 <script type="text/javascript">
 
 	window.addEventListener('load', function() {
@@ -70,7 +70,7 @@
 	    	const name = "MyMessageList";
 	        const x = window.screen.width-600;
 	        const y = window.screen.height-100;
-	        let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+	        let option = 'width = 600, height = 712, left = '+x+', top = '+y+', location=no';
 	    	
 	    	window.open(url, name, option);
 	 }

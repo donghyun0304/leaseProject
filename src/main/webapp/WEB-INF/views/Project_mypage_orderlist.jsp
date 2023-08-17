@@ -39,15 +39,16 @@
                     	</c:when>
                     	<c:otherwise>
 	            			<c:forEach var="item" items="${check}" end="4">
+	            				<c:set var="productId" value="${item.productId }"/>
 			                    <ul class='listMain'>
-			                        <li class='productIdx'><a href="#">${item.productId}</a></li>
-			                        <li class='productImage'><a href="#"><img src="../../resources/images/${item.productImage }" alt=""></a></li>
-			                        <li class='productTitle'><a href="#">${item.productName }</a></li>
-			                        <li class='productLeaseStartDate'><a href="#">${item.startDate }</a></li>
-			                        <li class='productLeaseEndDate'><a href="#">${item.endDate }</a></li>
-			                        <li class='productLeaseDay'><a href="#">${item.rentDate }일</a></li>
-			                        <li class='productLeaseSeller'><a href="#">${item.sellerName }</a></li>
-			                        <li class='productLeaseStatus'><a href="#">${item.productStatus }</a></li>
+			                        <li class='productIdx'><a href="../../products/${productId }">${productId}</a></li>
+			                        <li class='productImage'><a href="../../products/${productId }"><img src="../../resources/images/${item.productImage }" alt=""></a></li>
+			                        <li class='productTitle'><a href="../../products/${productId }">${item.productName }</a></li>
+			                        <li class='productLeaseStartDate'><a href="../../products/${productId }">${item.startDate }</a></li>
+			                        <li class='productLeaseEndDate'><a href="../../products/${productId }">${item.endDate }</a></li>
+			                        <li class='productLeaseDay'><a href="../../products/${productId }">${item.rentDate }일</a></li>
+			                        <li class='productLeaseSeller'><a href="../../products/${productId }">${item.sellerName }</a></li>
+			                        <li class='productLeaseStatus'><a href="../../products/${productId }">${item.productStatus }</a></li>
 			                        <li class="productLeaseChat">
 			                        	<c:if test="${item.productStatus eq '대여확정'}">
 			                        		<a href="#" class="chatConnect" onclick="popup('/members/${memberId}/messages/${item.productId }/0')">연락하기</a>
@@ -107,7 +108,7 @@
 		const name = "MyMessageList";
 	    const x = window.screen.width-600;
 	    const y = window.screen.height-100;
-	    let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+	    let option = 'width = 600, height = 712, left = '+x+', top = '+y+', location=no';
 		
 		window.open(url, name, option);
 	}
@@ -122,14 +123,14 @@
 			var content = '';
 			if (result.productId != ''){
 			
-	           content += "<li class='productIdx'><a href='#'>" + result.productId + "</a></li>"
-	           content += "<li class='productImage'><a href='#'><img src='../../resources/images/" + result.productImage + "' alt=''></a></li>"
-	           content += "<li class='productTitle'><a href='#'>" + result.productName + "</a></li>"
-	           content += "<li class='productLeaseStartDate'><a href='#'>" + result.startDate + "</a></li>"
-	           content += "<li class='productLeaseEndDate'><a href='#'>" + result.endDate + "</a></li>"
-	           content += "<li class='productLeaseDay'><a href='#'>" + result.rentDate + "일</a></li>"
-	           content += "<li class='productLeaseSeller'><a href='#'>" + result.sellerName + "</a></li>"
-	           content += "<li class='productLeaseStatus'><a href='#'>" + result.productStatus + "</a></li>"
+	           content += "<li class='productIdx'><a href='../../products/" + result.productId + "'>" + result.productId + "</a></li>"
+	           content += "<li class='productImage'><a href='../../products/" + result.productId + "'><img src='../../resources/images/" + result.productImage + "' alt=''></a></li>"
+	           content += "<li class='productTitle'><a href='../../products/" + result.productId + "'>" + result.productName + "</a></li>"
+	           content += "<li class='productLeaseStartDate'><a href='../../products/" + result.productId + "'>" + result.startDate + "</a></li>"
+	           content += "<li class='productLeaseEndDate'><a href='../../products/" + result.productId + "'>" + result.endDate + "</a></li>"
+	           content += "<li class='productLeaseDay'><a href='../../products/" + result.productId + "'>" + result.rentDate + "일</a></li>"
+	           content += "<li class='productLeaseSeller'><a href='../../products/" + result.productId + "'>" + result.sellerName + "</a></li>"
+	           content += "<li class='productLeaseStatus'><a href='../../products/" + result.productId + "'>" + result.productStatus + "</a></li>"
 	           content += "<li class='productLeaseChat'>"
 	           if (result.productStatus == '대여확정'){
 	             content += "<a href='#' class='chatConnect'>연락하기</a>"

@@ -41,16 +41,20 @@ window.addEventListener('load', function(){
 			var result = list[i];
 			var content = '';
 			if (result.productId != ''){
-	           	content +=  "<li class='productIdx'><a href='#'>" + result.productId + "</a></li>"
-	           	content +=  "<li class='productImage'><a href='#'><img src='../../resources/images/" + result.productImage + "' alt=''></a></li>"
-	           	content +=  "<li class='productTitle'><a href='#'>" + result.productName + "</a></li>"
-	           	content +=  "<li class='productLeaseStartDate'><a href='#'>" + result.startDate + "</a></li>"
-	           	content +=  "<li class='productLeaseEndDate'><a href='#'>" + result.endDate + "</a></li>"
-	           	content +=  "<li class='productLeaseDay'><a href='#'>" + result.countDate + "일</a></li>"
-	           	content +=  "<li class='productLeaseStatus'><a href='#'>" + result.memberName + "</a></li>"
+	           	content +=  "<li class='productIdx'><a href='../../products/"+ result.productId + "'>" + result.productId + "</a></li>"
+	           	content +=  "<li class='productImage'><a href='../../products/"+ result.productId + "'><img src='../../resources/images/" + result.productImage + "' alt=''></a></li>"
+	           	content +=  "<li class='productTitle'><a href='../../products/"+ result.productId + "'>" + result.productName + "</a></li>"
+	           	content +=  "<li class='productLeaseStartDate'><a href='../../products/"+ result.productId + "'>" + result.startDate + "</a></li>"
+	           	content +=  "<li class='productLeaseEndDate'><a href='../../products/"+ result.productId + "'>" + result.endDate + "</a></li>"
+	           	content +=  "<li class='productLeaseDay'><a href='../../products/"+ result.productId + "'>" + result.countDate + "일</a></li>"
+	           	content +=  "<li class='productLeaseStatus'><a href='../../products/"+ result.productId + "'>" + result.memberName + "</a></li>"
 	           	content +=  "<li class='productLeaseConfirm'>"
-	           	content +=      "<button class='confirmBtn " + result.orderId + "'>확정</button>"
-	           	content +=       "<button class='cancelBtn " + result.orderId + "'>보류</button>"
+	           	if (parseInt(result.orderConrimStatus) == 2){
+		           	content +=      "<button class='confirmBtn " + result.orderId + "'>확정</button>"
+		           	content +=       "<button class='cancelBtn " + result.orderId + "'>보류</button>"						   
+				} else {
+					content += 	"<button class='chatBtn " + result.orderId + "' onclick='popup('/members/" + result.memberId +"/messages/" + result.productId +"/0')'>쪽지</button>"
+				}
 	           	content +=   "</li>"
 				const tempUl = document.createElement("ul");
 				tempUl.classList.add("listMain");
@@ -126,7 +130,7 @@ window.addEventListener('load', function(){
 		const name = "MyMessageList";
 	    const x = window.screen.width-600;
 	    const y = window.screen.height-100;
-	    let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+	    let option = 'width = 600, height = 712, left = '+x+', top = '+y+', location=no';
 		
 		window.open(url, name, option);
 	}
