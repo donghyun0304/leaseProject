@@ -54,7 +54,7 @@
 
 	<select id="popularItem" resultType="july.lease.dto.HomePopularItemDto"> <!-- 메인 인기상품 -->
 		SELECT
-		    p.PRODUCT_ID AS productId,
+		    DISTINCT p.PRODUCT_ID AS productId,
 		    p.PRODUCT_NAME AS productName,
 		    TO_CHAR(p.PRODUCT_PRICE,'FM999,999,999') AS productPrice,
 		    pi.STORE_IMAGE_NAME AS storeImageName,

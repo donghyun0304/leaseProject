@@ -20,7 +20,7 @@
      			
      			<div id = "home-button-box">
      			<button type = "button" id = "home" onclick="location.href='/'">홈</button>
-     			<button type = "button" id = "reserve-list" onclick="location.href='/'">예약 목록</button>
+     			<button type = "button" id = "reserve-list" onclick="location.href='../../../../members/${memberId}/orderlist'">예약목록</button>
      			</div>
      		</div>
      	</div>
@@ -28,6 +28,6 @@
      </main>  
         
     
-    <%@include file="../includes/Project_footer.jsp" %>
 </body>
+    <%@include file="../includes/Project_footer.jsp" %>
 </html>

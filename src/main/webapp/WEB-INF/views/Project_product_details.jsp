@@ -211,7 +211,7 @@
                     <ul class='summary_products'>
                     	<c:forEach var="item" items="${productList}" end="5">
 	                        <li class='summary_product'>
-	                            <a href='#'>
+	                            <a href='./${item.productId }'>
 	                                <img src='../../../../resources/images/${item.storeImageName}'>
 	                                <div>
 	                                    <span class='summary_product_price'><fmt:formatNumber value="${item.productPrice}" pattern="###,###" />원</span>
@@ -223,7 +223,7 @@
                     
                     <c:if test="${productsCount - 6 - 1 >= 0}">           
 	                    <div class='moreBox'>
-	                        <a href="#">
+	                        <a href="../list?startDate=&endDate=&sort=&category=&search=${nickname }">
 	                            <span><span>${productsCount - 6 - 1 }개</span> 상품 더보기</span>
 	                            <svg width='0.8rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
 	                        </a>
@@ -250,7 +250,7 @@
         	    	alert("로그인이 필요합니다.");
         	    } else {
 	        	    const url = '/members/'+mId+'/messages/'+pId+'/0';
-	        	    let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+	        	    let option = 'width = 600, height = 712, left = '+x+', top = '+y+', location=no';
 	        	    window.open(url, name, option);
         	    }
         	    	
