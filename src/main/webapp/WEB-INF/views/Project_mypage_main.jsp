@@ -91,7 +91,7 @@
 							                            <button class='cancelBtn ${item.orderId }'>보류</button>					                        		
 					                        		</c:when>
 					                        		<c:otherwise>
-					                        			<button class='chatBtn ${item.orderId }' onclick="popup('/members/${memberId}/messages/${item.productId }/0')">쪽지</button>
+					                        			<button class='chatBtn ${item.orderId }' onclick="popup('/members/${item.memberId}/messages/${item.productId }/0')">쪽지</button>
 					                        		</c:otherwise>
 					                        	</c:choose>
 					                        </li>

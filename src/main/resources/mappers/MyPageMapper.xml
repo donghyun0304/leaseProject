@@ -39,7 +39,7 @@
 	</select>
 	
 	<select id="confirmCheck" resultType="july.lease.dto.MyPageMainInfoDto"> <!--현재 대여요청 -->
-			SELECT ORDERS.PRODUCT_ID as productId, P_IMAGE.STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE,'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 as countDate, TO_CHAR(ORDER_PRICE, 'FM999,999,999') AS price, MEMBER.MEMBER_NAME AS memberName, ORDERS.ORDER_CONFIRM_STATUS AS orderConfirmStatus, ORDERS.ORDER_ID AS orderId
+			SELECT ORDERS.PRODUCT_ID as productId, P_IMAGE.STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE,'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 as countDate, TO_CHAR(ORDER_PRICE, 'FM999,999,999') AS price, MEMBER.MEMBER_NAME AS memberName, ORDERS.ORDER_CONFIRM_STATUS AS orderConfirmStatus, ORDERS.ORDER_ID AS orderId, ORDERS.MEMBER_ID AS memberId
 		    FROM ORDERS
 		    JOIN MEMBER ON (MEMBER.MEMBER_ID = ORDERS.MEMBER_ID)
 		    JOIN PRODUCT ON (ORDERS.PRODUCT_ID =  PRODUCT.PRODUCT_ID)
@@ -54,7 +54,7 @@
 		<select id="confirmCheckAJAX" resultType="july.lease.dto.MyPageMainInfoDto"> <!--현재 대여요청 -->
 		SELECT A.productId productId, A.productImage as productImage, A.productName as productName, A.startDate as startDate, A.endDate endDate, A.countDate as countDate, A.price as price, A.memberName as memberName,  A.orderConfirmStatus AS orderConfirmStatus, A.ORDER_ID as orderId, A.memberId as memberId
 		FROM (
-		    SELECT ORDERS.PRODUCT_ID as productId, P_IMAGE.STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE,'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 as countDate, TO_CHAR(ORDER_PRICE, 'FM999,999,999') AS price, MEMBER.MEMBER_NAME AS memberName,  ORDERS.ORDER_CONFIRM_STATUS AS orderConfirmStatus, ORDERS.ORDER_ID AS ORDER_ID, ROW_NUMBER() OVER (ORDER BY ORDER_CREATE_DATE DESC) AS RNUM
+		    SELECT ORDERS.PRODUCT_ID as productId, P_IMAGE.STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE,'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 as countDate, TO_CHAR(ORDER_PRICE, 'FM999,999,999') AS price, MEMBER.MEMBER_NAME AS memberName,  ORDERS.ORDER_CONFIRM_STATUS AS orderConfirmStatus, ORDERS.ORDER_ID AS ORDER_ID, ORDERS.MEMBER_ID AS memberId, ROW_NUMBER() OVER (ORDER BY ORDER_CREATE_DATE DESC) AS RNUM
 		    FROM ORDERS
 		    JOIN MEMBER ON (MEMBER.MEMBER_ID = ORDERS.MEMBER_ID)
 		    JOIN PRODUCT ON (ORDERS.PRODUCT_ID =  PRODUCT.PRODUCT_ID)

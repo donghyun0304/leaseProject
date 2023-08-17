@@ -145,11 +145,11 @@ function getMoreList(list){
 		var content = '';
 		if (result.productId != ''){
 
-           content += "<li class='productImage'><a href='" + result.itemId + "'><img src='../../resources/images/" + result.itemImage + "' alt=''></a></li>"
-           content += "<li class='productTitle'><a href='#'>" + result.itemTitle + "</a></li>"
-           content += "<li class='productPrice'><a href='#'>" + result.itemPrice + "원/일</a></li>"
-           content += "<li class='productTotalCount'><a href='#'>" + result.itemTotalCount + "건</a></li>"
-           content += "<li class='productTotalBenefit'><a href='#'>" + result.itemTotalPrice + "원</a></li>"
+           content += "<li class='productImage'><a href='../../products/" + result.itemId + "'><img src='../../resources/images/" + result.itemImage + "' alt=''></a></li>"
+           content += "<li class='productTitle'><a href='../../products/" + result.itemId + "'>" + result.itemTitle + "</a></li>"
+           content += "<li class='productPrice'><a href='../../products/" + result.itemId + "'>" + result.itemPrice + "원/일</a></li>"
+           content += "<li class='productTotalCount'><a href='../../products/" + result.itemId + "'>" + result.itemTotalCount + "건</a></li>"
+           content += "<li class='productTotalBenefit'><a href='../../products/" + result.itemId + "'>" + result.itemTotalPrice + "원</a></li>"
            content += "<li class='productStatus'>"
            			if (result.itemStatus == 1){
            content += "<button type='button' class='wait'>판매중</button>"

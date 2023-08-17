@@ -17,7 +17,7 @@ public class InteceptorWebConfig implements WebMvcConfigurer{
 		registry.addInterceptor(new MyPageInterceptor())
 				.order(1)
 				.addPathPatterns("/members/**") // /members/ 하위 전 myPageInterceptor 적용
-				.excludePathPatterns("/resources/js/**", "/resources/css/**", "/*.ico", "/error", "/members/add"); // 예외 URI
+				.excludePathPatterns("/resources/js/**", "/resources/css/**", "/*.ico", "/error", "/members/add", "/members/*/messages/**"); // 예외 URI
 				// members/add = 회원가입
 	}
 
