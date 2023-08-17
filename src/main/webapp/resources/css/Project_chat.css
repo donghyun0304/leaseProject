@@ -61,6 +61,9 @@ main{
     display: flex;
     align-items: center;
     margin: 0;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border: 1px solid #bbae93;
 }
 
 .thead div{
@@ -124,6 +127,9 @@ main{
     height: 8rem;
     background-color: #d9caaa;
     display: flex;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border: 1px solid #bbae93;
 }
 
 .tfootBox{

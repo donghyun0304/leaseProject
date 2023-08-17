@@ -55,5 +55,12 @@ public class Message {
 		this.messageText = messageText;
 	}
 
-
+	public Message(Long myId, Long yourId, Long productId, Long roomNo, String messageText) {
+		super();
+		this.myId = myId;
+		this.yourId = yourId;
+		this.productId = productId;
+		this.roomNo = roomNo;
+		this.messageText = messageText;
+	}
 }
