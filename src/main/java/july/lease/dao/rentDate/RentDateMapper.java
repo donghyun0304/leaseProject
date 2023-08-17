@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import july.lease.domain.RentDate;
+import july.lease.dto.RentAbleDateDto;
 import july.lease.dto.RentAbleRequestDto;
 import july.lease.dto.RentOrderStatusDto;
 
@@ -28,4 +29,8 @@ public interface RentDateMapper {
 	
 	Long findRentDateIdByRentAbleStartDateAndProductId(
 			@Param("startDate") String rentAbleStartDate, @Param("productId") Long productId);
+	
+	List<RentAbleDateDto> findRentAbleDatesWithinOrderDates(
+			@Param("productId") Long productId,
+			@Param("orderRentStartDate")String orderRentStartDate, @Param("orderRentEndDate")String orderRentEndDate);
 }

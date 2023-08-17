@@ -74,7 +74,36 @@
 	</select>
 	
 	<select id="findRentAbleDatesWithinOrderDates" resultType="july.lease.dto.RentAbleDateDto">
-		
+		<![CDATA[
+    WITH StartDate AS (
+        SELECT MIN(a.rent_able_start_date) as min_start_date
+        FROM rent_date a
+        INNER JOIN product b ON a.product_id = b.product_id
+        WHERE b.product_id = #{productId}
+        AND #{orderRentStartDate} >= a.rent_able_start_date
+        AND #{orderRentStartDate} <= a.rent_able_end_date
+    ),
+
+    EndDate AS (
+        SELECT MAX(a.rent_able_end_date) as max_end_date
+        FROM rent_date a
+        INNER JOIN product b ON a.product_id = b.product_id
+        WHERE b.product_id = #{productId}
+        AND #{orderRentEndDate} >= a.rent_able_start_date
+        AND #{orderRentEndDate} <= a.rent_able_end_date
+    )
+
+    SELECT to_char(a.rent_able_start_date, 'yyyy-mm-dd') as rent_able_start_date, 
+           to_char(a.rent_able_end_date, 'yyyy-mm-dd') as rent_able_end_date 
+    FROM rent_date a
+    INNER JOIN product b ON a.product_id = b.product_id
+    CROSS JOIN StartDate
+    CROSS JOIN EndDate
+    WHERE b.product_id = #{productId}
+    AND a.rent_able_start_date >= min_start_date
+    AND a.rent_able_end_date <= max_end_date
+    ORDER BY a.rent_able_start_date ASC
+    ]]>
 	</select>
 	
 	
