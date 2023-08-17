@@ -74,8 +74,7 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<Product> endItems(Long memberId) {
 		List<Product> list = myPageMapper.endItems(memberId);
-		list.stream().forEach(product -> product.setImages(imageMapper.findAllByProductId(memberId)));
-				
+		list.stream().forEach(product -> product.setImages(imageMapper.findAllByProductId(product.getProductId())));
 		return list;
 	}
 
