@@ -18,10 +18,11 @@ public class MyPageMainInfoDto {
 	private String countDate;
 	private String price;
 	private String memberName;
+	private Long orderConfirmStatus;
 	private Long orderId;
 	
 	public MyPageMainInfoDto(String productId, String productImage, String productName, String startDate,
-			String endDate, String countDate, String price, String memberName, Long orderId) {
+			String endDate, String countDate, String price, String memberName, Long orderConfirmStatus, Long orderId) {
 		this.productId = productId;
 		this.productImage = productImage;
 		this.productName = productName;
@@ -30,11 +31,12 @@ public class MyPageMainInfoDto {
 		this.countDate = countDate;
 		this.price = price;
 		this.memberName = memberName;
+		this.orderConfirmStatus = orderConfirmStatus;
 		this.orderId = orderId;
 	}
 	
-
-
+	
+	
 	
 	
 	
