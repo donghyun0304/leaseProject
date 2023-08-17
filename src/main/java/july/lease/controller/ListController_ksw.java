@@ -32,9 +32,9 @@ public class ListController_ksw {
 		sort = (sort == null || sort.equals("")) ? "popular" : sort;
 		List<ListDto> getList = listService.getList(search, startDate, endDate, sort, category);
 		model.addAttribute("getList", getList);
-		model.addAttribute("search", search == null ? "" : search);
-		model.addAttribute("startDate", startDate == null ? "" : startDate);
-		model.addAttribute("endDate", endDate == null ? "" : endDate);
+		model.addAttribute("search", search);
+		model.addAttribute("startDate", startDate);
+		model.addAttribute("endDate", endDate);
 		model.addAttribute("sort", sort);
 		model.addAttribute("category", category);
 		String getCount = listService.getCount(search, startDate, endDate, category);
