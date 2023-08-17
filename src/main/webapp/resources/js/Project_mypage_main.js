@@ -122,6 +122,14 @@ window.addEventListener('load', function(){
     
     applyEventListeners();
 
+	function popup(url) {
+		const name = "MyMessageList";
+	    const x = window.screen.width-600;
+	    const y = window.screen.height-100;
+	    let option = 'width = 600, height = 700, left = '+x+', top = '+y+', location=no';
+		
+		window.open(url, name, option);
+	}
 
 })
 

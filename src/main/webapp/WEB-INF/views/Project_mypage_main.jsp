@@ -67,7 +67,7 @@
                         <li>대여종료일</li>
                         <li>대여일수</li>
                         <li>신청인</li>
-                        <li>대여확정</li>
+                        <li>비고</li>
                     </ul>
                     <c:set var="check" value="${confirmInfo}"/>
                     <c:choose>
@@ -85,8 +85,15 @@
 					                        <li class='productLeaseDay'><a href="#">${item.countDate}일</a></li>
 					                        <li class='productLeaseStatus'><a href="#">${item.memberName }</a></li>
 					                        <li class='productLeaseConfirm'>
-					                            <button class='confirmBtn ${item.orderId }'>확정</button>
-					                            <button class='cancelBtn ${item.orderId }'>보류</button>
+					                        	<c:choose>
+					                        		<c:when test="${item.orderConfirmStatus == 2}">
+							                            <button class='confirmBtn ${item.orderId }'>확정</button>
+							                            <button class='cancelBtn ${item.orderId }'>보류</button>					                        		
+					                        		</c:when>
+					                        		<c:otherwise>
+					                        			<button class='chatBtn ${item.orderId }' onclick="popup('/members/${memberId}/messages/${item.productId }/0')">쪽지</button>
+					                        		</c:otherwise>
+					                        	</c:choose>
 					                        </li>
 					                    </ul>
 				                    </c:forEach>

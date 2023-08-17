@@ -198,4 +198,12 @@ main{
     background-color: var(--cancel-color-hover);
 }
 
+.chatBtn{
+    background-color: var(--main-color);
+    
+}
+.chatBtn:hover{
+    background-color: var(--main-color-hover);
+}
+
 /*끝*/
