@@ -82,7 +82,7 @@
 	                    <img src="../../../../resources/images/${list.storeImageName}" alt="" class= "img"> 
 	                </div>
 	                <div id="pInfoBox">
-	                	<p class = "product_name info">${list.productName} <span id="cnt">${list.noReadMcnt != 0 ? 'N' : ''}</span></p>
+	                	<div class = "product_name info">${list.productName} <span id="cnt">${list.noReadMcnt != 0 ? 'N' : ''}</span></div>
 	                    <p class = "info" id= "mName">${list.myId eq memberId ? list.reciver : list.sender}</p>
 	                    <p class = "info" id= "mText">${list.messageText}</p>
 	                    <p class = "info" id= "mDate">${list.messageCreateDate}</p>

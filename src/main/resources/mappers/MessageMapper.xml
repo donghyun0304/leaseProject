@@ -64,7 +64,7 @@
 	<select id="findRoomNo" resultType="Long">
 		select room_no
 		from message
-		where my_id=#{myId} and product_id=#{productId}
+		where (my_id=#{myId} or your_id=#{myId}) and product_id=#{productId}
 		group by room_no
 	</select>
 	

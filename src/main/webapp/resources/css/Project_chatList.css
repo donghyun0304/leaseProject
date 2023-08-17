@@ -14,6 +14,12 @@ header{
     font-size: 15px;
     text-align: center;
     background-color: #d9caaa;
+    border: 1px solid #bbae93;
+    box-shadow: 2px 2px 5px 2px #e0d5bb;
+    width: 100%;
+    margin-top: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 #headerN {
 	margin-top: 1rem; 
@@ -79,7 +85,7 @@ header{
 }
 
 .message-box:hover{
-    background-color: #efe9da;
+    box-shadow: 2px 2px 5px 2px #e0d5bb;
 }
 
 .product_name{
@@ -90,6 +96,8 @@ header{
 .info{
 	margin: 0.1rem 0 ;
 	color: #454438;
+	display: flex;
+	justify-content: space-between;
 }
 #pInfoBox{
 	width: 80%;

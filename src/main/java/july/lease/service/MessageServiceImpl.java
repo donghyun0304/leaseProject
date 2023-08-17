@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import july.lease.dao.message.MessageDao;
 import july.lease.domain.Message;
 import july.lease.dto.MyAllMessageListDto;
+import july.lease.dto.OrderRequestDto;
 import july.lease.dto.ProductMessageInfoDto;
 import lombok.RequiredArgsConstructor;
 
@@ -83,6 +84,25 @@ public class MessageServiceImpl implements MessageService{
 		int res = messageDao.deleteMessage(roomNo);
 		
 		return res;
+	}
+
+	@Override
+	public int orderInsertMessage(Long memberId, Long productId, OrderRequestDto orderRequestDto) {
+		// TODO Auto-generated method stub
+		
+		// 대여신청 메세지 보내기
+		String mesage = orderRequestDto.getOrderRentStartDate() +"~"+ orderRequestDto.getOrderRentEndDate()+"기간 대여  신청되었습니다.";
+		
+		// 프로덕트 아이디로 판매자 아이디 검색해오기
+		ProductMessageInfoDto pInfo = messageDao.getOneProductInfo(productId);
+		
+		// 룸넘버 검색하기 
+		Long roomNo = findRoomNo(memberId, productId);
+		
+		// myId yourId productId roomNo
+		Message msgVo = new Message(memberId, pInfo.getMemberId(), productId, roomNo, mesage);
+
+		return insertMessage(msgVo);
 	}
 
 }

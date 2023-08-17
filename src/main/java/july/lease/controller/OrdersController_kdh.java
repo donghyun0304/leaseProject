@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import july.lease.domain.Orders;
 import july.lease.dto.CheckOrderRequestDto;
 import july.lease.dto.OrderRequestDto;
+import july.lease.service.MessageService;
 import july.lease.service.OrdersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 public class OrdersController_kdh {
 	
 	private final OrdersService ordersService;
+	private final MessageService messageService;
 	
 	
 	@GetMapping("/products/{productId}/orders/confirm")
@@ -37,7 +39,10 @@ public class OrdersController_kdh {
 		
 		Orders saveOrder = ordersService.save(memberId, productId, orderRequestDto);
 		model.addAttribute("order", saveOrder);
-		
+
+		// 대여신청 메세지
+		int res = messageService.orderInsertMessage(memberId, productId, orderRequestDto);
+
 		return "redirect:/products/" + productId + "/orders/confirm";
 	}
 	

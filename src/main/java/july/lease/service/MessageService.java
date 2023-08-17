@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import july.lease.domain.Message;
 import july.lease.dto.MyAllMessageListDto;
+import july.lease.dto.OrderRequestDto;
 import july.lease.dto.ProductMessageInfoDto;
 
 
@@ -33,4 +34,7 @@ public interface MessageService {
 	
 	// 메세지 삭제
 	public int deleteMessage(Long roomNo);
+	
+	// 대여신청 확인 메세지 보내기
+	public int orderInsertMessage(Long memberId, Long productId, OrderRequestDto orderRequestDto);
 }
