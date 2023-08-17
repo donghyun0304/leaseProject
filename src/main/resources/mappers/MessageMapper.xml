@@ -53,11 +53,12 @@
 	</select>
 	
 	<insert id="insertMessageContent">
-		insert into message_content values(SEQ_MESSAGE_CONTENT_ID.NEXTVAL, #{messageText})
+		insert into message_content(message_content_id, message_text) values(SEQ_MESSAGE_CONTENT_ID.NEXTVAL, #{messageText})
 	</insert>
 	
 	<insert id="insertMessage">
-		insert into message values(SEQ_MESSAGE_ID.NEXTVAL, #{myId}, #{yourId}, SEQ_MESSAGE_CONTENT_ID.CURRVAL, 'N', 'N', null, sysdate, #{productId}, #{roomNo})
+		insert into message(message_id, my_id, your_id, message_content_id, message_read_status, message_delete_status, message_create_date, product_id, room_no) 
+		values(SEQ_MESSAGE_ID.NEXTVAL, #{myId}, #{yourId}, SEQ_MESSAGE_CONTENT_ID.CURRVAL, 'N', 'N', sysdate, #{productId}, #{roomNo})
 	</insert>
 	
 	<select id="findRoomNo" resultType="Long">
