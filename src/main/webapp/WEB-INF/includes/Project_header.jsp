@@ -83,15 +83,12 @@
         <div class='header_top'>
             <ul class='header_top_menu'>
             
+           		<li class='header_page'><a href="#" id='message' onclick="popup('/members/${memberId}/messages')">쪽지</a></li>
+                <li class='header_page'><a href="/members/${memberId}">마이페이지</a></li>
             	<c:if test="${not empty memberId}" var="login">
-            		<li class='header_page'><a href="#" id='message' onclick="popup('/members/${memberId}/messages')">쪽지</a></li>
-	                <li class='header_page'><a href="/members/${memberId}">마이페이지</a></li>
 	                <li class='header_page'><a href="/logout">로그아웃</a></li>
             	</c:if>
-            	
             	<c:if test="${not login}">
-            	    <li class='header_page'><a href="/login" id='message'>쪽지</a></li>
-	                <li class='header_page'><a href="/login">마이페이지</a></li>
                 	<li class='header_page'><a href="/login">로그인/회원가입</a></li>
                 </c:if>
                 
@@ -187,15 +184,12 @@
             <!-- 검색 폼 끝 -->
             
             <ul class='menulist'>
-            <c:if test="${not empty memberId}" var="login">
+
                 <li class='menu'><a href="/members/${memberId}/items">내상점</a></li>
                 <li class='menu'><a href="/products/add">상품등록</a></li>
-            </c:if>
+
             
-            <c:if test="${not login}">
-                <li class='menu'><a href="/login">내상점</a></li>
-                <li class='menu'><a href="/login">상품등록</a></li>
-            </c:if>
+          
 
             </ul>
         </div>

@@ -21,9 +21,6 @@
 
     <div class='login_area'>
         <div class='login_center slide-in'>
-        <c:if test="${not empty param.redirectURL }">
-            <input type="text" id="redirectLogin" value="로그인 후 이용 가능한 메뉴 입니다">
-            </c:if>
             <div class='login_logo'>
                 <img src="../../../../resources/images/rogo.png" alt="" class= "img" style="width: 70%">
             </div>
@@ -70,7 +67,7 @@
                  <button class='login_kakao'>카카오 로그인</button>
                  </a>
             </div>
-            <input type="hidden" id="redirectURL" value="${param.redirectURL}"> 
+            <input type="text" id="redirectURL" value="${param.redirectURL}"> 
         </div>
 
     </div>

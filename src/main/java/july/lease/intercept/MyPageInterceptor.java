@@ -26,7 +26,8 @@ public class MyPageInterceptor implements HandlerInterceptor{
 		if (session == null || sessionValue == null || !memberId.equals(sessionValue)) {
 			log.info("미인증 사용자 요청");
 			log.info("접속사용자 = {}, 요청된 memberId = {}", sessionValue, memberId);
-			response.sendRedirect("/");
+			response.sendRedirect("/login");
+			return false;
 		}
 		log.info("인증된 사용자 접속 승인");
 		return true;

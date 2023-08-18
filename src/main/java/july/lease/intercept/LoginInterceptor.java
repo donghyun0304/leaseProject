@@ -23,7 +23,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("memberId")== null) {			
-			
+			System.out.println(requestURI);
 			response.sendRedirect("/login?redirectURL=" + requestURI);
 			
 			return false;

@@ -17,13 +17,13 @@ public class WebConfig implements WebMvcConfigurer {
 			"/", "/login", "/logout", "/resources/**", "/members/add", "/findbyEmail", "/findbyEmailRes",
 			"/searchPw" ,"/idCheck", "/phoneCheck", "/findbyEmailAction", "/searchPwAction",
 			"/nickNameCheck", "/check/**", "/searchPwCheck", "/findbyEmailCheck", "/error",
-			"/naver", "/kakao", "/**"
+			"/naver", "/kakao", "/products/*/getImage"
 	};
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(loginInterceptor)
 			.excludePathPatterns(EXCLUDE_PATHS)
-			.addPathPatterns();
+			.addPathPatterns("/products/add", "/products/*/*", "/products/*/*/*");
 	}
 }
