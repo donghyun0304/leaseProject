@@ -110,12 +110,19 @@ public class MemberController extends CommonRestController {
 	@PostMapping("/login")
 	public @ResponseBody Map<String, Object> loginAction(@RequestBody Member member, HttpSession session, HttpServletRequest request){
 		String redirectURL = member.getRedirectURL();
+		
+		
 		member = memberService.login(member);
 		
 		if(!redirectURL.equals("") && member!=null) {
 			
 			session.setAttribute("memberId", member.getMemberId());
 
+			int index = redirectURL.indexOf("/members/");
+			if (index != -1) {
+				redirectURL = new StringBuilder(redirectURL).insert("/members/".length(), member.getMemberId()).toString();
+			}
+			
 			Map<String, Object> map = responseMap(REST_SUCCESS, "");
 			
 			map.put("url", redirectURL);
