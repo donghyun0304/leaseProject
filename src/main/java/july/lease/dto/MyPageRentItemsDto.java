@@ -18,6 +18,7 @@ public class MyPageRentItemsDto {
 	private String productDateCount;
 	private String productStatus;
 	
+	
 	public MyPageRentItemsDto(Long orderId, Long productId, String productImage, String productName,
 			String productStartDate, String productEndDate, String productDateCount, String productStatus) {
 		this.orderId = orderId;
