@@ -139,7 +139,7 @@
 	<!-- 구매페이지 -->
 	
 	<select id="orderItems" resultType="july.lease.dto.MyPageOrderItemsDto"> <!-- 판매중지가 된 물건리스트 조회 -->
-		SELECT ORDERS.PRODUCT_ID AS productId, STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE, 'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 AS rentDate, MEMBER_NAME as sellerName, DECODE(ORDER_CONFIRM_STATUS, '1','대여취소','2','대기중','3','대여확정', '4','대여중', '거래완료') as productStatus
+		SELECT ORDERS.PRODUCT_ID AS productId, STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE, 'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 AS rentDate, MEMBER_NICKNAME as sellerName, DECODE(ORDER_CONFIRM_STATUS, '1', '대여거절','2','대기중','3','대여확정', '4','대여중', '거래완료') as productStatus
 		FROM ORDERS
 		LEFT JOIN (
 				        SELECT PRODUCT_IMAGE.PRODUCT_ID, STORE_IMAGE_NAME, ROW_NUMBER() OVER (PARTITION BY PRODUCT_IMAGE.PRODUCT_ID ORDER BY PRODUCT_IMAGE_ID) AS ROW_NUM
@@ -154,7 +154,7 @@
 	<select id="orderItemsAJAX" resultType="july.lease.dto.MyPageOrderItemsDto"> <!-- 판매중지가 된 물건리스트 조회 -->
 		SELECT productId, productImage, productName, startDate, endDate, rentDate, sellerName, productStatus
 		FROM  (
-		    SELECT ORDERS.PRODUCT_ID AS productId, STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE, 'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 AS rentDate, MEMBER_NAME as sellerName, DECODE(ORDER_CONFIRM_STATUS, '1','대여취소','2','대기중','3','대여확정','4','대여중', '거래완료') as productStatus, ROW_NUMBER() OVER (ORDER BY ORDER_ID DESC) AS RNUM
+		    SELECT ORDERS.PRODUCT_ID AS productId, STORE_IMAGE_NAME as productImage, PRODUCT_NAME as productName, TO_CHAR(ORDER_RENT_START_DATE, 'YYYY-MM-DD') as startDate, TO_CHAR(ORDER_RENT_END_DATE, 'YYYY-MM-DD') as endDate, ORDER_RENT_END_DATE - ORDER_RENT_START_DATE + 1 AS rentDate, MEMBER_NICKNAME as sellerName, DECODE(ORDER_CONFIRM_STATUS, '1','대여거절','2','대기중','3','대여확정','4','대여중', '거래완료') as productStatus, ROW_NUMBER() OVER (ORDER BY ORDER_ID DESC) AS RNUM
 		    FROM ORDERS
 		    LEFT JOIN (
 					        SELECT PRODUCT_IMAGE.PRODUCT_ID, STORE_IMAGE_NAME, ROW_NUMBER() OVER (PARTITION BY PRODUCT_IMAGE.PRODUCT_ID ORDER BY PRODUCT_IMAGE_ID) AS ROW_NUM
@@ -204,4 +204,31 @@
 		WHERE MEMBER_ID = #{memberId}
 	</update>
 	
+	<update id="productRent"> <!-- 물품 대여중으로 변경 -->
+		UPDATE	PRODUCT
+		SET PRODUCT_STATUS = 2
+		WHERE PRODUCT_ID = #{productId}
+	</update>
+	
+	<update id="productReturn"> <!-- 물품 반납으로 변경 -->
+		UPDATE	PRODUCT
+		SET PRODUCT_STATUS = 1
+		WHERE PRODUCT_ID = #{productId}
+	</update>
+	
+	<select id="rentList" resultType="july.lease.dto.MyPageRentItemsDto"> <!-- 대여중일때 모달창에 띄울 정보 조회 -->
+		select a.order_id, b.product_id, b.product_name, to_char(a.order_rent_start_date, 'yyyy-mm-dd') as product_start_date,
+		       to_char(a.order_rent_end_date, 'yyyy-mm-dd') as product_end_date,
+		         (a.order_rent_end_date - a.order_rent_start_date) + 1 as product_date_count, '대여중' as product_status, p_image.store_image_name as product_image
+		from orders a
+		left join product b
+		    on a.product_id = b.product_id
+		left join member c
+		    on b.member_id = c.member_id
+		left join (
+		              select product_id, store_image_name, row_number() over (partition by product_id order by product_image_id) as row_num
+		              from product_image
+		          ) p_image on (b.product_id = p_image.product_id and p_image.row_num = 1)
+		where c.member_id = #{memberId} and a.order_confirm_status = 4 and b.product_status = 2
+	</select>
 </mapper>

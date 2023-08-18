@@ -89,10 +89,11 @@
 					                        	<c:choose>
 					                        		<c:when test="${item.orderConfirmStatus == 2}">
 							                            <button class='confirmBtn ${item.orderId }'>확정</button>
-							                            <button class='cancelBtn ${item.orderId }'>보류</button>					                        		
+							                            <button class='cancelBtn ${item.orderId }'>거절</button>					                        		
 					                        		</c:when>
 					                        		<c:otherwise>
 					                        			<button class='chatBtn ${item.orderId }' onclick="popup('/members/${memberId}/messages/${item.productId }/0')">쪽지</button>
+					                        			<button class='sendBtn ${item.orderId }'>승인</button>
 					                        		</c:otherwise>
 					                        	</c:choose>
 					                        </li>

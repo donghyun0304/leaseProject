@@ -17,6 +17,7 @@ import july.lease.domain.Member;
 import july.lease.domain.Product;
 import july.lease.dto.MyPageMainInfoDto;
 import july.lease.dto.MyPageOrderItemsDto;
+import july.lease.dto.MyPageRentItemsDto;
 import july.lease.dto.MyPageSellItemsDto;
 import july.lease.service.MyPageService;
 import lombok.RequiredArgsConstructor;
@@ -122,5 +123,18 @@ public class MyPageController_ksw {
 		redirectAttributes.addFlashAttribute("message", "비밀번호를 변경하였습니다.");
 		redirectAttributes.addFlashAttribute("member", member);
 		return "redirect:./editinfo";
+	}
+	
+	@GetMapping("/{memberId}/items/now")
+	public String now(@PathVariable Long memberId, Model model) {
+		String name = myPageService.findByName(memberId);
+		if (name == null) return "redirect:../login";
+		model.addAttribute("myName", name);
+		
+		List<MyPageRentItemsDto> rentList = myPageService.rentList(memberId);
+		model.addAttribute("rentList", rentList);
+		
+		
+		return "Project_mypage_rent_item";
 	}
 }

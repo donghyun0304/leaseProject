@@ -6,6 +6,7 @@ import july.lease.domain.Member;
 import july.lease.domain.Product;
 import july.lease.dto.MyPageMainInfoDto;
 import july.lease.dto.MyPageOrderItemsDto;
+import july.lease.dto.MyPageRentItemsDto;
 import july.lease.dto.MyPageSellItemsDto;
 import july.lease.dto.MyPageSellitemsModalDto;
 
@@ -40,5 +41,12 @@ public interface MyPageService {
 	
 	boolean comparePw(Long memberId, String pw, String pwCheck);
 	Member updatePw(Long memberId, String pw);
+	
+	boolean productRent(Long productId);
+	boolean productReturn(Long productId);
+	
+	List<MyPageRentItemsDto> rentList(Long memberId);
+	
+	
 	
 }

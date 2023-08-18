@@ -49,11 +49,12 @@ window.addEventListener('load', function(){
 	           	content +=  "<li class='productLeaseDay'><a href='../../products/"+ result.productId + "'>" + result.countDate + "일</a></li>"
 	           	content +=  "<li class='productLeaseStatus'><a href='../../products/"+ result.productId + "'>" + result.memberName + "</a></li>"
 	           	content +=  "<li class='productLeaseConfirm'>"
-	           	if (parseInt(result.orderConrimStatus) == 2){
+	           	if (parseInt(result.orderConfirmStatus) == 2){
 		           	content +=      "<button class='confirmBtn " + result.orderId + "'>확정</button>"
 		           	content +=       "<button class='cancelBtn " + result.orderId + "'>보류</button>"						   
 				} else {
 					content += 	"<button class='chatBtn " + result.orderId + "' onclick='popup('/members/" + result.memberId +"/messages/" + result.productId +"/0')'>쪽지</button>"
+					content += "<button class='sendBtn " + result.orderId + "' onclick='popup('/members/" + result.memberId + "/items/allow')'>승인</button>"
 				}
 	           	content +=   "</li>"
 				const tempUl = document.createElement("ul");
@@ -68,7 +69,7 @@ window.addEventListener('load', function(){
 		}
 		
 		// 새로운 .confirmBtn과 .cancelBtn을 최신화
-        confirm = document.querySelectorAll('.confirmBtn, .cancelBtn');
+        confirm = document.querySelectorAll('.confirmBtn, .cancelBtn, .sendBtn');
         applyEventListeners();
 		
 	}
@@ -79,7 +80,6 @@ window.addEventListener('load', function(){
 					orderId : button.classList.item(1),
 					productId : button.parentNode.parentNode.childNodes[1].firstChild.textContent
 				};
-				console.log(types);
 				$.ajax({
 					type: "POST",
 					url : window.location.pathname + "/confirm",
@@ -97,7 +97,7 @@ window.addEventListener('load', function(){
 	})
 	
 	function applyEventListeners() {
-        confirm = document.querySelectorAll('.confirmBtn, .cancelBtn');
+        confirm = document.querySelectorAll('.confirmBtn, .cancelBtn, .sendBtn');
         confirm.forEach(button => {
             button.addEventListener('click', function () {
 				
@@ -113,7 +113,7 @@ window.addEventListener('load', function(){
                     data: types,
 					statusCode : {
 						200 : function(response){
-							console.log('성공');
+							location.reload();
 						}
 					},
                     error: function (error) {

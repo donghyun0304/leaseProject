@@ -206,4 +206,13 @@ main{
     background-color: var(--main-color-hover);
 }
 
+.sendBtn{
+    background-color: rgb(62, 52, 204);
+    
+}
+.sendBtn:hover{
+    background-color: rgb(81, 80, 204);
+}
+
+
 /*끝*/
