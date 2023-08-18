@@ -67,7 +67,7 @@
                  <button class='login_kakao'>카카오 로그인</button>
                  </a>
             </div>
-            <input type="text" id="redirectURL" value="${param.redirectURL}"> 
+            <input type="hidden" id="redirectURL" value="${param.redirectURL}"> 
         </div>
 
     </div>

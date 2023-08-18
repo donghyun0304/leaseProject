@@ -104,7 +104,7 @@ window.addEventListener('load', function(){
                 let types = {
                     type: button.classList.item(0),
                     orderId: button.classList.item(1),								
-                    productId: button.parentNode.parentNode.childNodes[0].firstChild.textContent // 더보기로 추가된 리스트의 항목은 childNodes[0]이 productId를 가르키고있
+                    productId: button.parentNode.parentNode.childNodes[1].firstChild.textContent // 더보기로 추가된 리스트의 항목은 childNodes[0]이 productId를 가르키고있
                 };
                																				// 처음 5개가 보여지는 리스트에서는 childNodes[1]이 productId임 수정시 주의할 것!
                 $.ajax({

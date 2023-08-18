@@ -29,7 +29,7 @@ public class MyPageInterceptor implements HandlerInterceptor{
 			response.sendRedirect("/login?redirectURL=" + requestURI);
 			return false;
 		}
-//		log.info("인증된 사용자 접속 승인");
+//		log.info("인증된 사용자 접속 승인");  
 		return true;
 	}
 
