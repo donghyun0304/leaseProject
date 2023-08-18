@@ -100,7 +100,7 @@ public class MemberController extends CommonRestController {
 	}
 	
 	@GetMapping("/login")
-	public String login(HttpSession session) {
+	public String login(HttpSession session, @RequestParam(defaultValue = "/") String redirectURL) {
 		if(session.getAttribute("memberId")!=null) {
 			return "redirect:/";
 		}
