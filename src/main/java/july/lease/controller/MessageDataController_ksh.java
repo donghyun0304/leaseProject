@@ -40,7 +40,7 @@ public class MessageDataController_ksh{
 	@PostMapping("/messages/insert")
 	public Map<String, Object> getMessage(@RequestBody Message msgVo) {
 		
-		log.info("writetest");
+		//log.info("writetest");
 		
 		Map<String, Object> map = new HashMap<>();
 		

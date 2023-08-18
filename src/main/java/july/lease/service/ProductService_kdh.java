@@ -96,7 +96,7 @@ public class ProductService_kdh {
 				product.getProductContent(), product.getCategoryId(), product.getCategoryId3(),
 				rentDates, images, product.getProductEndStatus(), regions[0], regions[1]
 				);
-		log.info("findByProductIdForEdit editProductDto={}",editProductDto);
+		//log.info("findByProductIdForEdit editProductDto={}",editProductDto);
 		return editProductDto;
 	}
 	
@@ -112,7 +112,7 @@ public class ProductService_kdh {
 	public void editProduct(Long productId, EditProductRequestDto productRequestDto) throws IOException {
 		
 		List<MultipartFile> images = productRequestDto.getImages();
-		log.info("editProduct images={}",images);
+		//log.info("editProduct images={}",images);
 		
 		//실제로 파일이 첨부됐는지 확인하는 로직
 		boolean allFilesEmpty = true;
@@ -127,7 +127,7 @@ public class ProductService_kdh {
 		if(!allFilesEmpty) {
 			//DB에 있는 이미지 객체 먼저 찾고
 			List<ProductImage> findImagesInDB = productImageDao.findAllByProductId(productId);
-			log.info("ProductService_kdh editProduct 실행확인");
+			//log.info("ProductService_kdh editProduct 실행확인");
 			//DB에 이미지데이터 삭제
 			productImageDao.deleteProductImageByProductId(productId);
 			//이미지객체를 통해 로컬디렉토리에 이미지파일 삭제
@@ -156,7 +156,7 @@ public class ProductService_kdh {
 		images.stream()
 				.forEach(image -> {
 					if(!new File(fileDir + image.getStoreImageName()).delete()) {
-						log.info("===============================로컬이미지파일삭제실패");
+						//log.info("===============================로컬이미지파일삭제실패");
 					}
 				});
 	}
@@ -168,7 +168,7 @@ public class ProductService_kdh {
 		List<RentDate> deleteList = new ArrayList<>();
 		
 		for(int i=0; i<dbSize; i++) {
-			log.info("Rent_Date db기준 검증로직 시작");
+			//log.info("Rent_Date db기준 검증로직 시작");
 			String dbStartDate = dbRentDates.get(i).getRentAbleStartDate();
 			int cnt = 0;
 			for(int j=0; j<dtoSize; j++) {
@@ -186,7 +186,7 @@ public class ProductService_kdh {
 		}
 				
 		for(int i=0; i<dtoSize; i++) {
-			log.info("Rent_Date dto기준 검증로직 시작");
+			//log.info("Rent_Date dto기준 검증로직 시작");
 			String dtoStartDate = productRequestDto.getRentAbleStartDate().get(i);
 			int cnt = 0;
 			for(int j=0; j<dbSize; j++) {
@@ -227,7 +227,7 @@ public class ProductService_kdh {
 				product.getLocation(), product.getProductVisitCount(), 
 				product.getProductCreateDate(), images, rentDates);
 		
-		log.info("ProductService_kdh findByMemberIdExceptProductWithProductId responseDto={}", responseDto);
+		//log.info("ProductService_kdh findByMemberIdExceptProductWithProductId responseDto={}", responseDto);
 		return responseDto;
 	}
 	

@@ -19,21 +19,21 @@ public class OrdersDao {
 	
 	public int checkOrdersIfValid(Long productId) {
 		int result = ordersMapper.checkOrdersIfValid(productId);
-		log.info("OrderDao checkOrdersIfValid={}", result);
+		//log.info("OrderDao checkOrdersIfValid={}", result);
 		return result;
 	}
 	
 	public Orders save(Orders order) {
 		ordersMapper.save(order);
 		Orders findOrder = ordersMapper.findByOrderId(order.getOrderId());
-		log.info("save order={}", findOrder);
+		//log.info("save order={}", findOrder);
 		
 		return findOrder;
 	}
 	
 	public String findOrderRentDateByProductId(Long productId){
 		List<String> orderRentDates = ordersMapper.findOrderRentDateByProductId(productId);
-		log.info("OrdersDao findOrderRentDateByProductId={}", orderRentDates);
+		//log.info("OrdersDao findOrderRentDateByProductId={}", orderRentDates);
 		
 		StringBuilder sb = new StringBuilder();
 		for(int i=0; i<orderRentDates.size(); i++) {
@@ -42,7 +42,7 @@ public class OrdersDao {
 		        sb.append(",");
 		    }
 		}
-		log.info("OrdersDao findOrderRentDateByProductId={}", sb.toString());
+		//log.info("OrdersDao findOrderRentDateByProductId={}", sb.toString());
 		
 		return sb.toString();
 	}

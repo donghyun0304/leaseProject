@@ -18,7 +18,7 @@ public class ProductImageDao {
 	public List<ProductImage> save(List<ProductImage> productImages) {
 		for(ProductImage image : productImages) {
 			productImageMapper.save(image);
-			log.info("productImage={}", image);
+			//log.info("productImage={}", image);
 		}
 		return productImages;
 	}

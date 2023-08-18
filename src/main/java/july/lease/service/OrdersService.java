@@ -24,13 +24,13 @@ public class OrdersService {
 	
 	public int checkOrdersIfValid(Long productId) {
 		int result = ordersDao.checkOrdersIfValid(productId);
-		log.info("첵오더스={}", result);
+		//log.info("첵오더스={}", result);
 		return result;
 	}
 	
 	public String findOrderRentDateByProductId(Long productId) {
 		String result = ordersDao.findOrderRentDateByProductId(productId);
-		log.info("OrderService findOrderRentDateByProductId={}", result);
+		//log.info("OrderService findOrderRentDateByProductId={}", result);
 		return result;		
 	}
 	
@@ -38,7 +38,7 @@ public class OrdersService {
 		
 		String rentDate = orderRequestDto.getRentDate();
 		
-		log.info("=========check ={}", rentDate);
+		//log.info("=========check ={}", rentDate);
 		
 		List<RentAbleDateDto> rentAbleDates = rentDateDao.findRentAbleDatesWithinOrderDates(
 				productId, orderRequestDto.getOrderRentStartDate(), orderRequestDto.getOrderRentEndDate());

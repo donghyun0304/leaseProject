@@ -23,7 +23,7 @@ public class ProductDao {
 	public Product save(Product product) {
 		productMapper.save(product);
 		Product saveProduct = findByProductId(product.getProductId());
-		log.info("save Product={}", saveProduct);
+		//log.info("save Product={}", saveProduct);
 		return saveProduct;
 	}
 	
@@ -37,7 +37,7 @@ public class ProductDao {
 	
 	public Product findByProductIdForEdit(Long productId) {
 		Product product = productMapper.findByProductIdForEdit(productId);
-		log.info("findByProductIdForEdit={}",product);
+		//log.info("findByProductIdForEdit={}",product);
 		return product;
 	}
 	
@@ -47,13 +47,13 @@ public class ProductDao {
 	
 	public List<ProductListDto> findByMemberIdExceptProductWithProductId(Long memberId, Long productId){
 		List<ProductListDto> list = productMapper.findByMemberIdExceptProductWithProductId(memberId, productId);
-		log.info("ProductDao findByMemberIdExceptProductWithProductId={}",list);
+		//log.info("ProductDao findByMemberIdExceptProductWithProductId={}",list);
 		return list;
 	}
 	
 	public Product findByProductIdForProductDetail(Long productId) {
 		Product product = productMapper.findByProductIdForProductDetail(productId);
-		log.info("ProductDao findByProductIdForProductDetail={}", product);
+		//log.info("ProductDao findByProductIdForProductDetail={}", product);
 		return product;
 	}
 	

@@ -60,9 +60,9 @@ public class ProductController_kdh {
 			RedirectAttributes redirectAttributes,
 			@SessionAttribute(name = "memberId", required = false)Long memberId) throws IOException {
 		
-		log.info("check AddProductDto={}", productDto);
+		//log.info("check AddProductDto={}", productDto);
 		if(bindingResult.hasErrors()) {
-			log.info("errors={}", bindingResult);
+			//log.info("errors={}", bindingResult);
 			return "Project_product_upload";
 		}
 		
@@ -109,10 +109,10 @@ public class ProductController_kdh {
 	public String editProduct(@PathVariable Long productId, Model model,
 			@Validated @ModelAttribute("productRequest") EditProductRequestDto editProductRequestDto,
 			BindingResult bindingResult) throws IOException {
-		log.info("ProductContorller_kdh editProduct={}", editProductRequestDto);
+		//log.info("ProductContorller_kdh editProduct={}", editProductRequestDto);
 		
 		if(bindingResult.hasErrors()) {
-			log.info("errors={}", bindingResult);
+			//log.info("errors={}", bindingResult);
 			return "Project_product_edit";
 		}
 		
@@ -126,16 +126,16 @@ public class ProductController_kdh {
 	@GetMapping(value = "/products/{productId}/edit/rentdate/orders", produces = "application/json")
 	public int rentOrderStatus(String rentAbleStartDate, String rentAbleEndDate,
 			@PathVariable Long productId) {
-		log.info("ProductController_kdh rentOrderStatus={}", rentAbleStartDate);
+		//log.info("ProductController_kdh rentOrderStatus={}", rentAbleStartDate);
 		RentAbleRequestDto rentAble = new RentAbleRequestDto(rentAbleStartDate, rentAbleEndDate);
-		log.info("================= rentAble ={}",rentAble);
+		//log.info("================= rentAble ={}",rentAble);
 		return productService_kdh.rentOrderStatusSize(productId, rentAble);
 	}
 	
 	@ResponseBody
 	@GetMapping(value = "/products/{productId}/orders/count")
 	public int checkOrders(@PathVariable Long productId) {
-		log.info("checkOrders ==================");
+		//log.info("checkOrders ==================");
 		return ordersService.checkOrdersIfValid(productId);
 	}
 	
@@ -194,14 +194,14 @@ public class ProductController_kdh {
                     .findFirst()// filter조건에 일치하는 가장 앞에 있는 요소 1개를 Optional로 리턴함. 없으면 empty 리턴
                     .map(c -> { // Optional에 Cookie가 있으면 꺼내서 수행
                         if (!c.getValue().contains("[" + productId + "]")) {
-                            log.info("쿠키가 있어서 실행");
+                            //log.info("쿠키가 있어서 실행");
                             productService_kdh.addVisitCount(productId, responseDto);
                             c.setValue(c.getValue() + "[" + productId + "]");
                         }
                         return c;
                     })
                     .orElseGet(() -> { // Optional에 Cookie가 없으면 수행
-                        log.info("쿠키가 없어서 실행");
+                        //log.info("쿠키가 없어서 실행");
                         productService_kdh.addVisitCount(productId, responseDto);
                         return new Cookie("productView", "[" + productId + "]");
                     });
