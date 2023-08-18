@@ -10,7 +10,7 @@ window.addEventListener('load', function(){
 
 function phoneNum(){
     let num = document.querySelector('#userPhone');
-    console.log(num.value.length);
+    //console.log(num.value.length);
     if (num.value.length == 3 || num.value.length == 8){
         num.value += "-";
     }

@@ -9,7 +9,7 @@ window.addEventListener('load', function(){
 
 function phoneNum(){
     let num = document.querySelector('#userPhone');
-    console.log(num.value.length);
+    //console.log(num.value.length);
     if (num.value.length == 3 || num.value.length == 8){
         num.value += "-";
     }
@@ -372,7 +372,7 @@ window.addEventListener('load', function(){
 				memberName : userName.value,
 				memberPhone : userPhone.value
 		}
-		console.log('회원가입obj : ', obj);
+		//console.log('회원가입obj : ', obj);
 		
 		// 회원가입 요청
 		fetchPost('/members/add', obj, (map)=>{

@@ -9,7 +9,7 @@ var interval = setInterval(function(){
 },5000);
 
 function stop(){
-    console.log('setInterval 중지');
+    //console.log('setInterval 중지');
     clearInterval(interval); // 인터벌 중지 함수
 }
 
@@ -57,7 +57,7 @@ window.addEventListener('load', function(){
     				startRow : startRow,
     				endRow : endRow
     			}
-    			console.log(moreDate)
+    			//console.log(moreDate)
     			$.ajax({
     				type: "GET",
     				url : window.location.pathname + "main",
@@ -79,7 +79,7 @@ window.addEventListener('load', function(){
     		var locate = document.querySelector(".productList");
     		var moreBox = document.querySelector(".moreBox");
     		var length = list.length;
-    		console.log(length)
+    		//console.log(length)
     		for (var i=0;i<length;i++){
     			var result = list[i];
     			var content = '';

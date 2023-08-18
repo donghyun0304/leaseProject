@@ -33,7 +33,6 @@
 		
 		// 버튼 전체선택
 		checkAll.addEventListener('click', function(){
-			console.log("전체선택");
 			const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 			
 			checkboxes.forEach((checkbox) => {
@@ -44,9 +43,6 @@
 	})
 	
 	function deleteMessage(map){
-		
-		console.log("map = ", map.message);
-		
 		if(map.message === "success") {
 			window.location.reload();
 		} else {

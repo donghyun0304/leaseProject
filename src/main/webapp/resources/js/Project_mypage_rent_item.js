@@ -47,7 +47,7 @@ window.addEventListener('load', function(){
 					orderId : button.classList.item(1),
 					productId : button.parentNode.parentNode.childNodes[1].firstChild.textContent
 				};
-				console.log(types);
+				//console.log(types);
 				$.ajax({
 					type: "POST",
 					url : "../confirm",
@@ -98,7 +98,7 @@ window.addEventListener('load', function(){
 		var locate = document.querySelector(".myLeaseStatus");
 		var moreBox = document.querySelector(".moreBox");
 		var length = list.length;
-		console.log(length)
+		//console.log(length)
 		for (var i=0;i<length;i++){
 			var result = list[i];
 			var content = '';

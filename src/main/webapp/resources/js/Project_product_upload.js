@@ -22,7 +22,7 @@ function kindChange(e){
 			opt.value = (parseInt(e.value) * 100 + x + 1).toString();
 		}
 
-		console.log(opt.value);
+		//console.log(opt.value);
 		opt.innerHTML = d[x];
 		target.appendChild(opt);
 	}
@@ -45,7 +45,7 @@ function kindChange2(e){
 		opt.value = d[x];
 		opt.innerHTML = d[x];
 
-		console.log(opt.value);
+		//console.log(opt.value);
 		opt.innerHTML = d[x];
 		target.appendChild(opt);
 	}
@@ -55,10 +55,10 @@ function previewImage(f){
     var file = f.files;
 
     for (let i = 0;i<file.length;i++){
-        console.log(i);
+        //console.log(i);
         var reader = new FileReader();
         reader.onload = function(rst){
-            console.log('count')
+           // console.log('count')
             document.querySelector('.view_image').innerHTML += '<img src ="' + rst.target.result + '" width = "400px", height = "300px">';
         }
     }
@@ -83,14 +83,14 @@ window.addEventListener('load',function(){
         let removeChild = document.querySelectorAll('.view_image');
         let leng = fileInput.childElementCount;
         const selectedFiles = event.target.files;
-        console.log(selectedFiles.length);
+        //console.log(selectedFiles.length);
 
         if (event.target.files.length > 0) {
             // 파일이 선택되었을 때 이전 파일 정보를 복사하여 저장
             previousFiles = copyFiles(event.target.files);
         }
         if (selectedFiles.length == 0){
-            console.log("??")
+            //console.log("??")
             // 이전 파일 정보를 파일 입력 요소에 설정하여 파일 등록 취소 시 유지
             if (previousFiles.length > 0) {
                 const newFileList = new DataTransfer();

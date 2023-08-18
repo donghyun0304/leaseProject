@@ -8,7 +8,7 @@ window.addEventListener('load', function(){
         					redirectURL : document.querySelector('#redirectURL').value
         			};
 					
-    				console.log(obj);
+    				//console.log(obj);
         			fetchPost('/login', obj, loginCheck);
     		})
     	

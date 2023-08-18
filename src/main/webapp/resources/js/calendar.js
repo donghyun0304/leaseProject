@@ -105,7 +105,7 @@ window.onload = function(){
             currMonth = currMonth - 1;
         }
         renderCalendarPrev();
-        console.log(currYear, currMonth)
+        //console.log(currYear, currMonth)
         num = document.querySelectorAll('.day');
         prenum = document.querySelectorAll('.preday');
         nextnum = document.querySelectorAll('.nextday');

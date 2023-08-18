@@ -8,7 +8,7 @@ window.addEventListener('load', function(){
     type: 'GET',
     success: function(responseData) {
 		pics = responseData;
-		console.log(pics);
+		//console.log(pics);
 		// 컨테이너 박스의 배경 화면
 		// 배열의 0번째 인덱스값을 넣어 봅시다
 		// 1. 컨테이너박스 선택
@@ -143,7 +143,7 @@ function imgChange(){
 
 // interval 중지
 function stop(){
-    console.log('setInterval 중지');
+    //console.log('setInterval 중지');
     clearInterval(interval);
 }
 
