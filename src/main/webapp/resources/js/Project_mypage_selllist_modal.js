@@ -153,7 +153,6 @@ function getMoreList(list){
            content += "<li class='productStatus'>"
            			if (result.itemStatus == 1){
            content += "<button type='button' class='wait'>판매중</button>"
-           				
            			} else {
        	   content += "<button type='button' class='rent " + result.itemId + "'>대여중</button>"
        	   content += "</li>"
