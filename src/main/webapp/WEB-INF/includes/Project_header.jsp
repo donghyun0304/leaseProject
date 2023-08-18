@@ -184,8 +184,15 @@
             <!-- 검색 폼 끝 -->
             
             <ul class='menulist'>
-
-                <li class='menu'><a href="/members/${memberId}/items">내상점</a></li>
+            	<c:choose>
+            		<c:when test="${not empty memberId}">
+            			<li class='menu'><a href="/members/${memberId}/items">내상점</a></li>
+            		</c:when>
+            		<c:otherwise>
+            			<li class='menu'><a href="/login">내상점</a></li>
+            		</c:otherwise>
+            	</c:choose>
+                
                 <li class='menu'><a href="/products/add">상품등록</a></li>
 
             
