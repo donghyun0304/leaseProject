@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,12 +53,31 @@ public class MyPageRestController {
 		return new ResponseEntity<List<MyPageOrderItemsDto>>(list, HttpStatus.OK);
 	}
 	
+	@Transactional
 	@PostMapping(value = "/{memberId}/confirm", produces="application/json")
 	public ResponseEntity<String> confirm(@PathVariable Long memberId, String type, Long orderId, Long productId) {
-		
+		System.out.println("confirm RestController");
 		if (!myPageService.validConfirm(memberId, productId, orderId)) return new ResponseEntity<String>("검증실패",HttpStatus.NOT_FOUND);
 		
-		if (myPageService.confirmUpdate(orderId, productId, "confirmBtn".equals(type) ? 3L : 1L)) {
+		Long btn = 5L; // 밑에 해당없으면 반납처리
+		if (type.equals("confirmBtn")) btn = 3L; // 확정
+		else if (type.equals("cancelBtn")) btn = 1L; // 보류
+		else if (type.equals("sendBtn")) btn = 4L; // 승인
+		System.out.println(btn);
+		if (myPageService.confirmUpdate(orderId, productId, btn)) {
+			if (btn == 4L) {
+				if (myPageService.productRent(productId)) {
+					return new ResponseEntity<String>("업데이트 성공", HttpStatus.OK);
+				} else {
+					return new ResponseEntity<String>("업데이트 실패", HttpStatus.NOT_FOUND);
+				}
+			} else if (btn == 5L) {
+				if (myPageService.productReturn(productId)) {
+					return new ResponseEntity<String>("업데이트 성공", HttpStatus.OK);
+				} else {
+					return new ResponseEntity<String>("업데이트 실패", HttpStatus.NOT_FOUND);
+				}
+			}
 			return new ResponseEntity<String>("업데이트 성공", HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("업데이트 실패", HttpStatus.NOT_FOUND);

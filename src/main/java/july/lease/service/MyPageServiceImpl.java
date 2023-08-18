@@ -16,6 +16,7 @@ import july.lease.domain.Member;
 import july.lease.domain.Product;
 import july.lease.dto.MyPageMainInfoDto;
 import july.lease.dto.MyPageOrderItemsDto;
+import july.lease.dto.MyPageRentItemsDto;
 import july.lease.dto.MyPageSellItemsDto;
 import july.lease.dto.MyPageSellitemsModalDto;
 import lombok.RequiredArgsConstructor;
@@ -152,6 +153,23 @@ public class MyPageServiceImpl implements MyPageService {
 			return null;
 		}
 		return memberDao.selectOne(memberId);
+	}
+
+	@Override
+	public boolean productRent(Long productId) {
+		int result = myPageMapper.productRent(productId);
+		return result == 0 ? false : true;
+	}
+
+	@Override
+	public boolean productReturn(Long productId) {
+		int result = myPageMapper.productReturn(productId);
+		return result == 0 ? false : true;
+	}
+
+	@Override
+	public List<MyPageRentItemsDto> rentList(Long memberId) {
+		return myPageMapper.rentList(memberId);
 	}
 
 

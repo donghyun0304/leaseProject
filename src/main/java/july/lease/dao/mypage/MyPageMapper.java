@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import july.lease.domain.Product;
 import july.lease.dto.MyPageMainInfoDto;
 import july.lease.dto.MyPageOrderItemsDto;
+import july.lease.dto.MyPageRentItemsDto;
 import july.lease.dto.MyPageSellItemsDto;
 import july.lease.dto.MyPageSellitemsModalDto;
 
@@ -58,4 +59,8 @@ public interface MyPageMapper {
 	MyPageSellitemsModalDto sellItemsModal(@Param("memberId") Long memberId, @Param("productId") Long productId);
 	
 	int updatePw(@Param("memberId") Long memberId, @Param("pw") String pw);
+	int productRent(Long productId);
+	int productReturn(Long productId);
+	
+	List<MyPageRentItemsDto> rentList(Long memberId);
 }
