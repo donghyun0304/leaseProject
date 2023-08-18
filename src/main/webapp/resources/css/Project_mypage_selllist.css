@@ -1,33 +1,3 @@
-/* 공통 CSS 시작 */
-*{
-    box-sizing: border-box;
-    margin: 0 auto;
-    font-family: 'Pretendard';
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('../font/Pretendard-Medium.otf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Pretendard_Light';
-    src: url('../font/Pretendard-Light.otf') format('truetype');
-}
-
-:root {
-    --border-radius: 0.5rem;
-    --border-color: #b0b0b0;
-    --main-color: rgb(0, 0, 0);
-    --main-color-hover: rgb(80, 80, 80);
-    --main-font-color: rgb(0, 0, 0);
-    --main-font-color-hover: rgb(255, 255, 255);
-    --confirm-color: rgb(83, 216, 127);
-    --cancel-color: rgb(253, 105, 105);
-    --confirm-color-hover: rgb(75, 174, 108);
-    --cancel-color-hover: rgb(228, 94, 94);
-}
-
 ul{
     list-style: none; 
      color: black;
@@ -37,255 +7,6 @@ ul{
      color: black;
      text-decoration: none;
  }
- 
-     /* 헤더 CSS시작 */
- header{
-     width: 100%;
-     height: 6rem;
- }
- 
- header .header_top{
-     width: 75rem;
- }
- 
- .header_top .header_top_menu{
-     display: flex;
-     justify-content: flex-end;
-     margin-top: 0.5rem;
-     margin-right: 0.5rem;
- }
- 
- .header_page{
-     margin: 0 1rem;
- }
- 
- .header_page a{
-     color: rgb(126, 126, 126);
-     font-size: 0.9rem;
- }
- 
- 
- 
- header .head{
-     width: 75rem;
-     height: 80px;
-     display: flex;
-     align-items: center;
-     /* background-color: antiquewhite; */
-     margin-top: 25px;
- }
- 
- header .category{
-     width: 75rem;
-     height: 2rem
- }
-     /* 헤더 CSS시작 */
- 
- 
- .logo{
-     /* background-color: aqua; */
-     margin: 0;
-     width: 15rem;
-     text-align: center;
- }
- 
- .menulist{
-     display: flex;
-     margin: 0;
-     justify-content: flex-end;
- }
- 
- .menu{
-     margin: 0 2rem;
- }
- 
- .menu a{
-     font-size: 1.1rem;
- }
- 
- .category{
-     display: flex;
- }
- 
- .category div{
-     margin: 0.5rem 1.3rem;
-     height: 2rem;
-     border-bottom: 2px solid var(--border-color);
- }
- 
- .category div a{
-     width: 100%;
-     height: 100%;
-     font-family: 'Pretendard_light';   
- }
- 
- .search{
-     width: 25rem;
-     height: 2.5rem;
-     /* background-color: antiquewhite; */
-     border: 0.15rem solid var(--border-color);
-     display: flex;
-     position: relative;
- }
- 
- #search{
-     border: none;
-     margin: 0;
-     width: 90%;
-     padding: 0 0.8rem;
-     font-size: 1rem;
- }
- 
- #search:focus{
-     outline: none;
- }
- 
- #search::-webkit-search-cancel-button{
-     display: none;
- }
- 
- 
- .search svg{
-     fill: var(--border-color);
-     cursor: pointer;
- }
- 
- .calendar{
-     position: absolute;
-     top: 100%;
-     margin-top: 0.8rem;
-     width: 50rem;
-     padding: 1rem;
-     display: flex;
-     flex-wrap: wrap;
-     border: 0.2rem solid var(--border-color);
-     background-color: white;
- }
- 
- .calendar.active{
-     display: none;
- }
- 
- .cal_header h3{
-     margin: 0;
- }
- 
- .cal{
-     flex: 1 0 40%;
-     margin-right: 2rem;
- }
- 
- .cal_header{
-     width: 100%;
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
- }
- 
- .cal_header svg{
-     width: 1rem;
-     margin: 0;
- }
- 
- .cal .calTop{
-     text-align: center;
-     font-size: 1.3rem;
-     margin-top: 0.6rem;
-     font-weight: bold;
-     display: flex;
-     border: 0;
-     align-items: center;
-     justify-content: center;
- }
- 
- .cal .calTop *{
-     margin: 0;
- }
- 
- .cal ul{
-     display: flex;
-     flex-wrap: wrap;
-     text-align: center;
-     padding: 0;
-     margin: 0.7rem 0;
-     font-size: 1.1rem;
-     font-weight: bold;
- }
- 
- .cal .days{
-     margin-bottom: 20px;
- }
- 
- .cal ul li{
-     width: calc(100% / 7);
-     position: relative;
-     margin: 0.4rem 0;
- }
- 
- .day{
-     font-size: 1.3rem;
-     cursor: pointer;
- }
- .day:hover{
-     background-color: #b0b0b0;
-     border-radius: 1rem;
- }
- .cal div #nextBtn{
-     margin-left: 1rem;
-     line-height: 1rem;
- }
- .cal div #nextBtn svg{
-     width:0.8rem;
-     fill: black;
-     
- }
- 
- .cal div #preBtn{
-     margin-right: 1rem;
-     line-height: 1rem;
- }
- .cal div #preBtn svg{
-     width:0.8rem;
-     fill: black;
- }
- 
- .hidden{
-     display: none;
- }
- 
- .select{
-     background-color: yellow;
- }
- 
- .disabled{
-     color: #b0b0b0;
- }
- 
- 
- .disabled:hover{
-     background-color: white;
- }
- 
- .today{
-     background-color: rgb(218, 94, 94);
-     border-radius: 1rem;
- }
- 
- #searchForm{
-     width: 100%;
-     text-align: right;
- }
- 
- #searchForm button{
-     width: 7rem;
-     height: 2rem;
-     border-radius: var(--border-radius);
-     outline-color: var(--border-color);
-     border-color: var(--border-color);
-     font-size: 1rem;
- }
-
-/* 공통 CSS 종료 */
 
 main{
     width: 100%;
@@ -294,23 +15,12 @@ main{
 
 .wrapper{
     width: 75rem;
-    /* background-color: antiquewhite; */
     display: flex;
     gap: 1rem;
 }
 
 .wrapper *{
     margin: 0;
-}
-
-.wrapper aside{
-    width: 13rem;
-    border-radius: var(--border-radius);
-    border: 1px solid black;
-    margin: 0;
-    padding: 1.5rem;
-    max-height: 30rem;
-    
 }
 
 .wrapper .myName{
@@ -329,13 +39,14 @@ main{
 .wrapper .myPageMain{
     width: 62rem;
     border-radius: var(--border-radius);
-    border: 1px solid black;
     padding: 1.5rem;
-    height: 100%;
+    box-shadow: 2px 2px 5px rgb(185, 185, 185);
 }
 
 .myLeaseStatus{
     width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 2px 2px 5px rgb(185, 185, 185);
 }
 
 .myPageTitle{
@@ -346,63 +57,82 @@ main{
 .myLeaseStatus ul{
     display: flex;
     text-align: center;
-    height: 4rem;
     align-items: center;
+    padding: 0;
 }
+
+.listMain{
+    height: 6rem;
+}
+
+.listMain .productImage a img{
+    width: 5rem;
+}
+
+.listMain.empty span{
+	color: #b0b0b0;
+    width: 100%;
+}
+
+.productTitle{
+    padding-left: 1rem;
+}
+
 .leaseTitle{
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
-    border: 2px solid black;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgb(100, 100, 100);
 }
 
-.myLeaseStatus ul:nth-child(n+3){
-    height: 13rem;
-    border: 2px solid black;
-    border-top: none;
-    border-bottom: 1px solid black;
-}
-
-.myLeaseStatus ul:last-child{
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    border-bottom: 2px solid black;
-}
 .myLeaseStatus ul li:nth-child(1){
-    width: 8%;
+    width: 15%;
 }
 .myLeaseStatus ul li:nth-child(2){
-    width: 10%;
-}
-.myLeaseStatus ul li:nth-child(3){
-    width: 29%;
+    width: 25%;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
-.myLeaseStatus ul li:nth-child(4){
-    width: 11%;
-}
-.myLeaseStatus ul li:nth-child(5){
-    width: 11%;
-}
-.myLeaseStatus ul li:nth-child(6){
-    width: 8%;
-}
-.myLeaseStatus ul li:nth-child(7){
-    width: 8%;
-}
-.myLeaseStatus ul li:nth-child(8){
+.myLeaseStatus ul li:nth-child(3){
     width: 15%;
 }
+.myLeaseStatus ul li:nth-child(4){
+    width: 10%;
+}
+.myLeaseStatus ul li:nth-child(5){
+    width: 15%;
+}
+.myLeaseStatus ul li:nth-child(6){
+    width: 20%;
+}
+
+#image-text{
+    position: absolute;
+    top:35%;
+    transform: translate(-50%, -50%);
+    right: -50%;
+    color: black;
+    border-radius: 0.6rem;
+    width: 100%;
+    height: 75%;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 
 .productLeaseConfirm{
     justify-content: space-evenly;
     line-height: 30px;
 }
 
-.productLeaseConfirm button{
-    width: 100px;
+.productStatus button{
+    display: inline-block;
+    width: 5rem;
     height: 2rem;
+    line-height: 2rem;
     font-size: 1rem;
     border-color: var(--main-color);
     border-radius: var(--border-radius);
@@ -411,20 +141,20 @@ main{
     border: 2px solid black;
 }
 
-.productLeaseConfirm .confirmBtn{
+.productStatus .wait{
     background-color: var(--confirm-color);
 }
 
-.productLeaseConfirm .cancelBtn{
+.productStatus .rent{
     background-color: var(--cancel-color);
     
 }
 
-.productLeaseConfirm .confirmBtn:hover{
+.productStatus .wait:hover{
     background-color: var(--confirm-color-hover);
 }
 
-.productLeaseConfirm .cancelBtn:hover{
+.productStatus .rent:hover{
     background-color: var(--cancel-color-hover);
 }
 
@@ -442,14 +172,28 @@ main{
 
 .items{
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 10px;
 }
 
 .items .item{
-    width: 13.8rem;
+    width: 13.75rem;
     height: 19rem;
     position: relative;
+    border: 1px solid #b0b0b0;
+    border-radius: 0.85rem;
+}
+
+.item.empty{
+    text-align: center;
+    line-height: 5rem;
+    width: 100%;
+    height: 5rem;
+}
+
+.item.empty span{
+    color: #b0b0b0;
 }
 
 .itemImage{
@@ -500,75 +244,77 @@ main{
     margin-top: 1rem;
 }
 
-.product-buy{
-    line-height: 30px;
-    width: 350px;
-    margin-left: 100px;
-}
-
-.product-buy2{
-    line-height: 30px;
-    width: 300px;
-}
-
-.product-buy3{
-    line-height: 30px;
-    width: 300px;
-}
-
-.product-price{
-    font-weight: bold;
-}
-
-.product-fix{
-    font-weight: bold;
-    color: green;
-    font-size: 18px;
-}
-
-.product-name{
-    font-weight: bold;
-    font-size: large;
-}
-
 .product-no{
-    height: 40px;
-    box-shadow: inset 0 -4px 0 rgba(187, 187, 187, 0.5);
+    height: 2rem;
     padding-left: 1%;
     padding-right: 1%;
 }
 
-
-.listMain{
-    background-color: white;
-}
-
-.sold{
-    border: 2px solid black;
-    width: 70px;
-}
-
-#image-text{
-    position: absolute;
-    top:35%;
-    transform: translate(-50%, -50%);
-    right: -50%;
-    color: black;
-    border-radius: 0.6rem;
+/* totalStatus 시작*/
+.totalStatus{
     width: 100%;
-    height: 75%;
-    text-align: center;
-    font-weight: bold;
-    font-size: large;
-    border: 0px;
-    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-#product-sellReserve{
-    background-color: green;
+.totalStatus .totalBox{
+    border: 1px solid rgb(236, 236, 236);
+    border-radius: var(--border-radius);
+    width: calc(100%/4);
+    height: 7rem;
+    display: grid;
+    grid-template-rows: 70% 30%;
+    box-shadow: 2px 2px 5px rgb(185, 185, 185);
 }
 
-.product-sell{
-    background-color: red;
+.totalStatus .totalBox:nth-child(3){
+    width: calc(100% / 2);
 }
+
+.totalStatus .totalBox:nth-child(3) div span:last-child{
+    text-align: right;
+    padding-right: 2rem;
+}
+
+
+
+.totalBox div:first-child{
+    display: grid;
+    grid-template-rows:  50% 50%;
+}
+
+.totalBox div span:first-child{
+    padding: 1rem 0 0 1rem;
+    font-size: 1.3rem;
+}
+
+.totalBox div span:last-child{
+    text-align: right;
+    padding-right: 2rem;
+    line-height: 2.5rem;
+    font-size: 1.3rem;
+}
+
+.totalBox div:last-child{
+    width: 100%;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.orderBox{
+    background-color: rgb(76, 216, 95);
+}
+.sellBox{
+    background-color: rgb(255, 96, 96);
+}
+.myitemBox{
+    background-color: rgb(127, 165, 255);
+}
+.orderlistBox{
+    background-color: rgb(255, 255, 194);
+}
+
+/* totalStatus 끝 */
+
 

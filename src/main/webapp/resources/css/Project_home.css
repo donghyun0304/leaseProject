@@ -1,3 +1,8 @@
+a{
+	text-decoration: none;
+    color: black;
+}
+
 .contents{
     width: 75rem;
     /* height: 100rem; */
@@ -32,44 +37,74 @@
     height: 25rem;
     text-align: center;
     padding: 1.3rem 1.3rem;
-    /* background-color: rgb(180, 253, 196); */
 }
 .categoryProduct{
     width: 100%;
-    height: 45rem;
     text-align: center;
     padding: 1.3rem 1.3rem;
-    /* background-color: skyblue; */
 }
 .product{
     width: 17rem;
-    height: 18rem;
+    height: 19rem;
     display: inline-block;
-    margin: 3px;
-    border: 1px solid lightgrey;
-    /* background-color: white;    */
+    margin: 0.4rem;
+    border-radius: 1rem;
+    padding: 0px;
+    box-shadow: 2px 2px 5px rgb(185, 185, 185);
 }
-#btnView{
+.product a{
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
+.getMore{
     width: 80px;
     height: 40px; 
-    border-radius: 0.5rem; 
     object-fit: cover; 
-    border: 1px solid var(--main-color);
+    background-color: transparent;
+    border: none;
+    display: flex;
+    margin-top: 2rem;
+    cursor:pointer;
 }
+
+
+.productImage{
+	width: 100%;
+	height: 70%;
+	display: flex;
+	align-items: center;
+}
+
 .thumbnail{
-    width: 90%;
-    height: 70%;
-    margin-top: 0.5rem;
-    display: grid;
-    /* background-color: skyblue; */
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+    height: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
 }
+
+.productName{
+	font-size: 1.1rem;
+	margin: 1rem 0 0.5rem 0;
+}
+
+.productPrice{
+	font-size: 1.4rem;
+}
+
+
 .product_title{
     width: 90%;
-    display: grid; 
     height: 2rem;
     margin-top: 0.5rem;
     line-height: 2rem;
     text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .product_price{
     width: 90%;
@@ -80,8 +115,9 @@
 }
 
 .categoryT{
-    font-size: 1.1rem; 
+    font-size: 1.5rem; 
     text-align: left;
+    font-weight: bold;
 }
 
 /* 배너 */

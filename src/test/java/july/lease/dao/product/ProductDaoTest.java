@@ -1,7 +1,5 @@
 package july.lease.dao.product;
 
-import java.util.List;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,36 +18,17 @@ public class ProductDaoTest {
 	private ProductDao productDao;
 	
 	@Test
-	void save() {
-		
+	void findByProductIdForEdit() {
 		//given
-		Product product = new Product(1L, 1L, "≈Ÿ∆Æ1", 100000, 
-									"≈Ÿ∆Æ1º≥∏Ì", "º≠øÔ");
+		Product product = new Product(1L, 101L, "ÏÉÅÌíà1", 10000, "ÎÇ¥Ïö©1", "ÏÑúÏö∏");
 		productDao.save(product);
-		
-		//when
-		Product findProduct = productDao.findByProductId(product.getProductId());
-		
-		//then
-		Assertions.assertThat(findProduct.getProductId())
-						.isEqualTo(product.getProductId());
-	}
+		Product saveProduct = productDao.findByProductId(product.getProductId());
 	
-	@Test
-	void findAllForHome() {
-		//given
-		Product product1 = new Product(1L, 1L, "≈Ÿ∆Æ1", 100000, 
-											"≈Ÿ∆Æ1º≥∏Ì", "º≠øÔ");
-		Product product2 = new Product(1L, 1L, "≈Ÿ∆Æ2", 200000, 
-				"≈Ÿ∆Æ2º≥∏Ì", "¿Œ√µ");
-		productDao.save(product1);
-		productDao.save(product2);
-		
 		//when
-		List<Product> list = productDao.findAllForHome();
-				
+		Product findProduct = productDao.findByProductIdForEdit(saveProduct.getProductId());
+		
 		//then
-		Assertions.assertThat(list.get(0).getProductId()).isEqualTo(product1.getProductId());
+		Assertions.assertThat(findProduct.getProductContent()).isEqualTo(saveProduct.getProductContent());
 	}
 
 }

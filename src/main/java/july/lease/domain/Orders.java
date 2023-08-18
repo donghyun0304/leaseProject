@@ -35,6 +35,17 @@ public class Orders {
 		this.orderRequest = orderRequest;
 	}
 	
+	public Orders(Long memberId, Long productId, Long rentDateId,
+			String orderRentStartDate, String orderRentEndDate,
+			Integer orderPrice) {
+		this.memberId = memberId;
+		this.productId = productId;
+		this.rentDateId = rentDateId;
+		this.orderRentStartDate = orderRentStartDate;
+		this.orderRentEndDate = orderRentEndDate;
+		this.orderPrice = orderPrice;
+	}
+	
 	
 	
 	

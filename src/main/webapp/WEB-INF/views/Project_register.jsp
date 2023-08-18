@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../resources/css/Project_footer.css">
     <script src="../../resources/js/calendar.js"></script>
     <link rel="stylesheet" href="../../resources/css/Project_register.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="../../resources/js/Project_register.js"></script>
 </head>
 <%@include file="../includes/Project_header.jsp"%>
@@ -24,22 +25,27 @@
                 <h5>이메일 주소 *</h5>
                 <input type="email" name="userId" id="userId" placeholder='예) email@naver.com' autocomplete='off'>
             </div>
+            <div class="errors"></div>
             <div class='regi_box_pw'>
                 <h5>비밀번호 *</h5>
-                <input type="password" name="userPw" id="userPw" placeholder='대소문자, 숫자, 특수무자를 포함해서 8~15자 이상' maxlength='15' autocomplete='off'>
+                <input type="password" name="userPw" id="userPw" placeholder='대소문자, 숫자, 특수문자를 포함해서 8~15자 이상' maxlength='15' autocomplete='off'>
             </div>
-            <div class='regi_box_pw'>
+                <div class="errors"></div>
+            <div class='regi_box_pw_check'>
                 <h5>비밀번호 확인 *</h5>
-                <input type="password" name="userPw" id="userPw" maxlength='15' autocomplete='off'>
+                <input type="password" name="userPwCheck" id="userPwCheck" maxlength='15' autocomplete='off'>
             </div>
+                <div class="errors"></div>
             <div class='regi_box_nickname'>
                 <h5>닉네임</h5>
                 <input type="text" name="userNickname" id="userNickname" autocomplete='off'>
             </div>
+                <div class="errors"></div>
             <div class='regi_box_name'>
                 <h5>이름</h5>
                 <input type="text" name="userName" id="userName" autocomplete='off'>
             </div>
+                <div class="errors"></div>
             <div class='regi_box_phone'>
                 <h5>휴대폰번호</h5>
                 <div>
@@ -47,14 +53,20 @@
                     <button class='phoneCheck' id='check'>인증번호발송</button>
                 </div>
             </div>
+                    <div class="errors"></div>
+                    <div class="errors"></div>
             <div class='regi_box_phone_check'>
                 <input type="text" name='phonCheckNum' id='phoneCheckNum' autocomplete='off'>
-                <button class='phoneCheck'>인증번호확인</button>
+                <button class='phoneCheck' id='phoneCheck'>인증번호확인</button>
             </div>
+            <div class="errors"></div>
+            <div class="errors"></div>
             <div class='regi_button'>
-                <a href="#">가입하기</a>
+                <a href="#" id="button_register">가입하기</a>
             </div>
-            
+            <input type="hidden" value='1' id="idCheckRes">
+            <input type="hidden" value='1' id="nickNameCheckRes">
+            <input type="hidden" value='5' id="phoneCheckRes">
         </div>
 
     </div>

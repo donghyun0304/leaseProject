@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../resources/css/Project_footer.css">
     <script src="../../resources/js/calendar.js"></script>
     <link rel="stylesheet" href="../../resources/css/Project_searchPw.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="../../resources/js/Project_searchPw.js"></script>
 </head>
 <%@include file="../includes/Project_header.jsp"%>
@@ -21,12 +22,14 @@
             </div>
             <div class='findEmail_box_name'>
                 <h5>이메일</h5>
-                <input type="email" name="userName" id="userName" autocomplete='off'>
+                <input type="email" name="userId" id="userId" autocomplete='off'>
             </div>
+            <div class="errors"></div>
             <div class='findEmail_box_name'>
                 <h5>이름</h5>
                 <input type="text" name="userName" id="userName" autocomplete='off'>
             </div>
+            <div class="errors"></div>
             <div class='findEmail_box_phone'>
                 <h5>휴대폰번호</h5>
                 <div>
@@ -34,17 +37,23 @@
                     <button class='phoneCheck' id='check'>인증번호발송</button>
                 </div>
             </div>
+            <div class="errors"></div>
+            <div class="errors"></div>
             <div class='findEmail_box_phone_check'>
                 <input type="text" name='phonCheckNum' id='phoneCheckNum' autocomplete='off'>
-                <button class='phoneCheck'>인증번호확인</button>
+                <button class='phoneCheck' id='phoneCheck'>인증번호확인</button>
             </div>
+            <div class="errors"></div>
+            <div class="errors"></div>
             <div class='findEmail_button'>
-                <a href="#">비밀번호 찾기</a>
+                <a href="#" id="button_searchPw">비밀번호 찾기</a>
             </div>
+            	<input type="hidden" value='1' id="idCheckRes">
+                <input type="hidden" value='5' id="phoneCheckRes">
             
         </div>
 
     </div>
 </body>
-<%@include file="../includes/Project_footer.jsp" %>
+<%@include file="../includes/Project_footer.jsp" %>  	
 </html>

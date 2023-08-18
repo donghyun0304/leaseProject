@@ -29,6 +29,11 @@ footer{
     flex-direction: column;
 }
 
+.foot_bottom a{
+    margin: 0.2rem auto;
+    color: rgb(98, 98, 98);
+}
+
 .foot_bottom_bottom{
     margin-top: 5rem;
     margin-left: 2rem;

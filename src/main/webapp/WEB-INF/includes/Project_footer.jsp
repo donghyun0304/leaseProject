@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../../resources/css/Project_footer.css">
 </head>
 <body>
 <footer>
@@ -21,15 +22,30 @@
             </div>
             <div class="tec_serv">
                 <h3>기술</h3>
-                <span>기술명</span>
-                <span>기술명</span>
+                <span>문자인증 API</span>
+                <span>소셜 로그인 API</span>
+                <span>Interceptor</span>
             </div>
             <div>
                 <h3>개발환경</h3>
-
+				<span>Spring Boot</span>
+				<span>Java</span>
+				<span>HTML</span>
+				<span>CSS</span>
+				<span>JavaScript</span>
+				<span>GitHub</span>
             </div>
             <div>
                 <h3>페이지</h3>
+                <a href="/">홈</a>
+                <a href="/login">로그인</a>
+                <a href="/members/add">회원가입</a>
+                <c:if test="${not empty memberId}">
+                <a href="/members/${memberId }">마이페이지</a>
+                </c:if>
+                <c:if test="${empty memberId}">
+                <a href="/login">마이페이지</a>
+                </c:if>
             </div>
         </div>
         <div class="foot_bottom_bottom">

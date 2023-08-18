@@ -18,9 +18,13 @@
 
 :root {
     --border-radius: 0.5rem;
-    --border-color: #b0b0b0;
-    --main-color: rgb(0, 0, 0);
-    --main-color-hover: rgb(80, 80, 80);
+    --border-color: #5a5849;
+    --main-color: rgb(191,171,128);
+    --main-color-hover: rgb(165 147 108);;
+}
+
+hr{
+	border-color: var(--main-color);
 }
 
 ul{
@@ -28,10 +32,6 @@ ul{
     color: black;
 }
 
-a{
-    color: black;
-    text-decoration: none;
-}
 
     /* 헤더 CSS시작 */
 header{
@@ -67,24 +67,11 @@ header .head{
     height: 100%;
     display: flex;
     align-items: center;
-    /* background-color: antiquewhite; */
 }
 
-/* 지워야할 부분@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* 이전카테고리 시작 */
-
-.category{
-    width: 75rem;
-    height: 2rem;
-    display: flex;
-}
-/* 이전카테고리 종료 */
-
-    /* 헤더 CSS시작 */
 
 
 .logo{
-    /* background-color: aqua; */
     margin: 0;
     width: 15rem;
     text-align: center;
@@ -109,8 +96,7 @@ header .head{
 .search{
     width: 25rem;
     height: 2.5rem;
-    /* background-color: antiquewhite; */
-    border: 0.15rem solid var(--border-color);
+    border: 0.15rem solid var(--main-color);
     display: flex;
     position: relative;
 }
@@ -133,7 +119,7 @@ header .head{
 
 
 .search svg{
-    fill: var(--border-color);
+    fill: var(--main-color);
     cursor: pointer;
 }
 
@@ -145,7 +131,7 @@ header .head{
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
-    border: 0.2rem solid var(--border-color);
+    border: 0.2rem solid var(--main-color);
     background-color: white;
     z-index: 100;
 }
@@ -243,6 +229,7 @@ header .head{
 
 .select{
     background-color: yellow;
+    color: black;
 }
 
 .disabled{
@@ -295,16 +282,23 @@ header .head{
 }
 
 .submenu{
-    overflow: hidden;
+    display: none;
     padding: 0;
+    
+}
+
+.submenu li{
+    padding: 0.5rem;
+    
 }
 
 .categoryMenu li{
-    
     width: 180px;
     height: 40px;
     position: relative;
     float: left;
+
+    
  
 }
 
@@ -322,31 +316,36 @@ header .head{
     border-radius: 0.5rem;
     font-family: 'Pretendard_light';
     
+    color: #454438;
+    
 }
 
 .categoryMenu li a:hover{
-    background-color: lightgray;
-    color: white;
+    color: #d9caaa;
 }
 
 .categoryMenu li a:hover + .submenu,  .submenu:hover{
+	display: block;
+	background-color: white;
     max-height: 500px;
 }
 
 .submenu{
     float: left;
     max-height: 3px;
-    transition: 1s;
-     z-index: 200;
-     background-color: whitesmoke;
-     border-radius: 0.5rem;
-     width: 120px;
+    z-index: 200;
+    /*background-color: #efe9da;;*/
+    border-radius: 0.4rem;
+    border : 1px solid #454438;
+    width: 120px;
+    position: relative;
+    align-self: center;
+    padding-left: 0.5rem;
 }
 
 .categoryMenu .submenu li {
-
-    margin-left: 1rem;
-    
+	z-index:300;
+	padding: 0 0.5rem;
 }
 
 .categoryMenu .submenu li a{
@@ -379,8 +378,13 @@ header .head{
     width: 75rem;
 }
 
-
-
-
-/* 공통 CSS 종료 */
-
+.fixed {
+  position: fixed;
+}
+.errors{
+    color: red;
+    font-size: 0.9rem;
+}
+.errorsborder{
+    border: 2px solid rgb(255, 114, 114);
+}

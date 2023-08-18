@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import july.lease.dao.product.ProductDao;
 import july.lease.dao.productImage.ProductImageDao;
 import july.lease.domain.Product;
-import july.lease.service.dto.HomeResponseDto;
+import july.lease.dto.HomeResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
