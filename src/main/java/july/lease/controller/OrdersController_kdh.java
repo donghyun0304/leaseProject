@@ -37,12 +37,12 @@ public class OrdersController_kdh {
 			BindingResult bindingResult,@PathVariable Long productId,
 			@SessionAttribute(name = "memberId", required = false)Long memberId, Model model) {
 		
-		log.info("OrdersController orderRequestDto={}", orderRequestDto);
+		//log.info("OrdersController orderRequestDto={}", orderRequestDto);
 		Orders saveOrder = null;
 		try {		
 			 saveOrder = ordersService.save(memberId, productId, orderRequestDto);
 		} catch(IllegalArgumentException e) {
-			log.info("잘못된 날짜 선택");
+			//log.info("잘못된 날짜 선택");
 			bindingResult.reject("InvalidDates");
 			return "redirect:/products/" + productId;
 		}

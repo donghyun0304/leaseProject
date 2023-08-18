@@ -29,7 +29,7 @@ public class HeaderController_ksh {
 	@GetMapping("/category")
 	public Map<String, Object> getCategory(HttpServletRequest request) {
 
-		log.info("category호출");
+		//log.info("category호출");
 		
 		Map<String, Object> map = new HashMap<>();
 		
