@@ -276,9 +276,9 @@
         	    }
 	                let modalprice = document.querySelector('.text-price').textContent;
 	                
-	                console.log("startDate", startDate);
-	                console.log("endDate", endDate);
-	                console.log("modalprice", modalprice);
+	                //console.log("startDate", startDate);
+	                //console.log("endDate", endDate);
+	                //console.log("modalprice", modalprice);
 	                
 	                document.querySelector('#text-date').innerText = '대여 기간 : '+startDate+' ~ '+endDate;
 	                

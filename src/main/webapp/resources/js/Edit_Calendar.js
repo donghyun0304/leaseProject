@@ -97,7 +97,7 @@ window.addEventListener('load',function(){
     })
 
     subNextBtn.addEventListener('click', function(){
-        console.log(currYear, currMonth, fixedYear, fixedMonth);
+        //console.log(currYear, currMonth, fixedYear, fixedMonth);
         if (currYear == fixedYear && currMonth == fixedMonth+2){
             return;
         }
@@ -309,7 +309,7 @@ function createLi(subStart, subEnd, year, month) {
         }
     } else {
         let StopDay = new Date(fixedYear, fixedMonth+2, fixedDay);
-        console.log(StopDay.getMonth());
+        //console.log(StopDay.getMonth());
 
         if (StopDay.getFullYear() == year && StopDay.getMonth() == month){
             for (let i=1; i<subEnd - (subEnd - StopDay.getDate());i++){

@@ -122,7 +122,6 @@
 			// 등록실패
 			alert(map.message);
 		}
-		console.log(map.result);
 	}
 </script>
 </head>

@@ -111,7 +111,7 @@ function change_btn(e) {
             btn.classList.remove("active");
         }
     });
-    console.log( e.currentTarget );
+    //console.log( e.currentTarget );
 }
 
 
@@ -125,6 +125,6 @@ function change_btnPage(e) {
             btn.classList.remove("active");
         }
     });
-    console.log( e.currentTarget );
+    //console.log( e.currentTarget );
     
 }

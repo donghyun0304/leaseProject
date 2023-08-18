@@ -118,7 +118,7 @@
 		var locate = document.querySelector(".myLeaseStatus");
 		var moreBox = document.querySelector(".moreBox");
 		var length = list.length;
-		console.log(length)
+		//console.log(length)
 		for (var i=0;i<length;i++){
 			var result = list[i];
 			var content = '';

@@ -77,7 +77,7 @@ window.addEventListener('load',function(){
 
 
 function modalStatus(product, result){
-	console.log(product)
+	//console.log(product)
 	var modalContent = '';
 	       modalContent += "<div id = 'modal-box' class = 'modalactive'>"
        	   modalContent += "<div id = 'modal-contents'>"
