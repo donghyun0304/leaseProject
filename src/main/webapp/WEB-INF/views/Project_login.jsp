@@ -52,7 +52,7 @@
 			    String state = redirectURL;
 			    
 			    if(state==null){
-			    	state="";
+			    	state="/";
 			    }
 			    
 			    // 요청 URL -> 네이버 로그인및 사용자 정보제공 동의 -> 콜백으로 코드를 제공
