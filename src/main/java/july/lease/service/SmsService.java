@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import net.nurigo.java_sdk.api.Message;
@@ -12,10 +13,16 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @Service
 public class SmsService {
 	
-	public static String PhoneNumberCheck(String to) throws CoolsmsException {
+	 	@Value("${cool.sms.api}")
+	    private String smsApi;
+
+	    @Value("${cool.sms.api-secret}")
+	    private String smsApiSecret;
+	
+	public String PhoneNumberCheck(String to) throws CoolsmsException {
 			
-			String api_key = "NCSOOIIA3GBBPHYM";
-			String api_secret = "IVTBRAJKJAGL4TNR8VTUFFFGAECHP4UI";
+			String api_key = smsApi;
+			String api_secret = smsApiSecret;
 			Message coolsms = new Message(api_key, api_secret);
 			
 			Random rand  = new Random();
@@ -37,10 +44,10 @@ public class SmsService {
 	
 	}
 	
-	public static String TemporaryPassword(String to) throws CoolsmsException {
+	public String TemporaryPassword(String to) throws CoolsmsException {
 		
-		String api_key = "NCSOOIIA3GBBPHYM";
-		String api_secret = "IVTBRAJKJAGL4TNR8VTUFFFGAECHP4UI";
+		String api_key = smsApi;
+		String api_secret = smsApiSecret;
 		Message coolsms = new Message(api_key, api_secret);
 			
 		Random rand  = new Random();

@@ -1,6 +1,8 @@
 package july.lease.config;
 
+import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -26,4 +28,5 @@ public class WebConfig implements WebMvcConfigurer {
 			.excludePathPatterns(EXCLUDE_PATHS)
 			.addPathPatterns("/products/add", "/products/*/*", "/products/*/*/*");
 	}
+	
 }

@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,18 @@ public class MemberServiceImpl implements MemberService {
 	private final BCryptPasswordEncoder encoder;
 	
 	private final ApiExamMemberProfile apiExam;
+	
+	@Value("${naver-client-id}")
+	private String naverApiId;
+	
+	@Value("${naver-client-secret}")
+	private String naverApiSecret;
+	
+	@Value("${kakao-client-id}")
+	private String kakaoApiId;
+	
+	@Value("${kakao-client-secret}")
+	private String kakaoApiSecret;
 	
 	@Override
 	public Member login(Member paramMember) {
@@ -177,8 +190,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	public Map<String, String> callback(HttpServletRequest request) throws Exception{
-		String clientId = "WPbsOJi72I4GB5iqARDX";//애플리케이션 클라이언트 아이디값";
-	    String clientSecret = "pPL2LGrfmL";//애플리케이션 클라이언트 시크릿값";
+		String clientId = naverApiId;//애플리케이션 클라이언트 아이디값";
+	    String clientSecret = naverApiSecret;//애플리케이션 클라이언트 시크릿값";
 	    String code = request.getParameter("code");
 	    String state = request.getParameter("state");
 	    try {
@@ -243,6 +256,8 @@ public class MemberServiceImpl implements MemberService {
         String kaccess_Token = "";
         String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
+        String clientId = kakaoApiId;
+        String clientSecret = kakaoApiSecret;
         
         try {
             URL url = new URL(reqURL);
@@ -256,7 +271,8 @@ public class MemberServiceImpl implements MemberService {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=124198d768a446e334a4d562c4c29d2e");
+            sb.append("&client_id=" + clientId);
+            sb.append("&client_secret=" + clientSecret);
             sb.append("&redirect_uri=http://localhost:8080/kakao");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
